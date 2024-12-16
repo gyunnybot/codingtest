@@ -13,7 +13,7 @@ void bfs(int y, int x) {
 
     q.push({ y,x });
 
-    while (q.size()) {
+    while (!q.empty()) {
         pair<int, int> cur = q.front(); q.pop();
 
         for (int i = 0; i < 8; i++) {
