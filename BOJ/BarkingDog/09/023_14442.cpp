@@ -8,7 +8,7 @@ struct info {
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int visited[1001][1001][11], n, m, k; //visited[y][x][벽을 부셨는지 여부]
+int visited[1001][1001][11], n, m, k; //visited[y][x][벽을 부순 횟수]
 char a[1001][1001];
 string s;
 
