@@ -3,16 +3,16 @@
 using namespace std;
 
 struct info {
-    int y, x, a;
+    int y, x, dist;
 };
 queue<info> q[10];
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 int n, m, p, s[10], area[10];
-bool canExpend[1001][1001];
+bool expandable[1001][1001];
 char a[1001][1001];
-string str;
+string input_string;
 
 int main() {
     ios_base::sync_with_stdio(false);
@@ -25,28 +25,28 @@ int main() {
     }
 
     for (int i = 0; i < n; i++) {
-        cin >> str;
+        cin >> input_string;
 
         for (int j = 0; j < m; j++) {
-            a[i][j] = str[j];
+            a[i][j] = input_string[j];
 
             if (a[i][j] == '.') {
-                canExpend[i][j] = true;
+                expandable[i][j] = true; //확장 가능
             }
             else if (a[i][j] == '#') {
-                canExpend[i][j] = false;
+                expandable[i][j] = false; //확장 불가능
             }
             else {
-                canExpend[i][j] = false;
+                expandable[i][j] = false; //시작점은 재탈환 X. 확장 불가능
 
-                q[a[i][j] - '0'].push({ i,j,0 });
-                area[a[i][j] - '0']++;
+                q[a[i][j] - '0'].push({ i,j,0 }); //i번째 플레이어의 시작점을 각 queue에 저장
+                area[a[i][j] - '0']++; //i번째 플레이어가 차지한 영역 1씩 증가
             }
         }
     }
 
     while (true) {
-        bool expandable = false;
+        bool expand_flag = false;
 
         for (int i = 1; i <= p; i++) {
             queue<info> next_q;
@@ -54,7 +54,7 @@ int main() {
             while (!q[i].empty()) {
                 info cur = q[i].front(); q[i].pop();
 
-                if (cur.a >= s[i]) {
+                if (cur.dist >= s[i]) {
                     next_q.push({ cur.y,cur.x,0 });
                     continue;
                 }
@@ -62,29 +62,29 @@ int main() {
                 for (int d = 0; d < 4; d++) {
                     int ny = cur.y + dy[d];
                     int nx = cur.x + dx[d];
-                    int na = cur.a + 1;
+                    int na = cur.dist + 1;
 
                     if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
-                    if (!canExpend[ny][nx]) continue;
+                    if (!expandable[ny][nx]) continue;
 
-                    canExpend[ny][nx] = false;
                     q[i].push({ ny,nx,na });
-                    
+                    expandable[ny][nx] = false;
+
                     area[i]++;
 
-                    expandable = true;
+                    expand_flag = true;
                 }
             }
 
             q[i] = next_q;
         }
 
-        if (!expandable) break;
+        if (!expand_flag) break;
     }
 
     for (int i = 1; i <= p; i++) {
         cout << area[i] << ' ';
     }
-    
+
     return 0;
 }
