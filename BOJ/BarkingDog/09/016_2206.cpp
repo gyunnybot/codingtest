@@ -39,10 +39,9 @@ int bfs() {
                 q.push({ ny,nx,nb });
             }
 
-
             //벽을 부수고 진행
             if (!cur.broken && a[ny][nx] == '1') {
-                nb = true; //딱 한번 벽을 부술 수 있다
+                nb = 1; //딱 한번 벽을 부술 수 있다
 
                 if (!visited[ny][nx][nb]) {
                     visited[ny][nx][nb] = visited[cur.y][cur.x][cur.broken] + 1;
