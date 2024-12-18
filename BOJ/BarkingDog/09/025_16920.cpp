@@ -16,7 +16,7 @@ string input_string;
 
 void bfs() {
     while (true) {
-        bool expand_flag = false;
+        bool flag = false;
 
         for (int i = 1; i <= p; i++) {
             queue<info> next_q;
@@ -42,14 +42,14 @@ void bfs() {
 
                     area[i]++;
 
-                    expand_flag = true;
+                    flag = true;
                 }
             }
 
             q[i] = next_q;
         }
 
-        if (!expand_flag) break;
+        if (!flag) break;
     }
 
     return;
@@ -81,7 +81,7 @@ int main() {
                 expandable[i][j] = false; //시작점은 재탈환 X. 확장 불가능
 
                 q[a[i][j] - '0'].push({ i,j,0 }); //i번째 플레이어의 시작점을 각 queue에 저장
-                area[a[i][j] - '0']++; //i번째 플레이어가 차지한 영역 1씩 증가
+                area[a[i][j] - '0']++; //i번째 플레이어가 차지한 영역 초기화: 1부터 시작
             }
         }
     }
