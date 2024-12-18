@@ -1,11 +1,10 @@
 #include<iostream>
 #include<vector>
-#include<algorithm> //sort
 using namespace std;
 
-int n, m, a[10001];
+int n, m, a[50];
 vector<int> v;
-vector<bool> visited(10001, false);
+vector<bool> visited(50, false);
 
 void print(vector<int>& v) {
     for (int i : v) {
@@ -27,7 +26,7 @@ void combi(int start, vector<int>& v, vector<bool>& visited) {
         if (visited[i]) continue;
 
         v.push_back(a[i]);
-        visited[i] = true;        
+        visited[i] = true;
 
         combi(i - 1, v, visited);
 
