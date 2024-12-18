@@ -17,7 +17,7 @@ void print(vector<int>& v) {
 }
 
 void combi(int start, vector<int>& v, vector<bool>& visited) {
-    if (v.size() == m) {
+    if (v.size() == m) { //back tracking
         print(v);
         return;
     }
@@ -37,7 +37,7 @@ void combi(int start, vector<int>& v, vector<bool>& visited) {
 
 int main() {
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    cin.tie(NULL); cout.tie(NULL);
 
     cin >> n >> m;
 
