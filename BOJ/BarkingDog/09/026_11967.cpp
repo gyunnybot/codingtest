@@ -9,15 +9,16 @@ int n, m, x, y, a, b, ret;
 bool visited[101][101], light[101][101];
 vector<pair<int, int>> adj[101][101];
 
-bool connected(pair<int, int> here) {
+bool connected(pair<int, int> next) {
     for (int i = 0; i < 4; i++) {
-        int nx = here.first + dx[i];
-        int ny = here.second + dy[i];
+        int nx = next.first + dx[i];
+        int ny = next.second + dy[i];
 
         if (nx < 1 || nx > n || ny < 1 || ny > n) continue;
 
         //각 방에서는 상하좌우에 인접한 방으로 움직일 수 있다
-        if (visited[nx][ny] && light[nx][ny]) { //here와 인접한 좌표가 먼저 켜져 있는가?
+        //4방향 중 cur가 있다면 next로 연결지어 이동할 수 있다
+        if (visited[nx][ny] && light[nx][ny]) { //cur = { nx,ny }인 경우
             return true;
         }
     }
@@ -35,6 +36,7 @@ void bfs() {
     while (!q.empty()) {
         pair<int, int> cur = q.front(); q.pop();
 
+        //입력으로 주어진 연결 관계인 경우
         for (pair<int, int> next : adj[cur.first][cur.second]) {
             if (!light[next.first][next.second]) {
                 light[next.first][next.second] = true; //일단 불을 킨다
@@ -46,18 +48,22 @@ void bfs() {
             }
         }
 
+        //연결관계는 아니지만 조건을 충족해 이동할 수 있는 경우
         for (int i = 0; i < 4; i++) {
             int nx = cur.first + dx[i];
             int ny = cur.second + dy[i];
 
             if (nx < 1 || nx > n || ny < 1 || ny > n) continue;
 
-            if (!visited[nx][ny] && light[nx][ny]) { //불이 켜졌지만 방문하지 않은 곳이면 이동
+            //인접한 4방향 중 불이 켜졌지만 방문하지 않은 곳이라면 이동
+            if (!visited[nx][ny] && light[nx][ny]) {
                 visited[nx][ny] = true;
                 q.push({ nx,ny });
             }
         }
     }
+
+    return;
 }
 
 int main() {
