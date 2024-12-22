@@ -7,7 +7,6 @@ int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	dp[0] = 0;
 	dp[1] = 1;
 	dp[2] = 2;
 	dp[3] = 4;
