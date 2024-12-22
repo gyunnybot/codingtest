@@ -4,6 +4,7 @@ using namespace std;
 
 int n, ret, visited[1000001];
 
+//bfs 활용(1697번 숨바꼭질 문제랑 유사한 풀이)
 void bfs(int n) {
 	visited[n] = 1;
 
