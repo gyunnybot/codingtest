@@ -2,7 +2,7 @@
 #include<climits> //INT_MIN
 using namespace std;
 
-int n, t[16], p[16], dp[16], ret;
+int n, t[16], p[16], dp[16];
 
 int recur(int day) {
     if (day > n) {
