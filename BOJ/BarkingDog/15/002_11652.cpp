@@ -18,10 +18,10 @@ int main() {
 
 	sort(a, a + n);
 
-	ll ret = a[0]; //가장 많은 수를 ret에 저장. 첫번째 원소부터 순차적으로 계산
+	ll ret = a[0]; //가장 많이 나온 수 구하기. 첫번째 원소에서 시작해 순차적으로 비교 후 계산
 
-	int maxVal = 1;
-	int cnt = 1;
+	int maxVal = 1; //숫자 카드의 개수 N (1 ≤ N ≤ 100,000)
+	int cnt = 1; //a[0]을 기준으로 잡아 1부터 시작
 
 	for (int i = 1; i < n; i++) {
 		if (a[i] == a[i - 1]) {
