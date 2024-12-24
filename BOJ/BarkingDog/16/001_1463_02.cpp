@@ -21,7 +21,6 @@ int main() {
 		if (i % 3 == 0 && dp[i] > dp[i / 3] + 1) {
 			dp[i] = dp[i / 3] + 1;
 		}
-		
 	}
 
 	cout << dp[n];
