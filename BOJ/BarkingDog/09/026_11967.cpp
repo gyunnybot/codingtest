@@ -16,8 +16,7 @@ bool connected(pair<int, int> next) {
 
         if (nx < 1 || nx > n || ny < 1 || ny > n) continue;
 
-        //각 방에서는 상하좌우에 인접한 방으로 움직일 수 있다
-        //4방향 중 cur가 있다면 next로 연결지어 이동할 수 있다
+        //상하좌우 중 cur가 있다면 next로 이동할 수 있다
         if (visited[nx][ny] && light[nx][ny]) { //cur = { nx,ny }인 경우
             return true;
         }
@@ -49,13 +48,14 @@ void bfs() {
         }
 
         //연결관계는 아니지만 조건을 충족해 이동할 수 있는 경우
+        //각 방에서는 상하좌우에 인접한 방으로 움직일 수 있다
         for (int i = 0; i < 4; i++) {
             int nx = cur.first + dx[i];
             int ny = cur.second + dy[i];
 
             if (nx < 1 || nx > n || ny < 1 || ny > n) continue;
 
-            //인접한 4방향 중 불이 켜졌지만 방문하지 않은 곳이라면 이동
+            //베시는 불이 켜져있는 방으로만 들어갈 수 있다
             if (!visited[nx][ny] && light[nx][ny]) {
                 visited[nx][ny] = true;
                 q.push({ nx,ny });
