@@ -26,7 +26,7 @@ int main() {
 		cin >> temp;
 		reverse(temp.begin(), temp.end());
 
-		//입력되는 모든 원소가 양의 정수이므로 0에 도달하지는 않는다
+		//입력되는 모든 원소가 양의 정수이므로 변형되는 temp 또한 0보다 크다
 		while (true) {
 			if (temp[0] == '0') {
 				temp.erase(0, 1);
