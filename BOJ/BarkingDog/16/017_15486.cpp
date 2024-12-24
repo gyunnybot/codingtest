@@ -2,8 +2,7 @@
 #include<climits> //INT_MIN
 using namespace std;
 
-int n, t[1500001][2];
-int dp[1500001];
+int n, t[1500001], p[1500001], dp[1500001];
 
 int recur(int day) {
     if (day > n) {
@@ -18,7 +17,7 @@ int recur(int day) {
         return dp[day];
     }
 
-    dp[day] = max(recur(day + 1), recur(day + t[day][0]) + t[day][1]);
+    dp[day] = max(recur(day + 1), recur(day + t[day]) + p[day]);
 
     return dp[day];
 }
@@ -30,9 +29,7 @@ int main() {
     cin >> n;
 
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < 2; j++) {
-            cin >> t[i][j];
-        }
+        cin >> t[i] >> p[i];
     }
 
     cout << recur(0);
