@@ -3,7 +3,7 @@
 using namespace std;
 
 pair<int, int> L[1000004];
-int ret, l, r, n, st, ed;
+int n, st, ed, ret;
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -18,7 +18,8 @@ int main() {
 
 	sort(L, L + n);
 
-	l = L[0].first; r = L[0].second;
+	int l = L[0].first;
+	int r = L[0].second;
 
 	for (int i = 1; i < n; i++) {
 		if (r < L[i].first) {
@@ -34,7 +35,7 @@ int main() {
 
 	ret += r - l;
 
-	cout << ret << '\n';
+	cout << ret;
 
 	return 0;
 }
