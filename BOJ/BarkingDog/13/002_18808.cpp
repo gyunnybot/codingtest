@@ -16,8 +16,8 @@ void rotate() {
 
 	fill(&paper[0][0], &paper[0][0] + 12 * 12, 0);
 
-	swap(r, c); //call by reference
-	
+	swap(r, c); //call by reference. deep copy
+
 	for (int i = 0; i < r; i++) {
 		for (int j = 0; j < c; j++) {
 			paper[i][j] = temp[i][j];
@@ -60,10 +60,8 @@ int main() {
 
 			for (int y = 0; y <= n - r; y++) {
 				for (int x = 0; x <= m - c; x++) {
-					if (postable(y, x)) {
-
-						//검사 통과! R x C 사이즈의 스티커 붙이기
-						for (int i = 0; i < r; i++) {
+					if (postable(y, x)) {						
+						for (int i = 0; i < r; i++) { //검사 통과! R x C 사이즈의 스티커 붙이기
 							for (int j = 0; j < c; j++) {
 								if (paper[i][j] == 1) {
 									note[y + i][x + j] = 1;
