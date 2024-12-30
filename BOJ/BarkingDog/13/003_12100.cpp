@@ -18,6 +18,7 @@ struct Board {
 
 		fill(&board[0][0], &board[0][0] + 21 * 21, 0);
 
+		//swap(n, n); //swap(r, c); call by reference. deep copy
 		for (int i = 0; i < n; i++) { //열 c
 			for (int j = 0; j < n; j++) { //행 r
 				board[i][j] = temp[i][j];
@@ -52,13 +53,13 @@ struct Board {
 					flag = false; //한 번 합쳤다면 false
 				}
 				else {
-					temp[i][c] = board[i][j]; //복사, 붙여넣기
-					flag = true; //합칠 수 있는 flag = true
+					temp[i][c] = board[i][j]; //clone
+					flag = true; //합칠 수 있는 flag 다시 true
 					c++; //붙여넣을 좌표 증가
 				}
 			}
 
-			while (c < n) { //더 이상 더할 j가 없다면 단독으로 temp 완성
+			while (c < n) { //더 이상 비교할 j가 없다면 단독으로 temp 완성
 				temp[i][c] = 0;
 				c++;
 			}
