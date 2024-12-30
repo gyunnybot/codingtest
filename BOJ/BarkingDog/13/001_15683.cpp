@@ -12,10 +12,10 @@ vector<pair<int, int>> cctv_list;
 vector<pair<int, int>> spread(int cctv_cnt, int dir) {
 	vector<pair<int, int>> ret;
 
-	pair<int, int> cctv_start = cctv_list[cctv_cnt];
+	pair<int, int> cur_cctv = cctv_list[cctv_cnt];
 
-	if (a[cctv_start.first][cctv_start.second] == 1) {
-		pair<int, int> cur = cctv_start;
+	if (a[cur_cctv.first][cur_cctv.second] == 1) {
+		pair<int, int> cur = cur_cctv;
 
 		while (true) {
 			int ny = cur.first + dy[dir];
@@ -34,9 +34,9 @@ vector<pair<int, int>> spread(int cctv_cnt, int dir) {
 			}
 		}
 	}
-	else if (a[cctv_start.first][cctv_start.second] == 2) {
+	else if (a[cur_cctv.first][cur_cctv.second] == 2) {
 		for (int d = 0; d <= 2; d += 2) {
-			pair<int, int> cur = cctv_start;
+			pair<int, int> cur = cur_cctv;
 
 			while (true) {
 				int ny = cur.first + dy[(dir + d) % 4];
@@ -56,9 +56,9 @@ vector<pair<int, int>> spread(int cctv_cnt, int dir) {
 			}
 		}
 	}
-	else if (a[cctv_start.first][cctv_start.second] == 3) {
+	else if (a[cur_cctv.first][cur_cctv.second] == 3) {
 		for (int d = 0; d < 2; d++) {
-			pair<int, int> cur = cctv_start;
+			pair<int, int> cur = cur_cctv;
 
 			while (true) {
 				int ny = cur.first + dy[(dir + d) % 4];
@@ -78,9 +78,9 @@ vector<pair<int, int>> spread(int cctv_cnt, int dir) {
 			}
 		}
 	}
-	else if (a[cctv_start.first][cctv_start.second] == 4) {
+	else if (a[cur_cctv.first][cur_cctv.second] == 4) {
 		for (int d = 0; d < 3; d++) {
-			pair<int, int> cur = cctv_start;
+			pair<int, int> cur = cur_cctv;
 
 			while (true) {
 				int ny = cur.first + dy[(dir + d) % 4];
@@ -100,9 +100,9 @@ vector<pair<int, int>> spread(int cctv_cnt, int dir) {
 			}
 		}
 	}
-	else if (a[cctv_start.first][cctv_start.second] == 5) {
+	else if (a[cur_cctv.first][cur_cctv.second] == 5) {
 		for (int d = 0; d < 4; d++) {
-			pair<int, int> cur = cctv_start;
+			pair<int, int> cur = cur_cctv;
 
 			while (true) {
 				int ny = cur.first + dy[(dir + d) % 4];
