@@ -5,7 +5,7 @@ using namespace std;
 
 int n, st, ed;
 vector<pair<int, int>> debate;
-priority_queue<int, vector<int>, greater<int>> pq; //우선순위는 정렬이 반대로 작용한다
+priority_queue<int, vector<int>, greater<int>> pq; //우선순위 큐는 정렬이 반대로 작용한다
 
 int main() {
 	ios_base::sync_with_stdio(false);
