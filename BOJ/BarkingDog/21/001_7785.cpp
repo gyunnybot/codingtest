@@ -1,11 +1,10 @@
 #include<iostream>
-#include<algorithm>
 #include<map>
 using namespace std;
 
-map<string, string, greater<>> mp; //사전 순의 역순. greater<>, less<>
-string a, b;
 int n;
+string a, b;
+map<string, string, greater<>> mp; //내림차순 greater<>, 오름차순 less<>
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -18,9 +17,9 @@ int main() {
 		mp[a] = b;
 	}
 
-	for (auto s : mp) {
-		if (s.second == "enter") {
-			cout << s.first << '\n';
+	for (pair<string, string> pi : mp) {
+		if (pi.second == "enter") {
+			cout << pi.first << '\n';
 		}
 	}
 
