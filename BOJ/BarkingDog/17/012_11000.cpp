@@ -5,7 +5,7 @@ using namespace std;
 
 int n, st, ed;
 vector<pair<int, int>> debate;
-priority_queue<int, vector<int>, greater<int>> pq; //우선순위 큐는 정렬이 반대로 작용한다
+priority_queue<int, vector<int>, greater<int>> pq; //우선순위 큐는 정렬이 반대로 작용한다. 즉, 오름차순 정렬
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -28,9 +28,8 @@ int main() {
 			pq.pop();
 		}
 	}
-
-	//pq의 size = 반드시 생성해야 하는 강의실의 수
-	cout << pq.size();
+	
+	cout << pq.size(); //반드시 생성해야 하는 강의실의 수
 
 	return 0;
 }
