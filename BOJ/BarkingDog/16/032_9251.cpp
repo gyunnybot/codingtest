@@ -10,6 +10,7 @@ int main() {
 
 	cin >> a >> b;
 
+	//LCS
 	for (int i = 1; i <= a.size(); i++) {
 		for (int j = 1; j <= b.size(); j++) {
 			if (a[i - 1] == b[j - 1]) {
