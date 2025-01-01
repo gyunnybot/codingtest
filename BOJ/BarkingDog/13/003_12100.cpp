@@ -19,8 +19,9 @@ struct Board {
 		fill(&board[0][0], &board[0][0] + 21 * 21, 0);
 
 		//swap(n, n); //swap(r, c); call by reference. deep copy
-		for (int i = 0; i < n; i++) { //열 c
-			for (int j = 0; j < n; j++) { //행 r
+
+		for (int i = 0; i < n; i++) { //r
+			for (int j = 0; j < n; j++) { //c
 				board[i][j] = temp[i][j];
 			}
 		}
@@ -41,21 +42,21 @@ struct Board {
 	void push_blocks() {
 		int temp[21][21];
 
-		for (int i = 0; i < n; i++) { //각각의 행마다 밀기
+		for (int i = 0; i < n; i++) { //각 행마다 밀기 작업 수행
 			bool flag = false;
-			int c = 0; //붙여넣을 좌표 행마다 초기화
+			int c = 0; //temp에서 움직일 열 번호
 
 			for (int j = 0; j < n; j++) {
 				if (board[i][j] == 0) continue;
 
 				if (flag && (board[i][j] == temp[i][c - 1])) {
 					temp[i][c - 1] += board[i][j]; //밀어서 값 합치기
-					flag = false; //한 번 합쳤다면 false
+					flag = false; //한 번 합쳤다면 false. 합쳐진 수에 대해 추가적으로 합칠 수 없다
 				}
 				else {
-					temp[i][c] = board[i][j]; //clone
-					flag = true; //합칠 수 있는 flag 다시 true
+					temp[i][c] = board[i][j]; //clone					
 					c++; //붙여넣을 좌표 증가
+					flag = true; //c가 이동했으므로 합칠 수 있는 flag = true
 				}
 			}
 
