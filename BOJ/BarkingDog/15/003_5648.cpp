@@ -24,9 +24,10 @@ int main() {
 
 	for (int i = 0; i < n; i++) {
 		cin >> temp;
+
 		reverse(temp.begin(), temp.end());
 
-		//입력되는 모든 원소가 양의 정수이므로 변형되는 temp 또한 0보다 크다
+		//입력되는 모든 원소가 '양'의 정수이므로 무한루프 상황은 발생하지 않는다
 		while (true) {
 			if (temp[0] == '0') {
 				temp.erase(0, 1);
