@@ -11,7 +11,7 @@ int main() {
 
 	cin >> n;
 
-	stk.push({ 100000001,0 }); //높이가 1억인 가상의 0번 탑 설정
+	stk.push({ 100000001,0 }); //탑들의 높이는 1 이상 100,000,000 이하의 정수이다
 
 	for (int i = 1; i <= n; i++) {
 		cin >> height;
@@ -20,7 +20,7 @@ int main() {
 			stk.pop();
 		}
 
-		cout << stk.top().second << ' ';
+		cout << stk.top().second << ' '; //본인보다 높은 탑의 인덱스 출력
 
 		stk.push({ height,i });
 	}
