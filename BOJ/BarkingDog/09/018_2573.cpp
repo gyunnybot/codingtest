@@ -37,7 +37,7 @@ void melt() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            if (a[i][j] > 0) {
+            if (a[i][j] > 0) { //육지라면
                 int sea_cnt = 0;
 
                 pair<int, int> cur = { i,j };
@@ -48,21 +48,17 @@ void melt() {
 
                     if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
-                    if (a[ny][nx] == 0) {
+                    if (a[ny][nx] == 0) { //육지 주변이 바다라면
                         sea_cnt++;
                     }
                 }
-
-                temp[cur.first][cur.second] = a[cur.first][cur.second] - sea_cnt;
-
-                if (temp[cur.first][cur.second] < 0) {
-                    temp[cur.first][cur.second] = 0;
-                }
+                
+                temp[cur.first][cur.second] = max(a[cur.first][cur.second] - sea_cnt, 0);
             }
         }
     }
 
-    swap(a, temp);
+    swap(a, temp); //call by reference
 
     return;
 }
@@ -93,11 +89,12 @@ int main() {
             }
         }
 
-        if (ret > 1) {
+        if (ret > 1) { //두 덩어리가 된다면 시간 출력
             cout << t;
             break;
         }
-        else if (ret == 0) {
+        
+        if (ret == 0) { //빙하가 쪼개지지 않고 모두 녹았다면
             cout << 0;
             break;
         }
