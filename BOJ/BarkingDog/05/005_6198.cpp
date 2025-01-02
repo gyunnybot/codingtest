@@ -20,9 +20,8 @@ int main() {
 		while (!stk.empty() && stk.top() <= height) {
 			stk.pop();
 		}
-
-		//본인이 내려다볼 수 있는 빌딩 수의 총합 = 본인을 내려다볼 수 있는 빌딩 수의 총합
-		ret += stk.size();
+		
+		ret += stk.size(); //본인이 내려다볼 수 있는 빌딩 수의 총합 = 본인을 내려다볼 수 있는 빌딩 수의 총합
 
 		stk.push(height);
 	}
