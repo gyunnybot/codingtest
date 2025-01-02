@@ -41,11 +41,11 @@ int bfs() {
 
             //벽을 부수고 진행
             if (!cur.broken && a[ny][nx] == '1') {
-                nb = 1; //딱 한번 벽을 부술 수 있다
+                nb = true;
 
                 if (!visited[ny][nx][nb]) {
                     visited[ny][nx][nb] = visited[cur.y][cur.x][cur.broken] + 1;
-                    q.push({ ny,nx,nb }); //이후 queue의 원소는 벽을 부술 기회가 없다
+                    q.push({ ny,nx,nb });
                 }
             }
         }
