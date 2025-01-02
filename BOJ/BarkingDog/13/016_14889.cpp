@@ -9,7 +9,7 @@ bool visited[21];
 vector<int> v;
 
 int go(vector<int>& start, vector<int>& link) {
-    pair<int, int> ret; //init
+    pair<int, int> ret = { 0,0 };
 
     for (int i = 0; i < n / 2; i++) {
         for (int j = 0; j < n / 2; j++) {
@@ -25,11 +25,15 @@ int go(vector<int>& start, vector<int>& link) {
 
 void combi(int start, vector<int>& v) {
     if (v.size() == n / 2) {
-        vector<int> start, link; //사이즈가 될 때마다 init
+        vector<int> start, link;
 
         for (int i = 0; i < n; i++) {
-            if (visited[i]) start.push_back(i); //visited = true인 일은 아침, 아니라면 저녁으로 정의
-            else link.push_back(i);
+            if (visited[i]) {
+                start.push_back(i);
+            }
+            else {
+                link.push_back(i);
+            }
         }
 
         ret = min(ret, go(start, link));
@@ -43,8 +47,8 @@ void combi(int start, vector<int>& v) {
 
         combi(i, v);
 
-        visited[i] = 0; //원상 복구
-        v.pop_back(); //원상 복구
+        visited[i] = 0;
+        v.pop_back();
     }
 }
 
