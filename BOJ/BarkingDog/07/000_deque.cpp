@@ -21,11 +21,13 @@ void push_back(int x) {
 
 void pop_front() {
 	head++;
+
 	return;
 }
 
 void pop_back() {
 	tail--;
+	
 	return;
 }
 

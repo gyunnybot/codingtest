@@ -5,16 +5,16 @@ const int MX = 1000005;
 int dat[MX], pre[MX], nxt[MX];
 int unused = 1;
 
-void insert(int addr, int num) { //삽입할 원소의 인덱스, 데이터 값
+void insert(int addr, int num) { //삽입할 부분의 인덱스, 데이터 값
     dat[unused] = num; //현재 인덱스(unused)에 데이터 값 저장
-    pre[unused] = addr; //addr을 이전 원소의 인덱스로 저장
-    nxt[unused] = nxt[addr]; //기존의 addr이 가리키고 있던 다음 원소를 가리키도록 인덱스 복사
+    pre[unused] = addr; //현재 인덱스에 대한 이전 인덱스를 addr로 변경
+    nxt[unused] = nxt[addr]; //현재 인덱스에 대한 다음 인덱스를 기존의 addr이 다음으로 가리키고 있던 원소로 변경
 
-    if (nxt[addr] != -1) { //기존의 addr가 가리키는 다음 원소가 존재했다면(데이터를 중간에 삽입하는 상황)
-        pre[nxt[addr]] = unused; //현재 인덱스를 해당 원소의 이전 인덱스로 변경
+    if (nxt[addr] != -1) { //기존의 addr가 다음으로 가리키는 원소가 존재했다면
+        pre[nxt[addr]] = unused; //해당되는 원소의 이전 인덱스를 현재 인덱스(unused)로 저장
     }
 
-    nxt[addr] = unused; //현재 인덱스를 기존의 addr이 가리키는 인덱스로 변경
+    nxt[addr] = unused; //현재 인덱스를 기존의 addr가 다음으로 가리키는 인덱스로 변경
     unused++;
 
     return;

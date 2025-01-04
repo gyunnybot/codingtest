@@ -42,3 +42,4 @@ void readOnlyFunction(const int& value) {
     // value는 읽기 전용으로 접근 가능
     // value = 10;  // 컴파일 에러 발생
 }
+```

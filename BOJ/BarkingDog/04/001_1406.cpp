@@ -22,7 +22,7 @@ int main(void) {
 
 		if (ch == 'P') {
 			cin >> add;
-			L.insert(cur, add); //해당 이터레이터에 삽입 후 다음 이터레이터를 가리킨다
+			L.insert(cur, add); //해당 이터레이터에 데이터를 삽입 후 다음 이터레이터를 가리킨다
 		}
 		else if (ch == 'L') {
 			if (cur != L.begin()) {
@@ -37,7 +37,7 @@ int main(void) {
 		else if (ch == 'B') {
 			if (cur != L.begin()) {
 				cur--;
-				cur = L.erase(cur); //해당 이터레이터에 삭제 후 다음 이터레이터를 가리킨다
+				cur = L.erase(cur); //해당 이터레이터에 속한 데이터를 삭제 후 다음 이터레이터를 가리킨다
 			}
 		}
 	}
