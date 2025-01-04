@@ -16,6 +16,8 @@ void insert(int addr, int num) { //삽입할 원소의 인덱스, 데이터 값
 
     nxt[addr] = unused; //현재 인덱스를 기존의 addr이 가리키는 인덱스로 변경
     unused++;
+
+    return;
 }
 
 void erase(int addr) {
@@ -24,6 +26,8 @@ void erase(int addr) {
     if (nxt[addr] != -1) {
         pre[nxt[addr]] = pre[addr];
     }
+
+    return;
 }
 
 void traverse() {
