@@ -8,14 +8,13 @@ int pos = 0;
 void push(int x) {
 	dat[pos] = x;
 	pos++;
-
-  return;
+	
+	return;
 }
 
 void pop() {
 	pos--;
-  
-  return;
+	return;
 }
 
 int top() {
