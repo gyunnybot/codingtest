@@ -1,22 +1,22 @@
 #include<iostream>
 using namespace std;
 
-void insert(int idx, int num, int arr[], int& len) { //삽입할 인덱스 위치, 삽입 값, 배열, 배열의 길이
+void insert(int idx, int num, int arr[], int& len) { //삽입할 인덱스 위치, 삽입할 값, 배열, 배열의 길이
     for (int i = len; i > idx; i--) {
         arr[i] = arr[i - 1]; //idx 이후부터 끝까지 오른쪽으로 한 칸씩 이동
     }
         
-    arr[idx] = num; //idx에 num 삽입
-    len++; //전체 배열의 길이 1 증가
+    arr[idx] = num; //idx번 요소에 num 삽입
+    len++; //전체 배열의 길이 증가
 
     return;
 }
 
 void erase(int idx, int arr[], int& len) { //삭제할 인덱스 위치, 배열, 배열의 길이
-    len--; //전체 배열의 길이 1 감소
+    len--; //전체 배열의 길이 감소
 
     for (int i = idx; i < len; i++) {
-        arr[i] = arr[i + 1]; //idx부터 끝까지 왼쪽으로 한 칸씩 덮어쓰며 이동
+        arr[i] = arr[i + 1]; //idx 이후부터 끝까지 왼쪽으로 한 칸씩 덮어쓰며 이동
     }
 
     return;

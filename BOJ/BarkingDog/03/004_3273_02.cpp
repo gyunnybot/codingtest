@@ -22,7 +22,7 @@ int main() {
 	int l = 0;
 	int r = n - 1;
 
-	while (l < r) { //ai + aj = x (1 ≤ i < j ≤ n)을 만족하는 (ai, aj)쌍의 수. l < r
+	while (l < r) { //ai + aj = x (1 ≤ i < j ≤ n)을 만족하는 (ai, aj)쌍의 수이므로 반드시 l < r
 		if (a[l] + a[r] == x) {
 			ret++;
 

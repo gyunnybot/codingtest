@@ -5,22 +5,22 @@ const int MX = 1000005;
 int dat[MX], pre[MX], nxt[MX];
 int unused = 1;
 
-void insert(int addr, int num) { //삽입할 부분의 인덱스, 데이터 값
-    dat[unused] = num; //현재 인덱스(unused)에 데이터 값 저장
-    pre[unused] = addr; //현재 인덱스에 대한 이전 인덱스를 addr로 변경
-    nxt[unused] = nxt[addr]; //현재 인덱스에 대한 다음 인덱스를 기존의 addr이 다음으로 가리키고 있던 원소로 변경
+void insert(int addr, int num) { //삽입할 노드 번호(1부터 시작), 저장할 데이터 값
+    dat[unused] = num; //새로 생성된 노드에 데이터 값 저장
+    pre[unused] = addr; //생성된 노드를 가리키는 이전 노드 번호를 addr로 저장
+    nxt[unused] = nxt[addr]; //생성된 노드가 가리킬 노드 번호를, 이전의 노드가 가리켰던 노드로 저장
 
-    if (nxt[addr] != -1) { //기존의 addr가 다음으로 가리키는 원소가 존재했다면
-        pre[nxt[addr]] = unused; //해당되는 원소의 이전 인덱스를 현재 인덱스(unused)로 저장
+    if (nxt[addr] != -1) { //기존의 이전 노드가 다음으로 가리키는 노드가 존재했다면
+        pre[nxt[addr]] = unused; //해당 노드를 가리켰던 이전 노드를 생성된 노드로 변경
     }
 
-    nxt[addr] = unused; //현재 인덱스를 기존의 addr가 다음으로 가리키는 인덱스로 변경
-    unused++;
+    nxt[addr] = unused; //이전 노드가 가리킬 노드 번호를 unused로 변경
+    unused++; //노드 번호를 증가시켜 다음 노드 번호로 사용
 
     return;
 }
 
-void erase(int addr) {
+void erase(int addr) { //삭제할 노드 번호
     nxt[pre[addr]] = nxt[addr];
 
     if (nxt[addr] != -1) {
