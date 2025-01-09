@@ -5,4 +5,4 @@ AND GENDER = 'W'
 AND TLNO IS NOT NULL
 ORDER BY MEMBER_ID;
 
--- DATE_FORMAT(컬럼, '형식')
+-- DATE_FORMAT(DATE 타입의 컬럼, '나타낼 형식')

@@ -17,13 +17,13 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < i; j++) {
 			if (a[i] > a[j]) {
-				dp[i] = max(dp[i], dp[j] + a[i]);
+				dp[i] = max(dp[i], dp[j] + a[i]); //각 원소까지의 증가하는 부분 수열의 합
 			}
 		}
 	}
 
 	for (int i = 0; i < n; i++) {
-		ret = max(ret, dp[i]);
+		ret = max(ret, dp[i]); //증가하는 부분 수열의 합 중 최대
 	}
 
 	cout << ret;

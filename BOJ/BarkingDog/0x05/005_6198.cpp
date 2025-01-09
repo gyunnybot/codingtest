@@ -5,7 +5,7 @@ typedef long long ll;
 
 int n, height;
 stack<int> stk; //모든 빌딩은 일렬로 서 있고 오른쪽으로'만' 볼 수 있다 = stack 활용
-ll ret; //최대 64억
+ll ret; //n의 범위가 8만이므로 ret은 최대 64억
 
 int main() {
 	ios_base::sync_with_stdio(false);
