@@ -9,7 +9,7 @@ int main() {
 
 	cin >> n;
 
-	dp[1] = 0;
+	dp[1] = 0; //n이 1일 때
 
 	for (int i = 2; i <= n; i++) {
 		dp[i] = dp[i - 1] + 1;

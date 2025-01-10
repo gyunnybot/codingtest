@@ -22,7 +22,7 @@ int main() {
 		v.push_back({ age,name });
 	}
 
-	stable_sort(v.begin(), v.end(), cmp);
+	stable_sort(v.begin(), v.end(), cmp); //입력 순서를 유지한다
 
 	for (int i = 0; i < n; i++) {
 		cout << v[i].first << ' ' << v[i].second << '\n';

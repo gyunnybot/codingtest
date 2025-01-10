@@ -15,6 +15,7 @@ int main() {
 
 	for (int i = n - 1; i >= 0; i--) {
 		if (k == 0) break;
+		
 		if (a[i] > k) continue;
 
 		ret += k / a[i];

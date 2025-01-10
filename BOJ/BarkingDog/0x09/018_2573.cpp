@@ -58,7 +58,7 @@ void melt() {
         }
     }
 
-    swap(a, temp); //call by reference
+    swap(a, temp); //call by reference. deep copy
 
     return;
 }

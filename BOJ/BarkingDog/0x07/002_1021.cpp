@@ -31,7 +31,7 @@ int main(void) {
 			while (val != dq.front()) {
 				dq.push_back(dq.front());
 				dq.pop_front();
-				cnt++; //2번 연산
+				cnt++;
 			}
 
 			dq.pop_front();
@@ -40,7 +40,7 @@ int main(void) {
 			while (val != dq.front()) {
 				dq.push_front(dq.back());
 				dq.pop_back();
-				cnt++; //3번 연산
+				cnt++;
 			}
 
 			dq.pop_front();

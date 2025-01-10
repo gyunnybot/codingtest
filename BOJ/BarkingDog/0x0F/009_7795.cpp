@@ -16,7 +16,8 @@ int main() {
 	cin >> t;
 
 	while (t--) {
-		fill(a, a + 20001, 0); fill(b, b + 20001, 0);
+		fill(a, a + 20001, 0); //memset(a, 0, sizeof(a));
+		fill(b, b + 20001, 0);
 
 		cin >> n >> m;
 
@@ -40,7 +41,7 @@ int main() {
 					cnt++;
 				}
 				else {
-					break;
+					break; //back tracking
 				}
 			}
 		}

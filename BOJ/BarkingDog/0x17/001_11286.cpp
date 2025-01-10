@@ -2,7 +2,7 @@
 #include<queue> //priority_queue
 using namespace std;
 
-class cmp {
+class cmp { //암기
 public:
 	bool operator()(int a, int b) {
 		if (abs(a) != abs(b)) {

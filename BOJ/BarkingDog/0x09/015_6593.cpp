@@ -23,6 +23,8 @@ void bfs() {
     while (!q.empty()) {
         Pos cur = q.front(); q.pop();
 
+        if (cur.y == ePos.y && cur.x == ePos.x && cur.h == ePos.h) break;
+
         for (int i = 0; i < 4; i++) {
             int ny = cur.y + dy[i];
             int nx = cur.x + dx[i];
