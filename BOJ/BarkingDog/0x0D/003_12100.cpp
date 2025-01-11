@@ -18,7 +18,7 @@ struct Board {
 
 		fill(&board[0][0], &board[0][0] + 21 * 21, 0);
 
-		//swap(n, n); //swap(r, c); call by reference. deep copy
+		//swap(n, n); //swap(r, c); call by reference
 
 		for (int i = 0; i < n; i++) { //r
 			for (int j = 0; j < n; j++) { //c

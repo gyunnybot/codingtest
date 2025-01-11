@@ -15,7 +15,7 @@ void rotate() {
 
 	fill(&paper[0][0], &paper[0][0] + 12 * 12, 0);
 
-	swap(r, c); //call by reference. deep copy
+	swap(r, c); //call by reference
 
 	for (int i = 0; i < r; i++) {
 		for (int j = 0; j < c; j++) {

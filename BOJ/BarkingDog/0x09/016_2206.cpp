@@ -17,7 +17,7 @@ int bfs() {
     visited[0][0][0] = 1;
 
     queue<info> q;
-    q.push({ 0,0,0 });
+    q.push({ 0,0,false });
 
     while (!q.empty()) {
         info cur = q.front(); q.pop();

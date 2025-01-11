@@ -3,6 +3,8 @@
         "xiosbase": "cpp",
         "ios": "cpp",
         "utility": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "queue": "cpp",
+        "xutility": "cpp"
     }
 }
