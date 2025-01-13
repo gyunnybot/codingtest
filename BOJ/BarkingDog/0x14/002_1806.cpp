@@ -15,18 +15,18 @@ int main() {
 		cin >> a[i];
 	}
 
-	int tot = a[0];
+	int sum = a[0];
 	int ed = 0;
 
 	for (int st = 0; st < n; st++) {
-		while (ed < n && tot < s) {		
-			tot += a[++ed];
+		while (ed < n && sum < s) {
+			sum += a[++ed];
 		}
 
 		if (ed == n) break;
 
 		ret = min(ret, ed - st + 1);
-		tot -= a[st];
+		sum -= a[st];
 	}
 
 	cout << (ret == INT_MAX ? 0 : ret);

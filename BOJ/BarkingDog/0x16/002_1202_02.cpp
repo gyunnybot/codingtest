@@ -5,10 +5,10 @@
 using namespace std;
 typedef long long ll;
 
-int n, k;
-ll ret, m, v, c;
-vector<pair<ll, ll>> jewel_info;
-vector<ll> bag;
+int n, k, m, v, c;
+vector<pair<int, int>> jewel_info;
+vector<int> bag;
+ll ret;
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -29,18 +29,18 @@ int main() {
 	sort(jewel_info.begin(), jewel_info.end());
 	sort(bag.begin(), bag.end());
 
-	priority_queue<ll> q;
+	priority_queue<int> pq;
 
-	int j = 0;
+	int j = 0; //가방이 견딜 수 있는 보석의 무게까지 증가하는 idx
 
 	for (int i = 0; i < k; i++) {
 		while (j < n && jewel_info[j].first <= bag[i]) {
-			q.push(jewel_info[j].second);
+			pq.push(jewel_info[j].second);
 			j++;
 		}
 
-		if (!q.empty()) {
-			ret += q.top(); q.pop();
+		if (!pq.empty()) {
+			ret += pq.top(); pq.pop();
 		}
 	}
 

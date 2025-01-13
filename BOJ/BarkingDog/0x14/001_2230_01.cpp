@@ -18,7 +18,6 @@ int main() {
 	sort(a, a + n);
 
 	int ret = INT_MAX;
-
 	int ed = 0;
 
 	for (int st = 0; st < n; st++) {
