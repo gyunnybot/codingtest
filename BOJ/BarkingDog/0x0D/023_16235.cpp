@@ -5,7 +5,7 @@ using namespace std;
 
 const int dy[] = { -1,-1,-1,0,0,1,1,1 };
 const int dx[] = { -1,0,1,-1,1,-1,0,1 };
-int n, m, k, y, x, z, ret, soil[11][11], a[11][11];
+int n, m, k, y, x, z, ret, soil[11][11], board[11][11];
 vector<int> tree[11][11];
 
 void springSummer() {
@@ -33,7 +33,6 @@ void springSummer() {
 
 			//summer
 			soil[i][j] += dead_tree;
-
 		}
 	}
 
@@ -59,12 +58,14 @@ void fall() {
 			}
 		}
 	}
+
+	return;
 }
 
 void winter() {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-			soil[i][j] += a[i][j];
+			soil[i][j] += board[i][j];
 		}
 	}
 
@@ -81,7 +82,7 @@ int main() {
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-			cin >> a[i][j];
+			cin >> board[i][j];
 		}
 	}
 

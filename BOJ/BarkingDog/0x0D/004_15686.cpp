@@ -3,7 +3,7 @@
 #include<climits> //INT_MAX
 using namespace std;
 
-int n, m, a[51][51];
+int n, m, board[51][51];
 int ret = INT_MAX; //도시의 치킨 거리의 최솟값 계산
 vector<pair<int, int>> home, chicken; //집 목록, 치킨집 목록
 vector<int> v; //combi 함수에 따라 선택(방문)된 치킨집을 저장하는 벡터 v
@@ -55,12 +55,12 @@ int main() {
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-			cin >> a[i][j];
+			cin >> board[i][j];
 
-			if (a[i][j] == 1) {
+			if (board[i][j] == 1) {
 				home.push_back({ i,j });
 			}
-			else if (a[i][j] == 2) {
+			else if (board[i][j] == 2) {
 				chicken.push_back({ i,j });
 			}
 		}

@@ -14,10 +14,10 @@ int n, board[21][21], shark_size, shark_eat;
 bool visited[21][21];
 
 void baby_shark() {
-	bool flag = true;
+	bool flag = true; //먹을 수 있는 물고기가 있는가?
 
-	while (true) { //먹을 수 있는 물고기가 있다면 true
-		if (!flag) break;
+	while (true) {
+		if (!flag) break; //먹을 수 있는 물고기가 없다면 break
 
 		flag = false; //조사를 시작할 때는 false로 가정
 
@@ -27,7 +27,7 @@ void baby_shark() {
 
 		visited[shark.y][shark.x] = true; //시작점 방문처리
 
-		queue<Shark> q; //가장 적합한 물고기를 찾기 위한 bfs 시작
+		queue<Shark> q;
 		q.push(shark);
 
 		Shark candi; //candidate
@@ -43,7 +43,7 @@ void baby_shark() {
 			if (board[cur.y][cur.x] != 0 && board[cur.y][cur.x] < shark_size) {
 				flag = true;
 
-				//먹을 수 있는 물고기들 중 가장 적합한 물고기를 candi에 저장
+				//먹을 수 있는 물고기들 중 가장 적합한 물고기를 candi에 저장, 갱신
 				if (cur.y < candi.y || (cur.y == candi.y && cur.x < candi.x)) {
 					candi = cur;
 				}

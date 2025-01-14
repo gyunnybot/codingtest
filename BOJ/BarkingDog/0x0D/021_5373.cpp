@@ -3,7 +3,7 @@
 using namespace std;
 
 int node[74], t, n, d, e;
-int a[6][20] = {
+int board[6][20] = {
     {0, 2, 8, 6, 1, 5, 7, 3, 51, 31, 41, 21, 50, 30, 40, 20, 52, 32, 42, 22},
     {10, 12, 18, 16, 11, 15, 17, 13, 56, 26, 46, 36, 57, 27, 47, 37, 58, 28, 48, 38},
     {20, 22, 28, 26, 21, 25, 27, 23, 0, 40, 18, 58, 3, 43, 15, 55, 6, 46, 12, 52},
@@ -45,14 +45,15 @@ int main() {
             }
 
             for (int j = 0; j < 20; j += 4) {
-                int temp = node[a[c][j]];
+                int temp = node[board[c][j]];
 
-                node[a[c][j]] = node[a[c][j + d]];
-                node[a[c][j + d]] = node[a[c][j + 2]];
-                node[a[c][j + 2]] = node[a[c][j + e]];
-                node[a[c][j + e]] = temp;
+                node[board[c][j]] = node[board[c][j + d]];
+                node[board[c][j + d]] = node[board[c][j + 2]];
+                node[board[c][j + 2]] = node[board[c][j + e]];
+                node[board[c][j + e]] = temp;
             }
         }
+
         for (int i = 0; i < 9; i++) {
             cout << color[node[i]];
 

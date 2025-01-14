@@ -5,12 +5,12 @@ using namespace std;
 const int dy[] = { 0,-1,0,1 };
 const int dx[] = { 1,0,-1,0 };
 int n, x, y, d, g, ret, gen, curve[1024];
-bool a[101][101];
+bool board[101][101];
 
 void makeDragon(int x, int y, int d, int g) {
 	fill(curve, curve + 1024, 0);
 
-	a[y][x] = 1;
+	board[y][x] = true;
 	gen = 0;
 
 	curve[gen] = d; //입력된 d를 0세대 커브의 방향으로 저장
@@ -30,8 +30,10 @@ void makeDragon(int x, int y, int d, int g) {
 
 		if (y < 0 || y >= 101 || x < 0 || x >= 101) continue;
 
-		a[y][x] = true;
+		board[y][x] = true;
 	}
+
+	return;
 }
 
 int main() {
@@ -47,7 +49,7 @@ int main() {
 
 	for (int i = 0; i <= 100; i++) {
 		for (int j = 0; j <= 100; j++) {
-			if (a[i][j] && a[i][j + 1] && a[i + 1][j] && a[i + 1][j + 1]) {
+			if (board[i][j] && board[i][j + 1] && board[i + 1][j] && board[i + 1][j + 1]) {
 				ret++;
 			}
 		}

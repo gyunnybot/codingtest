@@ -10,7 +10,7 @@ int ret = INT_MAX;
 vector<pair<int, int>> cctv;
 
 vector<pair<int, int>> spread(int cnt, int dir) {
-    vector<pair<int, int>> ret;
+    vector<pair<int, int>> spreaded_area;
 
     pair<int, int> cur_cctv = cctv[cnt]; //현재 cctv의 좌표
 
@@ -26,14 +26,14 @@ vector<pair<int, int>> spread(int cnt, int dir) {
             if (board[ny][nx] != 6) {
                 if (board[ny][nx] == 0) {
                     board[ny][nx] = 7;
-                    ret.push_back({ ny,nx });
+                    spreaded_area.push_back({ ny,nx });
                 }
 
                 cur = { ny,nx };
             }
             else {
                 break;
-            }                 
+            }
         }
     }
     else if (board[cur_cctv.first][cur_cctv.second] == 2) {
@@ -49,7 +49,7 @@ vector<pair<int, int>> spread(int cnt, int dir) {
                 if (board[ny][nx] != 6) {
                     if (board[ny][nx] == 0) {
                         board[ny][nx] = 7;
-                        ret.push_back({ ny,nx });
+                        spreaded_area.push_back({ ny,nx });
                     }
 
                     cur = { ny,nx };
@@ -73,7 +73,7 @@ vector<pair<int, int>> spread(int cnt, int dir) {
                 if (board[ny][nx] != 6) {
                     if (board[ny][nx] == 0) {
                         board[ny][nx] = 7;
-                        ret.push_back({ ny,nx });
+                        spreaded_area.push_back({ ny,nx });
                     }
 
                     cur = { ny,nx };
@@ -97,7 +97,7 @@ vector<pair<int, int>> spread(int cnt, int dir) {
                 if (board[ny][nx] != 6) {
                     if (board[ny][nx] == 0) {
                         board[ny][nx] = 7;
-                        ret.push_back({ ny,nx });
+                        spreaded_area.push_back({ ny,nx });
                     }
 
                     cur = { ny,nx };
@@ -121,7 +121,7 @@ vector<pair<int, int>> spread(int cnt, int dir) {
                 if (board[ny][nx] != 6) {
                     if (board[ny][nx] == 0) {
                         board[ny][nx] = 7;
-                        ret.push_back({ ny,nx });
+                        spreaded_area.push_back({ ny,nx });
                     }
 
                     cur = { ny,nx };
@@ -133,7 +133,7 @@ vector<pair<int, int>> spread(int cnt, int dir) {
         }
     }
 
-    return ret;
+    return spreaded_area;
 }
 
 void recur(int cnt) { //cnt = cctv의 인덱스

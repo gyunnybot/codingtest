@@ -4,16 +4,15 @@ using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int n, ret, l, r, sum, a[51][51];
+int n, ret, l, r, sum, board[51][51];
 bool visited[51][51];
 vector<pair<int, int>> v;
 
 void dfs(int y, int x) {
-	visited[y][x] = true;
+	visited[y][x] = true;	
 
+	sum += board[y][x];
 	v.push_back({ y,x });
-
-	sum += a[y][x];
 
 	for (int i = 0; i < 4; i++) {
 		int ny = y + dy[i];
@@ -21,7 +20,7 @@ void dfs(int y, int x) {
 
 		if (ny < 0 || ny >= n || nx < 0 || nx >= n) continue;
 
-		int diff = abs(a[y][x] - a[ny][nx]);
+		int diff = abs(board[y][x] - board[ny][nx]);
 
 		if (!visited[ny][nx] && l <= diff && diff <= r) {
 			dfs(ny, nx);
@@ -39,7 +38,7 @@ int main() {
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-			cin >> a[i][j];
+			cin >> board[i][j];
 		}
 	}
 
@@ -58,11 +57,11 @@ int main() {
 
 					if (v.size() == 1) continue; //국경선이 공유되지 않았다면
 					else {
-						flag = true; //인구 이동 발생
-
 						for (pair<int, int> i : v) {
-							a[i.first][i.second] = sum / v.size();
+							board[i.first][i.second] = sum / v.size();
 						}
+
+						flag = true; //인구 이동 발생
 					}
 				}
 			}

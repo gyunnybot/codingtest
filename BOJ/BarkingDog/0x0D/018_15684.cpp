@@ -47,8 +47,6 @@ void dfs(int here, int cnt) {
             visited[i][j] = 0;
         }
     }
-
-    return;
 }
 
 int main() {
