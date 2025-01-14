@@ -33,7 +33,6 @@ void springSummer() {
 
 			//summer
 			soil[i][j] += dead_tree;
-
 		}
 	}
 
@@ -59,6 +58,8 @@ void fall() {
 			}
 		}
 	}
+
+ return;
 }
 
 void winter() {
