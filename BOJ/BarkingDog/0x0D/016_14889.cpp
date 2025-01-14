@@ -3,20 +3,21 @@
 #include<climits> //INT_MAX
 using namespace std;
 
-int n, a[21][21];
+int n, board[21][21];
 int ret = INT_MAX;
 bool visited[21];
 vector<int> v;
 
-int go(vector<int>& start, vector<int>& link) {
+int cal(vector<int>& start, vector<int>& link) {
     pair<int, int> ret = { 0,0 };
 
     for (int i = 0; i < n / 2; i++) {
         for (int j = 0; j < n / 2; j++) {
             if (i == j) continue;
 
-            ret.first += a[start[i]][start[j]];
-            ret.second += a[link[i]][link[j]];
+            //start가 가진 i번째 원소값과 link가 가진 i번째 원소값은 서로 다르다
+            ret.first += board[start[i]][start[j]];
+            ret.second += board[link[i]][link[j]];
         }
     }
 
@@ -24,7 +25,7 @@ int go(vector<int>& start, vector<int>& link) {
 }
 
 void combi(int start, vector<int>& v) {
-    if (v.size() == n / 2) {
+    if (v.size() == n / 2) { //인원이 반으로 나뉘었을 때 능력치 계산하기
         vector<int> start, link;
 
         for (int i = 0; i < n; i++) {
@@ -36,7 +37,7 @@ void combi(int start, vector<int>& v) {
             }
         }
 
-        ret = min(ret, go(start, link));
+        ret = min(ret, cal(start, link));
 
         return;
     }
@@ -60,7 +61,7 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            cin >> a[i][j];
+            cin >> board[i][j];
         }
     }
 

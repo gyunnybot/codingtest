@@ -4,7 +4,7 @@ using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int n, m, a[501][501], ret;
+int n, m, board[501][501], ret;
 bool visited[501][501];
 vector<int> v;
 
@@ -14,7 +14,7 @@ void dfs(int y, int x, int cnt, int sum) {
         return;
     }
 
-    v.push_back(a[y][x]);
+    v.push_back(board[y][x]);
     visited[y][x] = true;
 
     for (int i = 0; i < 4; i++) {
@@ -24,7 +24,7 @@ void dfs(int y, int x, int cnt, int sum) {
         if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
         if (!visited[ny][nx]) {
-            dfs(ny, nx, cnt + 1, sum + a[ny][nx]);
+            dfs(ny, nx, cnt + 1, sum + board[ny][nx]);
         }
     }
 
@@ -32,22 +32,22 @@ void dfs(int y, int x, int cnt, int sum) {
     visited[y][x] = false;
 }
 
-//combi_dfs는 ㅗ,ㅜ,ㅏ,ㅓ로 뻗어나갈 수 없기 때문에 배열의 값을 직접 더해 블록을 완성한다
+//combi_dfs는 ㅗ,ㅜ,ㅏ,ㅓ로 뻗어나갈 수 없기 때문에 배열의 값을 직접 더해 해당 블록을 완성한다
 void check_extra_shape(int y, int x) {
     if (y >= 1 && x >= 1 && x + 1 < m) {
-        ret = max(ret, a[y][x] + a[y - 1][x] + a[y][x - 1] + a[y][x + 1]); //ㅗ
+        ret = max(ret, board[y][x] + board[y - 1][x] + board[y][x - 1] + board[y][x + 1]); //ㅗ
     }
 
     if (y + 1 < n && x >= 1 && x + 1 < m) {
-        ret = max(ret, a[y][x] + a[y + 1][x] + a[y][x - 1] + a[y][x + 1]); //ㅜ
+        ret = max(ret, board[y][x] + board[y + 1][x] + board[y][x - 1] + board[y][x + 1]); //ㅜ
     }
 
     if (y >= 1 && y + 1 < n && x + 1 < m) {
-        ret = max(ret, a[y][x] + a[y - 1][x] + a[y + 1][x] + a[y][x + 1]); //ㅏ
+        ret = max(ret, board[y][x] + board[y - 1][x] + board[y + 1][x] + board[y][x + 1]); //ㅏ
     }
 
     if (y >= 1 && y + 1 < n && x >= 1) {
-        ret = max(ret, a[y][x] + a[y - 1][x] + a[y + 1][x] + a[y][x - 1]); //ㅓ
+        ret = max(ret, board[y][x] + board[y - 1][x] + board[y + 1][x] + board[y][x - 1]); //ㅓ
     }
 
     return;
@@ -61,13 +61,13 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            cin >> a[i][j];
+            cin >> board[i][j];
         }
     }
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            dfs(i, j, 1, a[i][j]); //이어진 4개의 좌표를 선택하는 경우의 수를 조사 후 점수 계산
+            dfs(i, j, 1, board[i][j]); //이어진 4개의 좌표를 선택하는 경우의 수를 조사 후 점수 계산
             check_extra_shape(i, j); //dfs로 만들 수 없는 모양을 조사 후 점수 계산
         }
     }

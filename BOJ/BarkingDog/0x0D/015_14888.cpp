@@ -6,18 +6,18 @@ int n, a[12], plu, minu, mult, divi;
 int min_ret = INT_MAX;
 int max_ret = INT_MIN;
 
-void go(int idx, int val, int plu, int minu, int mult, int divi) {
+void oper(int idx, int val, int plu, int minu, int mult, int divi) {
     if (idx == n - 1) {
         min_ret = min(min_ret, val);
         max_ret = max(max_ret, val);
-      
+
         return;
     }
 
-    if (plu) go(idx + 1, val + a[idx + 1], plu - 1, minu, mult, divi);
-    if (minu) go(idx + 1, val - a[idx + 1], plu, minu - 1, mult, divi);
-    if (mult) go(idx + 1, val * a[idx + 1], plu, minu, mult - 1, divi);
-    if (divi) go(idx + 1, val / a[idx + 1], plu, minu, mult, divi - 1);
+    if (plu) oper(idx + 1, val + a[idx + 1], plu - 1, minu, mult, divi);
+    if (minu) oper(idx + 1, val - a[idx + 1], plu, minu - 1, mult, divi);
+    if (mult) oper(idx + 1, val * a[idx + 1], plu, minu, mult - 1, divi);
+    if (divi) oper(idx + 1, val / a[idx + 1], plu, minu, mult, divi - 1);
 }
 
 int main() {
@@ -32,7 +32,7 @@ int main() {
 
     cin >> plu >> minu >> mult >> divi;
 
-    go(0, a[0], plu, minu, mult, divi);
+    oper(0, a[0], plu, minu, mult, divi);
 
     cout << max_ret << '\n' << min_ret;
 

@@ -22,7 +22,7 @@ int cal_city_dist(vector<pair<int, int>>& house, vector<int>& v) {
 			individual_dist = min(individual_dist, abs_y + abs_x);
 		}
 
-		city_dist += individual_dist; //치킨 거리 합산해 도시의 치킨 거리 완성하기
+		city_dist += individual_dist; //치킨 거리를 합산해 도시의 치킨 거리 완성하기
 	}
 
 	return city_dist;

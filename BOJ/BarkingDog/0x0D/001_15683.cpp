@@ -154,14 +154,14 @@ void recur(int cnt) { //cnt = cctv의 인덱스
     }
 
     for (int dir = 0; dir < 4; dir++) {
-        vector<pair<int, int>> spreaded_list = spread(cnt, dir); //cnt 번째 cctv 작동시키기
+        vector<pair<int, int>> spreaded_list = spread(cnt, dir); //cctv가 감시한 구역을 저장
 
-        recur(cnt + 1); //다음 cctv 계산
+        recur(cnt + 1); //다음 cctv
 
         for (pair<int, int> pi : spreaded_list) {
-            board[pi.first][pi.second] = 0; //cctv 회전 후 작동을 위한 원상 복구
+            board[pi.first][pi.second] = 0; //방향 전환 후 계산을 위한 원상 복구
         }
-    }    
+    }
 }
 
 int main() {
@@ -180,7 +180,7 @@ int main() {
         }
     }
 
-    recur(0); //0 번째 cctv부터 조사
+    recur(0); //0번째 cctv부터 조사
 
     cout << ret;
 

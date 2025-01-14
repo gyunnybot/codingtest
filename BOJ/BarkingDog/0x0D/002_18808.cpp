@@ -23,6 +23,11 @@ void rotate() {
 		}
 	}
 
+	/* 해당 방법은 R x C 부분뿐만 아니라 전체를 덮어씌우기 때문에 결과가 중첩되지 않음
+	fill(&paper[0][0], &paper[0][0] + 12 * 12, 0);
+	swap(paper, temp);
+	*/
+
 	return;
 }
 
@@ -48,6 +53,7 @@ int main() {
 	while (k--) {
 		cin >> r >> c;
 
+		//색종이 입력
 		for (int i = 0; i < r; i++) {
 			for (int j = 0; j < c; j++) {
 				cin >> paper[i][j];

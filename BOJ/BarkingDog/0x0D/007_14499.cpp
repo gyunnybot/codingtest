@@ -3,8 +3,8 @@ using namespace std;
 
 const int dy[] = { 0,0,-1,1 };  //동,서,북,남
 const int dx[] = { 1,-1,0,0 };  //동,서,북,남
-int n, m, y, x, k, dir, temp, a[21][21];
 int n1, n2, n3, n4, n5, n6; //주사위의 면
+int n, m, y, x, k, dir, temp, board[21][21];
 
 void dice(int dir) {
     int ny = y + dy[dir];
@@ -25,12 +25,12 @@ void dice(int dir) {
         }
 
         //아랫면과 주사위 체크
-        if (a[ny][nx] == 0) {
-            a[ny][nx] = n6; //주사위 -> 아랫면 복사
+        if (board[ny][nx] == 0) {
+            board[ny][nx] = n6; //주사위 -> 아랫면 복사
         }
         else {
-            n6 = a[ny][nx]; //아랫면 -> 주사위 복사
-            a[ny][nx] = 0; //좌표 내 값은 0으로 수정
+            n6 = board[ny][nx]; //아랫면 -> 주사위 복사
+            board[ny][nx] = 0; //좌표 내 값은 0으로 수정
         }
 
         //y, x 좌표 바꾸기
@@ -52,13 +52,12 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            cin >> a[i][j];
+            cin >> board[i][j];
         }
     }
 
     while (k--) {
         cin >> dir;
-
         dice(dir - 1);
     }
 

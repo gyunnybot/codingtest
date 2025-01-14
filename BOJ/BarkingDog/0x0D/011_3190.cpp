@@ -6,17 +6,17 @@ using namespace std;
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 int n, k, y, x, l, t, dir, ret;
-bool a[101][101], visited[101][101];
+bool board[101][101], visited[101][101];
 char c;
 deque<pair<int, int>> t_list;
 
 void snake() {
-	visited[0][0] = true;
+	visited[0][0] = true; //초기 뱀의 길이는 1 이다
 
 	deque<pair<int, int>> dq;
-	dq.push_back({ 0,0 }); //게임이 시작할때 뱀은 맨 위, 좌측에 위치한다
+	dq.push_back({ 0,0 }); //게임이 시작할때 뱀은 맨위 맨좌측에 위치하고
 
-	dir = 1; //초기 방향은 오른쪽
+	dir = 1; //뱀은 처음에 오른쪽을 향한다
 
 	while (!dq.empty()) {
 		ret++;
@@ -32,15 +32,15 @@ void snake() {
 		dq.push_front({ ny,nx });
 		visited[ny][nx] = true;
 
-		if (a[ny][nx] == 1) { //사과 먹기
-			a[ny][nx] = 0;
+		if (board[ny][nx] == 1) { //사과가 있다면
+			board[ny][nx] = 0;
 		}
-		else { //사과가 없다면 뒤에서부터 몸길이를 줄인다
+		else { //사과가 없다면 몸길이를 줄여서 '꼬리'가 위치한 칸을 비워준다
 			visited[dq.back().first][dq.back().second] = 0;
 			dq.pop_back();
 		}
 
-		if (!t_list.empty() && ret == t_list.front().first) { //입력한 시간이 되면 방향을 바꾼다
+		if (!t_list.empty() && (ret == t_list.front().first)) { //입력한 시간이 되면 방향을 바꾼다
 			dir = (dir + t_list.front().second) % 4;
 			t_list.pop_front();
 		}
@@ -57,8 +57,7 @@ int main() {
 
 	for (int i = 0; i < k; i++) {
 		cin >> y >> x;
-
-		a[y - 1][x - 1] = 1;
+		board[y - 1][x - 1] = 1;
 	}
 
 	cin >> l;

@@ -12,7 +12,7 @@ const int dx[] = { 0,0,-1,1 };
 int n, m;
 int ret = -1;
 bool visited[11][11][11][11];
-char a[11][11];
+char board[11][11];
 string s;
 
 void bead(info start) {
@@ -26,26 +26,26 @@ void bead(info start) {
 
 		if (cur.cnt > 10) break; //빼낼 수 없다면 break
 
-		if (a[cur.ry][cur.rx] == 'O' && a[cur.by][cur.bx] != 'O') {
+		if (board[cur.ry][cur.rx] == 'O' && board[cur.by][cur.bx] != 'O') {
 			ret = cur.cnt; //빼낼 수 있다면 ret 갱신 후 break
 			break;
 		}
 
 		for (int dir = 0; dir < 4; dir++) {
 			//본인이 벽이거나 구멍인지 우선적으로 확인한다
-			//일반적인 ny = y + dy[i]의 경우 y가 구멍인데도 반복문이 수행되는 문제가 발생한다
+			//일반적인 ny = y + dy[i]의 경우, 시작하는 y가 구멍인데도 반복문이 수행되는 로직 오류가 발생한다
 			int nry = cur.ry;
 			int nrx = cur.rx;
 			int nby = cur.by;
 			int nbx = cur.bx;
 
 			while (true) {
-				if (a[nry][nrx] != '#' && a[nry][nrx] != 'O') {
+				if (board[nry][nrx] != '#' && board[nry][nrx] != 'O') {
 					nry += dy[dir];
 					nrx += dx[dir];
 				}
 				else {
-					if (a[nry][nrx] == '#') {
+					if (board[nry][nrx] == '#') {
 						nry -= dy[dir];
 						nrx -= dx[dir];
 
@@ -57,12 +57,12 @@ void bead(info start) {
 			}
 
 			while (true) {
-				if (a[nby][nbx] != '#' && a[nby][nbx] != 'O') {
+				if (board[nby][nbx] != '#' && board[nby][nbx] != 'O') {
 					nby += dy[dir];
 					nbx += dx[dir];
 				}
 				else {
-					if (a[nby][nbx] == '#') {
+					if (board[nby][nbx] == '#') {
 						nby -= dy[dir];
 						nbx -= dx[dir];
 
@@ -74,7 +74,7 @@ void bead(info start) {
 			}
 
 			if (nry == nby && nrx == nbx) {
-				if (a[nry][nrx] != 'O') { //겹쳤는데 구멍이 아닌 경우
+				if (board[nry][nrx] != 'O') { //겹쳤는데 구멍이 아닌 경우
 					int r_dist = abs(cur.ry - nry) + abs(cur.rx - nrx);
 					int b_dist = abs(cur.by - nby) + abs(cur.bx - nbx);
 
@@ -110,14 +110,14 @@ int main() {
 		cin >> s;
 
 		for (int j = 0; j < m; j++) {
-			a[i][j] = s[j];
+			board[i][j] = s[j];
 
-			if (a[i][j] == 'R') {
+			if (board[i][j] == 'R') {
 				start.ry = i;
 				start.rx = j;
 			}
 
-			if (a[i][j] == 'B') {
+			if (board[i][j] == 'B') {
 				start.by = i;
 				start.bx = j;
 			}

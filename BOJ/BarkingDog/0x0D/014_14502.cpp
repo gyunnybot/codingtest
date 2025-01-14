@@ -5,7 +5,7 @@ using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int n, m, a[10][10];
+int n, m, board[10][10];
 bool visited[10][10];
 vector<pair<int, int>> virusList, wallList;
 
@@ -24,7 +24,7 @@ void bfs(int y, int x) {
 
 			if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
-			if (a[ny][nx] == 0 && !visited[ny][nx]) {
+			if (board[ny][nx] == 0 && !visited[ny][nx]) {
 				visited[ny][nx] = true;
 				q.push({ ny,nx });
 			}
@@ -43,7 +43,7 @@ int check_area() {
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
-			if (a[i][j] == 0 && !visited[i][j]) {
+			if (board[i][j] == 0 && !visited[i][j]) {
 				cnt++; //빈 칸이면서 바이러스가 퍼지지 않았다면
 			}
 		}
@@ -60,12 +60,12 @@ int main() {
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
-			cin >> a[i][j];
+			cin >> board[i][j];
 
-			if (a[i][j] == 0) {
+			if (board[i][j] == 0) {
 				wallList.push_back({ i,j }); //벽이 될 가능성이 있는 좌표
 			}
-			else if (a[i][j] == 2) {
+			else if (board[i][j] == 2) {
 				virusList.push_back({ i,j }); //바이러스가 있는 좌표
 			}
 		}
