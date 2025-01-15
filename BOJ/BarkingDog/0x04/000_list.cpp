@@ -71,3 +71,19 @@ int main(void) {
     insert_test();
     erase_test();
 }
+
+/*
+insert :
+1. 이터레이터 활용
+iterator insert (iterator position, const value_type& val);
+
+string :
+1. 인덱스 활용
+basic_string& insert(size_type index, size_type count, CharT ch);
+basic_string& insert(size_type index, const CharT* s);
+basic_string& insert(size_type index, const basic_string& str);
+
+2. 이터레이터 활용. 이터레이터 반환
+iterator insert(const_iterator pos, CharT ch);
+iterator insert(const_iterator pos, size_type count, CharT ch);
+*/

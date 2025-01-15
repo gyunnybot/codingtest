@@ -13,9 +13,10 @@ deque<string> split(string input, string delimiter) {
 	int end = input.find(delimiter);
 
 	while (end != string::npos) {
-		result.push_back(input.substr(start, end - start));
+		result.push_back(input.substr(start, end - start)); //string.substr(인덱스 번호, 갯수)
+
 		start = end + delimiter.size();
-		end = input.find(delimiter, start);
+		end = input.find(delimiter, start); //string.find("문자열", 조사를 시작할 인덱스 번호)
 	}
 
 	result.push_back(input.substr(start));
@@ -66,7 +67,9 @@ int main(void) {
 			}
 		}
 
-		if (reversed) reverse(ret_str.begin(), ret_str.end()); //최종 출력을 위한 reverse 연산
+		if (reversed) {
+			reverse(ret_str.begin(), ret_str.end()); //최종 출력을 위한 reverse 연산
+		}
 
 		if (flag) { //배열에 값이 없는데 D가 호출된 경우
 			cout << "error" << '\n';

@@ -4,6 +4,7 @@ typedef long long ll;
 
 int a, b, c;
 
+//반환되는 방정식 값의 차수 생각하기
 ll recur(int a, int b, int c) {
 	if (b == 1) {
 		return a % c;

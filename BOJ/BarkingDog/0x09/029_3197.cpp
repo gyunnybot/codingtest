@@ -30,7 +30,7 @@ void melt() {
 
                 if (a[ny][nx] == 'X') {
                     a[ny][nx] = '.'; //얼음 녹이기
-                    next_water.push({ ny,nx }); //다음 melt에 녹을 물의 좌표 저장
+                    next_water.push({ ny,nx }); //다음 melt에 녹을 얼음 좌표 저장
                 }
             }
         }
@@ -56,10 +56,10 @@ bool meet() {
                     return true;
                 }
                 else if (a[ny][nx] == '.') {
-                    swan_q.push({ ny,nx }); //백조가 현재 다니는 경로(물)에 실시간으로 저장
+                    swan_q.push({ ny,nx }); //백조가 다닐 수 있는 경로(물)에 실시간으로 저장
                 }
                 else if (a[ny][nx] == 'X') {
-                    next_swan_q.push({ ny,nx }); //melt 이후 백조가 다닐 수 있는 경로
+                    next_swan_q.push({ ny,nx }); //melt 이후 백조가 다닐 수 있는 경로 저장
                 }
             }
         }
@@ -70,7 +70,7 @@ bool meet() {
 
 void bfs() {
     visited[swan[0].first][swan[0].second] = true;
-    swan_q.push(swan[0]); //현재 백조가 움직임을 시작할 경로(물 또는 백조)
+    swan_q.push(swan[0]);
 
     while (true) {
         if (meet()) {
@@ -79,6 +79,12 @@ void bfs() {
 
         melt();
 
+        /* deep copy는 값을 복사하는 과정이 필요하다. 해당 문제에서는 시간초과 발생
+        swan_q = next_swan_q;
+        water = next_water;
+        */
+
+        //현재 데이터가 더 이상 필요없다면 참조값을 변경하는 swap을 활용하는 것이 더 빠르다
         swap(swan_q, next_swan_q);
         swap(water, next_water);
 
@@ -101,11 +107,11 @@ int main() {
             a[i][j] = s[j];
 
             if (a[i][j] != 'X') {
-                water.push({ i,j }); //물 또는 백조의 좌표 저장
+                water.push({ i,j }); //백조가 다닐 수 있는 좌표 저장(물 또는 백조가 위치한 곳)
             }
 
             if (a[i][j] == 'L') {
-                swan.push_back({ i, j });
+                swan.push_back({ i, j }); //백조가 위치한 곳을 따로 저장
             }
         }
     }

@@ -35,7 +35,7 @@ void bfs() {
     while (!q.empty()) {
         pair<int, int> cur = q.front(); q.pop();
 
-        //입력으로 주어진 연결 관계인 경우 상하좌우로 인접하지 않아도 불은 킬 수 있다
+        //입력으로 주어진 연결 관계인 경우 상하좌우로 인접하지 않아도 불을 킬 수 있다
         for (pair<int, int> next : adj[cur.first][cur.second]) {
             if (!light[next.first][next.second]) {
                 light[next.first][next.second] = true; //일단 불을 킨다

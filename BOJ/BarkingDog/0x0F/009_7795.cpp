@@ -41,7 +41,7 @@ int main() {
 					cnt++;
 				}
 				else {
-					break; //back tracking
+					break;
 				}
 			}
 		}
