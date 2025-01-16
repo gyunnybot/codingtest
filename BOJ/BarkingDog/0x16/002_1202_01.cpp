@@ -30,7 +30,8 @@ int main() {
 	for (int i = n - 1; i >= 0; i--) {
 		m = jewel_info[i].second, v = jewel_info[i].first;
 
-		multiset<int>::iterator it = bag.lower_bound(m);
+		multiset<int>::iterator it = bag.lower_bound(m); //multiset::lower_bound
+		//multiset<int>::iterator it = lower_bound(bag.begin(), bag.end(), m); //std::lower_bound : 시간 초과
 
 		if (it == bag.end()) continue;
 

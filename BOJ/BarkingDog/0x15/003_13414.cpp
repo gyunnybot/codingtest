@@ -31,6 +31,7 @@ int main() {
     sort(ret.begin(), ret.end(), cmp);
 
     //pid가 중복되어 k보다 ret의 갯수가 작아질 수 있다
+    //size_t -> int 자료형 맞추기
     for (int i = 0; i < min(k, (int)ret.size()); i++) {
         cout << ret[i].first << '\n';
     }
