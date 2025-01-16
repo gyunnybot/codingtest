@@ -19,7 +19,6 @@ int main() {
 
 		while (cnt <= temp) {
 			ret += "+\n";
-
 			stk.push(cnt);
 			cnt++;
 		}

@@ -31,6 +31,7 @@ int main() {
 					}
 				}
 			}
+			
 			if (a == '.') {
 				stk.push(a);
 			}

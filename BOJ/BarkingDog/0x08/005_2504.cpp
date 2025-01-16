@@ -5,7 +5,7 @@ using namespace std;
 stack<char> stk;
 string str;
 int ret;
-int num = 1; //곱셈 계산을 위해 1로 초기화
+int num = 1; //곱셈 계산을 위해 0이 아닌 1로 초기화
 
 int main() {
 	ios_base::sync_with_stdio(false);

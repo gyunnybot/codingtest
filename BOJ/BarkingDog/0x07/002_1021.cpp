@@ -31,6 +31,7 @@ int main(void) {
 			while (val != dq.front()) {
 				dq.push_back(dq.front());
 				dq.pop_front();
+
 				cnt++;
 			}
 
@@ -40,6 +41,7 @@ int main(void) {
 			while (val != dq.front()) {
 				dq.push_front(dq.back());
 				dq.pop_back();
+				
 				cnt++;
 			}
 

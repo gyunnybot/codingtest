@@ -32,7 +32,9 @@ int main(void) {
 			cout << stk.size() << '\n';
 		}
 		else if (s == "empty") {
-			if (!stk.empty()) cout << 0 << '\n';
+			if (!stk.empty()) {
+				cout << 0 << '\n';
+			}
 			else {
 				cout << 1 << '\n';
 			}

@@ -3,7 +3,7 @@ using namespace std;
 
 int n, k;
 
-//무식하게 이항 계수 (n,k) 구현
+//이항 계수 (n,k) 직접 계산
 int facto(int n, int k) {
     int ret1 = 1;
 

@@ -3,24 +3,26 @@ using namespace std;
 
 const int MX = 1000005;
 int dat[MX], pre[MX], nxt[MX];
-int unused = 1;
+int unused = 1; //데이터가 할당 될 때마다 증가. addr로 사용된다
 
-void insert(int addr, int num) { //삽입할 노드 번호(1부터 시작), 저장할 데이터 값
-    dat[unused] = num; //새로 생성된 노드에 데이터 값 저장
-    pre[unused] = addr; //생성된 노드를 가리키는 이전 노드 번호를 addr로 저장
-    nxt[unused] = nxt[addr]; //생성된 노드가 가리킬 노드 번호를, 이전의 노드가 가리켰던 노드로 저장
+void insert(int addr, int num) { //해당 addr 다음에 num 연결
+    //새로운 리스트 원소 생성
+    dat[unused] = num;
+    pre[unused] = addr;
+    nxt[unused] = nxt[addr];
 
-    if (nxt[addr] != -1) { //기존의 이전 노드가 다음으로 가리키는 노드가 존재했다면
-        pre[nxt[addr]] = unused; //해당 노드를 가리켰던 이전 노드를 생성된 노드로 변경
+    if (nxt[addr] != -1) { //기존의 addr 다음 원소가 있었다면
+        pre[nxt[addr]] = unused; //다음 원소의 이전 addr를 현재 unused로 변경
     }
 
-    nxt[addr] = unused; //이전 노드가 가리킬 노드 번호를 unused로 변경
-    unused++; //노드 번호를 증가시켜 다음 노드 번호로 사용
+    nxt[addr] = unused; //기존 addr 다음 원소를 unused로 변경
+
+    unused++; //다음 addr 할당을 위해 unused 증가
 
     return;
 }
 
-void erase(int addr) { //삭제할 노드 번호
+void erase(int addr) {
     nxt[pre[addr]] = nxt[addr];
 
     if (nxt[addr] != -1) {
@@ -72,18 +74,18 @@ int main(void) {
     erase_test();
 }
 
-/*
-insert :
+/* insert
+list :
 1. 이터레이터 활용
 iterator insert (iterator position, const value_type& val);
 
 string :
-1. 인덱스 활용
+1. 인덱스 활용(문자열 반환)
 basic_string& insert(size_type index, size_type count, CharT ch);
 basic_string& insert(size_type index, const CharT* s);
 basic_string& insert(size_type index, const basic_string& str);
 
-2. 이터레이터 활용. 이터레이터 반환
+2. 이터레이터 활용(이터레이터 반환)
 iterator insert(const_iterator pos, CharT ch);
 iterator insert(const_iterator pos, size_type count, CharT ch);
 */

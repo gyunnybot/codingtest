@@ -22,11 +22,12 @@ int main() {
 	int l = 0;
 	int r = n - 1;
 
-	while (l < r) { //ai + aj = x (1 ≤ i < j ≤ n)을 만족하는 (ai, aj)쌍의 수이므로 반드시 l < r
+	//ai + aj = x (1 ≤ i < j ≤ n)을 만족하는 (ai, aj)쌍의 수
+	//n개의 서로 다른 양의 정수 + sort = 반드시 l < r
+	while (l < r) {
 		if (a[l] + a[r] == x) {
 			ret++;
-
-			//n개의 서로 다른 양의 정수이므로 둘 다 수정
+			
 			l++;
 			r--;
 		}

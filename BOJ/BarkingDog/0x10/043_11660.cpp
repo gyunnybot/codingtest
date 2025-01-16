@@ -2,7 +2,7 @@
 using namespace std;
 
 int n, m, temp, dp[1025][1025];
-int a1, a2, b1, b2;
+int from_y, from_x, to_y, to_x;
 
 int main() {
     ios_base::sync_with_stdio(false);
@@ -10,16 +10,16 @@ int main() {
 
     cin >> n >> m;
 
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= n; j++) {
+    for (int i = 1; i <= n; i++) { //y
+        for (int j = 1; j <= n; j++) { //x
             cin >> temp;
             dp[i][j] = dp[i - 1][j] + dp[i][j - 1] - dp[i - 1][j - 1] + temp;
         }
     }
 
     for (int i = 0; i < m; i++) {
-        cin >> a1 >> b1 >> a2 >> b2;
-        cout << dp[a2][b2] - dp[a2][b1 - 1] - dp[a1 - 1][b2] + dp[a1 - 1][b1 - 1] << '\n';
+        cin >> from_y >> from_x >> to_y >> to_x;
+        cout << dp[to_y][to_x] - dp[to_y][from_x - 1] - dp[from_y - 1][to_x] + dp[from_y - 1][from_x - 1] << '\n';
     }
 
     return 0;

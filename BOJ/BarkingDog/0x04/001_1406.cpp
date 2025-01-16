@@ -13,7 +13,9 @@ int main(void) {
 
 	cin >> input_str >> n;
 
-	for (char c : input_str) L.push_back(c);
+	for (char c : input_str) {
+		L.push_back(c);
+	}
 
 	list<char>::iterator cur = L.end();
 

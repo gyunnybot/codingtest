@@ -56,7 +56,7 @@ bool meet() {
                     return true;
                 }
                 else if (a[ny][nx] == '.') {
-                    swan_q.push({ ny,nx }); //백조가 다닐 수 있는 경로(물)에 실시간으로 저장
+                    swan_q.push({ ny,nx }); //백조가 실제로 이동하는 경로(물)를 실시간으로 저장
                 }
                 else if (a[ny][nx] == 'X') {
                     next_swan_q.push({ ny,nx }); //melt 이후 백조가 다닐 수 있는 경로 저장
@@ -79,12 +79,12 @@ void bfs() {
 
         melt();
 
-        /* deep copy는 값을 복사하는 과정이 필요하다. 해당 문제에서는 시간초과 발생
+        /* call by value는 값을 복사하는 과정이 필요하다. 해당 문제에서는 시간초과 발생
         swan_q = next_swan_q;
         water = next_water;
         */
 
-        //현재 데이터가 더 이상 필요없다면 참조값을 변경하는 swap을 활용하는 것이 더 빠르다
+        //기존 데이터가 더 이상 필요없다면 참조값을 변경하는 swap을 활용하는 것이 더 빠르다
         swap(swan_q, next_swan_q);
         swap(water, next_water);
 
@@ -107,7 +107,7 @@ int main() {
             a[i][j] = s[j];
 
             if (a[i][j] != 'X') {
-                water.push({ i,j }); //백조가 다닐 수 있는 좌표 저장(물 또는 백조가 위치한 곳)
+                water.push({ i,j }); //백조가 다닐 수 있는 좌표 저장(물 또는 백조)
             }
 
             if (a[i][j] == 'L') {

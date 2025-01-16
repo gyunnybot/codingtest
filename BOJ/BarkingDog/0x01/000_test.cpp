@@ -1,16 +1,20 @@
 #include<iostream>
 using namespace std;
 
+//O(N)
 int func1(int N) {
     int ret = 0;
 
     for (int i = 1; i <= N; i++) {
-        if (i % 3 == 0 || i % 5 == 0) ret += i;
+        if (i % 3 == 0 || i % 5 == 0) {
+             ret += i;
+        }
     }
 
     return ret;
 }
 
+//O(N^2)
 int func2(int arr[], int N) {
     for (int i = 0; i < N; i++) {
         for (int j = i + 1; j < N; j++) {
@@ -23,6 +27,7 @@ int func2(int arr[], int N) {
     return 0;
 }
 
+//O(sqrt(N))
 int func3(int N) {
     for (int i = 1; i * i <= N; i++) {
         if (i * i == N) {
@@ -33,6 +38,7 @@ int func3(int N) {
     return 0;
 }
 
+//O(logN)
 int func4(int N) {
     int val = 1;
     

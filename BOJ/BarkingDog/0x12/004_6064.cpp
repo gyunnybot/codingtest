@@ -27,7 +27,7 @@ int check(int m, int n, int x, int y) {
 
 	int L = lcm(m, n);
 
-	for (int i = x; i <= L; i += m) { //연립합동방정식
+	for (int i = x; i <= L; i += m) {
 		if (i == 0) continue;
 
 		if (i % n == y) {
