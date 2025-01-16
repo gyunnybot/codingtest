@@ -2,14 +2,15 @@
 #include<queue> //priority_queue
 using namespace std;
 
-class cmp { //암기
+//priority_queue에서의 정렬 기준 cmp를 정의하는 방식. 필수 암기
+class cmp {
 public:
 	bool operator()(int a, int b) {
 		if (abs(a) != abs(b)) {
 			return abs(a) > abs(b);
 		}
 		else {
-			return a > 0 && b < 0;
+			return a > b;
 		}
 	}
 };
