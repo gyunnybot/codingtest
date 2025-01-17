@@ -2,7 +2,7 @@
 using namespace std;
 
 int n;
-char parent, l, r;
+char parent, L, R;
 bool visited[28];
 pair<char, char> adj[28];
 
@@ -16,7 +16,7 @@ void preorder(char here) {
 		preorder(adj[here - 'A'].first);
 		preorder(adj[here - 'A'].second);
 	}
-	
+
 
 	return;
 }
@@ -57,12 +57,13 @@ int main() {
 	cin >> n;
 
 	for (int i = 0; i < n; i++) {
-		cin >> parent >> l >> r;
+		cin >> parent >> L >> R;
 
-		adj[parent - 'A'].first = l;
-		adj[parent - 'A'].second = r;
+		adj[parent - 'A'].first = L;
+		adj[parent - 'A'].second = R;
 	}
 
+	//항상 A가 루트 노드가 된다
 	preorder('A'); fill(&visited[0], &visited[0] + 28, false); cout << '\n';
 	inorder('A'); fill(&visited[0], &visited[0] + 28, false); cout << '\n';
 	postorder('A'); fill(&visited[0], &visited[0] + 28, false);
