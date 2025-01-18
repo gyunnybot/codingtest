@@ -7,8 +7,8 @@ ORDER BY FIRST_HALF.TOTAL_ORDER DESC;
 
 /*
 외부 조인:
-SELECT *를 하면 조건 컬럼이 중복되어 출력
-orders에 속한 레코드는 무조건 출력되며 customer의 컬럼값은 null로 대체된다
+조건 컬럼이 중복되어 출력
+orders에 속한 레코드는 무조건 출력되며, orders와 조건이 맞지 않는 customer의 컬럼값은 null로 대체된다
 
 SELECT *
 FROM orders LEFT OUTER JOIN customer
@@ -16,7 +16,7 @@ ON orders.custid = customer.custid;
 ---------------------------------------------------
 
 내부 조인:
-SELECT *를 하면 조건 컬럼이 중복되어 출력
+조건 컬럼이 중복되어 출력
 조건에 맞는 레코드만 출력된다
 
 SELECT *
