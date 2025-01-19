@@ -27,7 +27,7 @@ int main() {
 	for (int i = 0; i < m; i++) {
 		cin >> a >> b;
 
-        //무방향 그래프는 두 정점에 대해 모두 push_back
+		//무방향 그래프는 두 정점에 대해 모두 push_back
 		adj[a].push_back(b);
 		adj[b].push_back(a);
 	}
