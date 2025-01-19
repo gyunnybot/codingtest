@@ -36,4 +36,3 @@ WHERE orders.custid = customer.custid;
 SELECT *
 FROM orders NATURAL JOIN customer;
 ---------------------------------------------------
-*/

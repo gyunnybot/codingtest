@@ -7,4 +7,3 @@ ORDER BY MEMBER_ID;
 
 -- DATE_FORMAT(DATE 타입의 컬럼, '나타낼 형식')
 -- MONTH(DATE 타입 컬럼) : DATE 타입에서 '월'만 추출
--- 속성 IS NOT NULL : 속성값이 NULL이 아닌 레코드만 추출
