@@ -39,7 +39,7 @@ int main(void) {
 		else if (ch == 'B') {
 			if (cur != L.begin()) {
 				cur--;
-				cur = L.erase(cur); //해당 이터레이터에 속한 데이터를 삭제 후 다음 이터레이터를 가리킨다
+				cur = L.erase(cur); //해당 이터레이터에 위치한 데이터를 삭제 후 다음 이터레이터를 가리킨다
 			}
 		}
 	}

@@ -2,7 +2,7 @@
 using namespace std;
 
 int n;
-string dp[1001];
+int dp[1001];
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -12,14 +12,19 @@ int main() {
 
 	for (int i = 1; i <= n; i++) {
 		if (i % 2) {
-			dp[i] = "SK";
+			dp[i] = 1;
 		}
 		else {
-			dp[i] = "CY";
+			dp[i] = 0;
 		}
 	}
 
-	cout << dp[n];
+	if (dp[n] == 1) {
+		cout << "SK\n";
+	}
+	else {
+		cout << "CY\n";
+	}
 
 	return 0;
 }

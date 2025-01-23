@@ -26,7 +26,6 @@ int main() {
 		if (ed == n) break;
 
 		ret = min(ret, ed - st + 1);
-
 		sum -= a[st];
 	}
 

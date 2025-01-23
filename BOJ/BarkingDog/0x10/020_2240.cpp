@@ -18,8 +18,8 @@ int plum(int idx, int tree, int cnt) {
         return dp[idx][tree][cnt];
     }
 
-    dp[idx][tree][cnt] = max(plum(idx + 1, tree ^ 1, cnt - 1), plum(idx + 1, tree, cnt)) + (tree == pos[idx] - 1);
-    
+    dp[idx][tree][cnt] = max(plum(idx + 1, tree ^ 1, cnt - 1), plum(idx + 1, tree, cnt)) + (tree == (pos[idx] - 1));
+
     return dp[idx][tree][cnt];
 }
 

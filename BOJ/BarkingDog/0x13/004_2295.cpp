@@ -19,12 +19,13 @@ int main() {
 	sort(a, a + n);
 
 	for (int i = 0; i < n; i++) {
-		for (int j = i; j < n; j++) {
-			b.push_back(a[i] + a[j]);
+		for (int j = 0; j < n; j++) {
+			b.push_back(a[i] + a[j]); //두 수 더한 결과를 b에 저장
 		}
 	}
 
-	sort(b.begin(), b.end());
+	sort(b.begin(), b.end()); //정렬
+	b.erase(unique(b.begin(), b.end()), b.end()); //중복 원소 제거
 
 	for (int i = n - 1; i > 0; i--) { //k번째 수가 최대가 되도록 하는 것이 목적이므로 역순으로 탐색
 		for (int j = 0; j < i; j++) {

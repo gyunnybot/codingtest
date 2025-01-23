@@ -36,7 +36,6 @@ int main() {
 
 		while (!stk.empty()) { //마지막 기둥 검사
 			ret = max(ret, (n - stk.top().second) * stk.top().first);
-
 			stk.pop();
 		}
 
