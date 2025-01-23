@@ -31,16 +31,16 @@ void bfs(int here) {
 	while (!q.empty()) {
 		int cur = q.front(); q.pop();
 
-		for (int nxt : adj[cur]) {
-			if (!visited[nxt]) {
-				visited[nxt] = true;
-				cout << nxt << ' ';
+		for (int next : adj[cur]) {
+			if (!visited[next]) {
+				visited[next] = true;
+				cout << next << ' ';
 
-				q.push(nxt);
+				q.push(next);
 			}
 		}
 	}
-	
+
 	return;
 }
 
@@ -62,7 +62,7 @@ int main() {
 	}
 
 	dfs(v);
-	
+
 	fill(&visited[0], &visited[0] + 1001, false);
 	cout << '\n';
 
