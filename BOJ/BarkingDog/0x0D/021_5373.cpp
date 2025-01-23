@@ -12,7 +12,8 @@ int board[6][20] = {
     {50, 52, 58, 56, 51, 55, 57, 53, 2, 20, 12, 38, 1, 23, 11, 35, 0, 26, 10, 32}
 };
 char dir[6] = { 'U', 'D', 'L', 'R', 'F', 'B' };
-char color[6] = { 'w', 'y', 'g', 'b', 'r', 'o' }, face, clock_wise;
+char color[6] = { 'w', 'y', 'g', 'b', 'r', 'o' };
+char face, clock_wise;
 map<char, int> mp;
 
 int main() {

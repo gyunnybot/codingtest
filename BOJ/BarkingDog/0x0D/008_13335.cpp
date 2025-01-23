@@ -9,7 +9,7 @@ int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	cin >> n >> w >> L;
+	cin >> n >> w >> L; //다리를 건너는 트럭의 수 n, 다리의 길이 w, 전체 하중 L
 
 	for (int i = 0; i < n; i++) {
 		cin >> a[i];

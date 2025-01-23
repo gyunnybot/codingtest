@@ -31,7 +31,7 @@ void baby_shark() {
 		q.push(shark);
 
 		Shark candi; //candidate
-		candi.time = -1; candi.y = INT_MAX;
+		candi.time = -1; candi.y = INT_MAX; candi.x = INT_MAX;
 
 		while (!q.empty()) {
 			Shark cur = q.front(); q.pop();
@@ -67,7 +67,7 @@ void baby_shark() {
 
 		//먹을 수 있는 물고기가 있다면
 		if (flag) {
-			shark = candi; //아기 상어가 가장 적합한 물고기를 먹고 정보를 변경한다
+			shark = candi; //아기 상어가 가장 적합한 물고기를 먹고, 해당 정보로 변경한다
 			shark_eat++;
 
 			if (shark_eat == shark_size) {
