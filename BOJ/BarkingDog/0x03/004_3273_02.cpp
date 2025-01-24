@@ -23,7 +23,7 @@ int main() {
 	int r = n - 1;
 
 	//ai + aj = x (1 ≤ i < j ≤ n)을 만족하는 (ai, aj)쌍의 수
-	//n개의 서로 다른 양의 정수 + sort = 반드시 l < r
+	//n개의 서로 다른 양의 정수, sort : 반드시 l < r
 	while (l < r) {
 		if (a[l] + a[r] == x) {
 			ret++;

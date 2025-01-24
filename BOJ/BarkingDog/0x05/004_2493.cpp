@@ -2,8 +2,8 @@
 #include<stack>
 using namespace std;
 
+int n, height[500001], ret[500001];
 stack<pair<int, int>> stk;
-int n, height;
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -11,18 +11,23 @@ int main() {
 
 	cin >> n;
 
-	stk.push({ 100000001,0 }); //탑들의 높이는 1 이상 100,000,000 이하의 정수이다
+	for (int i = 1; i <= n; i++) {
+		cin >> height[i];
+	}
+
+	stk.push({ 100000000,0 });
 
 	for (int i = 1; i <= n; i++) {
-		cin >> height;
-
-		while (!stk.empty() && stk.top().first <= height) {
+		while (!stk.empty() && stk.top().first < height[i]) {
 			stk.pop();
 		}
 
-		cout << stk.top().second << ' '; //본인보다 높은 탑의 인덱스 출력
-
-		stk.push({ height,i });
+		ret[i] = stk.top().second;
+		stk.push({ height[i],i });
+	}
+	
+	for (int i = 1; i <= n; i++) {
+		cout << ret[i] << ' ';
 	}
 
 	return 0;
