@@ -13,6 +13,10 @@ pair<int, int> sPos;
 vector<pair<int, int>> firePos;
 
 void fire_bfs() {
+    //fire_visited가 더 커야(나중에 방문) 상근이가 이동할 수 있으므로 fire_visited는 INT_MAX로 초기화
+    //0으로 초기화된다면 불이 없을 때 상근이는 어디로도 이동할 수 없게 됩니다.
+    fill(&fire_visited[0][0], &fire_visited[0][0] + 1001 * 1001, INT_MAX);
+
     for (pair<int, int> fire : firePos) {
         fire_visited[fire.first][fire.second] = 1;
     }
@@ -31,9 +35,8 @@ void fire_bfs() {
 
             if (ny < 0 || ny >= m || nx < 0 || nx >= n) continue;
             if (a[ny][nx] == '#') continue;
-            if (fire_visited[ny][nx] != INT_MAX) continue; //좌표에 이미 불이 붙었다면
 
-            if (fire_visited[ny][nx] == INT_MAX) {
+            if (fire_visited[ny][nx] == INT_MAX) {  
                 fire_visited[ny][nx] = fire_visited[cur.first][cur.second] + 1;
                 q.push({ ny,nx });
             }
@@ -44,6 +47,8 @@ void fire_bfs() {
 }
 
 void s_bfs() {
+    fill(&s_visited[0][0], &s_visited[0][0] + 1001 * 1001, 0);
+
     s_visited[sPos.first][sPos.second] = 1;
 
     queue<pair<int, int>> q;
@@ -63,7 +68,7 @@ void s_bfs() {
 
             if (ny < 0 || ny >= m || nx < 0 || nx >= n) continue;
             if (a[ny][nx] == '#') continue;
-            if (fire_visited[ny][nx] <= s_visited[cur.first][cur.second] + 1) continue; //좌표에 이미 불이 붙었다면
+            if (fire_visited[ny][nx] <= s_visited[cur.first][cur.second] + 1) continue; //이미 불이 붙었다면
 
             if (!s_visited[ny][nx]) {
                 s_visited[ny][nx] = s_visited[cur.first][cur.second] + 1;
@@ -82,11 +87,8 @@ int main() {
     cin >> t;
 
     while (t--) {
-        fill(&fire_visited[0][0], &fire_visited[0][0] + 1001 * 1001, INT_MAX);
-        fill(&s_visited[0][0], &s_visited[0][0] + 1001 * 1001, 0);
-
+        //init
         firePos.clear();
-
         ret = 0;
 
         cin >> n >> m;
@@ -109,11 +111,11 @@ int main() {
         fire_bfs();
         s_bfs();
 
-        if (ret) {
-            cout << ret << '\n';
+        if (!ret) {
+            cout << "IMPOSSIBLE" << '\n';            
         }
         else {
-            cout << "IMPOSSIBLE" << '\n';
+            cout << ret << '\n';
         }
     }
 

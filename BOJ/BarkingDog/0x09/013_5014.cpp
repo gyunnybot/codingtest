@@ -4,25 +4,25 @@ using namespace std;
 
 int f, s, g, u, d, visited[1000001];
 
-void bfs(int start) {
-    visited[start] = 1;
+void bfs(int here) {
+    visited[here] = 1;
 
     queue<int> q;
-    q.push(start);
+    q.push(here);
 
     while (!q.empty()) {
-        int here = q.front(); q.pop();
+        int cur = q.front(); q.pop();
 
-        if (here == g) break;
+        if (cur == g) break;
 
-        for (int next : {here + u, here - d}) {
+        for (int next : {cur + u, cur - d}) {
             if (1 <= next && next <= f) {
                 if (!visited[next]) {
-                    visited[next] = visited[here] + 1;
+                    visited[next] = visited[cur] + 1;
                     q.push(next);
                 }
             }
-        }        
+        }
     }
 
     return;

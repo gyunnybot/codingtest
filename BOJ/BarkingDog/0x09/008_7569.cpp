@@ -10,7 +10,7 @@ vector<Tomato> tomato;
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 const int dh[] = { 1,-1 };
-int n, m, h, answer, a[101][101][101], visited[101][101][101];
+int n, m, h, ret, board[101][101][101], visited[101][101][101];
 bool flag;
 
 void bfs() {
@@ -33,11 +33,11 @@ void bfs() {
             int nh = cur.h; //height는 고정
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m || nh < 0 || nh >= h) continue;
-            if (a[ny][nx][nh] == -1) continue; //토마토가 들어있지 않은 경우
+            if (board[ny][nx][nh] == -1) continue; //토마토가 들어있지 않은 경우
             if (visited[ny][nx][nh] >= 1) continue; //초기 토마토(1) 또는 이미 익은 토마토           
 
             //익지 않은 토마토 bfs
-            if (a[ny][nx][nh] == 0 && !visited[ny][nx][nh]) {
+            if (board[ny][nx][nh] == 0 && !visited[ny][nx][nh]) {
                 visited[ny][nx][nh] = visited[cur.y][cur.x][cur.h] + 1;
                 q.push({ ny,nx,nh });
             }
@@ -50,11 +50,11 @@ void bfs() {
             int nh = cur.h + dh[i];
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m || nh < 0 || nh >= h) continue;
-            if (a[ny][nx][nh] == -1) continue; //토마토가 들어있지 않은 경우
+            if (board[ny][nx][nh] == -1) continue; //토마토가 들어있지 않은 경우
             if (visited[ny][nx][nh] >= 1) continue; //초기 토마토(1) 또는 이미 익은 토마토
 
             //익지 않은 토마토 bfs
-            if (a[ny][nx][nh] == 0 && !visited[ny][nx][nh]) {
+            if (board[ny][nx][nh] == 0 && !visited[ny][nx][nh]) {
                 visited[ny][nx][nh] = visited[cur.y][cur.x][cur.h] + 1;
                 q.push({ ny,nx,nh });
             }
@@ -73,9 +73,9 @@ int main() {
     for (int height = 0; height < h; height++) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                cin >> a[i][j][height];
+                cin >> board[i][j][height];
 
-                if (a[i][j][height] == 1) {
+                if (board[i][j][height] == 1) {
                     tomato.push_back({ i,j,height });
                 }
             }
@@ -87,13 +87,13 @@ int main() {
     for (int height = 0; height < h; height++) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (a[i][j][height] == -1) continue; //토마토가 들어있지 않은 경우
+                if (board[i][j][height] == -1) continue; //토마토가 들어있지 않은 경우
 
-                if (a[i][j][height] == 0 && !visited[i][j][height]) {
+                if (board[i][j][height] == 0 && !visited[i][j][height]) {
                     flag = true; //bfs 이후 익지 않은 토마토가 있다면
                 }
                 else {
-                    answer = max(answer, visited[i][j][height] - 1);
+                    ret = max(ret, visited[i][j][height] - 1);
                 }
             }
         }
@@ -103,7 +103,7 @@ int main() {
         cout << -1;
     }
     else {
-        cout << answer;
+        cout << ret;
     }
 
     return 0;

@@ -5,7 +5,7 @@ using namespace std;
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 int n, m, visited[101][101], ret;
-bool a[101][101];
+bool board[101][101];
 string s;
 
 void bfs(int y, int x) {
@@ -28,7 +28,7 @@ void bfs(int y, int x) {
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
-            if (a[ny][nx] == 1 && !visited[ny][nx]) {
+            if (board[ny][nx] == 1 && !visited[ny][nx]) {
                 visited[ny][nx] = visited[cur.first][cur.second] + 1;
                 q.push({ ny,nx });
             }
@@ -48,7 +48,7 @@ int main() {
         cin >> s;
 
         for (int j = 0; j < m; j++) {
-            a[i][j] = s[j] - '0';
+            board[i][j] = s[j] - '0';
         }
     }
 

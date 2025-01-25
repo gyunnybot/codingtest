@@ -7,7 +7,7 @@ using namespace std;
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 int n, m, fire_visited[1001][1001], j_visited[1001][1001], ret;
-char a[1001][1001];
+char board[1001][1001];
 pair<int, int> j_pos;
 vector<pair<int, int>> fire_pos;
 string s;
@@ -31,10 +31,10 @@ void j_bfs() {
             int nx = cur.second + dx[i];
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
-            if (a[ny][nx] == '#') continue;
-            if (fire_visited[ny][nx] <= j_visited[cur.first][cur.second] + 1) continue; //좌표에 이미 불이 붙었을 때
+            if (board[ny][nx] == '#') continue;                        
+            if (fire_visited[ny][nx] <= j_visited[cur.first][cur.second] + 1) continue; //이미 불이 붙었다면
 
-            if (a[ny][nx] == '.' && !j_visited[ny][nx]) {
+            if (board[ny][nx] == '.' && !j_visited[ny][nx]) {
                 j_visited[ny][nx] = j_visited[cur.first][cur.second] + 1;
                 q.push({ ny,nx });
             }
@@ -45,6 +45,10 @@ void j_bfs() {
 }
 
 void fire_bfs() {
+    //fire_visited가 더 커야(나중에 방문) 지훈이가 이동할 수 있으므로 fire_visited는 INT_MAX로 초기화
+    //0으로 초기화된다면 불이 없을 때 지훈이는 어디로도 이동할 수 없게 됩니다.
+    fill(&fire_visited[0][0], &fire_visited[0][0] + 1001 * 1001, INT_MAX);
+
     for (pair<int, int> i : fire_pos) {
         fire_visited[i.first][i.second] = 1;
     }
@@ -62,9 +66,9 @@ void fire_bfs() {
             int nx = cur.second + dx[i];
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
-            if (a[ny][nx] == '#') continue;
+            if (board[ny][nx] == '#') continue;
 
-            if (a[ny][nx] == '.' && fire_visited[ny][nx] == INT_MAX) {
+            if (fire_visited[ny][nx] == INT_MAX) {
                 fire_visited[ny][nx] = fire_visited[cur.first][cur.second] + 1;
                 q.push({ ny,nx });
             }
@@ -84,28 +88,26 @@ int main() {
         cin >> s;
 
         for (int j = 0; j < m; j++) {
-            a[i][j] = s[j];
+            board[i][j] = s[j];
 
-            if (a[i][j] == 'J') {
+            if (board[i][j] == 'J') {
                 j_pos = { i,j };
             }
 
-            if (a[i][j] == 'F') {
+            if (board[i][j] == 'F') {
                 fire_pos.push_back({ i,j });
             }
         }
     }
 
-    fill(&fire_visited[0][0], &fire_visited[0][0] + 1001 * 1001, INT_MAX);
-
     fire_bfs();
     j_bfs();
 
-    if (ret) {
-        cout << ret;
-    }
-    else {
+    if (!ret) {
         cout << "IMPOSSIBLE";
+    }
+    else {       
+        cout << ret;
     }
 
     return 0;
