@@ -8,6 +8,7 @@ vector<int> adj[10001];
 
 int dfs(int here) {
 	visited[here] = true;
+	
 	int ret = 1;
 
 	for (int there : adj[here]) {

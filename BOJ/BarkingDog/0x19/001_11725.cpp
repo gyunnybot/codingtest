@@ -9,10 +9,10 @@ vector<int> adj[100001];
 void dfs(int here) {
 	visited[here] = true;
 
-	for (int next : adj[here]) {
-		if (!visited[next]) {
-			parent[next] = here;
-			dfs(next);
+	for (int there : adj[here]) {
+		if (!visited[there]) {
+			parent[there] = here;
+			dfs(there);
 		}
 	}
 

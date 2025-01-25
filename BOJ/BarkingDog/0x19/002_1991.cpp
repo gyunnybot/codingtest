@@ -65,8 +65,10 @@ int main() {
 
 	//항상 A가 루트 노드가 된다
 	preorder('A'); fill(&visited[0], &visited[0] + 28, false); cout << '\n';
+
 	inorder('A'); fill(&visited[0], &visited[0] + 28, false); cout << '\n';
-	postorder('A'); fill(&visited[0], &visited[0] + 28, false);
+
+	postorder('A');
 
 	return 0;
 }

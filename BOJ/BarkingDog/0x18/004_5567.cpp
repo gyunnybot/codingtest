@@ -44,7 +44,7 @@ int main() {
 	bfs(1);
 	
 	for (int i = 2; i <= n; i++) {
-		if (2 <= visited[i] && visited[i] <= 3) {
+		if (2 <= visited[i] && visited[i] <= 3) { //자신의 친구(2)와 친구의 친구(3)
 			ret++;
 		}
 	}
