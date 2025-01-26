@@ -21,7 +21,7 @@ int main() {
             mp[b]++;
         }
 
-        int ret = 1;
+        int ret = 1; //곱셈 계산 결과를 위해 1로 초기화
 
         for (pair<string, int> pi : mp) {
             ret *= (pi.second + 1);

@@ -2,15 +2,15 @@
 #include<queue> //priority_queue
 using namespace std;
 
-//priority_queue에서의 정렬 기준 cmp를 정의하는 방식. 필수 암기
+//priority_queue의 cmp 정의 방법. 암기 필수
 class cmp {
 public:
 	bool operator()(int a, int b) {
 		if (abs(a) != abs(b)) {
-			return abs(a) > abs(b);
+			return abs(a) > abs(b); //절대값 내림차순 = 우선순위 큐에서는 오름차순(최소 힙)
 		}
 		else {
-			return a > b;
+			return a > b; //내림차순 = 우선순위 큐에서는 오름차순(최소 힙)
 		}
 	}
 };
@@ -26,7 +26,7 @@ int main() {
 
 	while (n--) {
 		cin >> temp;
-		
+
 		if (temp == 0) {
 			if (!pq.empty()) {
 				cout << pq.top() << '\n';

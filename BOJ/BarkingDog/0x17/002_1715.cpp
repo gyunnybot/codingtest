@@ -3,9 +3,10 @@
 using namespace std;
 
 int n, temp;
-priority_queue<int, vector<int>, greater<int>> pq; //오름차순 = 최소 힙
+priority_queue<int, vector<int>, greater<int>> pq; //우선순위 큐에서는 오름차순(최소 힙)
 //sort(a.begin(), a.end(), greater<int>()); //내림차순
 //map<int, int, greater<>> mp; //내림차순
+//set<int, greater<>> st; //내림차순
 
 int main() {
 	ios_base::sync_with_stdio(false);

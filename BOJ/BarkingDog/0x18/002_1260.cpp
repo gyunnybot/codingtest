@@ -34,9 +34,9 @@ void bfs(int here) {
 		for (int next : adj[cur]) {
 			if (!visited[next]) {
 				visited[next] = true;
-				cout << next << ' ';
-
 				q.push(next);
+
+				cout << next << ' ';
 			}
 		}
 	}
@@ -57,13 +57,13 @@ int main() {
 		adj[b].push_back(a);
 	}
 
-	for (int i = 1; i <= n; i++) { //정점이 여러 개인 경우에는 정점 번호가 작은 것을 먼저 방문
+	for (int i = 1; i <= n; i++) { //정점이 여러 개인 경우에는 정점 번호가 작은 것을 먼저 방문한다
 		sort(adj[i].begin(), adj[i].end());
 	}
 
 	dfs(v);
 
-	fill(&visited[0], &visited[0] + 1001, false); cout << '\n';	
+	fill(&visited[0], &visited[0] + 1001, false); cout << '\n';	//dfs로 인한 방문 초기화
 
 	bfs(v);
 

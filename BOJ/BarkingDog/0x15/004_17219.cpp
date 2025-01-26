@@ -2,9 +2,9 @@
 #include<map>
 using namespace std;
 
-map<string, string> mp;
 int n, m;
 string a, b;
+map<string, string> mp;
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -21,5 +21,6 @@ int main() {
 		cin >> a;
 		cout << mp[a] << '\n';
 	}
+	
 	return 0;
 }

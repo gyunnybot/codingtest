@@ -2,7 +2,7 @@
 #include<set>
 using namespace std;
 
-string s, ret;
+string s;
 set<string> st;
 
 int main() {
@@ -12,12 +12,12 @@ int main() {
     cin >> s;
 
     for (int i = 0; i < s.size(); i++) {
+        string ret = "";
+
         for (int j = i; j < s.size(); j++) {
             ret += s[j];
             st.insert(ret);
-        }
-
-        ret = "";
+        }        
     }
 
     cout << st.size();

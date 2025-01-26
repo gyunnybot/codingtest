@@ -2,22 +2,23 @@
 #include<vector>
 using namespace std;
 
-int n, m, from, to, v[10001];
+int n, m, a, b, v[10001];
+int ret = -1;
 bool visited[10001];
 vector<int> adj[10001];
 
 int dfs(int here) {
 	visited[here] = true;
-	
-	int ret = 1;
+
+	int cnt = 1;
 
 	for (int there : adj[here]) {
 		if (!visited[there]) {
-			ret += dfs(there);
+			cnt += dfs(there);
 		}
 	}
 
-	return ret;
+	return cnt;
 }
 
 int main() {
@@ -27,16 +28,15 @@ int main() {
 	cin >> n >> m;
 
 	for (int i = 0; i < m; i++) {
-		cin >> from >> to;
-		adj[to].push_back(from);
+		cin >> a >> b;
+		adj[b].push_back(a);
 	}
-
-	int ret = -1;
 
 	for (int i = 1; i <= n; i++) {
 		fill(&visited[0], &visited[0] + 10001, false);
 
 		v[i] = dfs(i);
+
 		ret = max(ret, v[i]);
 	}
 
