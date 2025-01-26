@@ -14,8 +14,8 @@ int main() {
 
 	for (int i = 1; i < s.size(); i++) {
 		if (temp != s[i]) {
-			ret++;
 			temp = s[i];
+			ret++;
 		}
 	}
 
