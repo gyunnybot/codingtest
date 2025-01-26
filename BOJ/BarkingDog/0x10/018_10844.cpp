@@ -4,7 +4,7 @@ typedef long long ll;
 
 int n;
 int mod = 1000000000;
-ll dp[101][10]; //자릿수의 길이, 끝 자릿수
+ll ret, dp[101][10]; //자릿수의 길이, 끝 자릿수
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -25,8 +25,6 @@ int main() {
 
 		dp[i][9] = dp[i - 1][8] % mod; //i자릿수의 끝이 9인 수는 반드시 i-1자릿수의 끝이 8인 수에서 파생된다
 	}
-	
-	ll ret = 0;
 
 	for (int i = 0; i <= 9; i++) {
 		ret = (ret + dp[n][i]) % mod;

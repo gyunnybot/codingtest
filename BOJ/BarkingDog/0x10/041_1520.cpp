@@ -5,11 +5,11 @@ const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 int n, m, board[501][501], dp[501][501];
 
-int recur(int y, int x) {
-    if (y == n - 1 && x == m - 1) {
+int dfs(int y, int x) {
+    if (y == n - 1 && x == m - 1) { //목적지 도착
         return 1;
     }
-  
+
     if (dp[y][x] != -1) {
         return dp[y][x];
     }
@@ -23,11 +23,11 @@ int recur(int y, int x) {
         if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
         if (board[ny][nx] < board[y][x]) {
-            ret += recur(ny, nx);
+            ret += dfs(ny, nx);
         }
     }
 
-    dp[y][x] = ret; //해당 좌표에 도달하는 최소 경로의 갯수
+    dp[y][x] = ret; //해당 좌표에서 목적지까지의 최단 경로 갯수
 
     return dp[y][x];
 }
@@ -46,7 +46,7 @@ int main() {
 
     fill(&dp[0][0], &dp[0][0] + 501 * 501, -1);
 
-    cout << recur(0, 0);
+    cout << dfs(0, 0);
 
     return 0;
 }
