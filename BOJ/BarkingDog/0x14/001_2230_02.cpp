@@ -22,10 +22,10 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		int target = a[i] + m;
 		int idx = lower_bound(a, a + n, target) - a; //lower_bound : 찾는 값이 없다면 끼어들어갈 이터레이터 반환
-		
-		if (idx < n) {
-			ret = min(ret, a[idx] - a[i]);
-		}
+
+		if (idx == n) break;
+
+		ret = min(ret, a[idx] - a[i]);
 	}
 
 	cout << ret;

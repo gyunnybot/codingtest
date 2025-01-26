@@ -5,17 +5,17 @@ using namespace std;
 typedef long long ll;
 
 int n, m, t;
-ll ret;
 vector<int> minu, plu;
+ll ret;
 
 void oper(vector<int>& v) {
-    while (1 < v.size()) {
-        ret += (*(v.end() - 1)) * (*(v.end() - 2));
+    while (1 < v.size()) { //원소 2개 이상
+        ret += (*(v.end() - 1)) * (*(v.end() - 2)); //벡터 내 절대값이 가장 큰 두 원소끼리의 곱
         v.pop_back();
         v.pop_back();
     }
 
-    if (!v.empty()) {
+    if (!v.empty()) { //남은 원소는 순수 덧셈
         ret += v[0];
     }
 
@@ -31,7 +31,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> t;
 
-        if (t == 1) {
+        if (t == 1) { //1은 곱셈 연산보다 순수 덧셈이 더 큰 최대 합을 만든다
             ret++;
         }
         else if (0 < t) {
@@ -42,8 +42,8 @@ int main() {
         }
     }
 
-    sort(plu.begin(), plu.end());
-    sort(minu.begin(), minu.end(), greater<>());
+    sort(plu.begin(), plu.end()); //1, 2, 3...
+    sort(minu.begin(), minu.end(), greater<>()); //-1, -2, -3...
     
     oper(plu);
     oper(minu);

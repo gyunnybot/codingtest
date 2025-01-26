@@ -3,7 +3,6 @@
 using namespace std;
 
 int n, s, a[100001];
-int ret = INT_MAX;
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -17,6 +16,7 @@ int main() {
 
 	int sum = a[0];
 	int ed = 0;
+	int ret = INT_MAX;
 
 	for (int st = 0; st < n; st++) {
 		while (ed < n && sum < s) {

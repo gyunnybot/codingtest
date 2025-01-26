@@ -3,7 +3,7 @@
 using namespace std;
 
 pair<int, int> L[1000004];
-int n, st, ed, ret;
+int n, s, e, ret;
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -12,8 +12,8 @@ int main() {
 	cin >> n;
 
 	for (int i = 0; i < n; i++) {
-		cin >> st >> ed;
-		L[i] = { st,ed };
+		cin >> s >> e;
+		L[i] = { s,e };
 	}
 
 	sort(L, L + n);
