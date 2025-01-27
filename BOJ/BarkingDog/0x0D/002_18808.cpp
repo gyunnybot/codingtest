@@ -13,25 +13,23 @@ void rotate() {
 		}
 	}
 
-	fill(&paper[0][0], &paper[0][0] + 12 * 12, 0);
-
-	swap(r, c); //call by reference
-
 	for (int i = 0; i < r; i++) {
 		for (int j = 0; j < c; j++) {
+			paper[i][j] = 0;
+		}
+	}
+
+	for (int i = 0; i < c; i++) {
+		for (int j = 0; j < r; j++) {
 			paper[i][j] = temp[i][j];
 		}
 	}
 
-	/* 주석 처리된 방법은 R x C 부분만이 아닌, 전체를 덮어씌우기 때문에 잘못된 결과를 반환한다
-	fill(&paper[0][0], &paper[0][0] + 12 * 12, 0);
-	swap(paper, temp);
-	*/
+	swap(r, c); //행, 열 바꾸기
 
 	return;
 }
 
-//R x C 사이즈의 스티커가 좌상단 (y,x) 기준으로 온전히 붙여지는가?
 bool postable(int y, int x) {
 	for (int i = 0; i < r; i++) {
 		for (int j = 0; j < c; j++) {
@@ -66,7 +64,7 @@ int main() {
 		for (int dir = 0; dir < 4; dir++) {
 			for (int y = 0; y <= n - r; y++) {
 				for (int x = 0; x <= m - c; x++) {
-					if (postable(y, x)) { //붙일 수 있는지 검사하기
+					if (postable(y, x)) { //붙일 수 있는지 검사
 						for (int i = 0; i < r; i++) { //검사 통과! R x C 사이즈의 스티커 붙이기
 							for (int j = 0; j < c; j++) {
 								if (paper[i][j] == 1) {

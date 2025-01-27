@@ -39,28 +39,28 @@ void puyo() {
         for (int i = 11; i >= 0; i--) {
             for (int j = 0; j < 6; j++) {
                 if (board[i][j] != '.' && !visited[i][j]) {
-                    dfs(i, j, board[i][j]); //터뜨릴 블록 덩어리 찾기
+                    dfs(i, j, board[i][j]); //블록 덩어리 찾기
 
                     if (cur_blocks.size() >= 4) {
                         flag = true;
 
-                        //터뜨릴 블록들을 ret_blocks에 저장
+                        //블록들을 ret_blocks에 전달하여 저장
                         for (pair<int, int> pos : cur_blocks) {
                             ret_blocks.push_back(pos);
                         }
                     }
 
-                    cur_blocks.clear(); //터뜨릴 블록 덩어리 초기화
+                    cur_blocks.clear(); //입력된 블록 덩어리 초기화
                 }
             }
         }
 
-        //블록 터뜨리기 = ret_blocks에 저장된 블록들을 '.'으로 바꾸기
+        //블록 터뜨리기(ret_blocks에 저장된 전체 블록들을 '.'으로 바꾸기)
         for (int i = 0; i < ret_blocks.size(); i++) {
             board[ret_blocks[i].first][ret_blocks[i].second] = '.';
         }
 
-        //터뜨린 후 전체 블록 모음 초기화
+        //터뜨린 후 전체 초기화
         ret_blocks.clear();
 
         //뿌요는 중력의 영향을 받아 아래에 바닥이나 다른 뿌요가 나올 때까지 아래로 떨어진다
@@ -83,7 +83,7 @@ void puyo() {
             }
         }
 
-        if (flag) { //연쇄가 발생했다면 전체 while문을 재실행하여 추가 연쇄 확인
+        if (flag) { //연쇄가 발생했다면 횟수 증가 후 추가 연쇄 확인(while문 재실행)
             ret++;
         }
         else {

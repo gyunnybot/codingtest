@@ -11,24 +11,24 @@ struct Board {
 
 		for (int i = 0; i < n; i++) { //행 r
 			for (int j = 0; j < n; j++) { //열 c
-				temp[j][n - i - 1] = board[i][j]; //시계 방향: temp[j][r - i - 1] = board[i][j];
-				//temp[n - j - 1][i] = board[i][j]; //반시계 방향: temp[c - j - 1][i] = board[i][j];
+				temp[j][n - i - 1] = board[i][j]; //시계 방향
+				//temp[n - j - 1][i] = board[i][j]; //반시계 방향
 			}
 		}
 
-		fill(&board[0][0], &board[0][0] + 21 * 21, 0);
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				board[i][j] = 0;
+			}
+		}
 
-		swap(n, n); //swap(r, c); call by reference
-
-		for (int i = 0; i < n; i++) { //r
-			for (int j = 0; j < n; j++) { //c
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
 				board[i][j] = temp[i][j];
 			}
 		}
 
-		/* 해당 문제는 R과 C가 n으로 같고, 전체 배열을 회전시키기 때문에 swap을 활용한 방법도 가능하다
-		swap(temp, board);
-		*/
+		//swap(n, n); //행, 열 바꾸기
 
 		return;
 	}
@@ -55,16 +55,17 @@ struct Board {
 
 				if (flag && (board[i][j] == temp[i][c - 1])) {
 					temp[i][c - 1] += board[i][j]; //밀어서 값 합치기
-					flag = false; //한 번 합쳤다면 false. 합쳐진 수에 대해서는 추가적으로 합칠 수 없다
+					flag = false; //한 번 합쳐진 수에 대해서는 중첩되어 합칠 수 없다
 				}
 				else {
 					temp[i][c] = board[i][j]; //값 복사
 					c++; //붙여넣을 좌표 증가
-					flag = true; //c가 이동했으므로 합칠 수 있는 flag = true로 변경
+
+					flag = true; //합칠 수 없는 상태에서 c가 이동했으므로, 합칠 수 있는 flag = true로 변경
 				}
 			}
 
-			while (c < n) { //더 이상 비교할 j가 없다면 단독으로 temp 완성
+			while (c < n) { //c 입장에서 더 이상 비교할 j가 없다면 단독으로 temp 완성
 				temp[i][c] = 0;
 				c++;
 			}
@@ -81,8 +82,8 @@ struct Board {
 };
 Board c;
 
-void recur(Board c, int here) {
-	if (here == 5) {
+void recur(Board c, int cnt) {
+	if (cnt == 5) {
 		c.get_max();
 		return;
 	}
@@ -92,7 +93,7 @@ void recur(Board c, int here) {
 
 		d.push_blocks();
 
-		recur(d, here + 1);
+		recur(d, cnt + 1);
 
 		c.rotate();
 	}
