@@ -1,12 +1,10 @@
 #include<iostream>
-#include<vector>
 using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 int n, m, board[501][501], ret;
 bool visited[501][501];
-vector<int> v;
 
 void dfs(int y, int x, int cnt, int sum) {
     if (cnt == 4) {
@@ -14,7 +12,6 @@ void dfs(int y, int x, int cnt, int sum) {
         return;
     }
 
-    v.push_back(board[y][x]);
     visited[y][x] = true;
 
     for (int i = 0; i < 4; i++) {
@@ -28,11 +25,10 @@ void dfs(int y, int x, int cnt, int sum) {
         }
     }
 
-    v.pop_back();
     visited[y][x] = false;
 }
 
-//combi_dfs는 ㅗ,ㅜ,ㅏ,ㅓ로 뻗어나갈 수 없기 때문에 배열의 값을 직접 더해 해당 블록을 완성한다
+//combi_dfs는 ㅗ,ㅜ,ㅏ,ㅓ로 뻗어나갈 수 없기 때문에, 배열의 값을 직접 더해 해당 블록을 완성한다
 void check_extra_shape(int y, int x) {
     if (y >= 1 && x >= 1 && x + 1 < m) {
         ret = max(ret, board[y][x] + board[y - 1][x] + board[y][x - 1] + board[y][x + 1]); //ㅗ

@@ -5,16 +5,16 @@ using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int n, k, y, x, l, t, dir, ret;
+int n, k, y, x, L, t, dir, ret;
 bool board[101][101], visited[101][101];
 char c;
 deque<pair<int, int>> t_list;
 
 void snake() {
-	visited[0][0] = true; //초기 뱀의 길이는 1 이다
+	visited[0][0] = true; //뱀은 처음에 맨위, 맨좌측에 위치, 길이는 1 이다
 
 	deque<pair<int, int>> dq;
-	dq.push_back({ 0,0 }); //게임이 시작할때 뱀은 맨위 맨좌측에 위치하고
+	dq.push_back({ 0,0 });
 
 	dir = 1; //뱀은 처음에 오른쪽을 향한다
 
@@ -60,9 +60,9 @@ int main() {
 		board[y - 1][x - 1] = 1;
 	}
 
-	cin >> l;
+	cin >> L;
 
-	for (int i = 0; i < l; i++) {
+	for (int i = 0; i < L; i++) {
 		cin >> t >> c;
 
 		if (c == 'D') {
