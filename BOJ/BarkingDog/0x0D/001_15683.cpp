@@ -9,10 +9,10 @@ int n, m, board[10][10];
 int ret = INT_MAX;
 vector<pair<int, int>> cctv;
 
-vector<pair<int, int>> spread(int cnt, int dir) {
-    vector<pair<int, int>> spreaded_area;
+vector<pair<int, int>> spread(int cctv_idx, int dir) {
+    vector<pair<int, int>> temp;
 
-    pair<int, int> cur_cctv = cctv[cnt]; //현재 cctv의 좌표
+    pair<int, int> cur_cctv = cctv[cctv_idx];
 
     if (board[cur_cctv.first][cur_cctv.second] == 1) {
         pair<int, int> cur = cur_cctv;
@@ -26,7 +26,7 @@ vector<pair<int, int>> spread(int cnt, int dir) {
             if (board[ny][nx] != 6) {
                 if (board[ny][nx] == 0) {
                     board[ny][nx] = 7;
-                    spreaded_area.push_back({ ny,nx });
+                    temp.push_back({ ny,nx });
                 }
 
                 cur = { ny,nx };
@@ -38,7 +38,7 @@ vector<pair<int, int>> spread(int cnt, int dir) {
     }
     else if (board[cur_cctv.first][cur_cctv.second] == 2) {
         for (int i = 0; i <= 2; i += 2) {
-            pair<int, int> cur = cur_cctv;
+            pair<int, int> cur = cur_cctv; //방향이 바뀌어도 cur_cctv는 바뀌지 않는다
 
             while (true) {
                 int ny = cur.first + dy[(dir + i) % 4];
@@ -49,7 +49,7 @@ vector<pair<int, int>> spread(int cnt, int dir) {
                 if (board[ny][nx] != 6) {
                     if (board[ny][nx] == 0) {
                         board[ny][nx] = 7;
-                        spreaded_area.push_back({ ny,nx });
+                        temp.push_back({ ny,nx });
                     }
 
                     cur = { ny,nx };
@@ -73,7 +73,7 @@ vector<pair<int, int>> spread(int cnt, int dir) {
                 if (board[ny][nx] != 6) {
                     if (board[ny][nx] == 0) {
                         board[ny][nx] = 7;
-                        spreaded_area.push_back({ ny,nx });
+                        temp.push_back({ ny,nx });
                     }
 
                     cur = { ny,nx };
@@ -97,7 +97,7 @@ vector<pair<int, int>> spread(int cnt, int dir) {
                 if (board[ny][nx] != 6) {
                     if (board[ny][nx] == 0) {
                         board[ny][nx] = 7;
-                        spreaded_area.push_back({ ny,nx });
+                        temp.push_back({ ny,nx });
                     }
 
                     cur = { ny,nx };
@@ -121,7 +121,7 @@ vector<pair<int, int>> spread(int cnt, int dir) {
                 if (board[ny][nx] != 6) {
                     if (board[ny][nx] == 0) {
                         board[ny][nx] = 7;
-                        spreaded_area.push_back({ ny,nx });
+                        temp.push_back({ ny,nx });
                     }
 
                     cur = { ny,nx };
@@ -133,33 +133,36 @@ vector<pair<int, int>> spread(int cnt, int dir) {
         }
     }
 
-    return spreaded_area;
+    return temp;
 }
 
-void recur(int cnt) { //cnt = cctv의 인덱스
-    if (cnt == cctv.size()) { //모든 cctv를 조사했다면
-        int num = 0;
+int get_min() {
+    int cnt = 0;
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (board[i][j] == 0) {
-                    num++; //사각지대 계산
-                }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (board[i][j] == 0) {
+                cnt++; //사각지대 계산
             }
         }
+    }
 
-        ret = min(ret, num); //사각지대의 최솟값 갱신
+    return cnt;
+}
 
+void recur(int cctv_idx) {
+    if (cctv_idx == cctv.size()) { //모든 cctv를 조사했다면
+        ret = min(ret, get_min()); //사각지대 최솟값 갱신
         return;
     }
 
     for (int dir = 0; dir < 4; dir++) {
-        vector<pair<int, int>> spreaded_list = spread(cnt, dir); //cctv가 감시한 구역을 저장
+        vector<pair<int, int>> spreaded_area = spread(cctv_idx, dir); //cctv가 감시한 구역을 저장
 
-        recur(cnt + 1); //다음 cctv
+        recur(cctv_idx + 1); //다음 cctv 조사
 
-        for (pair<int, int> pi : spreaded_list) {
-            board[pi.first][pi.second] = 0; //방향 전환 후 계산을 위한 원상 복구
+        for (pair<int, int> pi : spreaded_area) {
+            board[pi.first][pi.second] = 0; //조사한 구역 원상 복구
         }
     }
 }

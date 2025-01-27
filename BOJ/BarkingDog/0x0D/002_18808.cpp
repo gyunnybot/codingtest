@@ -23,7 +23,7 @@ void rotate() {
 		}
 	}
 
-	/* 아래 방법은 R x C 부분뿐만 아니라 전체를 덮어씌우기 때문에 잘못된 결과 반환
+	/* 주석 처리된 방법은 R x C 부분만이 아닌, 전체를 덮어씌우기 때문에 잘못된 결과를 반환한다
 	fill(&paper[0][0], &paper[0][0] + 12 * 12, 0);
 	swap(paper, temp);
 	*/
@@ -53,19 +53,20 @@ int main() {
 	while (k--) {
 		cin >> r >> c;
 
-		//색종이 입력
+		fill(&paper[0][0], &paper[0][0] + 12 * 12, 0);
+
 		for (int i = 0; i < r; i++) {
 			for (int j = 0; j < c; j++) {
 				cin >> paper[i][j];
 			}
 		}
 
-		for (int dir = 0; dir < 4; dir++) {
-			bool flag = false;
+		bool flag = false;
 
+		for (int dir = 0; dir < 4; dir++) {
 			for (int y = 0; y <= n - r; y++) {
 				for (int x = 0; x <= m - c; x++) {
-					if (postable(y, x)) {
+					if (postable(y, x)) { //붙일 수 있는지 검사하기
 						for (int i = 0; i < r; i++) { //검사 통과! R x C 사이즈의 스티커 붙이기
 							for (int j = 0; j < c; j++) {
 								if (paper[i][j] == 1) {
