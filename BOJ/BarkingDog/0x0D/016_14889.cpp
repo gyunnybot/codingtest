@@ -5,11 +5,11 @@ using namespace std;
 
 int n, board[21][21];
 int ret = INT_MAX;
-bool visited[21];
+vector<bool> visited(21, false);
 vector<int> v;
 
 int cal(vector<int>& start, vector<int>& link) {
-    pair<int, int> ret = { 0,0 };
+    pair<int, int> ret = { 0,0 }; //init
 
     for (int i = 0; i < n / 2; i++) {
         for (int j = 0; j < n / 2; j++) {
@@ -24,11 +24,11 @@ int cal(vector<int>& start, vector<int>& link) {
     return abs(ret.first - ret.second);
 }
 
-void combi(int start, vector<int>& v) {
-    if (v.size() == n / 2) { //인원이 반으로 나뉘었을 때 능력치 계산하기
+void combi(int start, vector<int>& v, vector<bool>& visited) {
+    if (v.size() == n / 2) { //인원이 반으로 나뉘었을 때 팀별 능력치 합산하기
         vector<int> start, link;
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) { //방문여부로 start, link 팀 나누기
             if (visited[i]) {
                 start.push_back(i);
             }
@@ -46,7 +46,7 @@ void combi(int start, vector<int>& v) {
         visited[i] = 1;
         v.push_back(i);
 
-        combi(i, v);
+        combi(i, v, visited);
 
         visited[i] = 0;
         v.pop_back();
@@ -65,7 +65,7 @@ int main() {
         }
     }
 
-    combi(-1, v); //팀 나누기
+    combi(-1, v, visited); //팀 나누기
 
     cout << ret;
 

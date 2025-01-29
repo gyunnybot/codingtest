@@ -5,7 +5,7 @@ using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int n, m, board[10][10];
+int n, m, board[10][10], ret;
 bool visited[10][10];
 vector<pair<int, int>> virusList, wallList;
 
@@ -63,15 +63,13 @@ int main() {
 			cin >> board[i][j];
 
 			if (board[i][j] == 0) {
-				wallList.push_back({ i,j }); //벽이 될 가능성이 있는 좌표
+				wallList.push_back({ i,j }); //빈 칸 = 벽이 될 가능성이 있는 좌표
 			}
 			else if (board[i][j] == 2) {
 				virusList.push_back({ i,j }); //바이러스가 있는 좌표
 			}
 		}
 	}
-
-	int ret = 0;
 
 	for (int i = 0; i < wallList.size(); i++) {
 		for (int j = 0; j < i; j++) {
