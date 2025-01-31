@@ -18,7 +18,7 @@ int main() {
         }
         else if (e <= t && t <= q) {
             if (ump[name] == 1) {
-                ump[name] = 2;
+                ump[name] = 2; //중복 방지를 위해
                 ret++;
             }
         }
