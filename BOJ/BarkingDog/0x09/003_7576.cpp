@@ -27,7 +27,7 @@ void bfs() {
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
             if (board[ny][nx] == -1) continue; //토마토가 들어있지 않은 경우
-            if (visited[ny][nx] >= 1) continue; //초기 토마토(1) 또는 이미 익은 토마토      
+            if (visited[ny][nx] >= 1) continue; //초기 토마토(1) 또는 이미 익은 토마토(>1)     
 
             //익지 않은 토마토 bfs
             if (board[ny][nx] == 0 && !visited[ny][nx]) {

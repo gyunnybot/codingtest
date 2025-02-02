@@ -58,7 +58,7 @@ void melt() {
         }
     }
 
-    swap(a, temp); //call by reference
+    swap(a, temp); //swap : call by reference
 
     return;
 }
@@ -100,7 +100,6 @@ int main() {
         }
 
         melt();
-
         t++;
     }
 

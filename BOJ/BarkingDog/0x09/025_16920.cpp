@@ -49,7 +49,7 @@ void bfs() {
             q[i] = next_q; //STL의 = 연산은 deep copy가 발생한다
         }
 
-        if (!flag) break;
+        if (!flag) break; //더 이상 확장되지 않는다면 break
     }
 
     return;

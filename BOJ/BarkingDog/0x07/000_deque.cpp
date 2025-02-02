@@ -8,26 +8,22 @@ int head = MX, tail = MX;
 void push_front(int x) {
 	dat[head] = x;
 	head--;
-
 	return;
 }
 
 void push_back(int x) {
 	dat[tail] = x;
 	tail++;
-
 	return;
 }
 
 void pop_front() {
 	head++;
-
 	return;
 }
 
 void pop_back() {
 	tail--;
-	
 	return;
 }
 

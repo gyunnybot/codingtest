@@ -16,7 +16,6 @@ void insert(int addr, int num) { //해당 addr 다음에 num 연결
     }
 
     nxt[addr] = unused; //기존 addr 다음 원소를 unused로 변경
-
     unused++; //다음 addr 할당을 위해 unused 증가
 
     return;

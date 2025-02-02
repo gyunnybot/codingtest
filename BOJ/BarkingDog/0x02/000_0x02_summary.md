@@ -19,7 +19,7 @@
 - 따라서 함수 내부에서 해당 데이터에 직접 접근하며 **수정 시 원본 데이터가 변경**됩니다.
 
 ### 특징
-- 복사가 이루어지지 않으므로, 메모리와 시간 면에서 효율적입니다.
+- 데이터 복사가 이루어지지 않으므로, 메모리와 시간 면에서 효율적입니다.
 - 원본 데이터를 보호하려면 `const` 키워드를 사용하여 읽기 전용 참조로 전달해야 합니다.
 
 ---
@@ -31,7 +31,7 @@
 - 다만 배열의 크기 정보는 전달되지 않으므로, 크기를 별도로 인자로 넘겨야 합니다.
 
 ### 2. STL 객체(Call-by-Value vs Call-by-Reference)
-- STL 객체(예: `std::vector`, `std::string`)를 Call-by-Value(default)로 넘기면 데이터 복사가 이루어져 성능에 영향을 줄 수 있습니다.
+- STL 객체(예: `std::vector`, `std::string`)를 인자로 넘기면 Call-by-Value(default) 데이터 복사가 이루어져 성능에 영향을 줄 수 있습니다.
 - 복사를 방지하려면 **참조자(`&`)** 또는 **포인터(`*`)**를 사용하여 전달하는 것이 좋습니다.
 
 ### 3. 참조를 사용할 때 주의
@@ -39,7 +39,15 @@
 
 ```cpp
 void readOnlyFunction(const int& value) {
-    // value는 읽기 전용으로 접근 가능
-    // value = 10;  // 컴파일 에러 발생
+    //value는 읽기 전용으로 접근 가능
+    //value = 10;  //컴파일 에러 발생
 }
 ```
+
+---
+
+## Deep Copy, Shallow Copy와의 관련성
+Call by Value와 Call by Reference는 함수에서 매개변수 전달 방식을 설명하는 개념이고, Shallow Copy와 Deep Copy는 객체를 복사할 때의 동작 방식을 설명하는 개념이지만 둘 다 데이터의 복사와 메모리 관리 방식과 관련이 있으므로 서로 유사한 개념으로 이해할 수 있습니다.
+
+- Call by Reference(참조 전달)는 얕은 복사(Shallow Copy)와 유사
+- Call by Value(값 전달)는 깊은 복사(Deep Copy)와 유사

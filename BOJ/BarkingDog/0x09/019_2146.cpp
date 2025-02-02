@@ -61,10 +61,8 @@ void bfs(int land_num) {
 
             //바다도 아니고 자신의 섬도 아니라면 다른 섬에 도착한 것이다
             if (a[ny][nx] != 0 && a[ny][nx] != land_num && !visited[ny][nx]) {
-                visited[ny][nx] = true;
                 ret = min(ret, cur.dist); //다리의 최소거리 구하기
-
-                return; //다리를 놓았으므로 return
+                return; //다리를 놓았으므로 bfs return
             }
           
             //바다라면
