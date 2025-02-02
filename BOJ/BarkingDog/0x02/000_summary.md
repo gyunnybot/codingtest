@@ -35,7 +35,7 @@
 - 복사를 방지하려면 **참조자(`&`)** 또는 **포인터(`*`)**를 사용하여 전달하는 것이 좋습니다.
 
 ### 3. 참조를 사용할 때 주의
-- 원본 데이터의 변경을 원치 않을 경우 **`const` 키워드**를 사용하여 함수 내부에서 수정되지 않도록 명시적으로 보호하세요.
+- 원본 데이터의 변경을 원치 않을 경우 **`const` 키워드**를 사용하여 함수 내부에서 수정되지 않도록 명시적으로 보호해야 합니다.
 
 ```cpp
 void readOnlyFunction(const int& value) {
@@ -47,7 +47,7 @@ void readOnlyFunction(const int& value) {
 ---
 
 ## Deep Copy, Shallow Copy와의 관련성
-Call by Value와 Call by Reference는 함수에서 매개변수 전달 방식을 설명하는 개념이고, Shallow Copy와 Deep Copy는 객체를 복사할 때의 동작 방식을 설명하는 개념이지만 둘 다 데이터의 복사와 메모리 관리 방식과 관련이 있으므로 서로 유사한 개념으로 이해할 수 있습니다.
+Call by Value와 Call by Reference는 함수의 인자 전달 방식을 설명하는 개념이고, Shallow Copy와 Deep Copy는 객체를 복사할 때의 동작 방식을 설명하는 개념입니다. 하지만 둘 다 데이터의 복사와 메모리 관리 방식과 관련이 있으므로 서로 유사한 개념으로 이해할 수 있습니다.
 
-- Call by Reference(참조 전달)는 얕은 복사(Shallow Copy)와 유사
-- Call by Value(값 전달)는 깊은 복사(Deep Copy)와 유사
+- Call by Reference(참조 전달)는 얕은 복사(Shallow Copy)와 유사합니다.
+- Call by Value(값 전달)는 깊은 복사(Deep Copy)와 유사합니다.

@@ -8,7 +8,7 @@ void insert(int idx, int num, int arr[], int& len) { //삽입할 인덱스 위�
 
     arr[idx] = num; //idx번째 요소에 num 삽입
     len++; //전체 배열의 길이 증가
-
+    
     return;
 }
 

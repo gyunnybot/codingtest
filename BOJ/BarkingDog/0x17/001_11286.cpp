@@ -2,7 +2,7 @@
 #include<queue> //priority_queue
 using namespace std;
 
-//priority_queue의 cmp 정의 방법. 암기 필수
+//priority_queue의 cmp 정의 방법. 암기 필수!
 class cmp {
 public:
 	bool operator()(int a, int b) {

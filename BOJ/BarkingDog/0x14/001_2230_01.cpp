@@ -27,7 +27,7 @@ int main() {
 
 		if (ed == n) break;
 
-		ret = min(ret, a[ed] - a[st]); //항상 차이가 M이상인 두 수를 고를 수 있다? 답이 나오지 않는 경우는 없음
+		ret = min(ret, a[ed] - a[st]); //항상 차이가 M이상인 두 수를 고를 수 있다. (답이 나오지 않는 경우는 없음)
 	}
 
 	cout << ret;

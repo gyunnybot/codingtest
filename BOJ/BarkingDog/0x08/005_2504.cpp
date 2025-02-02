@@ -31,7 +31,7 @@ int main() {
 			}
 
 			if (str[i - 1] == '(') {
-				ret += num; //직전 문자와 쌍을 이룰 때 ret 갱신
+				ret += num; //직전 문자와 쌍을 이룬다면 ret 갱신
 			}
 
 			stk.pop();
@@ -44,7 +44,7 @@ int main() {
 			}
 
 			if (str[i - 1] == '[') {
-				ret += num; //직전 문자와 쌍을 이룰 때 ret 갱신
+				ret += num; //직전 문자와 쌍을 이룬다면 ret 갱신
 			}
 
 			stk.pop();

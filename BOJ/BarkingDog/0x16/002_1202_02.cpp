@@ -31,7 +31,7 @@ int main() {
 
 	priority_queue<int> pq;
 
-	int j = 0; //12100번 2048(Easy) : 행의 인덱스 변수 c를 바깥에 정의하는 방식과 유사
+	int j = 0; //12100번 2048(Easy)처럼 행의 인덱스 변수 c를 바깥에 정의하는 방식과 유사
 
 	for (int i = 0; i < k; i++) {
 		while (j < n && jewel_info[j].first <= bag[i]) {

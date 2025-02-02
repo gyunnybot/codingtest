@@ -11,7 +11,7 @@ int main() {
 
 	cin >> n;
 
-	fill(&ret[0], &ret[0] + n, -1);
+	fill(&ret[0], &ret[0] + n, -1); //문제에서 요구하는 초기화
 
 	for (int i = 0; i < n; i++) {
 		cin >> a[i];
