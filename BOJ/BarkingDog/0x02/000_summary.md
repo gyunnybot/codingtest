@@ -47,7 +47,7 @@ void readOnlyFunction(const int& value) {
 ---
 
 ## Deep Copy, Shallow Copy와의 관련성
-Call by Value와 Call by Reference는 함수의 인자 전달 방식을 설명하는 개념이고, Shallow Copy와 Deep Copy는 객체를 복사할 때의 동작 방식을 설명하는 개념입니다. 하지만 둘 다 데이터의 복사와 메모리 관리 방식과 관련이 있으므로 서로 유사한 개념으로 이해할 수 있습니다.
+Call by Value와 Call by Reference는 함수에서의 인자 전달 방식을 설명하는 개념이고, Shallow Copy와 Deep Copy는 객체를 복사할 때의 동작 방식을 설명하는 개념입니다. 하지만 둘 다 데이터의 복사와 메모리 관리 방식과 관련이 있으므로 서로 유사한 개념으로 이해할 수 있습니다.
 
 - Call by Reference(참조 전달)는 얕은 복사(Shallow Copy)와 유사합니다.
 - Call by Value(값 전달)는 깊은 복사(Deep Copy)와 유사합니다.

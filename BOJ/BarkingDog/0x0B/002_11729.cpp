@@ -26,7 +26,6 @@ int main() {
 
 	cin >> n;
 
-	
 	ret = (1 << n) - 1; //귀납적으로 도출한 이동 횟수
 
 	cout << ret << '\n';

@@ -19,7 +19,6 @@ int main() {
 	sort(a, a + n);
 
 	ll ret = a[0]; //(1 ≤ n ≤ 100,000)
-
 	int maxVal = a[0]; //(1 ≤ n ≤ 100,000)
 	int cnt = 1; //(1 ≤ n ≤ 100,000)
 

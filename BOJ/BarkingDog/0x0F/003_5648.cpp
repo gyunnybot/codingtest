@@ -27,7 +27,7 @@ int main() {
 
 		reverse(temp.begin(), temp.end());
 
-		//입력되는 모든 원소가 '양'의 정수이므로 무한 루프는 발생하지 않는다
+		//입력되는 모든 원소가 양의 정수이므로 반드시 탈출하는 while loop
 		while (true) {
 			if (temp[0] == '0') {
 				temp.erase(0, 1); //string.erase(지울 인덱스 번호, 지울 갯수)

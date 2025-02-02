@@ -30,7 +30,7 @@ void melt() {
 
                 if (a[ny][nx] == 'X') {
                     a[ny][nx] = '.'; //얼음 녹이기
-                    next_water.push({ ny,nx }); //다음 melt에 녹을 얼음 좌표 저장
+                    next_water.push({ ny,nx }); //다음 melt에서 사용될 물 좌표 저장
                 }
             }
         }
@@ -56,7 +56,7 @@ bool meet() {
                     return true;
                 }
                 else if (a[ny][nx] == '.') {
-                    swan_q.push({ ny,nx }); //백조가 실제로 이동하는 경로(물)를 실시간으로 저장
+                    swan_q.push({ ny,nx }); //백조가 실제로 이동하는 경로를 실시간으로 저장
                 }
                 else if (a[ny][nx] == 'X') {
                     next_swan_q.push({ ny,nx }); //melt 이후 백조가 다닐 수 있는 경로 저장
@@ -79,7 +79,7 @@ void bfs() {
 
         melt();
 
-        /* call by value는 값을 복사하는 과정이 필요하다. 해당 문제에서는 시간초과 발생
+        /* STL의 = 연산은 deep copy가 발생한다. 해당 문제에서는 시간초과 발생
         swan_q = next_swan_q;
         water = next_water;
         */

@@ -17,14 +17,14 @@ int main() {
 		cin >> height;
 
 		while (!stk.empty() && stk.top() <= height) {
-			stk.pop(); //본인을 오른쪽에서 볼 수 없는 빌딩들 제거
+			stk.pop(); //본인을 볼 수 없는 빌딩들 제거
 		}
 		
-		ret += stk.size(); //남아있는 본인을 내려다볼 수 있는 빌딩 수
+		ret += stk.size(); //본인을 내려다볼 수 있는 빌딩의 수 추가로 저장
 		stk.push(height);
 	}
 
-	cout << ret; //본인을 내려다볼 수 있는 빌딩 수의 총합 = 본인이 내려다볼 수 있는 빌딩 수의 총합
+	cout << ret; //본인을 내려다볼 수 있는 빌딩 수의 총합은 본인이 내려다볼 수 있는 빌딩 수의 총합이 된다
 
 	return 0;
 }

@@ -12,9 +12,9 @@ int main() {
     dp[1] = 1;
     dp[2] = 2;
 
-    for (int idx = 3; idx <= n; idx++) {
-        dp[idx] = dp[idx - 1] + dp[idx - 2];
-        dp[idx] %= 10007; //mod
+    for (int i = 3; i <= n; i++) {
+        dp[i] = dp[i - 1] + dp[i - 2];
+        dp[i] %= 10007; //mod
     }
 
     cout << dp[n];

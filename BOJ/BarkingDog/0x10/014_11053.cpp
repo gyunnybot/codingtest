@@ -13,7 +13,7 @@ int main() {
 		cin >> a[i];
 	}
 
-	fill(&dp[0], &dp[0] + 1001, 1); //본인을 시작점으로 둘 때 LIS의 길이는 항상 1 이상이다
+	fill(&dp[0], &dp[0] + 1001, 1);
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < i; j++) {
@@ -23,7 +23,7 @@ int main() {
 		}
 	}
 
-	for (int i = 0; i < n; i++) { //수열 A를 이루고 있는 Ai가 주어진다. (1 ≤ Ai ≤ 1,000)
+	for (int i = 0; i < n; i++) {
 		ret = max(ret, dp[i]); //증가하는 부분 수열의 최대 길이
 	}
 

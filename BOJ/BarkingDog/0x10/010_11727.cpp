@@ -13,7 +13,8 @@ int main() {
 	dp[2] = 3;
 
 	for (int i = 3; i <= n; i++) {
-		dp[i] = (dp[i - 1] + 2 * dp[i - 2]) % 10007;
+		dp[i] = dp[i - 1] + 2 * dp[i - 2];
+		dp[i] %= 10007; //mod
 	}
 
 	cout << dp[n];
