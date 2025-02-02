@@ -7,10 +7,10 @@ class cmp {
 public:
 	bool operator()(int a, int b) {
 		if (abs(a) != abs(b)) {
-			return abs(a) > abs(b); //절대값 내림차순 = 우선순위 큐에서는 오름차순(최소 힙)
+			return abs(a) > abs(b); //절대값 내림차순 = 우선순위 큐에서는 오름차순(greater. 최소 힙)
 		}
 		else {
-			return a > b; //내림차순 = 우선순위 큐에서는 오름차순(최소 힙)
+			return a > b; //내림차순 = 우선순위 큐에서는 오름차순(greater. 최소 힙)
 		}
 	}
 };

@@ -46,7 +46,7 @@ int main() {
     for (int i = 1; i <= n; i++) {
         if (visited[i] == max_dist) {
             if (!cnt) {
-                cout << i << ' ';
+                cout << i << ' '; //만약 거리가 같은 헛간이 여러개면 가장 작은 헛간 번호를 출력한다
             }
 
             cnt++;

@@ -15,7 +15,8 @@ int main() {
     dp[3] = 4;
 
     for (int i = 4; i <= 1000000; i++) {
-        dp[i] = (dp[i - 1] + dp[i - 2] + dp[i - 3]) % mod;
+        dp[i] = (dp[i - 1] + dp[i - 2] + dp[i - 3]);
+        dp[i] %= mod;
     }
 
     cin >> t;

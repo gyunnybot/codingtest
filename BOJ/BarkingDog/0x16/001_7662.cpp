@@ -23,10 +23,10 @@ int main() {
 				if (ms.empty()) continue;
 
 				if (num == 1) { //최대값 삭제
-					ms.erase(prev(ms.end())); //multiset의 erase는 인덱스가 아닌 이터레이터를 인자로 사용한다
+					ms.erase(prev(ms.end())); //prev(이터레이터) : 해당 이터레이터의 이전 이터레이터를 반환
 				}
 				else { //최소값 삭제
-					ms.erase(ms.begin());
+					ms.erase(ms.begin()); //multiset의 erase는 인덱스가 아닌 이터레이터를 인자로 사용한다
 				}
 			}
 			else {

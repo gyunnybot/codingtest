@@ -15,7 +15,7 @@ int main() {
     for (int i = 0; i <= s.size(); i++) {
         if (s[i] == '-' || s[i] == '+' || i == s.size()) {
             if (flag) {
-                ret -= atoi(num.c_str());
+                ret -= atoi(num.c_str()); //atoi(s.c_str()) : 문자열을 정수로 변환, 문자열일 시 0 반환
                 num = "";
             }
             else {

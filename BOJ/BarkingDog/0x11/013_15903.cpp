@@ -23,7 +23,7 @@ int main() {
         ll mix = a[0] + a[1];
 
         a[0] = mix;
-        a[1] = mix;        
+        a[1] = mix;
     }
 
     for (ll i : a) {
