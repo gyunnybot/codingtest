@@ -29,9 +29,9 @@ int main() {
 	sort(jewel_info.begin(), jewel_info.end());
 	sort(bag.begin(), bag.end());
 
-	priority_queue<int> pq;
+	priority_queue<int, vector<int>, less<int>> pq;
 
-	int j = 0; //12100번 2048(Easy)처럼 행의 인덱스 변수 c를 바깥에 정의하는 방식과 유사
+	int j = 0;
 
 	for (int i = 0; i < k; i++) {
 		while (j < n && jewel_info[j].first <= bag[i]) {

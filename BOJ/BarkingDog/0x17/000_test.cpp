@@ -29,7 +29,6 @@ void pop() {
     heap[1] = heap[sz--];
 
     int idx = 1;
-
     
     while (2 * idx <= sz) { //왼쪽 자식의 인덱스(= 2*idx)가 size보다 크면 idx는 리프
         int lc = 2 * idx, rc = 2 * idx + 1; //왼쪽 자식, 오른쪽 자식

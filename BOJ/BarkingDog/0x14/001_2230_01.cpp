@@ -20,17 +20,17 @@ int main() {
 	int ret = INT_MAX;
 	int ed = 0;
 
-	for (int st = 0; st < n; st++) { //같은 수일 수도 있다
+	for (int st = 0; st < n; st++) { //같은 수를 고를 수도 있다
 		while (ed < n && a[ed] - a[st] < m) {
 			ed++;
 		}
 
 		if (ed == n) break;
 
-		ret = min(ret, a[ed] - a[st]); //항상 차이가 M이상인 두 수를 고를 수 있다. (답이 나오지 않는 경우는 없음)
+		ret = min(ret, a[ed] - a[st]);
 	}
 
-	cout << ret;
+	cout << ret; //항상 차이가 M 이상인 두 수를 고를 수 있다. (답이 나오지 않는 경우는 없음)
 
 	return 0;
 }

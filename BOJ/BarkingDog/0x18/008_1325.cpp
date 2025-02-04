@@ -36,7 +36,6 @@ int main() {
 		fill(&visited[0], &visited[0] + 10001, false);
 
 		v[i] = dfs(i);
-
 		ret = max(ret, v[i]);
 	}
 

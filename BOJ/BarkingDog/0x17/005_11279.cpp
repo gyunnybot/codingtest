@@ -3,7 +3,7 @@
 using namespace std;
 
 int n, temp;
-priority_queue<int, vector<int>, less<int>> pq; //최대 힙
+priority_queue<int, vector<int>, less<int>> pq; //가장 큰 값을 출력 = 최대 힙 = less(우선순위 큐는 반대)
 
 int main() {
     ios_base::sync_with_stdio(false);

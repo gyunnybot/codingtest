@@ -30,7 +30,7 @@ int main() {
 				}
 			}
 			else {
-				ms.insert(num); //insert(원소 값)
+				ms.insert(num); //insert(값)
 			}
 		}
 

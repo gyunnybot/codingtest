@@ -17,7 +17,7 @@ int main() {
         for (int j = i; j < s.size(); j++) {
             ret += s[j];
             st.insert(ret);
-        }        
+        }     
     }
 
     cout << st.size();

@@ -2,15 +2,14 @@
 #include<queue> //priority_queue
 using namespace std;
 
-//priority_queue의 cmp 정의 방법. 암기 필수!
 class cmp {
 public:
 	bool operator()(int a, int b) {
 		if (abs(a) != abs(b)) {
-			return abs(a) > abs(b); //절대값 내림차순 = 우선순위 큐에서는 오름차순(greater. 최소 힙)
+			return abs(a) > abs(b); //절댓값이 가장 작은 값을 출력 = 최소 힙 = greater(우선순위 큐는 반대)
 		}
 		else {
-			return a > b; //내림차순 = 우선순위 큐에서는 오름차순(greater. 최소 힙)
+			return a > b; //가장 작은 수를 출력 = 최소 힙 = greater(우선순위 큐는 반대)
 		}
 	}
 };

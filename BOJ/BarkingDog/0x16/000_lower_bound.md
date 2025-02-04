@@ -30,21 +30,23 @@
 ```cpp
 #include <iostream>
 #include <set>
-#include <algorithm> // std::lower_bound
+#include <algorithm> //std::lower_bound
 
 int main() {
     std::multiset<int> bag = {1, 2, 3, 5, 7, 9};
 
-    // 1. 멤버 함수 lower_bound
-    auto it1 = bag.lower_bound(5); // O(log N)
+    //1. 멤버 함수 lower_bound
+    auto it1 = bag.lower_bound(5); //O(log N)
+
     if (it1 != bag.end()) {
-        std::cout << "multiset::lower_bound: " << *it1 << std::endl; // 출력: 5
+        std::cout << "multiset::lower_bound: " << *it1 << std::endl; //출력: 5
     }
 
-    // 2. 범위 기반 lower_bound
-    auto it2 = std::lower_bound(bag.begin(), bag.end(), 5); // O(N)
+    //2. 범위 기반 lower_bound
+    auto it2 = std::lower_bound(bag.begin(), bag.end(), 5); //O(N)
+    
     if (it2 != bag.end()) {
-        std::cout << "std::lower_bound: " << *it2 << std::endl; // 출력: 5
+        std::cout << "std::lower_bound: " << *it2 << std::endl; //출력: 5
     }
 
     return 0;

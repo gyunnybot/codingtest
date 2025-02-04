@@ -3,20 +3,14 @@ using namespace std;
 
 int n;
 char parent, L, R;
-bool visited[28];
 pair<char, char> adj[28];
 
 void preorder(char here) {
 	if (here == '.') return;
 
-	if (!visited[here - 'A']) {
-		visited[here - 'A'] = true;
-		cout << here;
-
-		preorder(adj[here - 'A'].first);
-		preorder(adj[here - 'A'].second);
-	}
-
+	cout << here;
+	preorder(adj[here - 'A'].first);
+	preorder(adj[here - 'A'].second);
 
 	return;
 }
@@ -24,14 +18,9 @@ void preorder(char here) {
 void inorder(char here) {
 	if (here == '.') return;
 
-	if (!visited[here - 'A']) {
-		inorder(adj[here - 'A'].first);
-
-		visited[here - 'A'] = true;
-		cout << here;
-
-		inorder(adj[here - 'A'].second);
-	}
+	inorder(adj[here - 'A'].first);
+	cout << here;
+	inorder(adj[here - 'A'].second);
 
 	return;
 }
@@ -39,13 +28,9 @@ void inorder(char here) {
 void postorder(char here) {
 	if (here == '.') return;
 
-	if (!visited[here - 'A']) {
-		postorder(adj[here - 'A'].first);
-		postorder(adj[here - 'A'].second);
-
-		visited[here - 'A'] = true;
-		cout << here;
-	}
+	postorder(adj[here - 'A'].first);
+	postorder(adj[here - 'A'].second);
+	cout << here;
 
 	return;
 }
@@ -64,10 +49,8 @@ int main() {
 	}
 
 	//항상 A가 루트 노드가 된다
-	preorder('A'); fill(&visited[0], &visited[0] + 28, false); cout << '\n';
-
-	inorder('A'); fill(&visited[0], &visited[0] + 28, false); cout << '\n';
-
+	preorder('A'); cout << '\n';
+	inorder('A'); cout << '\n';
 	postorder('A');
 
 	return 0;

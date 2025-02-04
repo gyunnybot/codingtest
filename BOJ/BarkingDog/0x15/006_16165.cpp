@@ -25,14 +25,14 @@ int main() {
 	for (int i = 0; i < m; i++) {
 		cin >> temp >> quiz_type;
 
-		if (quiz_type == 0) { //temp는 팀 이름
+		if (quiz_type == 0) { //temp가 팀 이름일 때
 			for (pair<string, string> pi : mp) {
 				if (pi.second == temp) {
 					cout << pi.first << '\n'; //팀원들 전부 출력
 				}
 			}
 		}
-		else { //temp는 멤버의 이름
+		else { //temp가 멤버 이름일 때
 			cout << mp[temp] << '\n'; //멤버가 속한 팀 이름 출력
 		}
 	}

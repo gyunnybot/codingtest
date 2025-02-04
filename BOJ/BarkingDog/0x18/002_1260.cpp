@@ -63,7 +63,7 @@ int main() {
 
 	dfs(v);
 
-	fill(&visited[0], &visited[0] + 1001, false); cout << '\n';	//dfs로 인한 방문 초기화
+	fill(&visited[0], &visited[0] + 1001, false); cout << '\n';	//dfs로 인한 방문을 초기화
 
 	bfs(v);
 
