@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int n, m, k, r, c, ret, board[42][42], paper[12][12];
+int n, m, k, r, c, ret, a[42][42], paper[12][12];
 
 void rotate() {
 	int temp[12][12];
@@ -25,7 +25,7 @@ void rotate() {
 		}
 	}
 
-	swap(r, c); //행, 열 바꾸기
+	swap(r, c); //swap : 참조자 연산(call by reference). 행과 열 바꾸기
 
 	return;
 }
@@ -33,7 +33,7 @@ void rotate() {
 bool postable(int y, int x) {
 	for (int i = 0; i < r; i++) {
 		for (int j = 0; j < c; j++) {
-			if (board[y + i][x + j] == 1 && paper[i][j] == 1) {
+			if (a[y + i][x + j] == 1 && paper[i][j] == 1) {
 				return false;
 			}
 		}
@@ -68,7 +68,7 @@ int main() {
 						for (int i = 0; i < r; i++) { //검사 통과! R x C 사이즈의 스티커 붙이기
 							for (int j = 0; j < c; j++) {
 								if (paper[i][j] == 1) {
-									board[y + i][x + j] = 1;
+									a[y + i][x + j] = 1;
 								}
 							}
 						}
@@ -90,7 +90,7 @@ int main() {
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
-			ret += board[i][j];
+			ret += a[i][j];
 		}
 	}
 
