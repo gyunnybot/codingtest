@@ -6,6 +6,7 @@
         "vector": "cpp",
         "queue": "cpp",
         "xutility": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "type_traits": "cpp"
     }
 }
