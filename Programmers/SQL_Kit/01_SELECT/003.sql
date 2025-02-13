@@ -6,6 +6,9 @@ AND R.REVIEW_SCORE IS NOT NULL
 GROUP BY I.REST_ID, I.REST_NAME, I.FOOD_TYPE, I.FAVORITES, I.ADDRESS
 ORDER BY SCORE DESC, I.FAVORITES DESC;
 
+-- SELECT 절에서 사용될 수 있는 속성들은 GROUP BY에서 사용된 속성 또는 집계함수
+-- SELECT에서 요구하는 속성이 더 많은 테이블이 JOIN에서 왼쪽을 차지한다
+
 /*
 외부 조인:
 조건 컬럼이 중복되어 출력

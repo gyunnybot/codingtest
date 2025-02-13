@@ -1,8 +1,7 @@
-SELECT A.ID, CASE
-                    WHEN A.PER > 0.75 THEN 'LOW'
-                    WHEN A.PER > 0.5 THEN 'MEDIUM'
-                    WHEN A.PER > 0.25 THEN 'HIGH'
-                    ELSE 'CRITICAL'
+SELECT A.ID, CASE WHEN A.PER > 0.75 THEN 'LOW'
+                  WHEN A.PER > 0.5 THEN 'MEDIUM'
+                  WHEN A.PER > 0.25 THEN 'HIGH'
+                  ELSE 'CRITICAL'
              END AS COLONY_NAME
 FROM (
         SELECT ID, PERCENT_RANK() OVER (ORDER BY SIZE_OF_COLONY DESC) AS PER
