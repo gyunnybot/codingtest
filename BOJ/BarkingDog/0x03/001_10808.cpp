@@ -10,7 +10,7 @@ int main() {
 
 	cin >> s;
 
-	for (char c : s) {
+	for (char c : s) { //counting array
 		cnt[c - 'a']++;
 	}
 

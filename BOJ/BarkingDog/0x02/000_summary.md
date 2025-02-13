@@ -51,3 +51,5 @@ Call by Value와 Call by Reference는 함수에서의 인자 전달 방식을 �
 
 - Call by Reference(참조 전달)는 얕은 복사(Shallow Copy)와 유사합니다.
 - Call by Value(값 전달)는 깊은 복사(Deep Copy)와 유사합니다.
+
+일반적인 자료형이나 STL 타입 변수의 = 연산은 `Deep Copy`입니다.
