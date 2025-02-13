@@ -5,3 +5,6 @@ OR OPTIONS LIKE '%열선시트%'
 OR OPTIONS LIKE '%가죽시트%'
 GROUP BY CAR_TYPE
 ORDER BY CAR_TYPE ASC;
+
+-- IN ('%통풍시트%', '%열선시트%', '%가죽시트%') : X
+-- IN은 정확한 필드값만 적용할 수 있다

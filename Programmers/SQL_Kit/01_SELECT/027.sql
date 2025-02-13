@@ -7,5 +7,5 @@ FROM ECOLI_DATA AS A LEFT OUTER JOIN (
                                      ) AS B
 ON A.ID = B.PARENT_ID
 ORDER BY ID ASC;
-                                
+
 -- IFNULL(속성, 대신할 값) : 필드 값이 NULL일 때 대신할 값 삽입되어 출력

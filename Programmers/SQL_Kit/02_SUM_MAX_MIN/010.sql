@@ -1,8 +1,8 @@
-SELECT YEAR(A.DIFFERENTIATION_DATE) AS YEAR, ABS(A.SIZE_OF_COLONY - B.MAX_VAL) AS YEAR_DEV, A.ID
+SELECT YEAR(A.DIFFERENTIATION_DATE) AS YEAR, B.MAX_SIZE - A.SIZE_OF_COLONY AS YEAR_DEV, A.ID
 FROM ECOLI_DATA AS A LEFT OUTER JOIN (
-                                        SELECT MAX(SIZE_OF_COLONY) AS MAX_VAL, YEAR(DIFFERENTIATION_DATE) AS YEAR
+                                        SELECT YEAR(DIFFERENTIATION_DATE) AS YEAR, MAX(SIZE_OF_COLONY) AS MAX_SIZE
                                         FROM ECOLI_DATA
-                                        GROUP BY YEAR
+                                        GROUP BY YEAR -- ORDER BY, GROUP BY 절은 테이블이 완성되지 않아도 alias가 적용된다
                                      ) AS B
-ON YEAR(A.DIFFERENTIATION_DATE) = B.YEAR
-ORDER BY YEAR, YEAR_DEV;
+ON YEAR(A.DIFFERENTIATION_DATE) = B.YEAR -- WHERE, ON 절에서는 테이블이 완성되지 않으면 alias가 적용되지 않는다
+ORDER BY YEAR, YEAR_DEV; -- ORDER BY, GROUP BY 절은 테이블이 완성되지 않아도 alias가 적용된다
