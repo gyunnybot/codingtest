@@ -8,11 +8,6 @@ int n, ret, visited[1000001];
 void bfs(int n) {
 	visited[n] = 1;
 
-	if (n == 1) {
-		ret = visited[n] - 1;
-		return;
-	}
-
 	queue<int> q;
 	q.push(n);
 
@@ -24,7 +19,7 @@ void bfs(int n) {
 			break;
 		}
 
-		if ((cur % 3) == 0 && !visited[cur / 3]) {
+		if ((cur % 3) == 0 && !visited[cur / 3]) { //visited. 감소 폭이 큰 순으로 조건문 실행
 			visited[cur / 3] = visited[cur] + 1;
 			q.push((cur / 3));
 		}
@@ -32,7 +27,7 @@ void bfs(int n) {
 		if ((cur % 2) == 0 && !visited[cur / 2]) {
 			visited[cur / 2] = visited[cur] + 1;
 			q.push((cur / 2));
-		}			
+		}
 
 		if (cur - 1 >= 1 && !visited[cur - 1]) {
 			visited[cur - 1] = visited[cur] + 1;

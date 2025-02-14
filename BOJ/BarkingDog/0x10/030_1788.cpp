@@ -15,7 +15,7 @@ int main() {
 
     for (int i = 2; i <= (int)abs(n); i++) {
         dp[i] = (dp[i - 1] + dp[i - 2]) % mod;
-    }   
+    }
 
     if (n > 0) {
         cout << 1 << '\n' << dp[n];

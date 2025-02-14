@@ -4,7 +4,7 @@ using namespace std;
 int n, k;
 
 //이항 계수 (n,k) 직접 계산
-int facto(int n, int k) {
+int factorial(int n, int k) {
     int ret1 = 1;
 
     for (int i = 0; i < k; i++) {
@@ -26,8 +26,8 @@ int main() {
     cin.tie(NULL); cout.tie(NULL);
 
     cin >> n >> k;
-    
-    cout << facto(n, k);
+
+    cout << factorial(n, k);
 
     return 0;
 }

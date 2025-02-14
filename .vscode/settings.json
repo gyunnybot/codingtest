@@ -7,6 +7,7 @@
         "queue": "cpp",
         "xutility": "cpp",
         "iostream": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "stack": "cpp"
     }
 }

@@ -27,7 +27,6 @@ int main() {
 				ret = max(ret, (i - stk.top().second) * stk.top().first);
 
 				idx = stk.top().second;
-
 				stk.pop();
 			}
 

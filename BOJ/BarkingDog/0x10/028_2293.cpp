@@ -1,7 +1,4 @@
 #include<iostream>
-#include<vector>
-#include<queue>
-#include<climits> //INT_MAX
 using namespace std;
 
 int n, k, a[101], dp[10001];

@@ -14,7 +14,7 @@ int plum(int idx, int tree, int cnt) {
         return 0; //입력된 시간에 도달하면 0 반환
     }
 
-    if (dp[idx][tree][cnt] != -1) {
+    if (dp[idx][tree][cnt] != -1) { //움직였는데도 불구하고 점수가 없는 경우와 가만히 있어서 점수가 없는 경우를 구분하기 위해 -1
         return dp[idx][tree][cnt];
     }
 

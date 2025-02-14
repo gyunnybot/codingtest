@@ -19,7 +19,7 @@ int main() {
         else if (e <= t && t <= q) {
             if (mp[name] == 1) {
                 ret++;
-                mp[name] = 2; //시간 내 중복 채팅일 경우를 방지하기 위해
+                mp[name] = 2; //시간 내 중복 채팅 방지
             }
         }
     }

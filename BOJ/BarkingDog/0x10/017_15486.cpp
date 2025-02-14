@@ -13,7 +13,7 @@ int recur(int day) {
         return 0;
     }
 
-    if (dp[day]) { //메모이제이션
+    if (dp[day]) { //1 ≤ Pi ≤ 1,000. 무보수는 없으므로 if(dp[day])로 메모이제이션 검사 가능
         return dp[day];
     }
 
