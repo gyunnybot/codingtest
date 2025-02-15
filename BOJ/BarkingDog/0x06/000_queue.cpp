@@ -8,11 +8,13 @@ int head = 0, tail = 0;
 void push(int x) {
 	dat[tail] = x;
 	tail++;
+
 	return;
 }
 
 void pop() {
 	head++;
+	
 	return;
 }
 

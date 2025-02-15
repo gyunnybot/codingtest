@@ -24,10 +24,7 @@ int main(void) {
 			}
 		}
 
-		if (val == dq.front()) {
-			dq.pop_front();
-		}
-		else if (pos <= dq.size() / 2) {
+		if (pos <= dq.size() / 2) {
 			while (val != dq.front()) {
 				dq.push_back(dq.front());
 				dq.pop_front();
@@ -41,7 +38,7 @@ int main(void) {
 			while (val != dq.front()) {
 				dq.push_front(dq.back());
 				dq.pop_back();
-				
+
 				cnt++;
 			}
 

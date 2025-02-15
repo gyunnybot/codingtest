@@ -53,10 +53,10 @@ int main(void) {
 			}
 			else if (c == 'D') {
 				if (ret_str.empty()) {
-					flag = true; //배열에 값이 없는데 D가 호출될 경우 flag = true. error
-					break; //더 이상 진행할 이유가 없음
+					flag = true; //배열이 비었는데 D가 호출될 경우 error
+					break; //error가 발생하면 더 이상 진행할 이유가 없음
 				}
-				else { //반전 상태에 따라 pop의 위치 결정
+				else { //비어있지 않은 경우, 반전 상태에 따라 pop의 위치 결정
 					if (reversed) {
 						ret_str.pop_back();
 					}
@@ -71,7 +71,7 @@ int main(void) {
 			reverse(ret_str.begin(), ret_str.end()); //최종 출력을 위한 reverse 연산
 		}
 
-		if (flag) { //배열에 값이 없는데 D가 호출된 경우
+		if (flag) { //배열에 값이 없는데 D가 호출되었던 경우
 			cout << "error" << '\n';
 		}
 		else {

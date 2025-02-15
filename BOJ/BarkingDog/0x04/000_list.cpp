@@ -3,20 +3,19 @@ using namespace std;
 
 const int MX = 1000005;
 int dat[MX], pre[MX], nxt[MX];
-int unused = 1; //데이터가 할당 될 때마다 증가. addr로 사용된다
+int unused = 1; //n 번째로 할당된 데이터. 데이터가 할당될 때마다 증가
 
-void insert(int addr, int num) { //해당 addr 다음에 num 연결
-    //새로운 리스트 원소 생성
-    dat[unused] = num;
-    pre[unused] = addr;
-    nxt[unused] = nxt[addr];
+void insert(int addr, int num) { //addr = idx, num = 데이터 값
+    dat[unused] = num; //unused 번째로 할당된 데이터의 값은 num
+    pre[unused] = addr; //unused 번째로 할당된 데이터의 이전 주소는 addr
+    nxt[unused] = nxt[addr]; //기존 addr 번째로 할당된 데이터가 가리키던 다음 주소를 unused의 다음 주소로 변경
 
-    if (nxt[addr] != -1) { //기존의 addr 다음 원소가 있었다면
-        pre[nxt[addr]] = unused; //다음 원소의 이전 addr를 현재 unused로 변경
+    if (nxt[addr] != -1) { //addr 번째 원소가 가리키는 '다음 원소'가 있었다면
+        pre[nxt[addr]] = unused; //해당하는 '다음 원소'의 이전 주소를 unused로 변경
     }
 
-    nxt[addr] = unused; //기존 addr 다음 원소를 unused로 변경
-    unused++; //다음 addr 할당을 위해 unused 증가
+    nxt[addr] = unused; //또한, 기존의 addr이 가리켰던 다음 원소를 unused로 변경
+    unused++; //다음 addr 할당을 위한 unused 증가
 
     return;
 }
@@ -73,7 +72,9 @@ int main(void) {
     erase_test();
 }
 
-/* insert
+/*
+자료구조별 insert 사용법
+
 list :
 1. 이터레이터 활용
 iterator insert (iterator position, const value_type& val);

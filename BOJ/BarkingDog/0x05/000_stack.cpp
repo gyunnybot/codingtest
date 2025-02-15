@@ -7,12 +7,14 @@ int pos = 0;
 
 void push(int x) {
 	dat[pos] = x;
-	pos++;	
+	pos++;
+
 	return;
 }
 
 void pop() {
 	pos--;
+	
 	return;
 }
 
