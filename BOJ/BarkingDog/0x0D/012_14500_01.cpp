@@ -28,7 +28,7 @@ void dfs(int y, int x, int cnt, int sum) {
     visited[y][x] = false;
 }
 
-//combi_dfs는 ㅗ,ㅜ,ㅏ,ㅓ로 뻗어나갈 수 없기 때문에, 배열의 값을 직접 더해 해당 블록을 완성한다
+//combi_dfs는 ㅗ,ㅜ,ㅏ,ㅓ로 뻗어나갈 수 없기 때문에 배열의 값을 직접 더해 해당 블록을 완성한다
 void check_extra_shape(int y, int x) {
     if (y >= 1 && x >= 1 && x + 1 < m) {
         ret = max(ret, board[y][x] + board[y - 1][x] + board[y][x - 1] + board[y][x + 1]); //ㅗ
@@ -63,8 +63,8 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            dfs(i, j, 1, board[i][j]); //이어진 4개의 좌표를 선택하는 경우의 수를 조사 후 점수 계산
-            check_extra_shape(i, j); //dfs로 만들 수 없는 모양을 조사 후 점수 계산
+            dfs(i, j, 1, board[i][j]); //'ㅏ'를 제외한 모양을 dfs로 조사 후 점수 계산
+            check_extra_shape(i, j); //dfs로 만들 수 없는 모양 'ㅏ' 조사 후 점수 계산
         }
     }
 
