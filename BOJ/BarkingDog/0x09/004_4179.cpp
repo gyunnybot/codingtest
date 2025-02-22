@@ -12,6 +12,40 @@ pair<int, int> j_pos;
 vector<pair<int, int>> fire_pos;
 string s;
 
+void fire_bfs() {
+    //fire_visited가 더 커야(나중에 방문) 지훈이가 이동할 수 있으므로 INT_MAX로 초기화
+    //0으로 초기화된다면 불이 없을 때에도 지훈이는 어디로도 이동할 수 없게 된다
+    fill(&fire_visited[0][0], &fire_visited[0][0] + 1001 * 1001, INT_MAX);
+
+    for (pair<int, int> i : fire_pos) {
+        fire_visited[i.first][i.second] = 1;
+    }
+
+    queue<pair<int, int>> q;
+    for (pair<int, int> fire : fire_pos) {
+        q.push(fire);
+    }
+
+    while (!q.empty()) {
+        pair<int, int> cur = q.front(); q.pop();
+
+        for (int i = 0; i < 4; i++) {
+            int ny = cur.first + dy[i];
+            int nx = cur.second + dx[i];
+
+            if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
+            if (board[ny][nx] == '#') continue;
+
+            if (fire_visited[ny][nx] == INT_MAX) {
+                fire_visited[ny][nx] = fire_visited[cur.first][cur.second] + 1;
+                q.push({ ny,nx });
+            }
+        }
+    }
+
+    return;
+}
+
 void j_bfs() {
     j_visited[j_pos.first][j_pos.second] = 1;
 
@@ -36,40 +70,6 @@ void j_bfs() {
 
             if (board[ny][nx] == '.' && !j_visited[ny][nx]) {
                 j_visited[ny][nx] = j_visited[cur.first][cur.second] + 1;
-                q.push({ ny,nx });
-            }
-        }
-    }
-
-    return;
-}
-
-void fire_bfs() {
-    //fire_visited가 더 커야(나중에 방문) 지훈이가 이동할 수 있으므로 fire_visited는 INT_MAX로 초기화
-    //0으로 초기화된다면 불이 없을 때에도 지훈이는 어디로도 이동할 수 없게 됩니다.
-    fill(&fire_visited[0][0], &fire_visited[0][0] + 1001 * 1001, INT_MAX);
-
-    for (pair<int, int> i : fire_pos) {
-        fire_visited[i.first][i.second] = 1;
-    }
-
-    queue<pair<int, int>> q;
-    for (pair<int, int> fire : fire_pos) {
-        q.push(fire);
-    }
-
-    while (!q.empty()) {
-        pair<int, int> cur = q.front(); q.pop();
-
-        for (int i = 0; i < 4; i++) {
-            int ny = cur.first + dy[i];
-            int nx = cur.second + dx[i];
-
-            if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
-            if (board[ny][nx] == '#') continue;
-
-            if (fire_visited[ny][nx] == INT_MAX) {
-                fire_visited[ny][nx] = fire_visited[cur.first][cur.second] + 1;
                 q.push({ ny,nx });
             }
         }

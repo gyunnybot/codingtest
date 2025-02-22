@@ -9,7 +9,7 @@ struct info {
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 int visited[1001][1001][11], n, m, k; //visited[y][x][벽을 부순 횟수]
-char a[1001][1001];
+char board[1001][1001];
 string s;
 
 int bfs() {
@@ -32,12 +32,12 @@ int bfs() {
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
-            if (a[ny][nx] == '0' && !visited[ny][nx][nb]) {
+            if (board[ny][nx] == '0' && !visited[ny][nx][nb]) {
                 visited[ny][nx][nb] = visited[cur.y][cur.x][cur.broken] + 1;
                 q.push({ ny,nx,nb });
             }
 
-            if (cur.broken < k && a[ny][nx] == '1') {
+            if (cur.broken < k && board[ny][nx] == '1') {
                 nb++;
 
                 if (!visited[ny][nx][nb]) {
@@ -61,7 +61,7 @@ int main() {
         cin >> s;
 
         for (int j = 0; j < m; j++) {
-            a[i][j] = s[j];
+            board[i][j] = s[j];
         }
     }
 

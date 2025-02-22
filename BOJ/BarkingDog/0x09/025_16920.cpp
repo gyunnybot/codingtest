@@ -11,7 +11,7 @@ const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 int n, m, p, s[10], area[10];
 bool expandable[1001][1001];
-char a[1001][1001];
+char board[1001][1001];
 string input_string;
 
 void bfs() {
@@ -69,19 +69,19 @@ int main() {
         cin >> input_string;
 
         for (int j = 0; j < m; j++) {
-            a[i][j] = input_string[j];
+            board[i][j] = input_string[j];
 
-            if (a[i][j] == '.') {
+            if (board[i][j] == '.') {
                 expandable[i][j] = true; //확장 가능
             }
-            else if (a[i][j] == '#') {
+            else if (board[i][j] == '#') {
                 expandable[i][j] = false; //확장 불가능
             }
             else { //숫자라면
                 expandable[i][j] = false; //시작점은 재탈환 X. 확장 불가능
 
-                q[a[i][j] - '0'].push({ i,j,0 }); //i번째 플레이어의 시작점을 각 queue에 저장
-                area[a[i][j] - '0']++; //i번째 플레이어가 차지한 영역 초기화: 1부터 시작
+                q[board[i][j] - '0'].push({ i,j,0 }); //i번째 플레이어의 시작점을 각 queue에 저장
+                area[board[i][j] - '0']++; //i번째 플레이어가 차지한 영역 초기화: 1부터 시작
             }
         }
     }

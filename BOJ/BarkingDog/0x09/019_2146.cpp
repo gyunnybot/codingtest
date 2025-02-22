@@ -8,12 +8,12 @@ struct info {
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int n, a[101][101];
+int n, board[101][101];
 int ret = 10001;
 bool visited[101][101];
 
 void label_land(int y, int x, int cnt) {
-    a[y][x] = cnt;
+    board[y][x] = cnt;
 
     queue<pair<int, int>> q;
     q.push({ y,x });
@@ -27,8 +27,8 @@ void label_land(int y, int x, int cnt) {
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= n) continue;
 
-            if (a[ny][nx] == 1) {
-                a[ny][nx] = cnt;
+            if (board[ny][nx] == 1) {
+                board[ny][nx] = cnt;
                 q.push({ ny,nx });
             }
         }
@@ -42,7 +42,7 @@ void bfs(int land_num) {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            if (a[i][j] == land_num) { //같은 섬이라면
+            if (board[i][j] == land_num) { //같은 섬이라면
                 visited[i][j] = true;
                 q.push({ i,j,0 }); //같은 섬끼리의 거리는 0
             }
@@ -60,13 +60,13 @@ void bfs(int land_num) {
             if (ny < 0 || ny >= n || nx < 0 || nx >= n) continue;
 
             //바다도 아니고 자신의 섬도 아니라면 다른 섬에 도착한 것이다
-            if (a[ny][nx] != 0 && a[ny][nx] != land_num && !visited[ny][nx]) {
+            if (board[ny][nx] != 0 && board[ny][nx] != land_num && !visited[ny][nx]) {
                 ret = min(ret, cur.dist); //다리의 최소거리 구하기
                 return; //다리를 놓았으므로 bfs return
             }
           
             //바다라면
-            if (a[ny][nx] == 0 && !visited[ny][nx]) {
+            if (board[ny][nx] == 0 && !visited[ny][nx]) {
                 visited[ny][nx] = true;
                 q.push({ ny,nx,ndist });
             }
@@ -84,7 +84,7 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            cin >> a[i][j];
+            cin >> board[i][j];
         }
     }
 
@@ -92,7 +92,7 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            if (a[i][j] == 1) {
+            if (board[i][j] == 1) {
                 label_land(i, j, cnt);
                 cnt++; //cnt를 증가시켜 다른 섬들과 구별
             }
@@ -100,7 +100,7 @@ int main() {
     }
 
     for (int i = 2; i < cnt; i++) {
-        fill(&visited[0][0], &visited[0][0] + 101 * 101, 0);
+        fill(&visited[0][0], &visited[0][0] + 101 * 101, false);
         bfs(i);
     }
 

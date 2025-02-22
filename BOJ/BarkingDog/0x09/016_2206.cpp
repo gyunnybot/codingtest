@@ -10,14 +10,14 @@ struct info {
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 int visited[1001][1001][2], n, m; //visited[y][x][벽을 부셨는지 여부]
-char a[1001][1001];
+char board[1001][1001];
 string s;
 
 int bfs() {
     visited[0][0][0] = 1;
 
     queue<info> q;
-    q.push({ 0,0,false });
+    q.push({ 0,0,0 });
 
     while (!q.empty()) {
         info cur = q.front(); q.pop();
@@ -34,14 +34,14 @@ int bfs() {
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
             //벽을 부수지 않고 진행
-            if (a[ny][nx] == '0' && !visited[ny][nx][nb]) {
+            if (board[ny][nx] == '0' && !visited[ny][nx][nb]) {
                 visited[ny][nx][nb] = visited[cur.y][cur.x][cur.broken] + 1;
                 q.push({ ny,nx,nb });
             }
 
             //벽을 부수고 진행
-            if (!cur.broken && a[ny][nx] == '1') {
-                nb = true;
+            if (!cur.broken && board[ny][nx] == '1') {
+                nb = 1; //참으로 변경
 
                 if (!visited[ny][nx][nb]) {
                     visited[ny][nx][nb] = visited[cur.y][cur.x][cur.broken] + 1;
@@ -64,7 +64,7 @@ int main() {
         cin >> s;
 
         for (int j = 0; j < m; j++) {
-            a[i][j] = s[j];
+            board[i][j] = s[j];
         }
     }
 

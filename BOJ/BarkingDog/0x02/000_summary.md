@@ -50,6 +50,6 @@ void readOnlyFunction(const int& value) {
 Call by Value와 Call by Reference는 함수에서의 인자 전달 방식을 설명하는 개념이고, Shallow Copy와 Deep Copy는 `=` 연산을 활용해 객체를 복사할 때의 동작 방식을 설명하는 개념입니다. 하지만 둘 다 데이터의 복사와 메모리 관리 방식과 관련이 있으므로 서로 유사한 개념으로 이해할 수 있습니다.
 
 - 얕은 복사(Shallow Copy)는 Call by Reference(참조 전달)와 유사합니다. 복사 시 같은 주소를 공유하게 됩니다.
-- 깊은 복사(Deep Copy)는 Call by Value(값 전달)와 유사합니다. 복사 시 데이터의 값만 복사하며, 각각의 주소는 변경되지 않습니다.
+- 깊은 복사(Deep Copy)는 Call by Value(값 전달)와 유사합니다. 복사 시 데이터의 값만 복사하며, 주소는 공유되지 않습니다.
 
 기본 자료형이나 STL 타입 변수의 = 연산은 `Deep Copy`입니다.

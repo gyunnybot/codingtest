@@ -7,7 +7,7 @@ using namespace std;
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 int n, ret;
-char a[30][30];
+char board[30][30];
 bool visited[30][30];
 string s;
 vector<int> v;
@@ -29,7 +29,7 @@ int bfs(int y, int x) {
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= n) continue;
 
-            if (a[ny][nx] == '1' && !visited[ny][nx]) {
+            if (board[ny][nx] == '1' && !visited[ny][nx]) {
                 visited[ny][nx] = true;
                 q.push({ ny, nx });
 
@@ -51,13 +51,13 @@ int main() {
         cin >> s;
 
         for (int j = 0; j < n; j++) {
-            a[i][j] = s[j];
+            board[i][j] = s[j];
         }
     }
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            if (a[i][j] == '1' && !visited[i][j]) {
+            if (board[i][j] == '1' && !visited[i][j]) {
                 v.push_back(bfs(i, j));
                 ret++;
             }

@@ -4,7 +4,7 @@ using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int n, m, t, a[301][301], temp[301][301];
+int n, m, t, board[301][301], temp[301][301];
 bool visited[301][301];
 
 void bfs(int y, int x) {
@@ -22,7 +22,7 @@ void bfs(int y, int x) {
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
-            if (a[ny][nx] > 0 && !visited[ny][nx]) {
+            if (board[ny][nx] > 0 && !visited[ny][nx]) {
                 visited[ny][nx] = true;
                 q.push({ ny,nx });
             }
@@ -37,7 +37,7 @@ void melt() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            if (a[i][j] > 0) { //육지라면
+            if (board[i][j] > 0) { //육지라면
                 int sea_cnt = 0;
 
                 pair<int, int> cur = { i,j };
@@ -48,17 +48,17 @@ void melt() {
 
                     if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
-                    if (a[ny][nx] == 0) { //육지 주변이 바다라면
+                    if (board[ny][nx] == 0) { //육지 주변이 바다라면
                         sea_cnt++;
                     }
                 }
                 
-                temp[cur.first][cur.second] = max(a[cur.first][cur.second] - sea_cnt, 0);
+                temp[cur.first][cur.second] = max(board[cur.first][cur.second] - sea_cnt, 0);
             }
         }
     }
 
-    swap(a, temp); //swap : call by reference
+    swap(board, temp); //swap은 참조자 연산. call by reference
 
     return;
 }
@@ -71,18 +71,18 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            cin >> a[i][j];
+            cin >> board[i][j];
         }
     }
 
     while (true) {
-        fill(&visited[0][0], &visited[0][0] + 301 * 301, 0);
+        fill(&visited[0][0], &visited[0][0] + 301 * 301, false);
 
         int ret = 0;
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (a[i][j] && !visited[i][j]) {
+                if (board[i][j] && !visited[i][j]) {
                     bfs(i, j);
                     ret++;
                 }

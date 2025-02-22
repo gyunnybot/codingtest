@@ -5,20 +5,20 @@ const int NOT_VISITED = 0;
 const int VISITED = 1;
 const int IN_CYCLE = 2;
 const int NOT_IN_CYCLE = 3;
-int t, n, a[100001], state[100001];
+int t, n, board[100001], state[100001];
 
 void run(int here) {
     int cur = here;
 
     while (true) {
         state[cur] = VISITED;
-        cur = a[cur];
+        cur = board[cur];
 
         //돌고돌아 cur를 재방문했는데 cur = here인 경우, here는 사이클에 속해있다
         if (state[cur] == VISITED && cur == here) {
             while (state[cur] != IN_CYCLE) { //생성된 사이클을 전부 돌 때까지
                 state[cur] = IN_CYCLE; //사이클에 속하는 state를 IN_CYCLE으로 변경
-                cur = a[cur];
+                cur = board[cur];
             }
 
             return;
@@ -28,14 +28,14 @@ void run(int here) {
         if (state[cur] == VISITED && cur != here) {
             while (state[cur] != IN_CYCLE) { //사이클을 전부 돌 때까지
                 state[cur] = IN_CYCLE; //사이클에 속하는 state를 visited에서 IN_CYCLE으로 변경
-                cur = a[cur];
+                cur = board[cur];
             }
 
             cur = here; //here에서 다시 시작
 
             while (state[cur] != IN_CYCLE) { //IN_CYCLE인 cur를 만나기 전까지
                 state[cur] = NOT_IN_CYCLE; //here부터 현재 state를 visited에서 NOT_IN_CYCLE으로 변경
-                cur = a[cur];
+                cur = board[cur];
             }
 
             return;
@@ -48,7 +48,7 @@ void run(int here) {
             //또한, 사이클이 아니라면 당연히 NOT_IN_CYCLE 처리
             while (state[cur] == VISITED) { //전부 NOT_IN_CYCLE으로 변경
                 state[cur] = NOT_IN_CYCLE;
-                cur = a[cur];
+                cur = board[cur];
             }
 
             return;
@@ -70,7 +70,7 @@ int main() {
         int ret = 0;
 
         for (int i = 1; i <= n; i++) {
-            cin >> a[i];
+            cin >> board[i];
         }
 
         for (int i = 1; i <= n; i++) {
