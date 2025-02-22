@@ -16,8 +16,7 @@ bool connected(pair<int, int> next) {
 
         if (nx < 1 || nx > n || ny < 1 || ny > n) continue;
 
-        //상하좌우 중 cur가 있다면 next로 이동할 수 있다
-        if (visited[nx][ny] && light[nx][ny]) { //{nx,ny}가 cur인 경우
+        if (visited[nx][ny] && light[nx][ny]) { //이미 한 번 방문한 곳인 경우
             return true;
         }
     }
@@ -35,19 +34,19 @@ void bfs() {
     while (!q.empty()) {
         pair<int, int> cur = q.front(); q.pop();
 
-        //입력으로 주어진 관계인 경우 상하좌우로 인접하지 않아도 일단 불을 킬 수 있다
+        //입력으로 주어진 관계인 경우에는 인접하지 않더라도 불은 킬 수 있다
         for (pair<int, int> next : adj[cur.first][cur.second]) {
             if (!light[next.first][next.second]) {
                 light[next.first][next.second] = true;
 
-                if (connected(next)) { //cur에서 next로 갈 수 있는가(next가 cur랑 상하좌우로 인접해있는가)?
-                    visited[next.first][next.second] = true;
+                if (connected(next)) { //입력으로 주어진 관계가 상하좌우로 인접한 경우라면
+                    visited[next.first][next.second] = true; //방문
                     q.push({ next });
                 }
             }
         }
 
-        //입력으로 주어진 관계는 아니지만, 상하좌우로 인접한 방 중 불이 켜져있는지 조사
+        //입력으로 주어진 관계는 아니지만 상하좌우로 인접한 방 중 불이 켜져있는지 조사
         for (int i = 0; i < 4; i++) {
             int nx = cur.first + dx[i];
             int ny = cur.second + dy[i];
