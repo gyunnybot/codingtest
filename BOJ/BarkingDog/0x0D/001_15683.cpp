@@ -9,13 +9,13 @@ int n, m, a[10][10];
 int ret = INT_MAX;
 vector<pair<int, int>> cctv;
 
-vector<pair<int, int>> spread(int cctv_idx, int dir) {
+vector<pair<int, int>> check_area(int cctv_idx, int dir) {
     vector<pair<int, int>> temp;
 
-    pair<int, int> cur_cctv = cctv[cctv_idx];
+    pair<int, int> cur_pos = cctv[cctv_idx];
 
-    if (a[cur_cctv.first][cur_cctv.second] == 1) {
-        pair<int, int> cur = cur_cctv;
+    if (a[cur_pos.first][cur_pos.second] == 1) {
+        pair<int, int> cur = cur_pos;
 
         while (true) {
             int ny = cur.first + dy[dir];
@@ -24,21 +24,21 @@ vector<pair<int, int>> spread(int cctv_idx, int dir) {
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) break;
 
             if (a[ny][nx] != 6) {
-                if (a[ny][nx] == 0) { //빈 칸이라면
+                if (a[ny][nx] == 0) {
                     a[ny][nx] = 7;
                     temp.push_back({ ny,nx });
                 }
 
-                cur = { ny,nx }; //벽만 아니라면 반복문 계속 진행
+                cur = { ny,nx };
             }
-            else { //벽이라면 break
+            else {
                 break;
             }
         }
     }
-    else if (a[cur_cctv.first][cur_cctv.second] == 2) {
+    else if (a[cur_pos.first][cur_pos.second] == 2) {     
         for (int i = 0; i <= 2; i += 2) {
-            pair<int, int> cur = cur_cctv; //방향만 바뀔 뿐, 시작점인 cur_cctv는 바뀌지 않는다
+            pair<int, int> cur = cur_pos; //방향만 바뀔 뿐, 시작점인 cur_pos는 바뀌지 않는다
 
             while (true) {
                 int ny = cur.first + dy[(dir + i) % 4];
@@ -60,9 +60,9 @@ vector<pair<int, int>> spread(int cctv_idx, int dir) {
             }
         }
     }
-    else if (a[cur_cctv.first][cur_cctv.second] == 3) {
+    else if (a[cur_pos.first][cur_pos.second] == 3) {
         for (int i = 0; i < 2; i++) {
-            pair<int, int> cur = cur_cctv;
+            pair<int, int> cur = cur_pos; //방향만 바뀔 뿐, 시작점인 cur_pos는 바뀌지 않는다
 
             while (true) {
                 int ny = cur.first + dy[(dir + i) % 4];
@@ -84,9 +84,9 @@ vector<pair<int, int>> spread(int cctv_idx, int dir) {
             }
         }
     }
-    else if (a[cur_cctv.first][cur_cctv.second] == 4) {
+    else if (a[cur_pos.first][cur_pos.second] == 4) {
         for (int i = 0; i < 3; i++) {
-            pair<int, int> cur = cur_cctv;
+            pair<int, int> cur = cur_pos; //방향만 바뀔 뿐, 시작점인 cur_pos는 바뀌지 않는다
 
             while (true) {
                 int ny = cur.first + dy[(dir + i) % 4];
@@ -108,9 +108,9 @@ vector<pair<int, int>> spread(int cctv_idx, int dir) {
             }
         }
     }
-    else if (a[cur_cctv.first][cur_cctv.second] == 5) {
+    else if (a[cur_pos.first][cur_pos.second] == 5) {
         for (int i = 0; i < 4; i++) {
-            pair<int, int> cur = cur_cctv;
+            pair<int, int> cur = cur_pos; //방향만 바뀔 뿐, 시작점인 cur_pos는 바뀌지 않는다
 
             while (true) {
                 int ny = cur.first + dy[(dir + i) % 4];
@@ -142,7 +142,7 @@ int get_min() {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
             if (a[i][j] == 0) {
-                cnt++; //사각지대 계산
+                cnt++;
             }
         }
     }
@@ -150,19 +150,19 @@ int get_min() {
     return cnt;
 }
 
-void check(int cctv_idx) {
-    if (cctv_idx == cctv.size()) { //모든 cctv를 조사했다면
-        ret = min(ret, get_min()); //사각지대의 최솟값 갱신
+void cctv_on(int cctv_idx) {
+    if (cctv_idx == cctv.size()) {
+        ret = min(ret, get_min());
         return;
     }
 
     for (int dir = 0; dir < 4; dir++) {
-        vector<pair<int, int>> spreaded_area = spread(cctv_idx, dir); //cctv가 감시한 구역 저장
+        vector<pair<int, int>> temp_area = check_area(cctv_idx, dir);
 
-        check(cctv_idx + 1); //다음 cctv 조사
+        cctv_on(cctv_idx + 1);
 
-        for (pair<int, int> pi : spreaded_area) {
-            a[pi.first][pi.second] = 0; //cctv가 감시한 구역 원상 복구
+        for (pair<int, int> pi : temp_area) {
+            a[pi.first][pi.second] = 0;
         }
     }
 }
@@ -183,7 +183,7 @@ int main() {
         }
     }
 
-    check(0); //0번째 cctv부터 조사
+    cctv_on(0);
 
     cout << ret;
 
