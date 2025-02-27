@@ -80,7 +80,7 @@ int main() {
                         post(y, x);
 
                         flag = true;
-
+												
                         break;
                     }
                 }
