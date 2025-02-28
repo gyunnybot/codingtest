@@ -1,31 +1,31 @@
 #include<iostream>
 using namespace std;
 
-int n, m, k, r, c, ret, a[42][42], paper[12][12];
+int n, m, k, r, c, ret, a[41][41], paper[11][11];
 
 void rotate() {
-    int temp[12][12];
+    int temp[11][11];
 
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < c; j++) {
-            temp[j][r - i - 1] = paper[i][j]; //clock wise
-            //temp[c - j - 1][i] = paper[i][j]; //counter-clock wise
+    for (int i = 0; i < r; i++) { //r
+        for (int j = 0; j < c; j++) { //c
+            temp[j][r - i - 1] = paper[i][j]; //시계 방향
+            //temp[c - j - 1][i] = paper[i][j]; //반시계 방향
         }
     }
 
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < c; j++) {
+    for (int i = 0; i < r; i++) { //r
+        for (int j = 0; j < c; j++) { //c
             paper[i][j] = 0;
         }
     }
 
-    for (int i = 0; i < c; i++) {
-        for (int j = 0; j < r; j++) {
+    for (int i = 0; i < c; i++) { //c
+        for (int j = 0; j < r; j++) { //r
             paper[i][j] = temp[i][j];
         }
     }
 
-    swap(r, c);
+    swap(r, c); //swap : call by reference
 
     return;
 }
@@ -61,7 +61,7 @@ int main() {
     cin >> n >> m >> k;
 
     while (k--) {
-        fill(&paper[0][0], &paper[0][0] + 12 * 12, 0);
+        fill(&paper[0][0], &paper[0][0] + 11 * 11, 0);
 
         cin >> r >> c;
 
