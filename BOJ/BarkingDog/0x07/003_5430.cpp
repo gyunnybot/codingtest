@@ -13,10 +13,10 @@ deque<string> split(string input, string delimiter) {
 	int end = input.find(delimiter);
 
 	while (end != string::npos) {
-		result.push_back(input.substr(start, end - start)); //string.substr(추출을 시작할 인덱스 번호, 갯수)
+		result.push_back(input.substr(start, end - start)); //string.substr(시작 인덱스 번호, 범위)
 
 		start = end + delimiter.size();
-		end = input.find(delimiter, start); //string.find("문자열", 조사를 시작할 인덱스 번호)
+		end = input.find(delimiter, start); //string.find(찾을 문자열, 시작 인덱스 번호)
 	}
 
 	result.push_back(input.substr(start));
@@ -54,9 +54,9 @@ int main(void) {
 			else if (c == 'D') {
 				if (ret_str.empty()) {
 					flag = true; //배열이 비었는데 D가 호출될 경우 error
-					break; //error가 발생하면 더 이상 진행할 이유가 없음
+					break;
 				}
-				else { //비어있지 않은 경우, 반전 상태에 따라 pop의 위치 결정
+				else { //비어있지 않은 경우 반전 상태에 따라 pop의 위치 결정
 					if (reversed) {
 						ret_str.pop_back();
 					}
