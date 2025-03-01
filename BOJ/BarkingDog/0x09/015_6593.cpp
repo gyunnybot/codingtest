@@ -11,7 +11,7 @@ const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 const int dh[] = { 1,-1 };
 int l, r, c, answer, visited[31][31][31];
-char board[31][31][31];
+char a[31][31][31];
 string s;
 
 void bfs() {
@@ -31,7 +31,7 @@ void bfs() {
             int nh = cur.h;
 
             if (ny < 0 || ny >= r || nx < 0 || nx >= c) continue;
-            if (board[ny][nx][nh] == '#') continue;
+            if (a[ny][nx][nh] == '#') continue;
 
             if (!visited[ny][nx][nh]) {
                 visited[ny][nx][nh] = visited[cur.y][cur.x][cur.h] + 1;
@@ -45,7 +45,7 @@ void bfs() {
             int nh = cur.h + dh[i];
 
             if (nh < 0 || nh >= l) continue;
-            if (board[ny][nx][nh] == '#') continue;
+            if (a[ny][nx][nh] == '#') continue;
 
             if (!visited[ny][nx][nh]) {
                 visited[ny][nx][nh] = visited[cur.y][cur.x][cur.h] + 1;
@@ -73,13 +73,13 @@ int main() {
                 cin >> s;
 
                 for (int j = 0; j < c; j++) {
-                    board[i][j][k] = s[j];
+                    a[i][j][k] = s[j];
 
-                    if (board[i][j][k] == 'S') {
+                    if (a[i][j][k] == 'S') {
                         sPos = { i,j,k };
                     }
 
-                    if (board[i][j][k] == 'E') {
+                    if (a[i][j][k] == 'E') {
                         ePos = { i,j,k };
                     }
                 }

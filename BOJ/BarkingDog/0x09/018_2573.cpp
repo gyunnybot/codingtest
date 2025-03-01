@@ -4,7 +4,7 @@ using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int n, m, t, board[301][301], temp[301][301];
+int n, m, t, a[301][301], temp[301][301];
 bool visited[301][301];
 
 void bfs(int y, int x) {
@@ -22,7 +22,7 @@ void bfs(int y, int x) {
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
-            if (board[ny][nx] > 0 && !visited[ny][nx]) {
+            if (a[ny][nx] > 0 && !visited[ny][nx]) {
                 visited[ny][nx] = true;
                 q.push({ ny,nx });
             }
@@ -37,7 +37,7 @@ void melt() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            if (board[i][j] > 0) { //육지라면
+            if (a[i][j] > 0) {
                 int sea_cnt = 0;
 
                 pair<int, int> cur = { i,j };
@@ -48,17 +48,17 @@ void melt() {
 
                     if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
-                    if (board[ny][nx] == 0) { //육지 주변이 바다라면
+                    if (a[ny][nx] == 0) {
                         sea_cnt++;
                     }
                 }
                 
-                temp[cur.first][cur.second] = max(board[cur.first][cur.second] - sea_cnt, 0);
+                temp[cur.first][cur.second] = max(a[cur.first][cur.second] - sea_cnt, 0);
             }
         }
     }
 
-    swap(board, temp); //swap은 참조자 연산. call by reference
+    swap(a, temp); //swap : call by reference
 
     return;
 }
@@ -71,7 +71,7 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            cin >> board[i][j];
+            cin >> a[i][j];
         }
     }
 
@@ -82,14 +82,14 @@ int main() {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (board[i][j] && !visited[i][j]) {
+                if (a[i][j] && !visited[i][j]) {
                     bfs(i, j);
                     ret++;
                 }
             }
         }
 
-        if (ret > 1) { //두 덩어리가 된다면 시간 출력
+        if (ret > 1) { //빙하가 두 덩어리가 된다면 시간 출력
             cout << t;
             break;
         }

@@ -41,8 +41,6 @@ int main() {
 
     bfs(n);
 
-    cout << visited[k] - 1 << '\n';
-
     int cur = k;
 
     while (true) {
@@ -56,6 +54,8 @@ int main() {
     }
 
     reverse(ret.begin(), ret.end()); //역순으로 정렬
+
+    cout << visited[k] - 1 << '\n'; //방문 횟수 출력
 
     for (int i : ret) cout << i << ' '; //경로 출력
 

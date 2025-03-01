@@ -9,8 +9,8 @@ struct info {
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int visited[1001][1001][11][2], n, m, k; //visited[y][x][벽을 부순 횟수][낮 1 밤 0]
-char board[1001][1001];
+int n, m, k, visited[1001][1001][11][2]; //visited[y][x][벽을 부순 횟수][낮 1 밤 0]
+char a[1001][1001];
 string s;
 
 int bfs() {
@@ -26,7 +26,7 @@ int bfs() {
             return visited[cur.y][cur.x][cur.broken][cur.isNoon];
         }
 
-        //머무르는 경우
+        //이동없이 머무른 후 진행
         if (!visited[cur.y][cur.x][cur.broken][!cur.isNoon]) {
             visited[cur.y][cur.x][cur.broken][!cur.isNoon] = visited[cur.y][cur.x][cur.broken][cur.isNoon] + 1;
             q.push({ cur.y, cur.x, cur.broken, !cur.isNoon });
@@ -36,20 +36,20 @@ int bfs() {
             int ny = cur.y + dy[i];
             int nx = cur.x + dx[i];
             int nb = cur.broken;
-            bool nn = !cur.isNoon; //낮밤은 항상 바뀐다
+            bool nn = !cur.isNoon;
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
-            //벽을 부수지 않고 이동하는 경우
-            if (board[ny][nx] == '0' && !visited[ny][nx][nb][nn]) {
+            //벽을 부수지 않고 진행
+            if (a[ny][nx] == '0' && !visited[ny][nx][nb][nn]) {
                 visited[ny][nx][nb][nn] = visited[cur.y][cur.x][cur.broken][cur.isNoon] + 1;
                 q.push({ ny,nx,nb,nn });
             }
 
-            //벽을 부수고 이동하는 경우
+            //벽을 부수고 진행
             if (cur.isNoon) { //벽은 낮에만 부술 수 있다
-                if (cur.broken < k && board[ny][nx] == '1') {
-                    nb++;
+                if (cur.broken < k && a[ny][nx] == '1') {
+                    nb = cur.broken + 1; //벽을 부순 횟수 증가
 
                     if (!visited[ny][nx][nb][nn]) {
                         visited[ny][nx][nb][nn] = visited[cur.y][cur.x][cur.broken][cur.isNoon] + 1;
@@ -73,7 +73,7 @@ int main() {
         cin >> s;
 
         for (int j = 0; j < m; j++) {
-            board[i][j] = s[j];
+            a[i][j] = s[j];
         }
     }
 

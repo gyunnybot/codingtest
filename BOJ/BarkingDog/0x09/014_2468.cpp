@@ -4,7 +4,7 @@ using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int n, ny, nx, board[101][101];
+int n, ny, nx, a[101][101];
 bool visited[101][101];
 
 void bfs(int y, int x, int k) {
@@ -22,7 +22,7 @@ void bfs(int y, int x, int k) {
 
 			if (ny < 0 || ny >= n || nx < 0 || nx >= n) continue;
 
-			if (board[ny][nx] > k && !visited[ny][nx]) {
+			if (a[ny][nx] > k && !visited[ny][nx]) {
 				visited[ny][nx] = true;
 				q.push({ ny,nx });
 			}
@@ -38,19 +38,18 @@ int main() {
 
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < n; j++)
-			cin >> board[i][j];
+			cin >> a[i][j];
 
-	int ret = 1; //아무 지역도 잠기지 않는다면 안전 영역의 갯수는 1이다
+	int ret = 1; //아무 지역도 잠기지 않는다면 안전 영역의 수는 1이다
 
-	//지역의 높이, 비가 내리는 양의 높이는 1이상 100 이하의 정수
 	for (int k = 1; k <= 100; k++) {
-		int cnt = 0;
-
 		fill(&visited[0][0], &visited[0][0] + 101 * 101, false);
+
+		int cnt = 0;
 
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
-				if (board[i][j] > k && !visited[i][j]) {
+				if (a[i][j] > k && !visited[i][j]) {
 					bfs(i, j, k);
 					cnt++;
 				}

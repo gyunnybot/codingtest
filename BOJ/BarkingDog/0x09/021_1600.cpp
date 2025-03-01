@@ -10,7 +10,7 @@ const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 const int dy1[] = { -1,-2,-2,-1,1,2,2,1 };
 const int dx1[] = { -2,-1,1,2,2,1,-1,-2 };
-int k, n, m, board[201][201], visited[201][201][31];
+int k, n, m, a[201][201], visited[201][201][31];
 
 int bfs() {
     visited[0][0][0] = 1;
@@ -32,7 +32,7 @@ int bfs() {
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
           
-            if (board[ny][nx] == 0 && !visited[ny][nx][nused]) {
+            if (a[ny][nx] == 0 && !visited[ny][nx][nused]) {
                 visited[ny][nx][nused] = visited[cur.y][cur.x][cur.used] + 1;
                 q.push({ ny,nx,nused });
             }
@@ -46,7 +46,7 @@ int bfs() {
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
             if (nused > k) break;
 
-            if (board[ny][nx] == 0 && !visited[ny][nx][nused]) {
+            if (a[ny][nx] == 0 && !visited[ny][nx][nused]) {
                 visited[ny][nx][nused] = visited[cur.y][cur.x][cur.used] + 1;
                 q.push({ ny,nx,nused });
             }
@@ -64,7 +64,7 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            cin >> board[i][j];
+            cin >> a[i][j];
         }
     }
 
