@@ -5,7 +5,7 @@ using namespace std;
 int n, k, visited[100001];
 
 void bfs(int n) {
-    visited[n] = 1; //방문 여부
+    visited[n] = 1; //방문하는데 걸리는 시간
 
     queue<int> q;
     q.push(n);

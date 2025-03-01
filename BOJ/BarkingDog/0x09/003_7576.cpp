@@ -4,7 +4,7 @@ using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int n, m, ret, board[1001][1001], visited[1001][1001];
+int n, m, ret, a[1001][1001], visited[1001][1001];
 bool flag;
 vector<pair<int, int>> tomato;
 
@@ -26,11 +26,11 @@ void bfs() {
             int nx = cur.second + dx[i];
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
-            if (board[ny][nx] == -1) continue; //토마토가 들어있지 않은 경우
+            if (a[ny][nx] == -1) continue; //토마토가 들어있지 않은 경우
             if (visited[ny][nx] >= 1) continue; //초기 토마토 또는 이미 익은 토마토
 
-            //익지 않은 토마토 bfs
-            if (board[ny][nx] == 0 && !visited[ny][nx]) {
+            //익지 않은 토마토에 대해 bfs
+            if (a[ny][nx] == 0 && !visited[ny][nx]) {
                 visited[ny][nx] = visited[cur.first][cur.second] + 1;
                 q.push({ ny,nx });
             }
@@ -48,9 +48,9 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            cin >> board[i][j];
+            cin >> a[i][j];
 
-            if (board[i][j] == 1) {
+            if (a[i][j] == 1) {
                 tomato.push_back({ i,j });
             }
         }
@@ -60,15 +60,14 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            if (board[i][j] == -1) continue; //토마토가 들어있지 않은 경우
+            if (a[i][j] == -1) continue; //토마토가 들어있지 않은 경우
 
-            if (board[i][j] == 0 && !visited[i][j]) {
-                flag = true; //익지 않은 토마토가 있다면
+            if (a[i][j] == 0 && !visited[i][j]) { //익지 않은 토마토가 있다면
+                flag = true;
                 break;
             }
-            else {
-                ret = max(ret, visited[i][j] - 1);
-            }
+
+            ret = max(ret, visited[i][j] - 1);
         }
 
         if (flag) break;

@@ -4,8 +4,8 @@ using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int t, n, m, k, x, y, board[51][51];
-bool visited[51][51];
+int t, n, m, k, x, y;
+bool a[51][51], visited[51][51];
 
 void bfs(int y, int x) {
     visited[y][x] = true;
@@ -22,7 +22,7 @@ void bfs(int y, int x) {
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
-            if (board[ny][nx] == 1 && !visited[ny][nx]) {
+            if (a[ny][nx] == 1 && !visited[ny][nx]) {
                 visited[ny][nx] = true;
                 q.push({ ny,nx });
             }
@@ -39,7 +39,7 @@ int main() {
     cin >> t;
 
     while (t--) {
-        fill(&board[0][0], &board[0][0] + 51 * 51, 0);
+        fill(&a[0][0], &a[0][0] + 51 * 51, 0);
         fill(&visited[0][0], &visited[0][0] + 51 * 51, false);
 
         int ret = 0;
@@ -48,12 +48,12 @@ int main() {
 
         while (k--) {
             cin >> x >> y;
-            board[y][x] = 1;
+            a[y][x] = 1;
         }
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (board[i][j] == 1 && !visited[i][j]) {
+                if (a[i][j] == 1 && !visited[i][j]) {
                     bfs(i, j);
                     ret++;
                 }

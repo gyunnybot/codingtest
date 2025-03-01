@@ -10,7 +10,6 @@ void bfs(int y, int x) {
     visited[y][x] = 1;
 
     queue<pair<int, int>> q;
-
     q.push({ y,x });
 
     while (!q.empty()) {
@@ -18,7 +17,7 @@ void bfs(int y, int x) {
 
         if (cur.first == ey && cur.second == ex) {
             ret = visited[ey][ex] - 1;
-            return;
+            break;
         }
 
         for (int i = 0; i < 8; i++) {

@@ -7,7 +7,7 @@ using namespace std;
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 int n, m, fire_visited[1001][1001], j_visited[1001][1001], ret;
-char board[1001][1001];
+char a[1001][1001];
 pair<int, int> j_pos;
 vector<pair<int, int>> fire_pos;
 string s;
@@ -34,7 +34,7 @@ void fire_bfs() {
             int nx = cur.second + dx[i];
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
-            if (board[ny][nx] == '#') continue;
+            if (a[ny][nx] == '#') continue;
 
             if (fire_visited[ny][nx] == INT_MAX) {
                 fire_visited[ny][nx] = fire_visited[cur.first][cur.second] + 1;
@@ -65,10 +65,10 @@ void j_bfs() {
             int nx = cur.second + dx[i];
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
-            if (board[ny][nx] == '#') continue;                        
+            if (a[ny][nx] == '#') continue;                        
             if (fire_visited[ny][nx] <= j_visited[cur.first][cur.second] + 1) continue; //이미 불이 붙었다면
 
-            if (board[ny][nx] == '.' && !j_visited[ny][nx]) {
+            if (a[ny][nx] == '.' && !j_visited[ny][nx]) {
                 j_visited[ny][nx] = j_visited[cur.first][cur.second] + 1;
                 q.push({ ny,nx });
             }
@@ -88,20 +88,20 @@ int main() {
         cin >> s;
 
         for (int j = 0; j < m; j++) {
-            board[i][j] = s[j];
+            a[i][j] = s[j];
 
-            if (board[i][j] == 'J') {
+            if (a[i][j] == 'J') {
                 j_pos = { i,j };
             }
 
-            if (board[i][j] == 'F') {
+            if (a[i][j] == 'F') {
                 fire_pos.push_back({ i,j });
             }
         }
     }
 
     fire_bfs();
-    j_bfs();
+    j_bfs(); //fire_visited가 필요하므로 fire_bfs보다 나중에 실행
 
     if (!ret) {
         cout << "IMPOSSIBLE";
