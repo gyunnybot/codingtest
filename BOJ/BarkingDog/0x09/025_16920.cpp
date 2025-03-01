@@ -37,8 +37,8 @@ void bfs() {
                     if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
                     if (!expandable[ny][nx]) continue;
 
-                    q[i].push({ ny,nx,na });
-                    expandable[ny][nx] = false;
+                    expandable[ny][nx] = false; //visited = true
+                    q[i].push({ ny,nx,na }); //q.push
 
                     area[i]++;
 
@@ -80,8 +80,8 @@ int main() {
             else { //숫자라면
                 expandable[i][j] = false; //시작점은 재탈환 X. 확장 불가능
 
-                q[a[i][j] - '0'].push({ i,j,0 }); //n번째 플레이어의 시작점을 각 queue에 저장
-                area[a[i][j] - '0']++; //n번째 플레이어가 차지한 영역 초기화: 1부터 시작
+                q[a[i][j] - '0'].push({ i,j,0 }); //n번째 플레이어의 시작점을 n번째 queue에 저장
+                area[a[i][j] - '0']++; //n번째 플레이어가 차지한 영역. 1부터 시작
             }
         }
     }
@@ -89,7 +89,7 @@ int main() {
     bfs();
 
     for (int i = 1; i <= p; i++) {
-        cout << area[i] << ' ';
+        cout << area[i] << ' '; //각 플레이어마다 영역의 넓이 반환
     }
 
     return 0;

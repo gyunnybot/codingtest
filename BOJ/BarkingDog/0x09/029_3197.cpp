@@ -30,7 +30,7 @@ void melt() {
 
                 if (a[ny][nx] == 'X') {
                     a[ny][nx] = '.'; //얼음 녹이기
-                    next_water.push({ ny,nx }); //다음 melt에서 사용될 물 좌표 저장
+                    next_water.push({ ny,nx }); //다음 melt에서 활용될 물의 좌표 저장
                 }
             }
         }
@@ -79,12 +79,12 @@ void bfs() {
 
         melt();
 
-        /* STL의 = 연산은 deep copy가 발생한다. 해당 문제에서는 시간초과 발생
+        /* STL의 = 연산은 deep copy(call by value)가 발생한다. O(N)이므로 해당 문제에서는 시간초과 발생
         swan_q = next_swan_q;
         water = next_water;
         */
 
-        //기존 데이터가 더 이상 필요없다면 참조값을 변경하는 swap을 활용하는 것이 더 빠르다
+        //기존 데이터가 더 이상 필요없다면 참조값을 활용한 swap을 사용한다. call by reference
         swap(swan_q, next_swan_q);
         swap(water, next_water);
 
