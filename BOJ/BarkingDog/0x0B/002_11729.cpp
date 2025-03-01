@@ -1,9 +1,7 @@
 #include<iostream>
 using namespace std;
-typedef long long ll;
 
 int n;
-ll ret;
 
 void recur(int st, int dest, int n) {
 	int mid = 6 - st - dest;
@@ -26,9 +24,7 @@ int main() {
 
 	cin >> n;
 
-	ret = (1 << n) - 1; //귀납적으로 도출한 이동 횟수
-
-	cout << ret << '\n';
+	cout << (1 << n) - 1 << '\n';//귀납적으로 도출한 이동 횟수
 
 	recur(1, 3, n); //첫 번째 장대에서 세 번째 장대로 원판 이동
 
