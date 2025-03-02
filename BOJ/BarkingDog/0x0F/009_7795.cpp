@@ -16,7 +16,7 @@ int main() {
 	cin >> t;
 
 	while (t--) {
-		fill(a, a + 20001, 0); //memset(a, 0, sizeof(a));
+		fill(a, a + 20001, 0);
 		fill(b, b + 20001, 0);
 
 		cin >> n >> m;

@@ -29,7 +29,7 @@ int main() {
 
 	sort(v.begin(), v.end(), cmp);
 
-	v.erase(unique(v.begin(), v.end()), v.end());
+	v.erase(unique(v.begin(), v.end()), v.end()); //vector.erase(시작 이터레이터, 끝 이터레이터 + 1)
 
 	for (string s : v) {
 		cout << s << '\n';

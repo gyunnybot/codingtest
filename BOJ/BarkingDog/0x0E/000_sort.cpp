@@ -96,7 +96,7 @@ int main() {
 
 	//select sort. O(N^2)
 	for (int i = n - 1; i > 0; i--) {
-		swap(*max_element(arr, arr + i + 1), arr[i]);
+		swap(*max_element(arr, arr + i + 1), arr[i]); //swap : call by reference
 	}
 
 	//bubble sort. O(N^2)

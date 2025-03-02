@@ -18,8 +18,8 @@ int main() {
 
 	sort(a, a + n);
 
-	ll ret = a[0]; //(1 ≤ n ≤ 100,000)
-	int maxVal = a[0]; //(1 ≤ n ≤ 100,000)
+	ll ret = a[0]; //(-2^62 ≤ a[n] ≤ 2^62)
+	int max_cnt = 1; //(1 ≤ n ≤ 100,000)
 	int cnt = 1; //(1 ≤ n ≤ 100,000)
 
 	for (int i = 1; i < n; i++) {
@@ -30,8 +30,8 @@ int main() {
 			cnt = 1;
 		}
 
-		if (maxVal < cnt) {
-			maxVal = cnt;
+		if (max_cnt < cnt) {
+			max_cnt = cnt;
 			ret = a[i];
 		}
 	}

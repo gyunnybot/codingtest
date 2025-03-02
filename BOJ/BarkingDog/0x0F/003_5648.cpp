@@ -27,10 +27,10 @@ int main() {
 
 		reverse(temp.begin(), temp.end());
 
-		//입력되는 모든 원소가 양의 정수이므로 반드시 탈출하는 while loop
+		//입력되는 모든 원소가 양의 정수이므로 반드시 탈출하는 반복문입니다.
 		while (true) {
 			if (temp[0] == '0') {
-				temp.erase(0, 1); //string.erase(지울 인덱스 번호, 지울 갯수)
+				temp.erase(0, 1); //string.erase(시작 인덱스 번호, 지울 갯수)
 			}
 			else {
 				break;
