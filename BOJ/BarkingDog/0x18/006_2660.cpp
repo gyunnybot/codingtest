@@ -4,7 +4,7 @@
 #include<climits> //INT_MAX
 using namespace std;
 
-int n, a, b, ret[51], visited[51], cnt;
+int n, a, b, ret[51], visited[51];
 int min_val = INT_MAX;
 vector<int> adj[51], v;
 
@@ -61,11 +61,10 @@ int main() {
 	for (int i = 1; i <= n; i++) {
 		if (ret[i] == min_val) {
 			v.push_back(i);
-			cnt++;
 		}
 	}
 
-	cout << min_val << ' ' << cnt << '\n';
+	cout << min_val << ' ' << v.size() << '\n';
 
 	for (int i : v) {
 		cout << i << ' ';

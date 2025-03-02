@@ -12,7 +12,7 @@ int bfs(int n) {
 	queue<int> q;
 	q.push(n);
 
-	int d = 0; //정점사이의 거리 총합
+	int d = 0; //정점 사이의 거리 총합
 	visited[n] = 0; //시작점은 0으로 초기화
 
 	while (!q.empty()) {

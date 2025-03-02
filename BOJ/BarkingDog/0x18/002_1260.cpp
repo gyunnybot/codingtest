@@ -57,7 +57,7 @@ int main() {
 		adj[b].push_back(a);
 	}
 
-	for (int i = 1; i <= n; i++) { //정점이 여러 개인 경우에는 정점 번호가 작은 것을 먼저 방문한다
+	for (int i = 1; i <= n; i++) { //연결된 정점이 여러 개인 경우에는 정점 번호가 작은 것을 먼저 방문한다
 		sort(adj[i].begin(), adj[i].end());
 	}
 
