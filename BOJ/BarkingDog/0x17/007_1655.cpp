@@ -1,10 +1,10 @@
 #include<iostream>
-#include<queue>
+#include<queue> //priority_queue
 using namespace std;
 
+int n, temp;
 priority_queue<int, vector<int>, less<>> max_pq;
 priority_queue<int, vector<int>, greater<>> min_pq;
-int n, temp;
 
 int main() {
     ios_base::sync_with_stdio(false);

@@ -3,15 +3,15 @@
 using namespace std;
 
 class cmp {
-public:
-	bool operator()(int a, int b) {
-		if (abs(a) != abs(b)) {
-			return abs(a) > abs(b); //절댓값이 가장 작은 값을 출력 = 최소 힙 = greater(우선순위 큐는 반대)
+	public:
+		bool operator()(int a, int b) {
+			if (abs(a) != abs(b)) {
+				return abs(a) > abs(b); //절댓값이 가장 작은 값을 pq.top()으로 = 최소 힙 = greater(우선순위 큐는 반대)
+			}
+			else {
+				return a > b; //가장 작은 값을 pq.top()으로 = 최소 힙 = greater(우선순위 큐는 반대)
+			}
 		}
-		else {
-			return a > b; //가장 작은 수를 출력 = 최소 힙 = greater(우선순위 큐는 반대)
-		}
-	}
 };
 
 int n, temp;

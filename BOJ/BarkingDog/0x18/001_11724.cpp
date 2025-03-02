@@ -35,7 +35,7 @@ int main() {
 	for (int i = 1; i <= n; i++) {
 		if (!visited[i]) {
 			dfs(i);
-			ret++; //Connected Component
+			ret++; //connected component
 		}
 	}
 

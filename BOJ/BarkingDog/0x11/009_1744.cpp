@@ -15,7 +15,7 @@ void oper(vector<int>& v) {
         v.pop_back();
     }
 
-    if (!v.empty()) { //남은 원소는 순수 덧셈
+    if (!v.empty()) { //하나 남은 원소는 괄호로 묶을 수 없으므로 덧셈
         ret += v[0];
     }
 
@@ -43,8 +43,8 @@ int main() {
     }
 
     sort(plu.begin(), plu.end()); //1, 2, 3...
-    sort(minu.begin(), minu.end(), greater<>()); //-1, -2, -3...
-    
+    sort(minu.begin(), minu.end(), greater<>()); //sort는 절대값을 기준으로 오름차순 정렬된다. -1, -2, -3...
+
     oper(plu);
     oper(minu);
 

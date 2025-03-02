@@ -25,7 +25,7 @@ int main() {
 	}
 
 	sort(b.begin(), b.end()); //정렬
-	b.erase(unique(b.begin(), b.end()), b.end()); //중복 원소 제거
+	b.erase(unique(b.begin(), b.end()), b.end()); //중복된 원소 제거
 
 	for (int i = n - 1; i > 0; i--) { //k번째 수가 최대가 되도록 하는 것이 목적이므로 역순으로 탐색
 		for (int j = 0; j < i; j++) {
@@ -36,5 +36,5 @@ int main() {
 		}
 	}
 
-	return 0;
+	return 0; //답이 항상 존재하는 경우만 입력으로 주어진다
 }

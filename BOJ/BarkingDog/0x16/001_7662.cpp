@@ -14,7 +14,7 @@ int main() {
 	while (t--) {
 		cin >> k;
 
-		multiset<int> ms; //같은 데이터를 중복해서 받아야 하며, 정렬된 상태를 유지해 최대, 최솟값을 추출할 수 있어야 함
+		multiset<int> ms; //같은 데이터를 중복해서 받아야 하며 정렬된 상태를 유지해 최대, 최솟값을 추출할 수 있어야 함
 
 		while (k--) {
 			cin >> oper >> num;
@@ -23,14 +23,14 @@ int main() {
 				if (ms.empty()) continue;
 
 				if (num == 1) { //최대값 삭제
-					ms.erase(prev(ms.end())); //prev(이터레이터) : 해당 이터레이터의 이전 이터레이터를 반환
+					ms.erase(prev(ms.end())); //prev(해당 이터레이터) : 해당 이터레이터의 이전 이터레이터를 반환
 				}
 				else { //최소값 삭제
-					ms.erase(ms.begin()); //multiset의 erase는 인덱스가 아닌 이터레이터를 인자로 사용한다
+					ms.erase(ms.begin()); //multiset.erase(해당 이터레이터)
 				}
 			}
 			else {
-				ms.insert(num); //insert(값)
+				ms.insert(num); //multiset.insert(데이터 값)
 			}
 		}
 
