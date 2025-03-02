@@ -7,11 +7,11 @@ int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	//문제에 제시된 pseudo code에 따라 dp 완성
+	//init
 	dp[0] = 0;
 	dp[1] = 1;
 	
-	for (int i = 2; i <= 40; i++) {
+	for (int i = 2; i <= 40; i++) { //문제에 제시된 pseudo code에 따라 dp table 완성하기
 		dp[i] = dp[i - 1] + dp[i - 2];
 	}
 

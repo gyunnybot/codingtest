@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int t, n, dp[11]; //n은 양수이며 11보다 작다
+int t, n, dp[11];
 
 int main() {
 	ios_base::sync_with_stdio(false);

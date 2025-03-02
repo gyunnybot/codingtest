@@ -19,7 +19,7 @@ void bfs(int n) {
 			break;
 		}
 
-		if ((cur % 3) == 0 && !visited[cur / 3]) { //visited. 감소 폭이 큰 순으로 조건문 실행
+		if ((cur % 3) == 0 && !visited[cur / 3]) {
 			visited[cur / 3] = visited[cur] + 1;
 			q.push((cur / 3));
 		}
