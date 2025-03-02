@@ -28,7 +28,7 @@ void combi(int start, vector<int>& v, vector<bool>& visited) {
         v.push_back(a[i]);
         visited[i] = true;
 
-        combi(i - 1, v, visited);
+        combi(i, v, visited);
 
         v.pop_back();
         visited[i] = false;
@@ -42,9 +42,7 @@ int main() {
     while (true) {
         cin >> n;
 
-        if (n == 0) {
-            break;
-        }
+        if (n == 0) break;
 
         for (int i = 0; i < n; i++) {
             cin >> a[i];
