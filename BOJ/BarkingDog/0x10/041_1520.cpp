@@ -6,7 +6,7 @@ const int dx[] = { 0,1,0,-1 };
 int n, m, board[501][501], dp[501][501];
 
 int dfs(int y, int x) {
-    if (y == n - 1 && x == m - 1) { //목적지 도착
+    if (y == n - 1 && x == m - 1) { //목적지 도착 시 1 반환
         return 1;
     }
 

@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int n, ret, dp[1001][10]; //[자릿 수][끝자리 수]
+int n, ret, dp[1001][10]; //길이, 끝자리 수
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -15,7 +15,7 @@ int main() {
 
 	for (int i = 2; i <= n; i++) {
 		for (int j = 0; j <= 9; j++) {
-			if (j == 0) { //끝자리가 0인 경우는 오로지 한가지 경우의 수만 가진다
+			if (j == 0) { //끝자리가 0인 경우는 오로지 한가지 경우의 수만 가진다(000...)
 				dp[i][j] = 1;
 			}
 			else {

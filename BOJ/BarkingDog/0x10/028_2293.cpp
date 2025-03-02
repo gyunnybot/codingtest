@@ -1,4 +1,5 @@
 #include<iostream>
+#include<algorithm> //sort
 using namespace std;
 
 int n, k, a[101], dp[10001];
@@ -12,6 +13,8 @@ int main() {
 	for (int i = 1; i <= n; i++) {
 		cin >> a[i];
 	}
+
+	sort(a + 1, a + n + 1);
 
 	dp[0] = 1;
 
