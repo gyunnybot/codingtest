@@ -11,16 +11,16 @@ int recur(int n, int r, int c) {
 	int half = (1 << n) / 2;
 
 	if (r < half && c < half) {
-		return recur(n - 1, r, c); //1 사분면
+		return recur(n - 1, r, c); //2사분면
 	}
 	else if (r < half && c >= half) {
-		return half * half + recur(n - 1, r, c - half); //2 사분면
+		return half * half + recur(n - 1, r, c - half); //1사분면
 	}
 	else if (r >= half && c < half) {
-		return 2 * half * half + recur(n - 1, r - half, c); //3 사분면
+		return 2 * half * half + recur(n - 1, r - half, c); //3사분면
 	}
 	else {
-		return 3 * half * half + recur(n - 1, r - half, c - half); //4 사분면
+		return 3 * half * half + recur(n - 1, r - half, c - half); //4사분면
 	}
 }
 
