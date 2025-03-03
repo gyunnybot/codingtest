@@ -2,8 +2,7 @@
 #include<vector>
 using namespace std;
 
-int n, m, a, b, v[10001];
-int ret = -1;
+int n, m, a, b, v[10001], ret;
 bool visited[10001];
 vector<int> adj[10001];
 

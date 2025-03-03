@@ -10,5 +10,5 @@ WHERE SALES_DATE LIKE '2022-03%'
 
 ORDER BY SALES_DATE ASC, PRODUCT_ID ASC, USER_ID ASC;
 
--- UNION: set, UNION: multi_set
+-- UNION: set, UNION ALL: multi_set
 -- NULL 속성 : 해당 속성의 모든 값을 NULL로 표시

@@ -5,7 +5,6 @@
 using namespace std;
 
 int n, a, b, ret[51], visited[51];
-int min_val = INT_MAX;
 vector<int> adj[51], v;
 
 int bfs(int n) {
@@ -54,6 +53,8 @@ int main() {
 		ret[i] = bfs(i);
 	}
 	
+	int min_val = INT_MAX;
+
 	for (int i = 1; i <= n; i++) {
 		min_val = min(min_val, ret[i]);
 	}

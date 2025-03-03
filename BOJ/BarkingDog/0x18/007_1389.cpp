@@ -4,8 +4,7 @@
 #include<climits> //INT_MAX
 using namespace std;
 
-int n, m, a, b, visited[101], ret, dist;
-int min_dist = INT_MAX;
+int n, m, a, b, visited[101], dist, ret;
 vector<int> adj[101];
 
 int bfs(int n) {
@@ -13,17 +12,17 @@ int bfs(int n) {
 	q.push(n);
 
 	int d = 0; //정점 사이의 거리 총합
-	visited[n] = 0; //시작점은 0으로 초기화
+	visited[n] = 1;
 
 	while (!q.empty()) {
 		int cur = q.front(); q.pop();
 
 		for (int next : adj[cur]) {
-			if (visited[next] == -1) {
-				visited[next] = visited[cur] + 1;				
+			if (!visited[next]) {
+				visited[next] = visited[cur] + 1;
 				q.push(next);
 
-				d += visited[next];
+				d += (visited[next] - 1);
 			}
 		}
 	}
@@ -44,8 +43,10 @@ int main() {
 		adj[b].push_back(a);
 	}
 
+	int min_dist = INT_MAX;
+
 	for (int i = 1; i <= n; i++) {
-		fill(&visited[0], &visited[0] + 101, -1);
+		fill(&visited[0], &visited[0] + 101, 0);
 
 		dist = bfs(i);
 
