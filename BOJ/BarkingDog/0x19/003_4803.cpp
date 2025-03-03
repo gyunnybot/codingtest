@@ -8,11 +8,11 @@ vector<int> adj[501];
 
 void dfs(int here, int prev) {
 	for (int there : adj[here]) {
-		if (there == prev) { //이전 정점으로 돌아가는 경우, cycle인지는 확인할 수 없으나 dfs는 중지
+		if (there == prev) { //이전 정점으로 돌아가는 경우 cycle인지는 확인할 수 없으나 dfs는 중지
 			continue;
 		}
 
-		if (visited[there]) { //cycle 발생 시 트리 x
+		if (visited[there]) { //확실한 cycle 발생 시 트리 x
 			isTree = false;
 			continue;
 		}
@@ -61,13 +61,13 @@ int main() {
 
 		if (ret == 0) {
 			cout << "No trees." << '\n';
-		}			
+		}
 		else if (ret == 1) {
 			cout << "There is one tree." << '\n';
-		}			
+		}
 		else {
 			cout << "A forest of " << ret << " trees." << '\n';
-		}	
+		}
 	}
 
 	return 0;
