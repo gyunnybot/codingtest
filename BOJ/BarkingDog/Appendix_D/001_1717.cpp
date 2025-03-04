@@ -15,12 +15,12 @@ int find(int x) {
 	}
 }
 
-bool uni(int u, int v) {
+void uni(int u, int v) {
 	u = find(u);
 	v = find(v);
 
 	if (u == v) {
-		return false;
+		return;
 	}
 
 	if (p[u] > p[v]) { //v의 랭크가 더 큰 경우
@@ -33,7 +33,7 @@ bool uni(int u, int v) {
 
 	p[v] = u; //v를 u의 자식으로 만든다  
 
-	return true;
+	return;
 }
 
 int main() {
