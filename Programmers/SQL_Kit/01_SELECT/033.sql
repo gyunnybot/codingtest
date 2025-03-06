@@ -15,7 +15,7 @@ WITH RECURSIVE PARENT AS (
 SELECT COUNT(ID) AS COUNT, GENERATION
 FROM PARENT -- 재귀 테이블을 기반으로 결과 테이블 생성
 WHERE ID NOT IN ( -- 자식이 없는 대장균 = 부모가 아닌 대장균
-                 SELECT IFNULL(PARENT_ID, 0) AS PARENT_ID -- NULL 연산은 값이 부정확하므로 IFNULL 처리(NULL -> 0)
+                 SELECT IFNULL(PARENT_ID, 0) AS PARENT_ID -- NULL의 NOT IN 연산은 값이 부정확하므로 IFNULL 처리
                  FROM ECOLI_DATA
                 )
 GROUP BY GENERATION

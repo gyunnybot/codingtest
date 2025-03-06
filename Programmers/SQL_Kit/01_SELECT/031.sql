@@ -4,9 +4,9 @@ SELECT A.ID, CASE WHEN A.PER > 0.75 THEN 'LOW'
                   ELSE 'CRITICAL'
              END AS COLONY_NAME
 FROM (
-        SELECT ID, PERCENT_RANK() OVER (ORDER BY SIZE_OF_COLONY DESC) AS PER
-        FROM ECOLI_DATA        
+      SELECT ID, PERCENT_RANK() OVER (ORDER BY SIZE_OF_COLONY DESC) AS PER
+      FROM ECOLI_DATA        
      ) AS A
 ORDER BY A.ID;
 
--- PERCENT_RANK() OVER (ORDER BY 비율을 나눌 속성 DESC) : 속성의 값들을 백분위로 나누기
+-- PERCENT_RANK() OVER (ORDER BY 비율을 나눌 속성) : 백분율 값으로 환산

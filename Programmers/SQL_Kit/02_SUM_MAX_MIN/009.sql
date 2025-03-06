@@ -1,4 +1,4 @@
 SELECT CONCAT(MAX(LENGTH), 'cm') AS MAX_LENGTH
 FROM FISH_INFO;
 
--- CONCAT(A, B) : 출력 시 A + B 형식으로 반환
+-- CONCAT(A, B) : 숫자, 문자열 구분없이 붙여서 출력
