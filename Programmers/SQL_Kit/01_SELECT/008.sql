@@ -4,4 +4,4 @@ WHERE AGE <= 12
 AND GEND_CD = 'W'
 ORDER BY AGE DESC, PT_NAME ASC;
 
--- IFNULL(속성, '대체할 값')
+-- IFNULL(속성, '값이 null일 때 대체할 값')

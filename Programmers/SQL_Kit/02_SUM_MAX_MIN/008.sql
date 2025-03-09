@@ -8,5 +8,5 @@ WHERE (FISH_INFO.FISH_TYPE, FISH_INFO.LENGTH) IN (
                                                  )
 ORDER BY FISH_INFO.ID;
 
--- GROUP BY로 묶어서 그룹별로 집계함수의 값을 개별적으로 구할 수 있다
--- 001.sql의 경우 전체 레코드 중 값이 겹치는 속성이 없으므로 중첩 쿼리 활용
+-- GROUP BY로 묶어서 그룹별 집계함수의 값을 개별적으로 구할 수 있다
+-- 001.sql의 경우 묶이는 그룹 없이 전체 레코드 중 최대를 찾아야 하므로 중첩 쿼리 활용
