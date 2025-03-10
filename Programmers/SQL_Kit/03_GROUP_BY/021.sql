@@ -4,4 +4,4 @@ FROM SUBWAY_DISTANCE
 GROUP BY ROUTE
 ORDER BY SUM(D_BETWEEN_DIST) DESC; -- 정렬은 숫자로 수행
 
--- CONCAT으로 정렬하면 100km가 99km보다 먼저 나오는 오류가 발생한다
+-- CONCAT으로 정렬하면 문자열 처리가 되어 100km가 99km보다 먼저 나오는 오류 발생
