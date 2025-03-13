@@ -9,8 +9,8 @@ struct info {
 };
 vector<info> v;
 
-string number;
 int n, s, b, ret;
+string number;
 
 int main() {
 	ios_base::sync_with_stdio(false);
