@@ -21,7 +21,7 @@ int main() {
 		v.push_back({ x,y });
 	}
 
-	vector<int> ret(n, -1);
+	vector<int> ret(n, -1); //계산했을 때 거리가 0이 나오는 경우와 구분하기 위해 -1로 초기화
 
 	for (int x : xpos) {
 		for (int y : ypos) {
