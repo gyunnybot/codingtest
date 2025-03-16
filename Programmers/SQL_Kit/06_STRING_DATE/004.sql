@@ -3,12 +3,12 @@ FROM (CAR_RENTAL_COMPANY_RENTAL_HISTORY AS H LEFT OUTER JOIN CAR_RENTAL_COMPANY_
 ON H.CAR_ID = C.CAR_ID) LEFT OUTER JOIN CAR_RENTAL_COMPANY_DISCOUNT_PLAN AS P
 ON C.CAR_TYPE = P.CAR_TYPE
 AND P.DURATION_TYPE IN (
-                       CASE WHEN DATEDIFF(H.END_DATE, H.START_DATE) + 1 >= 90 THEN '90일 이상'
-                            WHEN DATEDIFF(H.END_DATE, H.START_DATE) + 1 >= 30 THEN '30일 이상'
-                            WHEN DATEDIFF(H.END_DATE, H.START_DATE) + 1 >= 7 THEN '7일 이상'
-                       END
-                      )
+                        CASE WHEN DATEDIFF(H.END_DATE, H.START_DATE) + 1 >= 90 THEN '90일 이상'
+                             WHEN DATEDIFF(H.END_DATE, H.START_DATE) + 1 >= 30 THEN '30일 이상'
+                             WHEN DATEDIFF(H.END_DATE, H.START_DATE) + 1 >= 7 THEN '7일 이상'
+                        END
+                       )
 WHERE C.CAR_TYPE = '트럭'
 ORDER BY FEE DESC, H.HISTORY_ID DESC;
 
--- P.DISCOUNT_RATE는 Integer 타입이므로 테이블 상 5%로 나와도 실제 데이터 값은 5로 표기됨
+-- P.DISCOUNT_RATE는 INTEGER 타입이므로 테이블에 보여지는 값은 5%라도 실제 값은 5로 저장되어 있다

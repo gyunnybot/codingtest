@@ -9,4 +9,4 @@ FROM (
      ) AS A
 ORDER BY A.ID;
 
--- PERCENT_RANK() OVER (ORDER BY 비율을 나눌 속성) : 백분율 값으로 환산
+-- PERCENT_RANK() OVER (ORDER BY 비율을 나눌 속성) : 속성의 값을 전체 데이터 기반의 백분율 값으로 환산

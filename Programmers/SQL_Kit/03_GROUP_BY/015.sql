@@ -1,4 +1,4 @@
-SET @hour := -1;
+SET @hour := -1; -- SET @NAME := INTEGER -> @NAME 변수 선언
 
 SELECT (@hour := @hour + 1) AS HOUR, (
                                       SELECT COUNT(*)
