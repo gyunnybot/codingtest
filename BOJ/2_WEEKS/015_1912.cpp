@@ -1,23 +1,24 @@
 #include<iostream>
+#include<climits> //INT_MIN
 using namespace std;
 
-int n, k, temp, s[100001];
+int n, temp, s[100001];
 
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	cin >> n >> k;
+	cin >> n;
 
 	for (int i = 1; i <= n; i++) {
 		cin >> temp;
-		s[i] = s[i - 1] + temp;
+		s[i] = max(s[i - 1] + temp, temp);
 	}
 
-	int maxVal = -100 * 100000;
+	int maxVal = INT_MIN;
 
-	for (int i = k; i <= n; i++) {
-		maxVal = max(maxVal, s[i] - s[i - k]);
+	for (int i = 1; i <= n; i++) {
+		maxVal = max(maxVal, s[i]);
 	}
 
 	cout << maxVal;
