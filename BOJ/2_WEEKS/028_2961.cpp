@@ -5,7 +5,7 @@ using namespace std;
 
 int n, s, b;
 int ret = INT_MAX;
-vector<pair<int, int>> ingre; //신 맛, 쓴 맛
+vector<pair<int, int>> ingre; //sour, bitter
 
 void recur(int idx, int sour, int bitter, int used) {
 	if (idx == n) {
