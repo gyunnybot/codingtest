@@ -4,7 +4,7 @@
 #include<climits> //INT_MAX
 using namespace std;
 
-vector<pair<int, int>> adj[20005]; //{거리 비용, 정점 번호}
+vector<pair<int, int>> adj[20005]; //거리 비용, 정점 번호
 int v, e, st, d[20005]; //최단 거리 테이블
 
 int main() {
@@ -28,10 +28,10 @@ int main() {
 	pq.push({ d[st],st });
 
 	while (!pq.empty()) {
-		pair<int, int> cur = pq.top(); pq.pop(); //{거리 비용, 정점 번호}
+		pair<int, int> cur = pq.top(); pq.pop(); //거리 비용, 정점 번호
 
-		//해당 번호의 최단 거리와 번호까지의 거리 비용이 다르다면
-		//cur.first가 d[cur.second]보다 크다면 d[번호]의 값을 바꿀 필요가 없음
+		//해당 번호의 최단 거리와 번호까지의 거리 비용이 다를 때
+		//cur.first가 d[cur.second]보다 크다면 값을 갱신할 필요 없음
 		if (d[cur.second] != cur.first) continue;
 
 		for (pair<int,int> next : adj[cur.second]) {
@@ -43,8 +43,12 @@ int main() {
 	}
 
 	for (int i = 1; i <= v; i++) {
-		if (d[i] == INT_MAX) cout << "INF" << '\n';
-		else cout << d[i] << '\n';
+		if (d[i] == INT_MAX) {
+			cout << "INF" << '\n';
+		}
+		else {
+			cout << d[i] << '\n';
+		}
 	}
 
 	return 0;
