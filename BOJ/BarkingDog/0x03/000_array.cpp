@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-void insert(int idx, int num, int arr[], int& len) { //삽입할 인덱스 위치, 삽입할 값, 기준 배열, 배열의 길이
+void insert(int idx, int num, int arr[], int& len) { //삽입할 인덱스 번호, 삽입할 값, 대상 배열, 배열의 길이
     for (int i = len; i > idx; i--) {
         arr[i] = arr[i - 1]; //마지막 원소부터 idx번째까지의 원소를 오른쪽으로 한 칸씩 이동
     }
@@ -12,7 +12,7 @@ void insert(int idx, int num, int arr[], int& len) { //삽입할 인덱스 위�
     return;
 }
 
-void erase(int idx, int arr[], int& len) { //삭제할 인덱스 위치, 기준 배열, 배열의 길이
+void erase(int idx, int arr[], int& len) { //삭제할 인덱스 번호, 대상 배열, 배열의 길이
     len--; //전체 배열의 길이 감소
 
     for (int i = idx; i < len; i++) {

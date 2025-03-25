@@ -39,7 +39,7 @@ int main(void) {
 		else if (ch == 'B') {
 			if (cur != L.begin()) {
 				cur--;
-				cur = L.erase(cur); //erase(이터레이터). 값은 삭제되어도 이터레이터는 유지된다
+				cur = L.erase(cur); //erase(이터레이터). 값은 삭제되어도 이터레이터 위치는 유지된다
 			}
 		}
 	}

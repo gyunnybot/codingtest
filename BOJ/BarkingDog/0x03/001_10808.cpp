@@ -10,8 +10,8 @@ int main() {
 
 	cin >> s;
 
-	for (char c : s) { //counting array
-		cnt[c - 'a']++;
+	for (char c : s) {
+		cnt[c - 'a']++; //counting array
 	}
 
 	for (int i = 0; i < 26; i++) {
