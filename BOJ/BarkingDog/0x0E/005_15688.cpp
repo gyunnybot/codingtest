@@ -4,10 +4,6 @@ using namespace std;
 
 int n, a[1000001];
 
-bool cmp(int a, int b) {
-	return a < b;
-}
-
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
@@ -18,7 +14,7 @@ int main() {
 		cin >> a[i];
 	}
 
-	sort(a, a + n, cmp);
+	sort(a, a + n);
 
 	for (int i = 0; i < n; i++) {
 		cout << a[i] << '\n';

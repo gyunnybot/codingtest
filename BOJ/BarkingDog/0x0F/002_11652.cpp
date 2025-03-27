@@ -18,7 +18,7 @@ int main() {
 
 	sort(a, a + n);
 
-	ll ret = a[0]; //(-2^62 ≤ a[n] ≤ 2^62)
+	ll ret = a[0]; //-2 ^ 62 ≤ a[n] ≤ 2 ^ 62
 	int max_cnt = 1; //(1 ≤ n ≤ 100,000)
 	int cnt = 1; //(1 ≤ n ≤ 100,000)
 

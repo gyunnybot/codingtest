@@ -20,7 +20,7 @@ void nQueen(int r) {
     }    
 
     for (int c = 0; c < n; c++) {
-        col[r] = c; //r행 c열에 퀸을 놓는다. r행에서 퀸이 놓이는 열은 c행이다
+        col[r] = c; //r행 c열에 퀸을 놓는다
 
         if (check(r)) { //r행에 문제가 없다면
             nQueen(r + 1); //다음 행에 대한 nQueen 진행
