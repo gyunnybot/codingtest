@@ -18,7 +18,7 @@ int main(void) {
 
 		int cnt = 1; //본인 포함 같은 키인 사람들의 수 계산하기
 
-		while (!stk.empty() && stk.top().first <= h) { //스택 안의 사람보다 크다면(가장 직전 사람부터 역순으로 계산)
+		while (!stk.empty() && stk.top().first <= h) { //스택 안의 사람보다 크거나 같다면(가장 직전 사람부터 역순으로 계산)
 			ret += stk.top().second; //직전 사람 cnt만큼의 사람들을 현재 사람 또한 볼 수 있으므로 결과 가짓 수 추가
 
 			if (stk.top().first == h) { //만약 키가 정확히 같다면

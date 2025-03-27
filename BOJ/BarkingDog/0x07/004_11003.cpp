@@ -20,7 +20,7 @@ int main() {
 
         dq.push_back({ i,temp });
 
-        if (dq.front().first <= i - L) {
+        while (dq.front().first <= i - L) {
             dq.pop_front(); //구간 이동 시 pop_front
         }
 

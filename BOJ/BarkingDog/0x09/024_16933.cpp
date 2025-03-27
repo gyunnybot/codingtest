@@ -26,7 +26,7 @@ int bfs() {
             return visited[cur.y][cur.x][cur.broken][cur.isNoon];
         }
 
-        //이동없이 머무른 후 진행
+        //이동 없이 머무른 후 진행
         if (!visited[cur.y][cur.x][cur.broken][!cur.isNoon]) {
             visited[cur.y][cur.x][cur.broken][!cur.isNoon] = visited[cur.y][cur.x][cur.broken][cur.isNoon] + 1;
             q.push({ cur.y, cur.x, cur.broken, !cur.isNoon });
