@@ -36,7 +36,7 @@ int main() {
 		if (dp[i] == ret) {
 			v.push_back(a[i]);
 			ret--;
-		}		
+		}
 	}
 
 	reverse(v.begin(), v.end());

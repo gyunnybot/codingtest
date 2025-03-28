@@ -16,7 +16,7 @@ int main() {
 
 	sort(a + 1, a + n + 1);
 
-	dp[0] = 1;
+	dp[0] = 1; //동전을 하나도 쓰지 않는 경우 1가지
 
 	for (int i = 1; i <= n; i++) {
 		for (int j = a[i]; j <= k; j++) {

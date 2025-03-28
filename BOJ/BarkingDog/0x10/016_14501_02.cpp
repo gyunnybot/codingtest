@@ -13,7 +13,7 @@ int recur(int day) {
         return 0;
     }
 
-    if (dp[day]) { //1 ≤ Pi ≤ 1,000. 무보수가 있다면 fill(&dp[0], &dp[0]+16, -1), if(dp[day] != -1)
+    if (dp[day]) { //1 ≤ Pi ≤ 1,000. 무보수가 있다면 fill(&dp[0], &dp[0] + 16, -1), if(dp[day] != -1)
         return dp[day];
     }
 
