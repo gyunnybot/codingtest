@@ -11,4 +11,5 @@ AND P.DURATION_TYPE = (
 WHERE C.CAR_TYPE = '트럭'
 ORDER BY FEE DESC, H.HISTORY_ID DESC;
 
+-- P.DISCOUNT_RATE : Nullable = TRUE?
 -- P.DISCOUNT_RATE는 INTEGER 타입이므로 테이블에 보여지는 값은 5%라도 실제 값은 5로 저장되어 있다
