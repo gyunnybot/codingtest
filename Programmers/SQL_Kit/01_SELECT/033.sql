@@ -12,6 +12,7 @@ WITH RECURSIVE PARENT AS (
                           FROM ECOLI_DATA AS CHILD, PARENT
                           WHERE PARENT.ID = CHILD.PARENT_ID
                          )
+
 SELECT COUNT(ID) AS COUNT, GENERATION
 FROM PARENT -- 재귀 테이블을 기반으로 결과 테이블 생성
 WHERE ID NOT IN ( -- 자식이 없는 대장균 = 부모가 아닌 대장균
