@@ -14,17 +14,24 @@ int main() {
 		cin >> a[i];
 	}
 
-	sort(a + 1, a + n + 1);
+	for (int i = 1; i <= k; i++) {
+		dp[i] = k + 1;
+	}
 
-	dp[0] = 1; //동전을 하나도 쓰지 않는 경우
+	sort(a + 1, a + n + 1);
 
 	for (int i = 1; i <= n; i++) {
 		for (int j = a[i]; j <= k; j++) {
-			dp[j] = dp[j] + dp[j - a[i]];
+			dp[j] = min(dp[j], dp[j - a[i]] + 1);
 		}
 	}
 
-	cout << dp[k];
+	if (dp[k] == k + 1) {
+		cout << -1;
+	}
+	else {
+		cout << dp[k];
+	}
 
 	return 0;
 }
