@@ -9,7 +9,7 @@ struct Info {
 vector<Info> info;
 
 int v, e, a, b, c;
-vector<int> p(10001, -1); //시작 노드의 차수는 1로 고정
+vector<int> p(10001, -1); //시작 노드의 차수는 -1로 고정
 
 bool cmp(Info a, Info b) {
 	return a.cost < b.cost;

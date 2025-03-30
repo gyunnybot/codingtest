@@ -39,10 +39,10 @@ int main() {
 	cin >> t;
 
 	for (int tc = 1; tc <= t; tc++) {
-		fill(p.begin(), p.begin() + n, -1);
-
 		cin >> n >> k;
 
+		fill(p.begin(), p.begin() + n, -1);
+		
 		while (k--) {
 			cin >> a >> b;
 			uni(a, b);
