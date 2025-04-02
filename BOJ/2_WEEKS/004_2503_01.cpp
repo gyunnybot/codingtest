@@ -20,12 +20,12 @@ int main() {
 
 	for (int i = 0; i < n; i++) {
 		cin >> number >> s >> b;
-		v.push_back({ number, s, b });
+		v.push_back({ number,s,b });
 	}
 
 	for (int temp = 111; temp <= 999; temp++) {
 		string temp_num = to_string(temp);
-		
+
 		if (temp_num[0] == '0' || temp_num[1] == '0' || temp_num[2] == '0') continue;
 		if (temp_num[0] == temp_num[1] || temp_num[1] == temp_num[2] || temp_num[2] == temp_num[0]) continue;
 
@@ -43,7 +43,7 @@ int main() {
 			if (temp_num[1] == v[i].num[0] || temp_num[1] == v[i].num[2]) ball++;
 			if (temp_num[2] == v[i].num[0] || temp_num[2] == v[i].num[1]) ball++;
 
-			if (strike == v[i].s && ball == v[i].b) cnt++;
+			if (v[i].s == strike && v[i].b == ball) cnt++;
 		}
 
 		if (cnt == n) ret++;
