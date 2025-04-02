@@ -29,7 +29,7 @@ int main() {
 
 		for (int j = a[i] + 1; j < a[i + 1]; j++) {
 			if (getGCD(a[i], j) == 1) {
-				if (getGCD(a[i + 1], j) == 1) {
+				if (getGCD(j, a[i + 1]) == 1) {
 					cnt++; // 1개의 수로 공약수열 완성
 					break;
 				}
