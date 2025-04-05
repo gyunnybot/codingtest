@@ -26,7 +26,7 @@ int main() {
 		s[i] = s[i - 1] + a[i];
 	}
 
-	int minVal = INT_MAX;
+	int minVal = 200000;
 
 	for (int i = 1; i <= h; i++) {
 		minVal = min(minVal, s[i]);

@@ -20,11 +20,11 @@ int main() {
 		pos.push_back({ xpos,ypos });
 	}
 
-	for (int i = 0; i < n; i++) { //pos[0] ~ pos[n - 1]
+	for (int i = 0; i < n; i++) {
 		int x = pos[i].first;
 		int y = pos[i].second;
-		int nx = pos[(i + 1) % n].first; //마지막 좌표에 대한 nx, ny는 첫 좌표로 돌아온다
-		int ny = pos[(i + 1) % n].second; //마지막 좌표에 대한 nx, ny는 첫 좌표로 돌아온다
+		int nx = pos[(i + 1) % n].first; //마지막 좌표에 대한 nx, ny는 첫 번째 좌표로 돌아온다
+		int ny = pos[(i + 1) % n].second; //마지막 좌표에 대한 nx, ny는 첫 번째 좌표로 돌아온다
 
 		if (x == nx) {
 			int max_y = max(y, ny);
@@ -33,7 +33,7 @@ int main() {
 			a_y[min_y]++;
 			a_y[max_y]--;
 		}
-		else {
+		else { //단순직각사각형이므로 if(y == ny)로도 표현 가능
 			int max_x = max(x, nx);
 			int min_x = min(x, nx);
 

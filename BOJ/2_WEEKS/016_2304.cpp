@@ -22,7 +22,7 @@ int main() {
 	}
 
 	for (int i = 2; i < maxPos; i++) {
-		if (a[i - 1] >= a[i]) {
+		if (a[i - 1] > a[i]) {
 			a[i] = a[i - 1];
 		}
 	}
