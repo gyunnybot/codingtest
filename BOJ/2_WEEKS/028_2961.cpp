@@ -1,12 +1,11 @@
 #include<iostream>
 #include<vector>
-#include<algorithm> //sort
 #include<climits> //INT_MAX
 using namespace std;
 
 int n, s, b;
 int ret = INT_MAX;
-vector<pair<int, int>> ingre; //신 맛, 쓴 맛
+vector<pair<int, int>> ingre;
 
 void recur(int idx, int sour, int bitter, int used) {
 	if (idx == n) {
