@@ -18,7 +18,7 @@ int main() {
 			dp[idx][weight] = max(dp[idx][weight], dp[idx + 1][weight]);
 
 			if (weight + w[idx] <= k) {
-				dp[idx][weight] = max(dp[idx + 1][weight + w[idx]] + v[idx], dp[idx + 1][weight]);
+				dp[idx][weight] = max(dp[idx][weight], dp[idx + 1][weight + w[idx]] + v[idx]);
 			}
 		}
 	}
