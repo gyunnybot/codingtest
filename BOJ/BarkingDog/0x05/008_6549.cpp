@@ -12,7 +12,9 @@ int main() {
 	while (true) {
 		cin >> n;
 
-		if (n == 0) break;
+		if (n == 0) {
+			break;
+		}
 
 		stack<pair<ll, ll>> stk;
 		ll ret = 0;
