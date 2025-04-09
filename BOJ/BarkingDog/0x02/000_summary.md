@@ -52,4 +52,4 @@ Call by Value와 Call by Reference는 함수에서의 인자 전달 방식을 �
 - 얕은 복사(Shallow Copy)는 Call by Reference(참조 전달)와 유사합니다. 복사 시 같은 주소를 공유하게 됩니다.
 - 깊은 복사(Deep Copy)는 Call by Value(값 전달)와 유사합니다. 복사 시 데이터의 값만 복사하며, 주소는 공유되지 않습니다.
 
-기본 자료형이나 STL 타입 변수의 `=` 연산은 `Deep Copy`입니다.
+기본 자료형이나 STL 타입 변수의 `=` 연산은 `Deep Copy`가 발생합니다.

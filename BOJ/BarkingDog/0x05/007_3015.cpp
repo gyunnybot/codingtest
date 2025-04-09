@@ -22,7 +22,7 @@ int main(void) {
 			ret += stk.top().second; //직전 사람 cnt만큼의 사람들을 현재 사람 또한 볼 수 있으므로 결과 가짓 수 추가
 
 			if (stk.top().first == h) { //만약 키가 정확히 같다면
-				cnt += stk.top().second; //스택 cnt를 추가하여 현재 본인의 cnt 갱신
+				cnt += stk.top().second; //직전 사람의 cnt를 추가하여 현재 본인의 cnt 갱신
 			}
 
 			stk.pop(); //더 이전 사람과의 비교를 위해 pop

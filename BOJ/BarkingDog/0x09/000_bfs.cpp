@@ -37,7 +37,7 @@ int main(void) {
 	adj[2].push_back(4);
 	adj[2].push_back(5);
 
-	bfs(1);
+	bfs(1); //1 2 3 4 5
 
 	return 0;
 }
