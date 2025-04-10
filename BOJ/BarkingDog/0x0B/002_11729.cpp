@@ -16,8 +16,6 @@ void recur(int st, int dest, int n) {
 	cout << st << ' ' << dest << '\n'; //시작 위치에 있는 n번 원판을 목적지로 옮긴다
 
 	recur(mid, dest, n - 1); //mid에 있는 n-1개의 원판을 목적지로 옮긴다
-
-	return;
 }
 
 int main() {
