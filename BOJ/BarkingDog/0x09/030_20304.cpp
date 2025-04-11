@@ -24,6 +24,7 @@ int main() {
 
     while (m--) {
         cin >> x;
+        
         dist[x] = 1;
         q.push(x);
     }

@@ -57,7 +57,7 @@ void bfs() {
         if ('A' <= a[cur.first][cur.second] && a[cur.first][cur.second] <= 'Z') {
             if (keys.find((a[cur.first][cur.second]) + ('a' - 'A')) == keys.end()) { //열쇠가 없다면
                 door[a[cur.first][cur.second] - 'A'].push(cur); //아직 열쇠가 없으므로 나중을 위해 위치 저장
-                continue; //열쇠가 없으므로 cur에서의 확장 종료
+                continue; //열쇠가 없으므로 cur에서의 확장 종료. 반복문 재실행
             }
             else {
                 a[cur.first][cur.second] = '.';
@@ -93,8 +93,8 @@ int main() {
         fill(&visited[0][0], &visited[0][0] + 101 * 101, false); //init
         
         for (int i = 0; i < 26; i++) {
-            queue<pair<int, int>> flush; //init
-            swap(door[i], flush);
+            queue<pair<int, int>> flush;
+            swap(door[i], flush); //init
         }
 
         cin >> h >> w;
