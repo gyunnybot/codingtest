@@ -36,10 +36,10 @@ void bfs() {
 
         for (pair<int, int> next : adj[cur.first][cur.second]) {
             if (!light[next.first][next.second]) {
-                //입력으로 주어진 관계인 경우, 상하좌우로 인접하지 않더라도 불을 켜는 행위는 가능하다
+                //입력으로 주어진 next인 경우, 상하좌우로 인접하지 않더라도 불은 켤 수 있다
                 light[next.first][next.second] = true;
 
-                if (connected(next)) { //입력으로 주어진 관계가 상하좌우로 인접한 경우라면
+                if (connected(next)) { //next에서 상하좌우 중 이미 한 번 방문한 곳이 있는지 확인
                     visited[next.first][next.second] = true;
                     q.push({ next });
                 }

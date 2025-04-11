@@ -45,8 +45,9 @@ void bfs() {
                     flag = true;
                 }
             }
-
-            q[i] = next_q; //deep copy
+            
+            swap(q[i], next_q); //swap : call by reference. O(1)
+            //q[i] = next_q; //deep copy 방식은 O(N). p가 10 이하이므로 사용 가능
         }
 
         if (!flag) break; //더 이상 확장되지 않는다면 break
