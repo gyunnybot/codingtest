@@ -14,9 +14,8 @@ int main() {
 
 	for (int i = 0; i < n; i++) {
 		cin >> a[i];
+		dp[i] = 1;
 	}
-
-	fill(&dp[0], &dp[0] + 1001, 1); //본인을 시작점으로 둘 때 LIS의 길이는 항상 1 이상이다
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < i; j++) {

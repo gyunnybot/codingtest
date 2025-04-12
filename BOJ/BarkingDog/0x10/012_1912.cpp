@@ -1,5 +1,4 @@
 #include<iostream>
-#include<climits> //INT_MIN
 using namespace std;
 
 int n, temp, s[100001];
@@ -15,7 +14,7 @@ int main() {
 		s[i] = max(s[i - 1] + temp, temp);
 	}
 
-	int maxVal = INT_MIN;
+	int maxVal = -1000;
 
 	for (int i = 1; i <= n; i++) {
 		maxVal = max(maxVal, s[i]);

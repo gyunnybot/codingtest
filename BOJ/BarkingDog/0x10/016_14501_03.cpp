@@ -13,11 +13,11 @@ int main() {
 		cin >> t[i] >> p[i];
 	}
 
-	for (int i = n - 1; i >= 0; i--) {
-		dp[i] = dp[i + 1];
+	for (int idx = n - 1; idx >= 0; idx--) {
+		dp[idx] = max(dp[idx], dp[idx + 1]);
 
-		if (i + t[i] <= n) {
-			dp[i] = max(dp[i], dp[i + t[i]] + p[i]);
+		if (idx + t[idx] <= n) {
+			dp[idx] = max(dp[idx], dp[idx + t[idx]] + p[idx]);
 		}
 	}
 

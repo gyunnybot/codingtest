@@ -11,9 +11,8 @@ int main() {
 
 	for (int i = 0; i < n; i++) {
 		cin >> a[i];
+		dp[i] = 1;
 	}
-
-	fill(&dp[0], &dp[0] + 1001, 1);
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < i; j++) {

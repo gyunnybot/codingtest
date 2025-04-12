@@ -14,7 +14,7 @@ int plum(int idx, int tree, int cnt) {
         return 0;
     }
 
-    //움직였는데도 불구하고 점수가 없는 경우와, 이동이 없어 점수가 0인 경우를 구분하기 위해 -1로 조건 검사
+    //움직였는데도 불구하고 점수가 0인 경우와 이동이 없어 점수가 0인 경우를 구분하기 위해 -1로 조건 검사
     if (dp[idx][tree][cnt] != -1) {
         return dp[idx][tree][cnt];
     }
