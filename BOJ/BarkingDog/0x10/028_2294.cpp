@@ -14,11 +14,13 @@ int main() {
 		cin >> a[i];
 	}
 
-	for (int i = 1; i <= k; i++) {
+	sort(a + 1, a + n + 1);
+
+	dp[0] = 0; //동전을 하나도 쓰지 않는 경우
+
+	for (int i = 1; i <= k; i++) { //1원만 사용하는 경우 최대 횟수
 		dp[i] = k + 1;
 	}
-
-	sort(a + 1, a + n + 1);
 
 	for (int i = 1; i <= n; i++) {
 		for (int j = a[i]; j <= k; j++) {

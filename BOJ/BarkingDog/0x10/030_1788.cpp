@@ -13,7 +13,7 @@ int main() {
     dp[0] = 0;
     dp[1] = 1;
 
-    for (int i = 2; i <= (int)abs(n); i++) {
+    for (int i = 2; i <= abs(n); i++) {
         dp[i] = (dp[i - 1] + dp[i - 2]) % mod;
     }
 
@@ -24,7 +24,7 @@ int main() {
         cout << 0 << '\n' << 0;
     }
     else {
-        n = (int)abs(n);
+        n = abs(n);
 
         if (n % 2 == 0) {
             cout << -1 << '\n' << dp[n];
