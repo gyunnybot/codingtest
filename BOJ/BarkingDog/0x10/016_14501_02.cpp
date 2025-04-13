@@ -3,7 +3,6 @@
 using namespace std;
 
 int n, t[16], p[16], dp[16];
-int ret = INT_MIN;
 
 int recur(int day) {
 	if (day > n) {

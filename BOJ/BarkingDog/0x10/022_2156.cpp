@@ -18,8 +18,8 @@ int main() {
 	dp[2] = a[1] + a[2];
 
 	for (int i = 3; i <= n; i++) {
-		dp[i] = max(dp[i - 2], a[i - 1] + dp[i - 3]) + a[i]; //기본 dp 식
-		dp[i] = max(dp[i], dp[i - 1]); //i번째 포도주의 양이 매우 작아 오히려 손해일 경우
+		dp[i] = max(dp[i - 2], a[i - 1] + dp[i - 3]) + a[i];
+		dp[i] = max(dp[i], dp[i - 1]); //i번째 포도주의 양이 매우 작아 오히려 손해인 경우
 	}
 
 	cout << *max_element(dp + 1, dp + n + 1);

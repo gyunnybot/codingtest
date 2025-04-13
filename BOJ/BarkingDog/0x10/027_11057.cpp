@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int n, ret, dp[1001][10]; //길이, 끝자리 수
+int n, ret, dp[1001][10]; //자릿수의 길이, 끝자리 수
 
 int main() {
 	ios_base::sync_with_stdio(false);

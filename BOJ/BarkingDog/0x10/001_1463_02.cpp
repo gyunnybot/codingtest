@@ -18,7 +18,7 @@ int main() {
 			dp[i] = dp[i / 2] + 1;
 		}
 
-		if (i % 3 == 0 && dp[i] > dp[i / 3] + 1) { //visited가 없으므로 감소 폭이 큰 연산을 나중에 실행
+		if (i % 3 == 0 && dp[i] > dp[i / 3] + 1) {
 			dp[i] = dp[i / 3] + 1;
 		}
 	}

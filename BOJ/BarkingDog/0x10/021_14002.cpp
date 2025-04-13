@@ -1,6 +1,6 @@
 #include<iostream>
-#include<algorithm> //reverse
 #include<vector>
+#include<algorithm> //reverse
 using namespace std;
 
 int n, a[1001], dp[1001], ret;
