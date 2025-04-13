@@ -23,6 +23,7 @@ void bfs(int n) {
         //예제 입력 2 : 17(init, k = 5), 16(k = 6), 15(k = 8), 16(k = 11), 15(k = 15)
         //2번째 이동에서 visited[0][15] = true
         //4번째 이동에서 동생의 위치가 15이므로 수빈이는 3, 4번째 이동을 앞뒤로 이동하면 동생을 만날 수 있으며, 이것이 최소 시간이다
+        //mov에 따른 k를 n이 먼저 도달하면서 이동의 홀짝이 맞다면 만남의 최소 시간을 구할 수 있다
         if (visited[mov % 2][k]) {
             ret = mov;
             break;
@@ -39,7 +40,7 @@ void bfs(int n) {
                 if (ncur == k) { //ncur에서 동생을 찾았다면 즉시 갱신 후 break
                     flag = true;
                     ret = mov;
-
+                    
                     break;
                 }
 

@@ -2,8 +2,8 @@
 #include<deque>
 using namespace std;
 
-deque<int> dq;
 int n, m, cnt, val, pos;
+deque<int> dq;
 
 int main(void) {
 	ios_base::sync_with_stdio(false);

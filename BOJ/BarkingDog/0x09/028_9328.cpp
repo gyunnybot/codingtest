@@ -20,7 +20,7 @@ void bfs() {
     for (int i = 0; i < h; i++) {
         for (int j = 0; j < w; j++) {
             if (i == 0 || i == h - 1 || j == 0 || j == w - 1) {
-                if (a[i][j] != '*') {                    
+                if (a[i][j] != '*') {
                     visited[i][j] = true;
                     q.push({ i, j });
                 }
@@ -91,7 +91,7 @@ int main() {
         keys.clear(); //init
 
         fill(&visited[0][0], &visited[0][0] + 101 * 101, false); //init
-        
+
         for (int i = 0; i < 26; i++) {
             queue<pair<int, int>> flush;
             swap(door[i], flush); //init

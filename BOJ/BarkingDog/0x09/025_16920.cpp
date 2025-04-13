@@ -47,7 +47,7 @@ void bfs() {
             }
             
             swap(q[i], next_q); //swap : call by reference. O(1)
-            //q[i] = next_q; //deep copy 방식은 O(N). p가 10 이하이므로 사용 가능
+            //q[i] = next_q; //deep copy. O(N)인데 q <= 10이므로 해당 문제에서는 사용 가능
         }
 
         if (!flag) break; //더 이상 확장되지 않는다면 break
