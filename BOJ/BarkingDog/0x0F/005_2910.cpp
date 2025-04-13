@@ -1,11 +1,11 @@
 #include<iostream>
-#include<map>
 #include<vector>
+#include<unordered_map> //unordered_map
 #include<algorithm> //sort
 using namespace std;
 
 int n, c, temp;
-map<int, int> mp, mp2;
+unordered_map<int, int> mp, mp2;
 vector<pair<int, int>> v;
 
 bool cmp(pair<int, int> a, pair<int, int>b) {

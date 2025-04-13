@@ -1,6 +1,6 @@
 #include<iostream>
-#include<algorithm> //stable_sort
 #include<vector>
+#include<algorithm> //stable_sort
 using namespace std;
 
 int n, age;

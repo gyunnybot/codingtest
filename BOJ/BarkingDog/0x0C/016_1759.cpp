@@ -70,7 +70,7 @@ int main() {
         cin >> a[i];
     }
 
-    sort(a, a + c); //문자 정렬
+    sort(a, a + c);
 
     combi(-1, v, visited);
 

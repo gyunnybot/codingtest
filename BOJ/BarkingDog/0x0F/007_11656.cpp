@@ -12,7 +12,7 @@ int main() {
 
 	cin >> s;
 
-	while (!s.empty()) {
+	while (s.size()) {
 		v.push_back(s);
 		s.erase(0, 1);
 	}

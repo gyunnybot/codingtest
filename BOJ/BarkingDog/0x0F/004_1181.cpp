@@ -1,6 +1,6 @@
 #include<iostream>
-#include<algorithm> //sort, unique
 #include<vector>
+#include<algorithm> //sort, unique
 using namespace std;
 
 vector<string> v;
