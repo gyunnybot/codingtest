@@ -14,15 +14,15 @@ int main() {
 	}
 
 	for (int i = 1; i <= n; i++) {
-		dp[i][i] = 1; //i부터 i까지. 한자리 수는 팰린드롬
+		dp[i][i] = 1; //길이가 1인 모든 구간은 팰린드롬
 
 		if (i != 1 && a[i - 1] == a[i]) {
-			dp[i - 1][i] = 1; //두자리수가 같은 경우
+			dp[i - 1][i] = 1; //연속된 두 숫자가 같으면 팰린드롬
 		}
 	}
 	
-	for (int i = 2; i < n; i++) {
-		for (int j = 1; i + j <= n; j++) {
+	for (int i = 2; i < n; i++) { //i: 팰린드롬의 길이 - 1
+		for (int j = 1; i + j <= n; j++) { //j: 시작 인덱스, i + j: 끝 인덱스
 			if (a[j] == a[i + j] && dp[j + 1][i + j - 1] == 1) {
 				dp[j][i + j] = 1;
 			}
@@ -41,5 +41,6 @@ int main() {
 			cout << 0 << '\n';
 		}
 	}
+	
 	return 0;
 }

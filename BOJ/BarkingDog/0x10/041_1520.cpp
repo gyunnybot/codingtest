@@ -16,7 +16,7 @@ int dfs(int y, int x) {
 
     int ret = 0;
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) { //상하좌우 탐색
         int ny = y + dy[i];
         int nx = x + dx[i];
 
