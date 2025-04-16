@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int n, m, a[2001], dp[2001][2001], s, e;
+int n, m, a[2001], dp[2001][2001], s, e; //dp[start][end]: start ~ end 범위는 팰린드롬
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -21,7 +21,7 @@ int main() {
 		}
 	}
 	
-	for (int i = 2; i < n; i++) { //i: 팰린드롬의 길이 - 1
+	for (int i = 2; i < n; i++) {
 		for (int j = 1; i + j <= n; j++) { //j: 시작 인덱스, i + j: 끝 인덱스
 			if (a[j] == a[i + j] && dp[j + 1][i + j - 1] == 1) {
 				dp[j][i + j] = 1;

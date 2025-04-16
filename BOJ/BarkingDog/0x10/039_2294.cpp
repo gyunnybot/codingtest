@@ -24,7 +24,7 @@ int main() {
 
 	for (int i = 1; i <= n; i++) {
 		for (int j = a[i]; j <= k; j++) {
-			dp[j] = min(dp[j], dp[j - a[i]] + 1);
+			dp[j] = min(dp[j], dp[j - a[i]] + 1); //LIS와 비슷한 접근
 		}
 	}
 

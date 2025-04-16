@@ -3,7 +3,7 @@ using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int n, m, board[501][501], dp[501][501];
+int n, m, a[501][501], dp[501][501];
 
 int dfs(int y, int x) {
     if (y == n - 1 && x == m - 1) { //목적지 도착 시 1 반환
@@ -22,7 +22,7 @@ int dfs(int y, int x) {
 
         if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
-        if (board[ny][nx] < board[y][x]) {
+        if (a[ny][nx] < a[y][x]) {
             ret += dfs(ny, nx);
         }
     }
@@ -40,7 +40,7 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            cin >> board[i][j];
+            cin >> a[i][j];
         }
     }
 
