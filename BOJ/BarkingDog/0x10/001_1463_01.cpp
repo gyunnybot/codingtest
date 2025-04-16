@@ -18,10 +18,10 @@ void bfs(int n) {
 			ret = visited[cur] - 1;
 			break;
 		}
-
-		if ((cur % 3) == 0 && !visited[cur / 3]) {
-			visited[cur / 3] = visited[cur] + 1;
-			q.push((cur / 3));
+		
+		if (cur - 1 >= 1 && !visited[cur - 1]) {
+			visited[cur - 1] = visited[cur] + 1;
+			q.push(cur - 1);
 		}
 
 		if ((cur % 2) == 0 && !visited[cur / 2]) {
@@ -29,9 +29,9 @@ void bfs(int n) {
 			q.push((cur / 2));
 		}
 
-		if (cur - 1 >= 1 && !visited[cur - 1]) {
-			visited[cur - 1] = visited[cur] + 1;
-			q.push(cur - 1);
+		if ((cur % 3) == 0 && !visited[cur / 3]) {
+			visited[cur / 3] = visited[cur] + 1;
+			q.push((cur / 3));
 		}
 	}
 

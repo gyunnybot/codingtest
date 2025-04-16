@@ -3,7 +3,7 @@
 #include<climits> //INT_MIN
 using namespace std;
 
-int t, w, dp[1004][2][34], pos[1004]; //dp[시간][위치][남은 횟수]
+int t, w, a[1004], dp[1004][2][34]; //dp[시간][위치][남은 횟수]
 
 int plum(int idx, int tree, int cnt) {
     if (cnt < 0) {
@@ -18,7 +18,7 @@ int plum(int idx, int tree, int cnt) {
         return dp[idx][tree][cnt];
     }
 
-    dp[idx][tree][cnt] = max(plum(idx + 1, tree ^ 1, cnt - 1), plum(idx + 1, tree, cnt)) + (tree == (pos[idx] - 1));
+    dp[idx][tree][cnt] = max(plum(idx + 1, tree ^ 1, cnt - 1), plum(idx + 1, tree, cnt)) + (tree == (a[idx] - 1));
 
     return dp[idx][tree][cnt];
 }
@@ -27,16 +27,16 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
 
-    //움직였는데도 불구하고 점수가 0인 경우와 이동이 없어 점수가 0인 경우를 구분하기 위해 -1로 초기화
-    fill(&dp[0][0][0], &dp[0][0][0] + 1002 * 2 * 34, -1);
-
     cin >> t >> w;
 
     for (int i = 0; i < t; i++) {
-        cin >> pos[i];
+        cin >> a[i];
     }
 
-    cout << max(plum(0, 0, w), plum(0, 1, w - 1));
+    //움직였는데도 불구하고 점수가 0인 경우와 이동이 없어 점수가 0인 경우를 구분하기 위해 -1로 초기화
+    fill(&dp[0][0][0], &dp[0][0][0] + 1002 * 2 * 34, -1);
+
+    cout << max(plum(0, 0, w), plum(0, 1, w - 1)); //처음 위치는 0에서 시작한다
 
     return 0;
 }
