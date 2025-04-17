@@ -2,7 +2,7 @@
 using namespace std;
 
 int n, parent, L, R, ret, last_node;
-bool visited[100001], flag;
+bool flag, visited[100001];
 pair<int, int> adj[100001];
 
 void recur(int here) {
@@ -28,8 +28,6 @@ void recur(int here) {
 		return;
 	}
 }
-
-
 
 void inorder(int here) {
 	if (here == -1) return;
