@@ -20,7 +20,7 @@ void bfs(int here) {
                 visited[next] = visited[cur] + 1;
                 q.push(next);
 
-                max_dist = visited[next];
+                max_dist = max(max_dist, visited[next]);
             }
         }
     }
@@ -46,7 +46,7 @@ int main() {
     for (int i = 1; i <= n; i++) {
         if (visited[i] == max_dist) {
             if (!cnt) {
-                cout << i << ' '; //만약 거리가 같은 헛간이 여러개면 가장 작은 헛간 번호를 출력한다
+                cout << i << ' '; //거리가 같은 헛간이 여러 개라면 가장 작은 헛간 번호를 출력한다
             }
 
             cnt++;

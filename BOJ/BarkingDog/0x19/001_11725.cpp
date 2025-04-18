@@ -26,7 +26,6 @@ int main() {
 	cin >> n;
 
 	for (int i = 0; i < n - 1; i++) {
-		//트리 상에서 연결된 두 정점이 주어진다
 		//입력으로는 누가 부모이고 자식인지 알 수 없음
 		cin >> a >> b;
 
@@ -35,7 +34,7 @@ int main() {
 		adj[b].push_back(a);
 	}
 
-	dfs(1); //트리의 루트를 1이라고 정했을 때
+	dfs(1);
 
 	for (int i = 2; i <= n; i++) {
 		cout << parent[i] << '\n';

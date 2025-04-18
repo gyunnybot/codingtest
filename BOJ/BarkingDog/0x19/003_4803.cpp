@@ -12,7 +12,7 @@ void dfs(int here, int prev) {
 			continue;
 		}
 
-		if (visited[there]) { //확실한 cycle 발생 시 트리 x
+		if (visited[there]) { //확실한 cycle일 경우 트리 x
 			isTree = false;
 			continue;
 		}
@@ -31,7 +31,7 @@ int main() {
 	while (cin >> n >> m) {
 		if (n == 0 && m == 0) break;
 
-		fill(&visited[0], &visited[0] + 501, 0);
+		fill(&visited[0], &visited[0] + 501, false);
 
 		for (int i = 1; i <= n; i++) {
 			adj[i].clear();

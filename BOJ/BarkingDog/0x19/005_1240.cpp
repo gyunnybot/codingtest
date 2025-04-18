@@ -14,9 +14,9 @@ void dfs(int from, int to, int dist) {
 		return;
 	}
 
-	for (pair<int, int> cur : adj[from]) {
-		int d = dist + cur.second;
+	for (pair<int, int> cur : adj[from]) {		
 		int next = cur.first;
+		int d = dist + cur.second;
 
 		if (!visited[next]) {
 			dfs(next, to, d);

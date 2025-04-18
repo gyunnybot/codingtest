@@ -48,7 +48,6 @@ int main() {
 		adj[parent - 'A'].second = R;
 	}
 
-	//항상 A가 루트 노드가 된다
 	preorder('A'); cout << '\n';
 	inorder('A'); cout << '\n';
 	postorder('A');

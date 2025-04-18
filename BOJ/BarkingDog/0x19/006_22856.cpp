@@ -13,19 +13,23 @@ void recur(int here) {
 		ret++;
 		recur(left);
 
-		if (!flag) ret++;
+		if (!flag) { //left가 루트인 서브 트리 탐색 후 올라오기
+			ret++;
+		}
 	}
 
 	if (right != -1) {
 		ret++;
 		recur(right);
 
-		if (!flag) ret++;
+		if (!flag) { //right가 루트인 서브 트리 탐색 후 올라오기
+			ret++;
+		}
 	}
 
 	if (here == last_node) {
 		flag = true;
-		return;
+		return; //last_node를 만나면 즉시 return
 	}
 }
 
@@ -33,9 +37,7 @@ void inorder(int here) {
 	if (here == -1) return;
 
 	inorder(adj[here].first);
-
 	last_node = here;
-
 	inorder(adj[here].second);
 }
 
@@ -52,8 +54,8 @@ int main() {
 		adj[parent].second = R;
 	}
 
-	inorder(1);
-	recur(1);
+	inorder(1); //중위 순회로 유사 중위 순회의 끝 찾기
+	recur(1); //유사 중위 순회 시작
 
 	cout << ret;
 
