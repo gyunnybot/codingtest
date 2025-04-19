@@ -2,19 +2,19 @@
 #include<queue> //priority_queue
 using namespace std;
 
-int n, temp;
-priority_queue<int, vector<int>, greater<int>> pq; //우선순위 큐에서 오름차순 = 최소 힙
+int k, temp;
+priority_queue<int, vector<int>, greater<int>> pq; //루트 노드를 시작점으로. 오름차순 = 최소 힙
 //sort(a.begin(), a.end(), greater<int>()); //내림차순
-//map<int, int, greater<>> mp; //내림차순
 //set<int, greater<>> st; //내림차순
+//map<int, int, greater<>> mp; //내림차순
 
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	cin >> n;
+	cin >> k;
 
-	while (n--) {
+	while (k--) {
 		cin >> temp;
 		pq.push(temp);
 	}

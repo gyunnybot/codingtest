@@ -3,7 +3,7 @@
 using namespace std;
 typedef long long ll;
 
-int t, n, temp;
+int t, k, temp;
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -12,11 +12,11 @@ int main() {
 	cin >> t;
 
 	while (t--) {
-		cin >> n;
+		cin >> k;
 
-		priority_queue<ll, vector<ll>, greater<ll>> pq;
+		priority_queue<ll, vector<ll>, greater<ll>> pq; //루트 노드를 시작점으로. 오름차순 = 최소 힙
 
-		for (int i = 0; i < n; i++) {
+		for (int i = 0; i < k; i++) {
 			cin >> temp;
 			pq.push(temp);
 		}

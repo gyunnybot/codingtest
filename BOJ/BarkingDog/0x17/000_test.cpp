@@ -10,12 +10,12 @@ void push(int x) {
     int idx = sz;
 
     while (idx != 1) { //루트까지 올라가면서 계산
-        int par = idx / 2; //부모 원소의 번호
+        int parent = idx / 2; //부모 원소의 번호
 
-        if (heap[par] <= heap[idx]) break;
+        if (heap[parent] <= heap[idx]) break;
 
-        swap(heap[par], heap[idx]); //원소의 값 바꾸기
-        idx = par; //원소 번호 바꾸기
+        swap(heap[parent], heap[idx]); //원소의 값 바꾸기
+        idx = parent; //원소 번호 바꾸기
     }
 
     return;
@@ -30,7 +30,7 @@ void pop() {
 
     int idx = 1;
     
-    while (2 * idx <= sz) { //왼쪽 자식의 인덱스(= 2*idx)가 size보다 크면 idx는 리프
+    while (2 * idx <= sz) { //왼쪽 자식의 인덱스(= 2 * idx)가 size보다 크면 idx는 리프
         int lc = 2 * idx, rc = 2 * idx + 1; //왼쪽 자식, 오른쪽 자식
         int min_child = lc; //두 자식 중 작은 인덱스를 담을 예정
 
