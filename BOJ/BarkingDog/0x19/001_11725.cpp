@@ -26,10 +26,8 @@ int main() {
 	cin >> n;
 
 	for (int i = 0; i < n - 1; i++) {
-		//입력으로는 누가 부모이고 자식인지 알 수 없음
 		cin >> a >> b;
 
-		//양방향 간선 후 visited를 통해 부모 - 자식 노드 확인하기
 		adj[a].push_back(b);
 		adj[b].push_back(a);
 	}

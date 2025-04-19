@@ -7,17 +7,18 @@ bool visited[501], isTree;
 vector<int> adj[501];
 
 void dfs(int here, int prev) {
+	visited[here] = true;
+
 	for (int there : adj[here]) {
-		if (there == prev) { //이전 정점으로 돌아가는 경우 cycle인지는 확인할 수 없으나 dfs는 중지
-			continue;
+		if (there == prev) {
+			continue; //prev일 경우 dfs 종료
 		}
 
-		if (visited[there]) { //확실한 cycle일 경우 트리 x
+		if (visited[there]) {
 			isTree = false;
-			continue;
+			continue; //prev가 아닌데 이미 방문한 곳이라면 트리가 아니다
 		}
 
-		visited[there] = true;
 		dfs(there, here);
 	}
 
@@ -49,8 +50,7 @@ int main() {
 		for (int i = 1; i <= n; i++) {
 			if (visited[i]) continue;
 
-			visited[i] = true;
-			isTree = true;
+			isTree = true; //init
 
 			dfs(i, -1);
 

@@ -11,26 +11,27 @@ void recur(int here) {
 
 	if (left != -1) {
 		ret++;
-		recur(left);
+		recur(left); //left가 루트 노드인 서브 트리 탐색
 
-		if (!flag) { //left가 루트인 서브 트리 탐색 후 올라오기
+		if (!flag) { //탐색 후 올라오기
 			ret++;
 		}
 	}
 
 	if (right != -1) {
 		ret++;
-		recur(right);
+		recur(right); //right가 루트 노드인 서브 트리 탐색
 
-		if (!flag) { //right가 루트인 서브 트리 탐색 후 올라오기
+		if (!flag) { //탐색 후 올라오기
 			ret++;
 		}
 	}
 
 	if (here == last_node) {
 		flag = true;
-		return; //last_node를 만나면 즉시 return
 	}
+
+	return;
 }
 
 void inorder(int here) {
