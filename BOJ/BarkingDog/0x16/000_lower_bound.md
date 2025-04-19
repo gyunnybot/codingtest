@@ -28,9 +28,9 @@
 ## 4. 코드 예시
 
 ```cpp
-#include <iostream>
-#include <set>
-#include <algorithm> //std::lower_bound
+#include<iostream>
+#include<set> //multiset::lower_bound 
+#include<algorithm> //std::lower_bound
 
 int main() {
     std::multiset<int> bag = {1, 2, 3, 5, 7, 9};
@@ -43,8 +43,8 @@ int main() {
     }
 
     //2. 범위 기반 lower_bound
-    auto it2 = std::lower_bound(bag.begin(), bag.end(), 5); //O(N)
-    
+    auto it2 = std::lower_bound(bag.begin(), bag.end(), 5); //반복자의 차이로 인해 O(N)
+
     if (it2 != bag.end()) {
         std::cout << "std::lower_bound: " << *it2 << std::endl; //출력: 5
     }
@@ -57,4 +57,5 @@ int main() {
 - **`std::lower_bound`의 시간 복잡도는 반복자의 종류에 따라 달라집니다.**
   - 임의 접근 반복자: **`O(log N)`**
   - 양방향 반복자: **`O(N)`**
-- `std::multiset::lower_bound`는 항상 `O(log N)`으로 동작하며, `std::multiset`과 같은 정렬 컨테이너에서는 멤버 함수 `lower_bound`를 사용하는 것이 훨씬 효율적입니다.
+
+- `std::multiset::lower_bound`는 항상 `O(log N)`으로 동작하며, `std::multiset`과 같은 트리 기반의 정렬 컨테이너에서는 멤버 함수로 내장된 `lower_bound`를 사용하는 것이 훨씬 효율적입니다.

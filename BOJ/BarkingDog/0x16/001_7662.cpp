@@ -23,14 +23,14 @@ int main() {
 				if (ms.empty()) continue;
 
 				if (num == 1) { //최대값 삭제
-					ms.erase(prev(ms.end())); //prev(해당 이터레이터) : 해당 이터레이터의 이전 이터레이터를 반환
+					ms.erase(prev(ms.end())); //prev(해당 이터레이터) : 해당 이터레이터의 이전 이터레이터 반환
 				}
 				else { //최소값 삭제
-					ms.erase(ms.begin()); //multiset.erase(해당 이터레이터)
+					ms.erase(ms.begin()); //multiset::erase(해당 이터레이터)
 				}
 			}
 			else {
-				ms.insert(num); //multiset.insert(데이터 값)
+				ms.insert(num); //multiset::insert(값)
 			}
 		}
 

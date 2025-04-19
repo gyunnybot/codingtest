@@ -29,7 +29,7 @@ int main() {
 	sort(jewel_info.begin(), jewel_info.end());
 	sort(bag.begin(), bag.end());
 
-	priority_queue<int, vector<int>, less<int>> pq;
+	priority_queue<int, vector<int>, less<int>> pq; //pq less = 최대 힙
 
 	int j = 0;
 

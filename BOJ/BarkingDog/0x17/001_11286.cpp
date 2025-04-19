@@ -6,10 +6,10 @@ class cmp {
 	public:
 		bool operator()(int a, int b) {
 			if (abs(a) != abs(b)) {
-				return abs(a) > abs(b); //절댓값이 가장 작은 값을 pq.top()으로 = 최소 힙 = greater(우선순위 큐는 반대)
+				return abs(a) > abs(b); //greater = 최소 힙
 			}
 			else {
-				return a > b; //가장 작은 값을 pq.top()으로 = 최소 힙 = greater(우선순위 큐는 반대)
+				return a > b; //greater = 최소 힙
 			}
 		}
 };

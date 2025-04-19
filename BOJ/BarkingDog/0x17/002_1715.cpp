@@ -3,7 +3,7 @@
 using namespace std;
 
 int n, temp;
-priority_queue<int, vector<int>, greater<int>> pq; //루트 노드를 시작점으로. 오름차순 = 최소 힙
+priority_queue<int, vector<int>, greater<int>> pq; //pq greater = 최소 힙
 //sort(a.begin(), a.end(), greater<int>()); //내림차순
 //set<int, greater<>> st; //내림차순
 //map<int, int, greater<>> mp; //내림차순

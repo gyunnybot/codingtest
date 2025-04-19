@@ -3,7 +3,7 @@
 using namespace std;
 
 int n, temp;
-priority_queue<int, vector<int>, less<int>> pq; //루트 노드를 시작점으로. 내림차순 = 최대 힙
+priority_queue<int, vector<int>, less<int>> pq; //pq less = 최대 힙
 
 int main() {
     ios_base::sync_with_stdio(false);
