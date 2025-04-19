@@ -39,8 +39,14 @@ int main() {
 		adj[b].push_back(a);
 	}
 
+	/* 입력되는 친구 관계 ai, bi에서 (1 ≤ ai < bi ≤ n)이라는 조건이 없다면 정렬 필요
+	for (int i = 1; i <= n; i++) {
+		sort(adj[i].begin(), adj[i].end());
+	}
+	*/
+
 	bfs(1);
-	
+
 	for (int i = 2; i <= n; i++) {
 		if (2 <= visited[i] && visited[i] <= 3) { //자신의 친구(2)와 친구의 친구(3)
 			ret++;

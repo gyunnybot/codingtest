@@ -11,7 +11,7 @@ int bfs(int n) {
 	queue<int> q;
 	q.push(n);
 
-	int d = 0; //정점 사이의 거리 총합
+	int dist = 0; //정점 사이의 거리 총합
 	visited[n] = 1;
 
 	while (!q.empty()) {
@@ -22,12 +22,12 @@ int bfs(int n) {
 				visited[next] = visited[cur] + 1;
 				q.push(next);
 
-				d += (visited[next] - 1);
+				dist += (visited[next] - 1);
 			}
 		}
 	}
 
-	return d;
+	return dist;
 }
 
 int main() {
