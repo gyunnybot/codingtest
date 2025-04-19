@@ -16,7 +16,6 @@ int main() {
         cin >> a[i];
     }
 
-
     while (m--) {
         sort(a, a + n);
 

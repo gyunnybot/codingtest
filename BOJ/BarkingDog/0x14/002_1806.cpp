@@ -17,8 +17,9 @@ int main() {
 
 	int ed = 0;
 
+	/*길이, 값의 차이 등을 살펴볼 때 사용되는 투 포인터 반복문 형식*/
 	for (int st = 0; st < n; st++) {
-		while (ed <= n && sum < s) { //투 포인터 : 범위를 꼼꼼히 살핀다
+		while (ed <= n && sum < s) { //투 포인터: 범위를 꼼꼼히 살핀다
 			sum += a[ed];
 			ed++;
 		}

@@ -4,6 +4,7 @@
 using namespace std;
 
 int n, m, a[100001];
+int ret = INT_MAX;
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -16,10 +17,10 @@ int main() {
 	}
 
 	sort(a, a + n);
-
-	int ret = INT_MAX;
+	
 	int ed = 0;
 
+	/*길이, 차이 등을 살펴볼 때 사용되는 투 포인터 반복문 형식*/
 	for (int st = 0; st < n; st++) { //같은 수를 고를 수도 있다
 		while (ed < n && a[ed] - a[st] < m) {
 			ed++;

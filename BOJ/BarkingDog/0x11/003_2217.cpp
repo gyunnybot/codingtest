@@ -2,7 +2,7 @@
 #include<algorithm> //sort
 using namespace std;
 
-int n, a[100001], ret; //a[i]는 10,000을 넘지 않는 자연수
+int n, a[100001], ret;
 
 int main() {
     ios_base::sync_with_stdio(false);
