@@ -28,7 +28,7 @@ int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	era(1000); //수는 1,000 이하의 자연수이다
+	era(1000); //1,000 이하의 자연수
 
     cin >> n;
 

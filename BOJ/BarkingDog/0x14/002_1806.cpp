@@ -18,7 +18,7 @@ int main() {
 	int ed = 0;
 
 	for (int st = 0; st < n; st++) {
-		while (ed <= n && sum < s) { //투 포인터 : 범위 항상 조심하기!
+		while (ed <= n && sum < s) { //투 포인터 : 범위를 꼼꼼히 살핀다
 			sum += a[ed];
 			ed++;
 		}

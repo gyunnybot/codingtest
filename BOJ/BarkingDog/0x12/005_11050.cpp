@@ -3,7 +3,7 @@ using namespace std;
 
 int n, k;
 
-//이항 계수 (n,k) 직접 계산
+//이항 계수 (n, k) 직접 계산
 int factorial(int n, int k) {
     int ret1 = 1;
 
