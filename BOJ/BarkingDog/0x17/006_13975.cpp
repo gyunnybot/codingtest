@@ -14,7 +14,7 @@ int main() {
 	while (t--) {
 		cin >> k;
 
-		priority_queue<ll, vector<ll>, greater<ll>> pq; //루트 노드를 시작점으로. 오름차순 = 최소 힙
+		priority_queue<ll, vector<ll>, greater<ll>> pq; //pq greater = 최소 힙
 
 		for (int i = 0; i < k; i++) {
 			cin >> temp;

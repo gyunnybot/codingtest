@@ -6,10 +6,10 @@ class cmp {
 	public:
 		bool operator()(int a, int b) {
 			if (abs(a) != abs(b)) {
-				return abs(a) > abs(b); //greater = 최소 힙
+				return abs(a) > abs(b); //pq greater = 최소 힙
 			}
 			else {
-				return a > b; //greater = 최소 힙
+				return a > b; //pq greater = 최소 힙
 			}
 		}
 };

@@ -3,7 +3,7 @@
 using namespace std;
 
 int n, temp;
-priority_queue<int, vector<int>, greater<int>> pq; //루트 노드를 시작점으로. 오름차순 = 최소 힙
+priority_queue<int, vector<int>, greater<int>> pq; //pq greater = 최소 힙
 
 int main() {
     ios_base::sync_with_stdio(false);
