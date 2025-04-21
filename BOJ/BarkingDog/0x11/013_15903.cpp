@@ -4,7 +4,7 @@ using namespace std;
 typedef long long ll;
 
 int n, m;
-ll a[1001], ret; //long long 주의!!!!!
+ll a[1001], ret;
 
 int main() {
     ios_base::sync_with_stdio(false);

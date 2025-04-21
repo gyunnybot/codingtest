@@ -3,7 +3,7 @@
 #include<algorithm> //sort
 using namespace std;
 
-int n;
+int n, ret;
 vector<pair<int, int>> flower;
 
 int main() {
@@ -20,30 +20,30 @@ int main() {
 
 	sort(flower.begin(), flower.end());
 
-	int date = 301;
-	int temp = 0;
-	int ret = 0;
-	int i = -1;
-	bool flag = false;
+	int end_date = 301;
 
-	while (date <= 1130 && i < n) {
-		flag = false;
-		i++;
+	if (flower[0].first > end_date) {
+		cout << 0;
+		return 0;
+	}
+	
+	int i = 0;
+	int temp_date = 0;
 
-		for (int j = i; j < n; j++) {
-			if (flower[j].first > date) {
-				break;
-			}
+	while (end_date <= 1130) {
+		bool flag = false;
 
-			if (temp < flower[j].second) {
-				temp = flower[j].second;
+		while (i < n && flower[i].first <= end_date) {
+			if (temp_date < flower[i].second) {
+				temp_date = flower[i].second;
 				flag = true;
-				i = j;
 			}
+
+			i++; //다음 꽃의 날짜 확인하기
 		}
 
 		if (flag) {
-			date = temp;
+			end_date = temp_date;
 			ret++;
 		}
 		else {
