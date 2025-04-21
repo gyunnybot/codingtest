@@ -4,8 +4,8 @@
 #include<climits> //INT_MAX
 using namespace std;
 
-vector<pair<int, int>> adj[20005]; //거리 비용, 정점 번호
-int v, e, st, d[20005]; //최단 거리 테이블
+vector<pair<int, int>> adj[20005];
+int v, e, st, d[20005];
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -19,32 +19,30 @@ int main() {
 		int u, v, w;
 
 		cin >> u >> v >> w;
-		adj[u].push_back({ w,v });
+		adj[u].push_back({ w,v }); //{u -> v로 가는 데 계산되는 가중치, 목적지 노드}
 	}
 
-	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq; //pq greater = 최소 힙
 
-	d[st] = 0; //시작점의 최단 거리는 0으로 고정
-	pq.push({ d[st],st });
+	d[st] = 0; //시작점에서 시작점으로 가는 최단 거리는 0
+	pq.push({ d[st],st }); //{st -> st까지의 최단 거리, st}
 
 	while (!pq.empty()) {
-		pair<int, int> cur = pq.top(); pq.pop(); //거리 비용, 정점 번호
+		pair<int, int> cur = pq.top(); pq.pop(); //{st -> 목적지 노드까지의 최단 거리, 목적지 노드}
 
-		//해당 번호의 최단 거리와 번호까지의 거리 비용이 다를 때
-		//cur.first가 d[cur.second]보다 크다면 값을 갱신할 필요 없음
-		if (d[cur.second] != cur.first) continue;
+		if (cur.first != d[cur.second]) continue;
 
-		for (pair<int,int> next : adj[cur.second]) {
+		for (pair<int, int> next : adj[cur.second]) {
 			if (d[next.second] <= d[cur.second] + next.first) continue;
 
-			d[next.second] = d[cur.second] + next.first;
+			d[next.second] = d[cur.second] + next.first; //최단 거리로 갱신
 			pq.push({ d[next.second], next.second });
 		}
 	}
 
 	for (int i = 1; i <= v; i++) {
 		if (d[i] == INT_MAX) {
-			cout << "INF" << '\n';
+			cout << "INF\n";
 		}
 		else {
 			cout << d[i] << '\n';
