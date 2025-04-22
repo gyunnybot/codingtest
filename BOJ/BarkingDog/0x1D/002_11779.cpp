@@ -2,16 +2,17 @@
 #include<vector>
 #include<queue> //priority_queue
 #include<climits> //INT_MAX
+#include<algorithm> //reverse
 using namespace std;
 
-vector<pair<int, int>> adj[20001];
-int v, e, st, d[20001];
+vector<pair<int, int>> adj[1001];
+int v, e, st, ed, d[1001], pre[1001];
 
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	cin >> v >> e >> st;
+	cin >> v >> e;
 
 	fill(d, d + v + 1, INT_MAX);
 
@@ -22,7 +23,9 @@ int main() {
 		adj[u].push_back({ w,v }); //{가중치, 목적지 노드}
 	}
 
-	//pq greater = 최소 힙, {st에서 노드까지의 최소 거리, 현재 노드}
+	cin >> st >> ed;
+
+	//pq greater = 최소 힙. {st에서 노드까지의 최소 거리, 현재 노드}
 	priority_queue < pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 
 	d[st] = 0;
@@ -36,18 +39,32 @@ int main() {
 		for (pair<int, int> next : adj[cur.second]) {
 			if (d[next.second] <= d[cur.second] + next.first) continue;
 
-			d[next.second] = d[cur.second] + next.first; //최단 거리로 갱신
+			d[next.second] = d[cur.second] + next.first; //최단 거리 갱신
 			pq.push({ d[next.second],next.second });
+
+			pre[next.second] = cur.second; //최단 경로로 거쳐간 이전 도시 번호 저장
 		}
 	}
 
-	for (int i = 1; i <= v; i++) {
-		if (d[i] == INT_MAX) {
-			cout << "INF\n";
-		}
-		else {
-			cout << d[i] << '\n';
-		}
+	cout << d[ed] << '\n';
+
+	vector<int> v;
+
+	int idx = ed;
+
+	while (idx != st) {
+		v.push_back(idx);
+		idx = pre[idx];
+	}
+
+	v.push_back(idx);
+
+	reverse(v.begin(), v.end());
+
+	cout << v.size() << '\n';
+
+	for (int i : v) {
+		cout << i << ' ';
 	}
 
 	return 0;
