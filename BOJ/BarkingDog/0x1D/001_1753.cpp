@@ -22,7 +22,7 @@ int main() {
 		adj[u].push_back({ w,v }); //{가중치, 목적지 노드}
 	}
 
-	//pq greater = 최소 힙, {st에서 노드까지의 최소 거리, 현재 노드}
+	//pq greater = 최소 힙. {st에서 노드까지의 최소 거리, 현재 노드}
 	priority_queue < pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 
 	d[st] = 0;
