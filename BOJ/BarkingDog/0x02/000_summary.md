@@ -32,7 +32,7 @@
 
 ### 2. STL 객체(Call-by-Value vs Call-by-Reference)
 - STL 객체(예: `std::vector`, `std::string`)를 단순히 함수의 인자로 넘기면 Call-by-Value(default) 데이터 복사가 이루어져 성능에 영향을 줄 수 있습니다.
-- 복사를 방지하려면 참조자(`&`) 또는 포인터(`*`)를 사용한 연산으로 전달하는 것이 좋습니다.
+- 시간복잡도 O(N)의 데이터 복사를 방지하려면 참조자(`&`) 또는 포인터(`*`)를 사용한 연산으로 전달하는 것이 좋습니다.
 
 ### 3. 참조를 사용할 때 주의
 - 원본 데이터의 변경을 원치 않을 경우 `const` 키워드를 사용하여 함수 내부에서 수정되지 않도록 명시적으로 보호해야 합니다.
@@ -50,6 +50,6 @@ void readOnlyFunction(const int& value) {
 Call by Value와 Call by Reference는 함수에서의 인자 전달 방식을 설명하는 개념이고, Shallow Copy와 Deep Copy는 `=` 연산을 활용해 객체를 복사할 때의 동작 방식을 설명하는 개념입니다. 하지만 둘 다 데이터의 복사와 메모리 관리 방식과 관련이 있으므로 서로 유사한 개념으로 이해할 수 있습니다.
 
 - 얕은 복사(Shallow Copy)는 Call by Reference(참조 전달)와 유사합니다. 복사 시 같은 주소를 공유하게 됩니다.
-- 깊은 복사(Deep Copy)는 Call by Value(값 전달)와 유사합니다. 복사 시 데이터의 값만 복사하며, 주소는 공유되지 않습니다.
+- 깊은 복사(Deep Copy)는 Call by Value(값 전달)와 유사합니다. 복사 시 데이터의 값만 복사하며 주소는 공유되지 않습니다.
 
 기본 자료형이나 STL 타입 변수의 `=` 연산은 `Deep Copy`가 발생합니다.

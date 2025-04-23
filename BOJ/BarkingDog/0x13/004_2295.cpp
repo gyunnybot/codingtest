@@ -4,7 +4,6 @@
 using namespace std;
 
 int n, a[1001];
-bool flag;
 vector<int> b;
 
 int main() {
@@ -32,14 +31,8 @@ int main() {
 		for (int j = 0; j < i; j++) {
 			if (binary_search(b.begin(), b.end(), a[i] - a[j])) {
 				cout << a[i]; //a[i]는 k번째 수의 최댓값이 된다
-				
-				flag = true;
-				break;
+				return 0; //답이 항상 존재하는 경우만 입력으로 주어진다
 			}
 		}
-
-		if(flag) break;
 	}
-
-	return 0; //답이 항상 존재하는 경우만 입력으로 주어진다
 }
