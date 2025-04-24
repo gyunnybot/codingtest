@@ -33,7 +33,7 @@ int main() {
 			a_y[min_y]++;
 			a_y[max_y]--;
 		}
-		else { //단순직각사각형이므로 if(y == ny)로도 표현 가능
+		else { //단순 직각사각형이므로 else = if(x != nx) = if(y == ny)
 			int max_x = max(x, nx);
 			int min_x = min(x, nx);
 
