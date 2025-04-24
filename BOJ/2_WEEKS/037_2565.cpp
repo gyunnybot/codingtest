@@ -17,9 +17,9 @@ int main() {
 		line.push_back({ a,b });
 	}
 
-	sort(line.begin(), line.end());
-
 	fill(&dp[0], &dp[0] + 101, 1);
+
+	sort(line.begin(), line.end());
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < i; j++) {
@@ -28,7 +28,7 @@ int main() {
 			}
 		}
 	}
-
+	
 	for (int i = 0; i < n; i++) {
 		ret = max(ret, dp[i]);
 	}

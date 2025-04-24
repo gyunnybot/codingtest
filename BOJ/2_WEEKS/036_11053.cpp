@@ -4,6 +4,7 @@ using namespace std;
 
 int n, a[1001], dp[1001];
 int ret = INT_MIN;
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
@@ -14,7 +15,7 @@ int main() {
         cin >> a[i];
     }
 
-    fill(&dp[0], &dp[0] + n, 1);
+    fill(&dp[0], &dp[0] + 1001, 1);
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < i; j++) {

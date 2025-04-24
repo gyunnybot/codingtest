@@ -1,4 +1,4 @@
-/*
+/* 시간 초과 코드
 #include<iostream>
 #include<climits> //INT_MAX
 using namespace std;
@@ -43,9 +43,8 @@ int main() {
 #include<climits> //INT_MAX
 using namespace std;
 
-int n, k, w[101], v[101];
+int n, k, w[101], v[101], dp[101][100001];
 int ret = INT_MIN;
-vector<vector<int>> dp;
 
 int recur(int idx, int weight) {
 	if (weight > k) {
@@ -56,7 +55,7 @@ int recur(int idx, int weight) {
 		return 0;
 	}
 
-	if (dp[idx][weight] != -1) { //V(0 ≤ V ≤ 1,000)
+	if (dp[idx][weight] != -1) {
 		return dp[idx][weight];
 	}
 
@@ -71,7 +70,7 @@ int main() {
 
 	cin >> n >> k;
 
-	dp.resize(n, vector<int>(k + 1, -1)); //V(0 ≤ V ≤ 1,000), init
+	fill(&dp[0][0], &dp[0][0] + 101 * 100001, -1); //V(0 ≤ V ≤ 1,000)이므로 -1로 초기화
 
 	for (int i = 0; i < n; i++) {
 		cin >> w[i] >> v[i];

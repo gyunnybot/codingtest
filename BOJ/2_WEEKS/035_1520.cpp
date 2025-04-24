@@ -3,14 +3,14 @@ using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int n, m, board[501][501], dp[501][501];
+int n, m, a[501][501], dp[501][501];
 
 int recur(int y, int x) {
     if (y == n - 1 && x == m - 1) {
         return 1;
     }
 
-    if (dp[y][x] != -1) { //dp의 초기값이 0이고 if(dp[y][x])의 경우 무한루프 발생
+    if (dp[y][x] != -1) { //탐색하지 않은 경우와 ret = 0인 경우를 구별하기 위해 -1로 초기화
         return dp[y][x];
     }
 
@@ -22,7 +22,7 @@ int recur(int y, int x) {
 
         if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
-        if (board[ny][nx] < board[y][x]) {
+        if (a[ny][nx] < a[y][x]) {
             ret += recur(ny, nx);
         }
     }
@@ -40,10 +40,11 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            cin >> board[i][j];
+            cin >> a[i][j];
         }
     }
 
+    //탐색하지 않은 경우와 ret = 0인 경우를 구별하기 위해 -1로 초기화
     fill(&dp[0][0], &dp[0][0] + 501 * 501, -1);
 
     cout << recur(0, 0);
