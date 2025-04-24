@@ -43,7 +43,7 @@ int main() {
     }
 
     //2. 범위 기반 lower_bound
-    auto it2 = std::lower_bound(bag.begin(), bag.end(), 5); //반복자의 차이로 인해 O(N)
+    auto it2 = std::lower_bound(bag.begin(), bag.end(), 5); //O(N)
 
     if (it2 != bag.end()) {
         std::cout << "std::lower_bound: " << *it2 << std::endl; //출력: 5
@@ -58,4 +58,4 @@ int main() {
   - 임의 접근 반복자: **`O(log N)`**
   - 양방향 반복자: **`O(N)`**
 
-- `std::multiset::lower_bound`는 항상 `O(log N)`으로 동작하며, `std::multiset`과 같은 트리 기반의 정렬 컨테이너에서는 멤버 함수로 내장된 `lower_bound`를 사용하는 것이 훨씬 효율적입니다.
+- `std::list`, `std::set`, `std::multiset`과 같이 연속된 주소가 아닌 컨테이너에서는 멤버 함수로 내장된 `lower_bound`를 사용하는 것이 훨씬 효율적입니다.

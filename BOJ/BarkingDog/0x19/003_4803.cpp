@@ -11,12 +11,12 @@ void dfs(int here, int prev) {
 
 	for (int there : adj[here]) {
 		if (there == prev) {
-			continue; //prev일 경우 dfs 종료
+			continue; //there이 here의 부모일 경우 dfs 종료. here가 리프 노드가 된다
 		}
 
 		if (visited[there]) {
 			isTree = false;
-			continue; //prev가 아닌데 이미 방문한 곳이라면 트리가 아니다
+			break; //prev가 아닌데 이미 방문한 곳이라면 트리가 아니다
 		}
 
 		dfs(there, here);
