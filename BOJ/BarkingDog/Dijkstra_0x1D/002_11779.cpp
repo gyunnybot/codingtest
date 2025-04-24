@@ -14,9 +14,9 @@ int main() {
 
 	cin >> v >> e;
 
-	fill(d, d + v + 1, INT_MAX);
+	fill(d, d + v + 1, INT_MAX); //d[1] ~ d[v]
 
-	for (int i = 1; i <= e; i++) {
+	for (int i = 0; i < e; i++) {
 		int u, v, w;
 
 		cin >> u >> v >> w;
@@ -25,7 +25,7 @@ int main() {
 
 	cin >> st >> ed;
 
-	//pq greater = 최소 힙. {st에서 노드까지의 최소 거리, 현재 노드}
+	//pq greater = 최소 힙. {st에서 현재 노드 cur까지의 최소 거리 d[cur], 현재 위치한 노드 cur}
 	priority_queue < pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 
 	d[st] = 0;
@@ -34,36 +34,38 @@ int main() {
 	while (!pq.empty()) {
 		pair<int, int> cur = pq.top(); pq.pop();
 
-		if (cur.first != d[cur.second]) continue; //우선순위 큐에서 밀린 원소는 최단 경로가 아니다
+		if (cur.first != d[cur.second]) continue; //같은 cur이지만 우선순위 큐에서 밀린 원소는 최단 경로가 될 수 없다
 
 		for (pair<int, int> next : adj[cur.second]) {
 			if (d[next.second] <= d[cur.second] + next.first) continue;
 
-			d[next.second] = d[cur.second] + next.first; //최단 거리 갱신
+			d[next.second] = d[cur.second] + next.first; //최단 거리로 갱신
 			pq.push({ d[next.second],next.second });
 
-			pre[next.second] = cur.second; //최단 경로로 거쳐간 이전 도시 번호 저장
+			pre[next.second] = cur.second; //현재 도시 이전에 방문했던 도시 번호 저장
 		}
 	}
 
 	cout << d[ed] << '\n';
 
-	vector<int> v;
-
+	vector<int> ret_vector;
 	int idx = ed;
 
-	while (idx != st) {
-		v.push_back(idx);
+	while (true) {
+		if (idx == st) {
+			ret_vector.push_back(idx);
+			break;
+		}
+
+		ret_vector.push_back(idx);
 		idx = pre[idx];
 	}
 
-	v.push_back(idx);
+	reverse(ret_vector.begin(), ret_vector.end());
 
-	reverse(v.begin(), v.end());
+	cout << ret_vector.size() << '\n';
 
-	cout << v.size() << '\n';
-
-	for (int i : v) {
+	for (int i : ret_vector) {
 		cout << i << ' ';
 	}
 
