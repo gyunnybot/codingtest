@@ -2,44 +2,43 @@
 #include<algorithm> //sort
 using namespace std;
 
-int n, a[1000001], x, ret;
+int n, a[100001], x, ret;
 
 int main() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL); cout.tie(NULL);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
 
-	cin >> n;
+    cin >> n;
 
-	for (int i = 0; i < n; i++) {
-		cin >> a[i];
-	}
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
 
-	sort(a, a + n);
+    cin >> x;
 
-	cin >> x;
+    sort(a, a + n);
 
-	//two pointer
-	int l = 0;
-	int r = n - 1;
+    //two pointer
+    int st = 0;
+    int ed = n - 1;
 
-	//ai + aj = x (1 ≤ i < j ≤ n)을 만족하는 (ai, aj)쌍의 수
-	while (l < r) {
-		if (a[l] + a[r] == x) {
-			ret++;
+    //ai + aj = x (1 ≤ i < j ≤ n)
+    while (st < ed) {
+        if (a[st] + a[ed] == x) {
+            ret++;
 
-			//n개의 서로 다른 양의 정수
-			l++;
-			r--;
-		}
-		else if (a[l] + a[r] < x) {
-			l++;
-		}
-		else if (a[l] + a[r] > x) {
-			r--;
-		}
-	}
+			st++; //n개의 서로 다른 양의 정수
+            ed--; //n개의 서로 다른 양의 정수
+        }
+        else if (a[st] + a[ed] > x) {
+            ed--;
+        }
+        else if (a[st] + a[ed] < x) {
+            st++;
+        }
+    }
 
-	cout << ret;
+    cout << ret;
 
-	return 0;
+    return 0;
 }

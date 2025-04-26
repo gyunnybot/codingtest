@@ -3,7 +3,8 @@
 using namespace std;
 typedef long long ll;
 
-ll n, x, a[100001], ret;
+int n, ret;
+ll a[100001], x;
 
 int main() {
     ios_base::sync_with_stdio(false);
@@ -17,30 +18,37 @@ int main() {
 
     sort(a, a + n);
 
-    //two pointer
-    int l = 0, r = n - 1;
-    int remain = 0;
+    int st = 0;
+    int ed = n - 1;
+    int temp = 0;
 
-    while (r >= 0 && a[r] >= x) {
-        r--;
+    //단독으로 x가 되는 용기 제외
+    while (ed >= 0 && a[ed] >= x) {
         ret++;
+        ed--;
     }
 
-    while (l <= r) {
-        if (l < r && a[l] + a[r] >= (x + 1) / 2) {
-            ret++;
-            l++;
-            r--;
+    while (st <= ed) {
+        if (st == ed) { //하나의 용기만 남은 경우
+            temp++;
+            st++; //반복문 탈출을 위해 st 증가
         }
         else {
-            l++;
-            remain++;
-        }
+            if (a[st] + a[ed] >= (x + 1) / 2) { //두 개의 용기를 교환해 x를 만들 수 있는 경우
+                ret++;
+                st++;
+                ed--;
+            }
+            else {
+                temp++; //현재 a[ed]와 결합해도 (x + 1) / 2가 되지 않는 a[st]의 개수
+                st++;
+            }
+        }        
     }
 
-    //remain 갯수 2개로 최소 X/2 ml의 용기를 만들 수 있다
-    //만들어진 X/2 용기에 remain 1개를 결합해 ret을 1 추가할 수 있다
-    cout << ret + remain / 3;
+    //temp 2개로 x 이상 x 미만의 용기 생성
+    //temp 1개를 추가로 사용해 x가 되는 용기를 완성할 수 있다
+    cout << ret + temp / 3;
 
     return 0;
 }
