@@ -1,9 +1,7 @@
 #include<iostream>
-#include<climits> //INT_MIN
 using namespace std;
 
-int n, a[1001], dp[1001];
-int ret = INT_MIN;
+int n, a[1001], dp[1001], ret;
 
 int main() {
     ios_base::sync_with_stdio(false);

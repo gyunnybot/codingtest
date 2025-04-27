@@ -1,5 +1,4 @@
 #include<iostream>
-#include<climits> //INT_MAX
 using namespace std;
 
 int n, h, temp, a[500001], s[500001], ret;
@@ -26,7 +25,7 @@ int main() {
 		s[i] = s[i - 1] + a[i];
 	}
 
-	int minVal = 200000;
+	int minVal = 200001;
 
 	for (int i = 1; i <= h; i++) {
 		minVal = min(minVal, s[i]);

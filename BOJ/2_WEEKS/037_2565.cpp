@@ -1,6 +1,6 @@
 #include<iostream>
-#include<algorithm> //sort
 #include<vector>
+#include<algorithm> //sort
 using namespace std;
 
 int n, a, b, dp[101], ret;
@@ -32,7 +32,7 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		ret = max(ret, dp[i]);
 	}
-
+	
 	cout << n - ret;
 
 	return 0;

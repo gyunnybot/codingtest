@@ -2,7 +2,8 @@
 #include<vector>
 using namespace std;
 
-int n, xpos, ypos, a_x[1000001], a_y[1000001], s_x[1000001], s_y[1000001];
+int n, xpos, ypos, ret;
+int a_x[1000001], a_y[1000001], s_x[1000001], s_y[1000001];
 vector<pair<int, int>> pos;
 
 int main() {
@@ -46,8 +47,6 @@ int main() {
 		s_x[i] = s_x[i - 1] + a_x[i - 1];
 		s_y[i] = s_y[i - 1] + a_y[i - 1];
 	}
-
-	int ret = -1;
 
 	for (int i = 1; i <= 1000000; i++) {
 		ret = max(ret, max(s_x[i], s_y[i]));

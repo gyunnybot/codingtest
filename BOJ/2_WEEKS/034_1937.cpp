@@ -3,15 +3,14 @@ using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int n, dp[501][501], a[501][501];
-int ret = INT_MIN;
+int n, a[501][501], dp[501][501], ret;
 
 int recur(int y, int x) {
     if (dp[y][x]) {
         return dp[y][x];
     }
 
-    dp[y][x] = 1;
+    int cnt = 1;
 
     for (int i = 0; i < 4; i++) {
         int ny = y + dy[i];
@@ -20,9 +19,11 @@ int recur(int y, int x) {
         if (ny < 0 || ny >= n || nx < 0 || nx >= n) continue;
 
         if (a[ny][nx] > a[y][x]) {
-            dp[y][x] = max(dp[y][x], recur(ny, nx) + 1);
+            cnt = max(cnt, recur(ny, nx) + 1);
         }
     }
+
+    dp[y][x] = cnt;
 
     return dp[y][x];
 }

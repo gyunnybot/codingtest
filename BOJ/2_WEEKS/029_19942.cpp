@@ -15,11 +15,11 @@ vector<int> temp, mini;
 
 void recur(int idx, int p, int f, int s, int v, int cost) {
 	if (p >= mp && f >= mf && s >= ms && v >= mv) { //조건을 만족하는 경우
-		if (ret > cost) { //특별히 cost가 최솟값을 갱신했다면
+		if (ret > cost) { //가장 먼저 조건에 만족할 때 단 한 번 갱신된다
 			ret = cost;
-			mini = temp; //deep copy
+			mini = temp;
 
-			return; //한 번 최솟값을 얻었다면 이후 재귀는 의미 없다. return
+			return; //이후 재귀는 의미없다. return
 		}
 	}
 

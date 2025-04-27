@@ -10,11 +10,11 @@ int recur(int y, int x) {
         return 1;
     }
 
-    if (dp[y][x] != -1) { //탐색하지 않은 경우와 ret = 0인 경우를 구별하기 위해 -1로 초기화
+    if (dp[y][x] != -1) {
         return dp[y][x];
     }
 
-    int ret = 0;
+    int cnt = 0;
 
     for (int i = 0; i < 4; i++) {
         int ny = y + dy[i];
@@ -23,11 +23,11 @@ int recur(int y, int x) {
         if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
         if (a[ny][nx] < a[y][x]) {
-            ret += recur(ny, nx);
+            cnt += recur(ny, nx);
         }
     }
 
-    dp[y][x] = ret; //해당 좌표에 도달하는 최소 경로의 갯수
+    dp[y][x] = cnt; //해당 좌표에 도달하는 최소 경로의 갯수
 
     return dp[y][x];
 }
@@ -44,7 +44,6 @@ int main() {
         }
     }
 
-    //탐색하지 않은 경우와 ret = 0인 경우를 구별하기 위해 -1로 초기화
     fill(&dp[0][0], &dp[0][0] + 501 * 501, -1);
 
     cout << recur(0, 0);
