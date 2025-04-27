@@ -4,7 +4,7 @@
 using namespace std;
 
 struct Info {
-	int	weight, a, b;
+	int a, b, weight;
 };
 vector<Info> info;
 
@@ -50,13 +50,13 @@ int main() {
 
 	for (int i = 0; i < e; i++) {
 		cin >> a >> b >> w;
-		info.push_back({ w,a,b });
+		info.push_back({ a,b,w });
 	}
 
-	sort(info.begin(), info.end(), cmp);
+	sort(info.begin(), info.end(), cmp); //가중치 오름차순
 
 	for (int i = 0; i < e; i++) {
-		if (!uni(info[i].a, info[i].b)) continue;
+		if (!uni(info[i].a, info[i].b)) continue; //이미 연결되어 있다면 continue
 
 		ret += info[i].weight;
 		cnt++;
