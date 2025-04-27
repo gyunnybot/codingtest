@@ -4,15 +4,15 @@
 using namespace std;
 
 struct Info {
-	int	cost, a, b;
+	int	weight, a, b;
 };
 vector<Info> info;
 
-int v, e, a, b, c;
-vector<int> p(10001, -1); //시작 노드의 차수는 -1로 고정
+int v, e, a, b, w, cnt, ret;
+vector<int> p(10001, -1);
 
 bool cmp(Info a, Info b) {
-	return a.cost < b.cost;
+	return a.weight < b.weight;
 }
 
 int find(int x) {
@@ -49,19 +49,16 @@ int main() {
 	cin >> v >> e;
 
 	for (int i = 0; i < e; i++) {
-		cin >> a >> b >> c;
-		info.push_back({ c,a,b });
+		cin >> a >> b >> w;
+		info.push_back({ w,a,b });
 	}
-	
-	sort(info.begin(), info.end(), cmp);
 
-	int cnt = 0;
-	int ret = 0;
+	sort(info.begin(), info.end(), cmp);
 
 	for (int i = 0; i < e; i++) {
 		if (!uni(info[i].a, info[i].b)) continue;
 
-		ret += info[i].cost;
+		ret += info[i].weight;
 		cnt++;
 
 		if (cnt == v - 1) break;

@@ -31,7 +31,7 @@ int main() {
 	while (!pq.empty()) {
 		pair<int, int> cur = pq.top(); pq.pop();
 
-		if (cur.first != d[cur.second]) continue; //같은 cur이지만 우선순위 큐에서 밀린 원소는 최단 경로가 될 수 없다
+		if (cur.first != d[cur.second]) continue; //같은 cur에 대한 우선순위 큐에서 밀린 원소는 최단 경로 X
 
 		for (pair<int, int> next : adj[cur.second]) {
 			if (d[next.second] <= d[cur.second] + next.first) continue;
@@ -43,7 +43,7 @@ int main() {
 
 	for (int i = 1; i <= v; i++) {
 		if (d[i] == INT_MAX) {
-			cout << "INF\n";
+			cout << "INF" << '\n';
 		}
 		else {
 			cout << d[i] << '\n';
