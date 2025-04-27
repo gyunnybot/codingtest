@@ -1,10 +1,10 @@
 #include<iostream>
-#include<set>
+#include<map>
 using namespace std;
 
 int n, ret;
 string s;
-set<char> st;
+map<char, int> cnt;
 
 int main() {
     ios_base::sync_with_stdio(false);
@@ -12,31 +12,22 @@ int main() {
 
     cin >> n >> s;
 
-    int left = 0;
-    int right = 0;
+    int st = 0;
 
-    st.insert(s[0]);
+    for (int ed = 0; ed < s.size(); ed++) {
+        cnt[s[ed]]++; //오른쪽으로 이동하면서 문자 추가
 
-    while (left < s.size() && right < s.size()) {
-        ret = max(ret, right - left + 1);
+        while (cnt.size() > n) {
+            cnt[s[st]]--; //왼쪽 문자 지우기
 
-        if (st.size() <= n) {
-            right++;
-
-            if (right < s.size() && st.find(s[right]) == st.end()) {
-                st.insert(s[right]); //오른쪽 인덱스의 문자를 st에 추가
+            if (cnt[s[st]] == 0) {
+                cnt.erase(s[st]); //value가 0이라면 맵의 원소에서 삭제
             }
+
+            st++;
         }
 
-        if (st.size() > n) {
-            st.erase(s[left]);
-
-            left++;
-            right = left;
-
-            st.clear();
-            st.insert(s[left]); //새로 지정된 left, right에서 다시 시작
-        }
+        ret = max(ret, ed - st + 1);
     }
 
     cout << ret;

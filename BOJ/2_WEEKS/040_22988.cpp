@@ -31,7 +31,7 @@ int main() {
     while (st <= ed) {
         if (st == ed) { //하나의 용기만 남은 경우
             temp++;
-            st++; //반복문 탈출을 위해 st 증가
+            break;
         }
         else {
             if (a[st] + a[ed] >= (x + 1) / 2) { //두 개의 용기를 교환해 x를 만들 수 있는 경우
@@ -46,8 +46,8 @@ int main() {
         }        
     }
 
-    //temp 2개로 x 이상 x 미만의 용기 생성
-    //temp 1개를 추가로 사용해 x가 되는 용기를 완성할 수 있다
+    //temp 2개로 x / 2 이상 x 미만의 용기 생성
+    //temp 1개를 추가로 사용해 x가 되는 용기 완성
     cout << ret + temp / 3;
 
     return 0;

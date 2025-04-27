@@ -22,8 +22,7 @@ int main() {
     int st = 0;
     int ed = n - 1;
 
-    //ai + aj = x (1 ≤ i < j ≤ n)
-    while (st < ed) {
+    while (st < ed) { //ai + aj = x (1 ≤ i < j ≤ n)
         if (a[st] + a[ed] == x) {
             ret++;
 
