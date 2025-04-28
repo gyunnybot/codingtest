@@ -14,17 +14,19 @@ vector<int> solution(vector<int> arr) {
     stack<int> stk;
     
     for(int i : arr) {
-        if(stk.empty()){
+        if(stk.empty()) {
             stk.push(i);
         }
         else {
-            if(stk.top() == i) continue;
-            
+            if(stk.top() == i) {
+                continue;
+            }
+
             stk.push(i);
         }
     }
     
-    while(!stk.empty()){
+    while(!stk.empty()) {
         answer.push_back(stk.top());
         stk.pop();
     }

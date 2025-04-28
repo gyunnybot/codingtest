@@ -62,7 +62,7 @@ int main() {
 
     while (k--) {
         fill(&paper[0][0], &paper[0][0] + 11 * 11, 0);
-
+        
         bool flag = false;
         
         cin >> r >> c;

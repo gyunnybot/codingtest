@@ -22,7 +22,7 @@ string solution(vector<string> participant, vector<string> completion) {
     
     for(pair<string, int> pi : mp) {
         if(pi.second) {
-            answer += pi.first;
+            answer = pi.first;
         }
     }
     
