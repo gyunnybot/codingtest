@@ -9,7 +9,7 @@ int n, m, a[10][10];
 int ret = INT_MAX;
 vector<pair<int, int>> cctv;
 
-vector<pair<int, int>> check_area(int cctv_idx, int dir) {
+vector<pair<int, int>> surveillance_area(int cctv_idx, int dir) {
     vector<pair<int, int>> temp;
 
     pair<int, int> cur_pos = cctv[cctv_idx];
@@ -36,7 +36,7 @@ vector<pair<int, int>> check_area(int cctv_idx, int dir) {
             }
         }
     }
-    else if (a[cur_pos.first][cur_pos.second] == 2) {     
+    else if (a[cur_pos.first][cur_pos.second] == 2) {
         for (int i = 0; i <= 2; i += 2) {
             pair<int, int> cur = cur_pos; //방향만 바뀔 뿐, 시작점인 cur_pos는 바뀌지 않는다
 
@@ -136,7 +136,7 @@ vector<pair<int, int>> check_area(int cctv_idx, int dir) {
     return temp;
 }
 
-int get_min() {
+int get_blind_spot() {
     int cnt = 0;
 
     for (int i = 0; i < n; i++) {
@@ -152,12 +152,12 @@ int get_min() {
 
 void cctv_on(int cctv_idx) {
     if (cctv_idx == cctv.size()) {
-        ret = min(ret, get_min());
+        ret = min(ret, get_blind_spot());
         return;
     }
 
     for (int dir = 0; dir < 4; dir++) {
-        vector<pair<int, int>> temp_area = check_area(cctv_idx, dir);
+        vector<pair<int, int>> temp_area = surveillance_area(cctv_idx, dir);
 
         cctv_on(cctv_idx + 1);
 
