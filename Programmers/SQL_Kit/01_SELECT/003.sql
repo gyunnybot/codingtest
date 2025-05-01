@@ -17,18 +17,18 @@ ORDER BY SCORE DESC, I.FAVORITES DESC;
 */
 
 /*
-외부 조인:
+외부 조인: LEFT OUTER JOIN, RIGHT OUTER JOIN
 조건 컬럼이 중복되어 출력
-아래 예시의 경우 orders에 속한 레코드는 무조건 출력되며 조인 조건에 맞지 않는 customer의 데이터는 null로 대체되어 출력
+아래 쿼리의 경우 orders에 속한 레코드(행)는 무조건 출력되며, 조인 조건에 맞지 않는 customer의 데이터는 null로 채워진다
 
 SELECT *
 FROM orders LEFT OUTER JOIN customer
 ON orders.custid = customer.custid;
 ---------------------------------------------------
 
-내부 조인:
+내부 조인: INNER JOIN
 조건 컬럼이 중복되어 출력
-조건에 맞는 레코드만 선택적으로 출력된다
+조인 조건에 맞는 레코드만 선택적으로 출력된다
 
 SELECT *
 FROM orders INNER JOIN customer
@@ -39,9 +39,10 @@ FROM orders, customer
 WHERE orders.custid = customer.custid;
 ---------------------------------------------------
 
-자연 조인:
-조건(겹치는) 컬럼이 반드시 하나여야 한다
-조건 컬럼이 중복되지 않고 한 번만 출력된다
+자연 조인: NATURAL JOIN
+겹치는 컬럼이 중복되지 않고 한 번만 출력된다
+
+조인 조건(겹치는) 컬럼이 반드시 하나여야 한다!
 
 SELECT *
 FROM orders NATURAL JOIN customer;
