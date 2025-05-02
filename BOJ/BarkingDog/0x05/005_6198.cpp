@@ -4,8 +4,8 @@ using namespace std;
 typedef long long ll;
 
 int n, height; //n <= 80,000
-stack<int> stk; //모든 빌딩은 일렬로 서 있고 오른쪽으로'만' 볼 수 있다? stack 활용!
-ll ret; //ret <= n * (n + 1) / 2
+stack<int> stk; //모든 빌딩은 일렬로 서 있고 오른쪽으로'만' 볼 수 있다. stack 활용!
+ll ret; //ret <= n * (n + 1) / 2 -> 64억? long long
 
 int main() {
 	ios_base::sync_with_stdio(false);

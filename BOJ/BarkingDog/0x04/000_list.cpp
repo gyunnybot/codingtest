@@ -31,7 +31,7 @@ void erase(int addr) { //addr번지의 데이터 삭제
 }
 
 void traverse() {
-    int cur = nxt[0]; //더미 노드에서부터 시작
+    int cur = nxt[0]; //노드 번호 1부터 시작
 
     while (cur != -1) {
         cout << dat[cur] << ' ';
