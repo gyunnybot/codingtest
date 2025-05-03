@@ -6,7 +6,7 @@ int n;
 void recur(int st, int dest, int n) {
 	int mid = 6 - st - dest;
 
-	if (n == 1) { //쌓인 원판이 한 개라면 목적지까지 바로 옮길 수 있다
+	if (n == 1) { //원판이 한 개라면 곧바로 목적지로 옮길 수 있다
 		cout << st << ' ' << dest << '\n';
 		return;
 	}

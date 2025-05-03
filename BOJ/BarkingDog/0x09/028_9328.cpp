@@ -45,7 +45,7 @@ void bfs() {
                 int key_idx = a[cur.first][cur.second] - 'a'; //새로 얻은 키의 인덱스
 
                 while (!door[key_idx].empty()) {
-                    q.push(door[key_idx].front()); //새로 얻은 키로 열 수 있는 모든 문 좌표를 큐에 저장
+                    q.push(door[key_idx].front()); //새로 얻은 키에 대응되는 문의 위치를 전부 큐에 push
                     door[key_idx].pop();
                 }
             }
@@ -56,7 +56,7 @@ void bfs() {
         //문 발견
         if ('A' <= a[cur.first][cur.second] && a[cur.first][cur.second] <= 'Z') {
             if (keys.find((a[cur.first][cur.second]) + ('a' - 'A')) == keys.end()) { //열쇠가 없다면
-                door[a[cur.first][cur.second] - 'A'].push(cur); //아직 열쇠가 없으므로 나중을 위해 위치 저장
+                door[a[cur.first][cur.second] - 'A'].push(cur); //아직 열쇠가 없으므로 문의 위치에 추가
                 continue; //열쇠가 없으므로 cur에서의 확장 종료. while(!q.empty()) 반복문 재실행
             }
             else { //열쇠가 있다면
@@ -93,8 +93,9 @@ int main() {
         keys.clear(); //init
 
         fill(&visited[0][0], &visited[0][0] + 101 * 101, false); //init
-        
-        for (int i = 0; i < 26; i++) { //init
+
+        //init
+        for (int i = 0; i < 26; i++) {
             queue<pair<int, int>> flush;
             swap(door[i], flush);
         }

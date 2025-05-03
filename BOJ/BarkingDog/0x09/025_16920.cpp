@@ -47,10 +47,10 @@ void bfs() {
             }
             
             swap(q[i], next_q); //swap : call by reference. O(1)
-            //q[i] = next_q; //deep copy. O(N)이지만 q <= 10이므로 해당 문제에서는 사용 가능
+            //q[i] = next_q; //deep copy, O(N)이지만 q <= 10이므로 해당 문제에서는 제한 시간 내 통과
         }
 
-        if (!flag) break; //더 이상 확장되지 않는다면 break
+        if (!flag) break; //더 이상 확장되지 않았다면 break
     }
 
     return;
@@ -81,8 +81,8 @@ int main() {
             else { //숫자라면
                 expandable[i][j] = false; //시작점은 재탈환 X. 확장 불가능
 
-                q[a[i][j] - '0'].push({ i,j,0 }); //n번째 플레이어의 시작점을 n번째 queue에 저장
-                area[a[i][j] - '0']++; //n번째 플레이어가 차지한 영역. 1부터 시작
+                q[a[i][j] - '0'].push({ i,j,0 }); //n번째 플레이어의 시작점을 q[n]에 저장
+                area[a[i][j] - '0']++; //n번째 플레이어가 차지한 영역의 넓이. 1부터 시작
             }
         }
     }

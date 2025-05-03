@@ -47,7 +47,7 @@ void merge(int st, int ed) {
 }
 
 void merge_sort(int st, int ed) {
-	if (ed == st + 1) {
+	if (st + 1 == ed) {
 		return;
 	}
 
@@ -60,7 +60,7 @@ void merge_sort(int st, int ed) {
 }
 
 void quick_sort(int st, int ed) {
-	if (ed <= st + 1) {
+	if (st + 1 >= ed) {
 		return;
 	}
 

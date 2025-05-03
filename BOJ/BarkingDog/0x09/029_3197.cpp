@@ -79,7 +79,7 @@ void bfs() {
 
         melt();
 
-        /* STL의 = 연산은 deep copy(call by value)가 발생한다. O(N)이므로 해당 문제에서는 시간초과 발생
+        /* STL의 = 연산은 deep copy(call by value). O(N)이므로 해당 문제에서는 시간초과 발생
         swan_q = next_swan_q;
         water = next_water;
         */

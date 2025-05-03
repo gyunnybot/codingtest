@@ -37,9 +37,10 @@ void bfs(int n) {
             int cur = q.front(); q.pop();
 
             for (int ncur : {cur - 1, cur + 1, cur * 2}) {
-                if (ncur == k) { //ncur에서 동생을 찾았다면 즉시 갱신 후 break
-                    flag = true;
+                if (ncur == k) { //ncur에서 동생을 찾았다면 즉시 갱신 후 break                    
                     ret = mov;
+                    
+                    flag = true;
                     
                     break;
                 }

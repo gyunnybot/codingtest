@@ -16,7 +16,7 @@ bool connected(pair<int, int> next) {
 
         if (nx < 1 || nx > n || ny < 1 || ny > n) continue;
 
-        if (visited[nx][ny] && light[nx][ny]) { //상하좌우 중 이미 한 번 방문한 곳이 있다면 true
+        if (visited[nx][ny] && light[nx][ny]) { //상하좌우 중 이미 방문한 곳이 있다면 true
             return true;
         }
     }
@@ -36,10 +36,10 @@ void bfs() {
 
         for (pair<int, int> next : adj[cur.first][cur.second]) {
             if (!light[next.first][next.second]) {
-                //입력으로 주어진 next인 경우에는 상하좌우로 인접하지 않더라도 불은 켤 수 있다
+                //상하좌우로 인접하지 않더라도 입력으로 주어진 next인 경우 불을 켤 수 있다
                 light[next.first][next.second] = true;
 
-                if (connected(next)) { //next 기준 상하좌우 중 이미 방문한 곳이 있는지 확인
+                if (connected(next)) { //next 기준 상하좌우 중 방문한 곳이 있는지 확인
                     visited[next.first][next.second] = true;
                     q.push({ next });
                 }
@@ -52,7 +52,7 @@ void bfs() {
 
             if (nx < 1 || nx > n || ny < 1 || ny > n) continue;
 
-            //상하좌우로 인접한 방 중 불이 켜져있다면
+            //상하좌우로 인접한 방 중 방문하지 않았지만 불이 켜져있다면
             if (!visited[nx][ny] && light[nx][ny]) {
                 visited[nx][ny] = true;
                 q.push({ nx,ny });

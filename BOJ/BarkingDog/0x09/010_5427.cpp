@@ -109,7 +109,7 @@ int main() {
         }
 
         fire_bfs();
-        s_bfs(); //fire_visited가 필요하므로 fire_bfs보다 나중에 실행
+        s_bfs(); //s_bfs는 fire_visited가 필요하므로 fire_bfs보다 나중에 실행
 
         if (!ret) {
             cout << "IMPOSSIBLE" << '\n';
