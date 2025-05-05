@@ -32,7 +32,7 @@ int main() {
     while (!q.empty()) {
         int cur = q.front(); q.pop();
 
-        for (int b = 1; b < bit; (b <<= 1)) {
+        for (int b = 1; b < bit; b <<= 1) {
             int next = cur ^ b;
 
             if (dist[next]) continue;
@@ -52,3 +52,11 @@ int main() {
 
     return 0;
 }
+
+/*
+1. XOR연산에서 0은 상대 비트를 따라가고, 1인 상대 비트를 반전시키므로 b = 1, 2, 4, 8...의 탐색 방식은 자연스럽다
+
+2. a ^ b = c라면 a ^ c = b, b ^ c = a이다
+
+3. 1, 2를 통해 1 ~ bit - 1까지의 안전거리를 구한 후 최솟값을 찾는다
+*/
