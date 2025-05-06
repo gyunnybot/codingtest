@@ -4,7 +4,6 @@ using namespace std;
 
 int n, ret, visited[1000001];
 
-
 void bfs(int n) {
 	visited[n] = 1;
 

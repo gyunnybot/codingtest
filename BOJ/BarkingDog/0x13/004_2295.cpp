@@ -30,7 +30,7 @@ int main() {
 	for (int i = n - 1; i > 0; i--) { //k번째 수가 최대여야 하므로 역순 탐색
 		for (int j = 0; j < i; j++) {
 			if (binary_search(b.begin(), b.end(), a[i] - a[j])) {
-				cout << a[i]; //a[i]는 k번째 수의 최댓값이 된다
+				cout << a[i]; //a[i]는 k번째 수가 된다
 				return 0; //답이 항상 존재하는 경우만 입력으로 주어진다
 			}
 		}

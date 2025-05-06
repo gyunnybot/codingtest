@@ -23,7 +23,7 @@ int main() {
 	for (int i = 0; i < debate.size(); i++) {
 		pq.push(debate[i].second); //끝나는 시각을 최소 힙에 저장
 
-		//회의 시작시간이 현재 진행중인 회의 이후라면
+		//회의 시작시간이 현재 강의실에서 진행중인 회의 이후라면
 		if (pq.top() <= debate[i].first) {
 			pq.pop();
 		}

@@ -13,8 +13,8 @@ int main() {
 		comb[n][0] = 1; //nC0 = 1
 		comb[n][n] = 1; //nCn = 1
 
-		for (int k = 1; k < n; k++) {
-			comb[n][k] = (comb[n - 1][k] + comb[n - 1][k - 1]);
+		for (int k = 1; k < n; k++) { //nCk = n-1Ck-1 + n-1Ck
+			comb[n][k] = (comb[n - 1][k - 1] + comb[n - 1][k]);
 			comb[n][k] %= mod;
 		}
 	}

@@ -4,7 +4,7 @@ using namespace std;
 
 int n;
 string a, b;
-map<string, string, greater<>> mp; //내림차순 greater<>, 오름차순 less<>
+map<string, string, greater<>> mp; //사전순의 역순 = 내림차순 greater<>
 
 int main() {
 	ios_base::sync_with_stdio(false);
