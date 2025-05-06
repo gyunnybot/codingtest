@@ -34,7 +34,7 @@ int solve(int n) {
 	}
 
 	for (int i = 5; i <= n; i *= 5) {
-		ret5 += n / i; //n!에서 5가 몇 번 곱해져 있는가?
+		ret5 += (n / i); //n!에서 5가 몇 번 곱해져 있는가?
 	}
 
 	return min(ret2, ret5); //n!에서 10이 몇 번 곱해져 있는가?

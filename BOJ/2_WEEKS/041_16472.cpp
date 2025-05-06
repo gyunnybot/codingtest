@@ -12,7 +12,7 @@ int main() {
 
     cin >> n >> s;
 
-    int st = 0;
+    int st = 0; //컨테이너의 연결성이 중요할 때 사용되는 투 포인터 방식
 
     for (int ed = 0; ed < s.size(); ed++) {
         cnt[s[ed]]++; //오른쪽으로 이동하면서 문자 추가

@@ -26,6 +26,7 @@ int main() {
     for (int i = 0; i < m; i++) {
         int st = 0;
         int ed = n - 1;
+        
         bool flag = false;
 
         while (st <= ed) {
