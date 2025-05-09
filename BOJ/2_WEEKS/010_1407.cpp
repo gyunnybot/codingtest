@@ -27,7 +27,7 @@ int main() {
 
 /*
 int solve(int n) {
-	int ret2 = 0, ret5 = 0; // init
+	int ret2 = 0, ret5 = 0;
 
 	for (int i = 2; i <= n; i *= 2) {
 		ret2 += (n / i); //n!에서 2가 몇 번 곱해져 있는가?

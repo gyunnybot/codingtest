@@ -18,7 +18,7 @@ int main() {
 
 		for (int i = 2; i <= 1000000; i++) {
 			if (s % i == 0) {
-				flag = false; //10 ^ 6 이하로 나눠진다면 적절한 암호 키가 아니다
+				flag = false;
 				break;
 			}
 		}

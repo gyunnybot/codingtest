@@ -5,7 +5,7 @@ using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int n, m, a[10][10];
+int n, m, a[9][9];
 int ret = INT_MAX;
 vector<pair<int, int>> cctv;
 
