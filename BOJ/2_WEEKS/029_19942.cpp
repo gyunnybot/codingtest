@@ -15,11 +15,11 @@ vector<int> temp, mini;
 
 void recur(int idx, int p, int f, int s, int v, int cost) {
 	if (p >= mp && f >= mf && s >= ms && v >= mv) { //조건을 만족하는 경우
-		if (ret > cost) { //가장 먼저 조건에 만족할 때 단 한 번 갱신된다
+		if (ret > cost) { //ret은 가장 먼저 조건에 만족할 때 최소가 된다(단 한 번만 갱신)
 			ret = cost;
 			mini = temp;
 
-			return; //이후 재귀는 의미없다. return
+			return; //이후 재귀는 최솟값이 아니거나 사전 순이 아니므로 return
 		}
 	}
 
@@ -27,7 +27,7 @@ void recur(int idx, int p, int f, int s, int v, int cost) {
 		return; //더 이상 선택할 재료가 없으므로 return
 	}
 
-	//사전 순으로 출력하기 위해 재료를 선택하는 경우 먼저 탐색
+	//재료를 선택하는 경우(같은 비용의 집합이 하나 이상이면 사전 순으로 가장 빠른 것을 출력한다)
 	temp.push_back(idx + 1);
 	recur(idx + 1, p + ingre[idx].p, f + ingre[idx].f, s + ingre[idx].s, v + ingre[idx].v, cost + ingre[idx].cost);
 	temp.pop_back();
