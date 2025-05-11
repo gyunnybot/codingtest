@@ -4,11 +4,11 @@ using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-bool visited[13][7];
-char a[13][7];
 int ret;
-vector<pair<int, int>> same_blocks_pos;
+char a[13][7];
+bool visited[13][7];
 string s;
+vector<pair<int, int>> same_blocks_pos;
 
 void slide_down() {
 	for (int i = 11; i >= 0; i--) {
