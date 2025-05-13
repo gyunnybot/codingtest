@@ -53,7 +53,7 @@ int main() {
 		info.push_back({ a,b,w });
 	}
 
-	sort(info.begin(), info.end(), cmp); //가중치 오름차순
+	sort(info.begin(), info.end(), cmp); //가중치 기준 오름차순
 
 	for (int i = 0; i < e; i++) {
 		if (!uni(info[i].a, info[i].b)) continue; //이미 연결되어 있다면 continue

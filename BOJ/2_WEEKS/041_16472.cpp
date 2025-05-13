@@ -12,7 +12,8 @@ int main() {
 
     cin >> n >> s;
 
-    int st = 0; //컨테이너의 연결성이 중요할 때 사용되는 투 포인터 방식
+    //컨테이너의 연결성(길이)이 중요할 때 사용되는 투 포인터 반복문 형식
+    int st = 0;
 
     for (int ed = 0; ed < s.size(); ed++) {
         cnt[s[ed]]++; //오른쪽으로 이동하면서 문자 추가
@@ -21,7 +22,7 @@ int main() {
             cnt[s[st]]--; //왼쪽 문자 지우기
 
             if (cnt[s[st]] == 0) {
-                cnt.erase(s[st]); //value가 0이라면 맵의 원소에서 삭제
+                cnt.erase(s[st]); //value가 0이라면 원소 삭제. size 줄이기
             }
 
             st++;

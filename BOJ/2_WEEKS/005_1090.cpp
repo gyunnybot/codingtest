@@ -28,7 +28,7 @@ int main() {
 			vector<int> dist;
 
 			for (pair<int, int> i : v) {
-				int d = abs(i.first - x) + abs(i.second - y);
+				int d = abs(x - i.first) + abs(y - i.second);
 				dist.push_back(d);
 			}
 

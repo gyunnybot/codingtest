@@ -22,7 +22,7 @@ int main() {
 
     sort(a, a + n);
 
-    //STL 이분탐색 활용. O(MlogN)
+    //STL 이분탐색 활용. O(logN)
     for (int i = 0; i < m; i++) {
         if (binary_search(a, a + n, b[i])) {
             cout << 1 << ' ';

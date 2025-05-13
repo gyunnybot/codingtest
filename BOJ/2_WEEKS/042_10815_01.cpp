@@ -22,7 +22,7 @@ int main() {
 
     sort(a, a + n);
 
-    //투 포인터를 활용해 이분탐색 구현. O(MlogN)
+    //투 포인터를 활용해 이분탐색 직접 구현. O(logN)
     for (int i = 0; i < m; i++) {
         int st = 0;
         int ed = n - 1;
