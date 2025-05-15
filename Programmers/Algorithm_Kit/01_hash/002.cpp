@@ -1,13 +1,12 @@
-#include <iostream>
 #include <vector>
+#include <iostream>
 #include <unordered_set>
 #include <climits> //INT_MAX
 using namespace std;
 
 unordered_set<int> ust;
 
-int solution(vector<int> nums)
-{
+int solution(vector<int> nums) {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
 

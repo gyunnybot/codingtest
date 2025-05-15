@@ -7,7 +7,7 @@ unordered_map<string, int> ump;
 
 bool solution(vector<string> phone_book) {
     for(int i=0; i < phone_book.size(); i++) {
-           ump[phone_book[i]] = 1; 
+           ump[phone_book[i]]++;
     }
     
     bool answer = true;
@@ -18,7 +18,7 @@ bool solution(vector<string> phone_book) {
             string temp = phone_book[i].substr(0, j + 1);
 
             if (ump[temp]){
-                answer = false;                
+                answer = false;
                 flag = true;
                 break;
             }
