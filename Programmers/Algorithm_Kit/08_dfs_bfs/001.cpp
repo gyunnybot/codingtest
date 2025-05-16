@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <iostream>
 using namespace std;
 
 int answer;
@@ -18,6 +19,9 @@ void recur(vector<int> numbers, int target, int idx, int cnt) {
 }
 
 int solution(vector<int> numbers, int target) {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+    
     recur(numbers, target, 0, 0);
     
     return answer;
