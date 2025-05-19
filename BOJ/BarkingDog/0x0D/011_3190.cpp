@@ -6,7 +6,7 @@ using namespace std;
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 int n, k, y, x, L, t, dir, ret;
-bool board[101][101], visited[101][101];
+bool a[101][101], visited[101][101];
 char c;
 deque<pair<int, int>> t_list;
 
@@ -29,11 +29,11 @@ void snake() {
 		if (ny < 0 || ny >= n || nx < 0 || nx >= n) break; //벽에 부딪히는 경우
 		if (visited[ny][nx]) break; //자기 자신의 몸과 부딪히는 경우
 
-		dq.push_front({ ny,nx });
 		visited[ny][nx] = true;
+		dq.push_front({ ny,nx });
 
-		if (board[ny][nx] == 1) { //사과가 있다면
-			board[ny][nx] = 0;
+		if (a[ny][nx] == 1) { //사과가 있다면
+			a[ny][nx] = 0;
 		}
 		else { //사과가 없다면 몸길이를 줄여서 꼬리가 위치한 칸을 비워준다
 			visited[dq.back().first][dq.back().second] = 0;
@@ -57,7 +57,7 @@ int main() {
 
 	for (int i = 0; i < k; i++) {
 		cin >> y >> x;
-		board[y - 1][x - 1] = 1;
+		a[y - 1][x - 1] = 1;
 	}
 
 	cin >> L;

@@ -13,12 +13,12 @@ vector<int> solution(vector<int> arr) {
     vector<int> answer;
     stack<int> stk;
     
-    for(int i : arr) {
-        if(stk.empty()){
+    for (int i : arr) {
+        if (stk.empty()) {
             stk.push(i);
         }
         else {
-            if(stk.top() == i) {
+            if (stk.top() == i) {
                 continue;
             }
             
@@ -26,7 +26,7 @@ vector<int> solution(vector<int> arr) {
         }
     }
     
-    while(!stk.empty()){
+    while (!stk.empty()) {
         answer.push_back(stk.top());
         stk.pop();
     }

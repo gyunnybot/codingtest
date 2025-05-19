@@ -6,8 +6,8 @@ using namespace std;
 int answer;
 
 void recur(vector<int> numbers, int target, int idx, int cnt) {
-    if(idx == numbers.size()) {
-        if(cnt == target) {
+    if (idx == numbers.size()) {
+        if (cnt == target) {
             answer++;
         }
         

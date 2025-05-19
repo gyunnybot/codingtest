@@ -36,7 +36,6 @@ int do_maze() {
 			}
 
 			if (nx < 0 || nx >= 5 || ny < 0 || ny >= 5 || nz < 0 || nz >= 5) continue;
-
 			if (maze[nx][ny][nz] == 0) continue;
 
 			if (!dist[nx][ny][nz]) {
@@ -89,13 +88,13 @@ int main() {
 			for (int i = 0; i < 5; i++) {
 				int dir = brute % 4;
 
-				brute /= 4;
-
 				for (int j = 0; j < 5; j++) {
 					for (int k = 0; k < 5; k++) {
 						maze[i][j][k] = a[dir][order[i]][j][k];
 					}
 				}
+
+				brute /= 4;
 			}
 
 			ret = min(ret, do_maze());

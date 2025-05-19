@@ -12,11 +12,11 @@ int solution(vector<vector<string>> clothes) {
 
     int answer = 1;
     
-    for(vector<string> cloth : clothes) {
+    for (vector<string> cloth : clothes) {
         ump[cloth[1]]++;
     }
     
-    for(pair<string, int> pi : ump) {
+    for (pair<string, int> pi : ump) {
         answer *= (pi.second + 1);
     }
     

@@ -18,7 +18,7 @@ int solution(vector<int> scoville, int K) {
     }
     
     while(!pq.empty() && pq.top() < K){
-        if(pq.size() >= 2){
+        if (pq.size() >= 2) {
             temp = pq.top(); pq.pop();        
             temp += 2 * pq.top(); pq.pop();
             
@@ -26,7 +26,7 @@ int solution(vector<int> scoville, int K) {
 
             answer++;
         }
-        else{
+        else {
             answer = -1;
             break;
         }

@@ -7,8 +7,8 @@ int n, m, y, x, d, a[51][51], ret;
 bool visited[51][51];
 
 void drive_robot(int y, int x, int dir) {
-    if (!visited[y][x]) { //1번 과정
-        visited[y][x] = 1;
+    if (!visited[y][x]) {
+        visited[y][x] = 1; //1번 과정
         ret++;
     }
 
@@ -20,20 +20,19 @@ void drive_robot(int y, int x, int dir) {
         int nx = x + dx[dir];
 
         if (ny >= 0 && ny < n && nx >= 0 && nx < m && a[ny][nx] == 0 && !visited[ny][nx]) {
-            drive_robot(ny, nx, dir); //(ny, nx)에서의 1->3->2번 과정 시도
-            return; //기존 y, x에서의 drive의 역할은 즉시 종료된다
+            drive_robot(ny, nx, dir); //ny, nx에서 drive_robot
+            return; //drive_robot을 진행할 수 있는 방향이 정해졌다면 즉시 종료
         }
     }
 
-    //y, x에서 네 방향 모두 조건을 만족하지 않을 시 2번 과정 진행
-    int back_dir = (dir + 2) % 4; //후진 방향 설정
+    //2번 과정
+    int back_dir = (dir + 2) % 4;
 
-    //후진 좌표 설정
     int ny = y + dy[back_dir];
     int nx = x + dx[back_dir];
 
     if (ny >= 0 && ny < n && nx >= 0 && nx < m && a[ny][nx] == 0) {
-        drive_robot(ny, nx, dir); //후진 후 1->3->2번 과정 다시 시도
+        drive_robot(ny, nx, dir); //바라보는 방향을 유지한 채로 한 칸 후진 후 drive_robot 다시 시도
     }
     else {
         return; //더 이상 후진할 수 없다면 종료

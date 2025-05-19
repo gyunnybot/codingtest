@@ -19,11 +19,11 @@ int solution(int n, vector<int> lost, vector<int> reserve) {
     
     for(int i = 0; i < n; i++) {
         if(!ret[i]) {
-            if(i > 0 && ret[i - 1] == 2) {
-                ret[i-1]--;
+            if (i > 0 && ret[i - 1] == 2) {
+                ret[i - 1]--;
                 ret[i]++;
             }
-            else if(i < n - 1 && ret[i + 1] == 2) {
+            else if (i < n - 1 && ret[i + 1] == 2) {
                 ret[i + 1]--;
                 ret[i]++;
             }
@@ -33,7 +33,7 @@ int solution(int n, vector<int> lost, vector<int> reserve) {
     int answer = 0;
     
     for(int i : ret){
-        if(i) {
+        if (i != 0) {
             answer++;
         }
     }

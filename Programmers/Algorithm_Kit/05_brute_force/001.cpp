@@ -10,7 +10,7 @@ int solution(vector<vector<int>> sizes) {
     cin.tie(NULL); cout.tie(NULL);
     
     for(vector<int> sz : sizes) {
-        if(sz[0] < sz[1]) {
+        if (sz[0] < sz[1]) {
             swap(sz[0], sz[1]);
         }
         
