@@ -6,19 +6,19 @@ using namespace std;
 int solution(int n, vector<int> lost, vector<int> reserve) {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
-    
+
     vector<int> ret(n, 1);
-    
-    for(int i : lost) {
+
+    for (int i : lost) {
         ret[i - 1]--;
     }
-    
-    for(int i : reserve) {
+
+    for (int i : reserve) {
         ret[i - 1]++;
     }
-    
-    for(int i = 0; i < n; i++) {
-        if(!ret[i]) {
+
+    for (int i = 0; i < n; i++) {
+        if (!ret[i]) {
             if (i > 0 && ret[i - 1] == 2) {
                 ret[i - 1]--;
                 ret[i]++;
@@ -29,14 +29,14 @@ int solution(int n, vector<int> lost, vector<int> reserve) {
             }
         }
     }
-    
+
     int answer = 0;
-    
-    for(int i : ret){
+
+    for (int i : ret) {
         if (i != 0) {
             answer++;
         }
     }
-    
+
     return answer;
 }

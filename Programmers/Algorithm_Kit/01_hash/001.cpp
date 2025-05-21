@@ -17,14 +17,14 @@ string solution(vector<string> participant, vector<string> completion) {
     for (string s : completion) {
         ump[s]--;
     }
-    
+
     string answer = "";
-    
+
     for (pair<string, int> pi : ump) {
         if (pi.second) {
             answer = pi.first;
         }
     }
-    
+
     return answer;
 }

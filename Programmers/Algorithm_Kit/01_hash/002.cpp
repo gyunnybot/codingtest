@@ -15,7 +15,7 @@ int solution(vector<int> nums) {
     for (int num : nums) {
         ust.insert(num);
     }
-    
+
     int temp = ust.size();
 
     answer = min(answer, (temp <= INT_MAX) ? temp : INT_MAX);

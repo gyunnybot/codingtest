@@ -11,9 +11,9 @@ bool solution(vector<string> phone_book) {
     cin.tie(NULL); cout.tie(NULL);
 
     for (int i = 0; i < phone_book.size(); i++) {
-           ump[phone_book[i]]++;
+        ump[phone_book[i]]++;
     }
-    
+
     bool answer = true;
     bool flag = false;
 
@@ -30,6 +30,6 @@ bool solution(vector<string> phone_book) {
 
         if (flag) break;
     }
-    
+
     return answer;
 }
