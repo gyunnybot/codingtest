@@ -1,5 +1,6 @@
-#include<vector>
-#include<queue>
+#include <vector>
+#include <queue>
+#include <iostream>
 using namespace std;
 
 const int dy[] = { -1,0,1,0 };
@@ -41,6 +42,9 @@ int bfs(vector<vector<int>>& maps) {
 }
 
 int solution(vector<vector<int>> maps) {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+    
     int answer = bfs(maps);
 
     return answer;
