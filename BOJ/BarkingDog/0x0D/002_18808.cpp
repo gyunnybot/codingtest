@@ -75,7 +75,7 @@ int main() {
 				for (int j = 0; j <= m - c; j++) {
 					if (postable(i, j)) {
 						post(i, j);
-                        
+
 						flag = true;
 
 						break;

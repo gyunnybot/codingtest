@@ -9,7 +9,7 @@ int n, m, a[9][9];
 int ret = INT_MAX;
 vector<pair<int, int>> cctv;
 
-vector<pair<int, int>> surveillance_area(int cctv_idx, int dir) {
+vector<pair<int, int>> cctv_area(int cctv_idx, int dir) {
     vector<pair<int, int>> temp;
 
     pair<int, int> cur_pos = cctv[cctv_idx];
@@ -136,7 +136,7 @@ vector<pair<int, int>> surveillance_area(int cctv_idx, int dir) {
     return temp;
 }
 
-int get_blind_spot() {
+int get_area() {
     int cnt = 0;
 
     for (int i = 0; i < n; i++) {
@@ -150,16 +150,16 @@ int get_blind_spot() {
     return cnt;
 }
 
-void cctv_on(int cctv_idx) {
+void recur(int cctv_idx) {
     if (cctv_idx == cctv.size()) {
-        ret = min(ret, get_blind_spot());
+        ret = min(ret, get_area());
         return;
     }
 
     for (int dir = 0; dir < 4; dir++) {
-        vector<pair<int, int>> temp_area = surveillance_area(cctv_idx, dir);
+        vector<pair<int, int>> temp_area = cctv_area(cctv_idx, dir);
 
-        cctv_on(cctv_idx + 1);
+        recur(cctv_idx + 1);
 
         for (pair<int, int> pi : temp_area) {
             a[pi.first][pi.second] = 0;
@@ -183,7 +183,7 @@ int main() {
         }
     }
 
-    cctv_on(0);
+    recur(0);
 
     cout << ret;
 

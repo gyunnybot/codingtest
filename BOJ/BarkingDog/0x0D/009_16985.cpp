@@ -78,7 +78,7 @@ int main() {
 		}
 	}
 
-	int order[5] = { 0,1,2,3,4 };
+	int order[5] = { 0,1,2,3,4 }; //층별 인덱스
 	int ret = INT_MAX;
 
 	do {

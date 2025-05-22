@@ -15,7 +15,7 @@ int main() {
 		cin >> a[i];
 	}
 
-	int weight = 0; //현재 다리가 버티는 하중
+	int weight = 0; //하중
 
 	for (int i = 0; i < n; i++) {
 		while (true) {
@@ -34,8 +34,8 @@ int main() {
 		}
 
 		weight += a[i];
-		q.push(a[i]);		
 
+		q.push(a[i]);
 		ret++;
 	}
 

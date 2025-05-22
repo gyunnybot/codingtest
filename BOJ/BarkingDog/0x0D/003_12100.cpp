@@ -28,7 +28,7 @@ struct Board {
 
 				if (flag && a[i][j] == temp[i][c - 1]) {
 					temp[i][c - 1] += a[i][j];
-					flag = false;					
+					flag = false;
 				}
 				else {
 					temp[i][c++] = a[i][j];
@@ -78,7 +78,7 @@ struct Board {
 };
 Board c;
 
-void start_2048(int idx, Board c) {
+void recur(int idx, Board c) {
 	if (idx == 5) {
 		c.get_max();
 		return;
@@ -89,7 +89,7 @@ void start_2048(int idx, Board c) {
 
 		d.push_blocks();
 
-		start_2048(idx + 1, d);
+		recur(idx + 1, d);
 
 		c.rotate();
 	}
@@ -107,7 +107,7 @@ int main() {
 		}
 	}
 
-	start_2048(0, c);
+	recur(0, c);
 
 	cout << ret;
 
