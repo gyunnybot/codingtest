@@ -8,7 +8,7 @@ int ret = INT_MAX;
 bool visited[21];
 vector<int> v;
 
-int go(vector<int>& start, vector<int>& link) {
+int soccer(vector<int>& start, vector<int>& link) {
     pair<int, int> ret = { 0,0 };
 
     for (int i = 0; i < n / 2; i++) {
@@ -36,7 +36,7 @@ void combi(int start, vector<int>& v) {
             }
         }
 
-        ret = min(ret, go(start, link));
+        ret = min(ret, soccer(start, link));
 
         return;
     }
