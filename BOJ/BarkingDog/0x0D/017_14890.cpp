@@ -36,7 +36,7 @@ int main() {
         for (int j = 0; j < n; j++) {
             cin >> a[i][j];
 
-            b[j][i] = a[i][j]; //N x N의 경우에만 가능한 연산. transpos?
+            b[j][i] = a[i][j]; //N x N의 경우에만 가능한 연산. transpos
         }
     }
 
