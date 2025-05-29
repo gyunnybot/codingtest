@@ -1,8 +1,12 @@
 #include <string>
 #include <vector>
+#include <iostream>
 using namespace std;
 
 vector<int> solution(vector<int> progresses, vector<int> speeds) {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
     vector<int> answer;
     vector<int> days;
 
