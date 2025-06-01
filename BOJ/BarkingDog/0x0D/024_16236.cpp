@@ -16,14 +16,14 @@ bool visited[21][21];
 void baby_shark() {
 	bool flag = true;
 
-	while (true) { //먹을 수 있는 물고기가 있다면 true
-		if (!flag) break;
+	while (true) {
+		if (!flag) break; //먹을 수 있는 물고기가 없다면 break
 
 		flag = false; //조사를 시작할 때는 false로 가정
 
 		fill(&visited[0][0], &visited[0][0] + 21 * 21, 0); //방문처리 초기화
 
-		a[shark.y][shark.x] = 0; //시작 좌표값을 0으로 변경
+		a[shark.y][shark.x] = 0;
 
 		visited[shark.y][shark.x] = true; //시작점 방문처리
 
@@ -66,7 +66,7 @@ void baby_shark() {
 		}
 
 		if (flag) {
-			shark = candi; //아기 상어가 가장 적합한 물고기를 먹고 정보를 변경한다
+			shark = candi; //deep copy(STL, struct, vector의 '=' 연산)
 			shark_eat++;
 
 			if (shark_eat == shark_size) {
