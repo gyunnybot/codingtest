@@ -38,7 +38,7 @@ int main(void) {
 
 		bool flag = false;
 		bool reversed = false;
-
+		
 		for (int i = 1; i < x.size() - 1; i++) { //괄호 제거 후 test_str에 저장
 			test_str += x[i];
 		}

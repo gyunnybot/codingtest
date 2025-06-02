@@ -28,7 +28,7 @@ bool check() {
 }
 
 void dfs(int here, int cnt) {
-    if (here > h || cnt > 3) {
+    if (cnt > 3) {
         return;
     }
 
@@ -39,8 +39,7 @@ void dfs(int here, int cnt) {
 
     for (int i = here; i <= h; i++) {
         for (int j = 1; j < n; j++) {
-            if (visited[i][j] || (j + 1 < n && visited[i][j + 1]) ||
-                (j - 1 >= 1 && visited[i][j - 1])) continue;
+            if (visited[i][j] || (j + 1 < n && visited[i][j + 1]) || (j - 1 >= 1 && visited[i][j - 1])) continue;
 
             visited[i][j] = 1;
 

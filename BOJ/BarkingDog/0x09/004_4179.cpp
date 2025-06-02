@@ -28,7 +28,7 @@ void fire_bfs() {
 
     while (!q.empty()) {
         pair<int, int> cur = q.front(); q.pop();
-
+        
         for (int i = 0; i < 4; i++) {
             int ny = cur.first + dy[i];
             int nx = cur.second + dx[i];

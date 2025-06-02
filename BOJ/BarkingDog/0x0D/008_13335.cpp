@@ -34,8 +34,8 @@ int main() {
 		}
 
 		weight += a[i];
-
 		q.push(a[i]);
+		
 		ret++;
 	}
 

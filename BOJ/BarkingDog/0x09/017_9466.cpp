@@ -66,7 +66,7 @@ int main() {
     while (t--) {
         cin >> n;
 
-        fill(&state[0], &state[0] + 100001, 0);
+        fill(&state[0], &state[0] + 100001, NOT_VISITED);
 
         int ret = 0;
 

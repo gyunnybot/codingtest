@@ -5,12 +5,12 @@ const int MX = 1000005;
 int dat[MX], pre[MX], nxt[MX];
 int unused_addr = 1; //원소를 저장할 번지. 1부터 시작
 
-void insert(int addr, int num) { //addr번지 이후에 unused_addr번지 연결 후 데이터 num 삽입
+void insert(int addr, int num) { //addr번지 이후 unused_addr번지 연결 후 데이터 num 삽입
     dat[unused_addr] = num; //dat[i]: 새로 추가된 i번지 원소의 값
     pre[unused_addr] = addr; //pre[i]: i번지의 이전 번지
     nxt[unused_addr] = nxt[addr]; //nxt[i]: i번지의 다음 번지
 
-    if (nxt[addr] != -1) { //addr번지의 다음 번지가 있었다면
+    if (nxt[addr] != -1) { //addr번지의 다음 번지가 있다면
         pre[nxt[addr]] = unused_addr; //다음 번지의 이전 번지를 unused_addr로 변경
     }
 
@@ -20,10 +20,10 @@ void insert(int addr, int num) { //addr번지 이후에 unused_addr번지 연결
     return;
 }
 
-void erase(int addr) { //addr번지의 데이터 삭제
+void erase(int addr) { //addr번지 데이터 삭제
     nxt[pre[addr]] = nxt[addr]; //addr 이전 번지의 다음 번지를 현재 addr의 다음 번지로 변경
 
-    if (nxt[addr] != -1) { //addr번지의 다음 번지가 있었다면
+    if (nxt[addr] != -1) { //addr번지의 다음 번지가 있다면
         pre[nxt[addr]] = pre[addr]; //addr 다음 번지의 이전 번지를 현재 addr의 이전 번지로 변경
     }
 

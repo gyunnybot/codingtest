@@ -1,9 +1,11 @@
 #include<iostream>
 #include<deque>
+#include<vector>
 using namespace std;
 
 int n, L, temp;
 deque<pair<int, int>> dq;
+vector<int> ret;
 
 int main() {
     ios_base::sync_with_stdio(false);
@@ -24,7 +26,11 @@ int main() {
             dq.pop_front(); //구간 이동 시 pop_front
         }
 
-        cout << dq.front().second << ' ';
+        ret.push_back(dq.front().second);
+    }
+
+    for (int i : ret) {
+        cout << i << ' ';
     }
 
     return 0;

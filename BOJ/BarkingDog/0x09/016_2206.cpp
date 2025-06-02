@@ -41,7 +41,7 @@ int bfs() {
 
             //벽을 부수고 진행
             if (!cur.broken && a[ny][nx] == '1') {
-                nb = 1; //벽을 부셨는지 여부를 true로 변경
+                nb = true; //벽을 부셨는지 여부를 true로 변경
 
                 if (!visited[ny][nx][nb]) {
                     visited[ny][nx][nb] = visited[cur.y][cur.x][cur.broken] + 1;

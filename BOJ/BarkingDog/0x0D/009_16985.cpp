@@ -99,7 +99,7 @@ int main() {
 
 			ret = min(ret, do_maze());
 		}
-	} while (next_permutation(order, order + 5));
+	} while (next_permutation(order, order + 5)); //판을 쌓는 순서도 자유롭게 정할 수 있다
 
 	if (ret == INT_MAX) {
 		cout << -1;
