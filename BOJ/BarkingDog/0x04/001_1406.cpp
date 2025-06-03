@@ -24,7 +24,7 @@ int main(void) {
 
 		if (ch == 'P') {
 			cin >> add;
-			L.insert(cur, add); //insert(이터레이터, 값). cur에 원소 추가 후 다음 위치를 가리킴
+			L.insert(cur, add); //insert(이터레이터, 값). cur에 원소 추가 후 다음 이터레이터를 가리킴
 		}
 		else if (ch == 'L') {
 			if (cur != L.begin()) {
@@ -39,7 +39,7 @@ int main(void) {
 		else if (ch == 'B') {
 			if (cur != L.begin()) {
 				cur--;
-				cur = L.erase(cur); //erase(이터레이터). cur에 위치한 원소 삭제 후 다음 위치를 가리킴
+				cur = L.erase(cur); //erase(이터레이터). cur에 위치한 원소 삭제 후 다음 이터레이터를 가리킴
 			}
 		}
 	}

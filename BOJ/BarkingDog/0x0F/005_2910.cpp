@@ -36,7 +36,7 @@ int main() {
 	for (pair<int, int> i : mp) {
 		v.push_back(i);
 	}
-
+	
 	sort(v.begin(), v.end(), cmp);
 
 	for (pair<int, int> i : v) {
