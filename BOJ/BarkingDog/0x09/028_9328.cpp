@@ -12,7 +12,7 @@ char a[101][101];
 bool visited[101][101];
 set<char> keys;
 string key_input, s;
-queue<pair<int, int>> door[28]; //A ~ Z 문 위치 저장
+queue<pair<int, int>> door[28]; //A ~ Z 문의 좌표 저장
 
 void bfs() {
     queue<pair<int, int>> q;
@@ -45,7 +45,7 @@ void bfs() {
                 int key_idx = a[cur.first][cur.second] - 'a'; //새로 얻은 키의 인덱스
 
                 while (!door[key_idx].empty()) {
-                    q.push(door[key_idx].front()); //새로 얻은 키에 대응되는 문의 위치를 전부 큐에 push
+                    q.push(door[key_idx].front()); //새로 얻은 키에 대응되는 문의 좌표를 전부 큐에 push
                     door[key_idx].pop();
                 }
             }
@@ -91,13 +91,12 @@ int main() {
     while (t--) {
         ret = 0; //init
         keys.clear(); //init
-
+        
         fill(&visited[0][0], &visited[0][0] + 101 * 101, false); //init
 
-        //init
-        for (int i = 0; i < 26; i++) {
-            queue<pair<int, int>> flush;
-            swap(door[i], flush);
+        for (int i = 0; i < 26; i++) { //init
+            queue<pair<int, int>> flush_door;
+            swap(door[i], flush_door);
         }
 
         cin >> h >> w;
