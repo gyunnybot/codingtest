@@ -38,7 +38,7 @@ int main() {
 	for (int i = n - 1; i >= 0; i--) { //가격이 높은 보석을 우선적으로 챙긴다
 		m = jewel_info[i].first, v = jewel_info[i].second;
 
-		multiset<int>::iterator it = bag.lower_bound(m); //multiset::lower_bound
+		multiset<int>::iterator it = bag.lower_bound(m); //multiset::lower_bound = O(logN)
 		//multiset<int>::iterator it = lower_bound(bag.begin(), bag.end(), m); //트리 기반 컨테이너에서 std::lower_bound = O(N)
 
 		if (it == bag.end()) continue; //여유가 되지 않는다면 다음 보석으로 진행
