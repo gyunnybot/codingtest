@@ -1,13 +1,13 @@
 #include<iostream>
 using namespace std;
 
-int r, c, k, board[101][101], pre_row, pre_col, cur_row, cur_col, ret;
+int r, c, k, a[101][101], pre_row, pre_col, cur_row, cur_col, ret;
 
 void update_row(int y) {
 	int bucket[101] = { 0, };
 
 	for (int x = 1; x <= pre_col; x++) {
-		bucket[board[y][x]]++;
+		bucket[a[y][x]]++;
 	}
 
 	int idx = 1;
@@ -15,8 +15,8 @@ void update_row(int y) {
 	for (int cnt = 1; cnt <= 100; cnt++) { //횟수
 		for (int val = 1; val <= 100; val++) { //값
 			if (bucket[val] == cnt) { //횟수가 적게 나온 값을 우선으로 오름차순 출력
-				board[y][idx++] = val; //값
-				board[y][idx++] = cnt; //횟수
+				a[y][idx++] = val; //값
+				a[y][idx++] = cnt; //횟수
 
 				if (idx > 100) break;
 			}
@@ -26,7 +26,7 @@ void update_row(int y) {
 	}
 
 	for (int x = idx; x <= pre_col; x++) {
-		board[y][x] = 0;
+		a[y][x] = 0;
 	}
 
 	if (cur_col < idx) {
@@ -40,7 +40,7 @@ void update_col(int x) {
 	int bucket[101] = { 0, };
 
 	for (int y = 1; y <= pre_row; y++) {
-		bucket[board[y][x]]++;
+		bucket[a[y][x]]++;
 	}
 
 	int idx = 1;
@@ -48,8 +48,8 @@ void update_col(int x) {
 	for (int cnt = 1; cnt <= 100; cnt++) { //횟수
 		for (int val = 1; val <= 100; val++) { //값
 			if (bucket[val] == cnt) { //횟수가 적게 나온 값을 우선으로 오름차순 출력
-				board[idx++][x] = val; //값
-				board[idx++][x] = cnt; //횟수
+				a[idx++][x] = val; //값
+				a[idx++][x] = cnt; //횟수
 
 				if (idx > 100) break;
 			}
@@ -59,7 +59,7 @@ void update_col(int x) {
 	}
 
 	for (int y = idx; y <= pre_row; y++) {
-		board[y][x] = 0;
+		a[y][x] = 0;
 	}
 
 	if (cur_row < idx) {
@@ -70,7 +70,7 @@ void update_col(int x) {
 }
 
 void oper() {
-	while (board[r][c] != k) {
+	while (a[r][c] != k) {
 		if (cur_row >= cur_col) {
 			pre_col = cur_col;
 			cur_col = 0;
@@ -104,10 +104,10 @@ int main() {
 
 	for (int i = 1; i <= 3; i++) {
 		for (int j = 1; j <= 3; j++) {
-			cin >> board[i][j];
+			cin >> a[i][j];
 		}
 	}
-    
+
 	cur_row = 3;
 	cur_col = 3;
 
