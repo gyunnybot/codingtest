@@ -31,7 +31,7 @@ int main() {
 	while (!pq.empty()) {
 		pair<int, int> cur = pq.top(); pq.pop();
 
-		if (cur.first != d[cur.second]) continue;
+		if (cur.first != d[cur.second]) continue; //한 번 갱신된 cur까지의 최단거리가 d[cur]가 아니라면
 
 		for (pair<int, int> next : adj[cur.second]) { //연결된 노드로 나아가기
 			if (d[next.second] <= d[cur.second] + next.first) continue;
