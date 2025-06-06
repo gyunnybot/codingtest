@@ -31,9 +31,9 @@ int main() {
 	while (!pq.empty()) {
 		pair<int, int> cur = pq.top(); pq.pop();
 
-		if (cur.first != d[cur.second]) continue; //같은 cur에 대한 우선순위 큐에서 밀린 원소는 최단 경로 X
+		if (cur.first != d[cur.second]) continue;
 
-		for (pair<int, int> next : adj[cur.second]) {
+		for (pair<int, int> next : adj[cur.second]) { //연결된 노드로 나아가기
 			if (d[next.second] <= d[cur.second] + next.first) continue;
 
 			d[next.second] = d[cur.second] + next.first; //최단 거리로 갱신
