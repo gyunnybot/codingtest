@@ -14,7 +14,7 @@ string s;
 
 void fire_bfs() {
     //fire_visited가 더 커야(나중에 방문) 상근이가 이동할 수 있으므로 INT_MAX로 초기화
-    //0으로 초기화된다면 불이 없을 때에도 상근이는 어디로도 이동할 수 없게 됩니다
+    //fire_visited가 0으로 초기화된다면 상근이는 어디로도 이동할 수 없게 됩니다
     fill(&fire_visited[0][0], &fire_visited[0][0] + 1001 * 1001, INT_MAX);
 
     for (pair<int, int> fire : fire_Pos) {

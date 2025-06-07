@@ -33,7 +33,7 @@ void run(int here) {
 
             cur = here; //here에서 다시 시작
 
-            while (state[cur] != IN_CYCLE) { //IN_CYCLE인 cur를 만나기 전까지
+            while (state[cur] != IN_CYCLE) { //IN_CYCLE인 cur를 만날 때까지
                 state[cur] = NOT_IN_CYCLE; //here부터 현재 state를 visited에서 NOT_IN_CYCLE으로 변경
                 cur = a[cur];
             }
@@ -41,13 +41,12 @@ void run(int here) {
             return;
         }
 
-        if (state[cur] == IN_CYCLE || state[cur] == NOT_IN_CYCLE) { //이미 사이클인지 아닌지 판별났을 때
+        //cur가 이미 사이클인지 아닌지 판별났을 때
+        if (state[cur] == IN_CYCLE || state[cur] == NOT_IN_CYCLE) {
             cur = here; //here부터 다시 시작
 
-            //here가 사이클이라면 첫번째 if문에서 이미 state[here]가 IN_CYCLE이 되어야 하므로 NOT_IN_CYCLE
-            //즉, here가 사이클에 끼어들 수 없다는 의미가 된다
-            //따라서 사이클이 아니라면 당연히 NOT_IN_CYCLE 처리
-            while (state[cur] == VISITED) { //전부 NOT_IN_CYCLE으로 변경
+            //전부 NOT_IN_CYCLE으로 변경
+            while (state[cur] == VISITED) {
                 state[cur] = NOT_IN_CYCLE;
                 cur = a[cur];
             }

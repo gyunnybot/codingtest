@@ -64,7 +64,7 @@ void bfs(int land_num) {
                 ret = min(ret, cur.dist); //다리의 최소거리 구하기
                 return; //다리를 놓았으므로 bfs return
             }
-          
+            
             //바다라면
             if (a[ny][nx] == 0 && !visited[ny][nx]) {
                 visited[ny][nx] = true;

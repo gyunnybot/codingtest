@@ -83,7 +83,7 @@ void bfs() {
         swan_q = next_swan_q;
         water = next_water;
         */
-
+       
         //기존 데이터가 더 이상 필요없다면 참조값을 활용한 swap을 사용한다. call by reference
         swap(swan_q, next_swan_q);
         swap(water, next_water);

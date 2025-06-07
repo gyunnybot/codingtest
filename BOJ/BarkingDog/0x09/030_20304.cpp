@@ -8,7 +8,7 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
 
-    cin >> n >> m;
+    cin >> n;
 
     int bit = 2;
     
@@ -21,6 +21,8 @@ int main() {
     }
 
     queue<int> q;
+
+    cin >> m;
 
     while (m--) {
         cin >> x;
@@ -44,7 +46,7 @@ int main() {
 
     for (int i = 0; i <= n; i++) {
         if (dist[i] > ret) {
-            ret = dist[i]; //안전도가 제일 높은 비밀번호의 안전도 도출하기
+            ret = dist[i]; //안전도가 제일 높은 비밀번호의 안전도 구하기
         }
     }
 

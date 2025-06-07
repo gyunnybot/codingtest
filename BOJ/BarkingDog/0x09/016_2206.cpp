@@ -3,8 +3,7 @@
 using namespace std;
 
 struct info {
-    int y, x;
-    bool broken;
+    int y, x, broken;
 };
 
 const int dy[] = { -1,0,1,0 };
@@ -29,7 +28,7 @@ int bfs() {
         for (int i = 0; i < 4; i++) {
             int ny = cur.y + dy[i];
             int nx = cur.x + dx[i];
-            bool nb = cur.broken;
+            int nb = cur.broken;
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
@@ -41,7 +40,7 @@ int bfs() {
 
             //벽을 부수고 진행
             if (!cur.broken && a[ny][nx] == '1') {
-                nb = true; //벽을 부셨는지 여부를 true로 변경
+                nb = 1; //벽을 부셨는지 여부를 true로 변경
 
                 if (!visited[ny][nx][nb]) {
                     visited[ny][nx][nb] = visited[cur.y][cur.x][cur.broken] + 1;

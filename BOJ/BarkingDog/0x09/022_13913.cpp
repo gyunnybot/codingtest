@@ -8,7 +8,7 @@ int n, k, visited[100001], pre[100001];
 vector<int> ret;
 
 void bfs(int n) {
-    visited[n] = 1; //방문 여부
+    visited[n] = 1;
 
     queue<int> q;
     q.push(n);
@@ -50,7 +50,7 @@ int main() {
         }
 
         ret.push_back(cur); //현재 노드의 값 추가
-        cur = pre[cur];     //이전 노드로 이동
+        cur = pre[cur]; //이전 노드로 이동
     }
 
     reverse(ret.begin(), ret.end()); //역순으로 정렬

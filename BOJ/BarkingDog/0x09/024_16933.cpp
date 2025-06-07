@@ -3,8 +3,7 @@
 using namespace std;
 
 struct info {
-    int y, x, broken;
-    bool isNoon;
+    int y, x, broken, isNoon;
 };
 
 const int dy[] = { -1,0,1,0 };
@@ -36,7 +35,7 @@ int bfs() {
             int ny = cur.y + dy[i];
             int nx = cur.x + dx[i];
             int nb = cur.broken;
-            bool nn = !cur.isNoon;
+            int nn = cur.isNoon ^ 1;
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 

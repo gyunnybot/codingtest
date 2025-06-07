@@ -16,7 +16,7 @@ bool connected(pair<int, int> next) {
 
         if (nx < 1 || nx > n || ny < 1 || ny > n) continue;
 
-        if (visited[nx][ny] && light[nx][ny]) { //상하좌우 중 이미 방문한 곳이 있다면 true
+        if (visited[nx][ny] && light[nx][ny]) { //상하좌우 중 이미 방문한 곳이 있다면
             return true;
         }
     }

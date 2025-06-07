@@ -42,7 +42,7 @@ void bfs() {
             if (keys.find(a[cur.first][cur.second]) == keys.end()) { //키를 소유하고 있지 않다면
                 keys.insert(a[cur.first][cur.second]); //새로 얻은 키를 열쇠꾸러미에 추가
 
-                int key_idx = a[cur.first][cur.second] - 'a'; //새로 얻은 키의 인덱스
+                int key_idx = a[cur.first][cur.second] - 'a'; //새로 얻은 키의 인덱스(알파벳 순서) 구하기
 
                 while (!door[key_idx].empty()) {
                     q.push(door[key_idx].front()); //새로 얻은 키에 대응되는 문의 좌표를 전부 큐에 push
@@ -94,7 +94,8 @@ int main() {
         
         fill(&visited[0][0], &visited[0][0] + 101 * 101, false); //init
 
-        for (int i = 0; i < 26; i++) { //init
+        //init
+        for (int i = 0; i < 26; i++) {
             queue<pair<int, int>> flush_door;
             swap(door[i], flush_door);
         }

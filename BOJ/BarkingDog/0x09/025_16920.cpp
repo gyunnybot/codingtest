@@ -10,8 +10,8 @@ queue<info> q[10];
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 int n, m, p, s[10], area[10];
-bool expandable[1001][1001];
 char a[1001][1001];
+bool expandable[1001][1001];
 string input_str;
 
 void bfs() {
@@ -46,10 +46,10 @@ void bfs() {
                 }
             }
             
-            swap(q[i], next_q); //swap : call by reference. O(1)
-            //q[i] = next_q; //deep copy, O(N)이지만 q <= 10이므로 해당 문제에서는 제한 시간 내 통과
+            swap(q[i], next_q); //call by reference. O(1)
+            //q[i] = next_q; //deep copy(call by value). O(N)이지만 q <= 10이므로 해당 문제에서는 제한 시간 내 통과
         }
-
+        
         if (!flag) break; //더 이상 확장되지 않았다면 break
     }
 
