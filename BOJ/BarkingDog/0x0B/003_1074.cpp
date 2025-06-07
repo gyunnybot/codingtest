@@ -7,7 +7,7 @@ int recur(int n, int r, int c) {
 	if (n == 0) {
 		return 0; //문제에서는 첫 방문을 '0 번째 방문'으로 정의함
 	}
-
+	
 	int half = (1 << n) / 2;
 
 	if (r < half && c < half) {
