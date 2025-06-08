@@ -50,7 +50,7 @@ int main() {
 
 	for (int i = 0; i < n; i++) {
 		cin >> parent >> L >> R;
-
+		
 		adj[parent].first = L;
 		adj[parent].second = R;
 	}

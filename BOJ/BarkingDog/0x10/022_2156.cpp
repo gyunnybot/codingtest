@@ -18,9 +18,8 @@ int main() {
 	dp[2] = a[1] + a[2];
 
 	for (int i = 3; i <= n; i++) {
-		dp[i] = max(dp[i - 2], a[i - 1] + dp[i - 3]) + a[i];
-		dp[i] = max(dp[i], dp[i - 1]); //i번째 포도주의 양이 매우 적어 선택 시 오히려 손해인 경우
-		//2579번 계단 오르기와 달리 dp[i]에서 반드시 i번째 값을 선택할 의무가 없다
+		dp[i] = max(dp[i - 2], dp[i - 3] + a[i - 1]) + a[i]; //i번째 포도주를 선택하는 경우
+		dp[i] = max(dp[i], dp[i - 1]); //i번째 포도주를 선택 안하는 경우와 비교해 최종 dp값 결정
 	}
 
 	cout << *max_element(dp + 1, dp + n + 1);

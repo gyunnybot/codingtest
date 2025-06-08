@@ -5,7 +5,7 @@ int t, n, a[2][100001], dp[2][100001];
 
 int main() {
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    cin.tie(NULL); cout.tie(NULL);
 
     cin >> t;
 
