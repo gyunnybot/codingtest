@@ -1,7 +1,6 @@
 #include <vector>
 #include <iostream>
 #include <unordered_set>
-#include <climits> //INT_MAX
 using namespace std;
 
 unordered_set<int> ust;
@@ -18,7 +17,7 @@ int solution(vector<int> nums) {
 
     int temp = ust.size();
 
-    answer = min(answer, (temp <= INT_MAX) ? temp : INT_MAX);
+    answer = min(answer, temp);
 
     return answer;
 }

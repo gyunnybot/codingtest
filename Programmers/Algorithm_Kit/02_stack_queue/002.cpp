@@ -11,7 +11,7 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
     vector<int> days;
 
     //각 작업이 완료되는 날짜 계산
-    for (int i = 0; i < progresses.size(); ++i) {
+    for (int i = 0; i < progresses.size(); i++) {
         int remain = 100 - progresses[i];
         int day = remain / speeds[i];
 
@@ -26,7 +26,7 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
     int deploy_day = days[0];
     int count = 1;
 
-    for (int i = 1; i < days.size(); ++i) {
+    for (int i = 1; i < days.size(); i++) {
         if (days[i] <= deploy_day) {
             count++;
         }

@@ -22,19 +22,18 @@ int main() {
 		adj[u].push_back({ w,v }); //{가중치, 목적지 노드}
 	}
 
-	d[st] = 0; //st에서 현재 노드 cur까지의 최소 거리 d[cur]
-
 	//pq greater = 최소 힙. {st에서 현재 노드 cur까지의 최소 거리 d[cur], 현재 위치한 노드 cur}
 	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+
+	d[st] = 0;
 	pq.push({ d[st],st });
 
 	while (!pq.empty()) {
 		pair<int, int> cur = pq.top(); pq.pop();
 
-		//먼저 입력되었지만 같은 cur.second에 대해 우선순위 큐에서 밀린 원소는 최단 경로가 될 수 없다
-		if (cur.first != d[cur.second]) continue;
+		if (cur.first != d[cur.second]) continue; //한 번 갱신된 cur까지의 최단거리가 d[cur]가 아니라면
 
-		for (pair<int, int> next : adj[cur.second]) {
+		for (pair<int, int> next : adj[cur.second]) { //연결된 노드로 나아가기
 			if (d[next.second] <= d[cur.second] + next.first) continue;
 
 			d[next.second] = d[cur.second] + next.first; //최단 거리로 갱신

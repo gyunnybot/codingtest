@@ -18,7 +18,7 @@ int main() {
 
 	cin >> m;
 
-    //해시 테이블 자료구조. O(1)
+    //해시 테이블 자료구조 unordered_map. O(1)
 	for (int i = 0; i < m; i++) {
 		cin >> temp;
 
