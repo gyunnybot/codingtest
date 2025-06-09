@@ -9,6 +9,8 @@ unordered_map<string, int> ump;
 string solution(vector<string> participant, vector<string> completion) {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
+    
+    string answer = "";
 
     for (string s : participant) {
         ump[s]++;
@@ -18,11 +20,10 @@ string solution(vector<string> participant, vector<string> completion) {
         ump[s]--;
     }
 
-    string answer = "";
-
-    for (pair<string, int> pi : ump) {
-        if (pi.second) {
-            answer = pi.first;
+    for (string s : participant) {
+        if (ump[s]) {
+            answer = s;
+            break;
         }
     }
 

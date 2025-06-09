@@ -12,9 +12,9 @@ vector<int> solution(vector<int> array, vector<vector<int>> commands) {
     
     for(vector<int> cmd : commands) {
         vector<int> temp = array;
-            
-        sort(temp.begin() + (cmd[0] - 1), temp.begin() + (cmd[1]));
 
+        sort(temp.begin() + (cmd[0] - 1), temp.begin() + (cmd[1]));
+        
         answer.push_back(temp[(cmd[0] - 1) + (cmd[2] - 1)]);
     }
     

@@ -10,8 +10,8 @@ bool solution(vector<string> phone_book) {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
 
-    for (int i = 0; i < phone_book.size(); i++) {
-        ump[phone_book[i]]++;
+    for (string s : phone_book) {
+        ump[s]++;
     }
 
     bool answer = true;
