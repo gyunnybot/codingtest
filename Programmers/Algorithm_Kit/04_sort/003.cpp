@@ -17,7 +17,7 @@ int solution(vector<int> citations) {
     }
     else {
         for (int i = 0; i < citations.size(); i++) {
-            if (citations[i] > i) {
+            if (citations[i] >= i + 1) { //i + 1을 h로 가정 후 h-index 도출
                 answer++;
             }
             else {

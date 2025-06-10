@@ -9,34 +9,34 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
     cin.tie(NULL); cout.tie(NULL);
 
     vector<int> answer;
-    
-    map<string, int> genres_plays; //장르별 재생 횟수
-    map<string, map<int, int>> genres_idx_plays; //장르, 노래 번호별 재생 횟수
+
+    map<string, int> genres_plays; //장르(key) - 재생 횟수(value)
+    map<string, map<int, int>> genres_idx_plays; //장르(key) - 노래 번호(key1) - 재생 횟수(value1)
 
     for (int i = 0; i < genres.size(); i++) {
-        genres_plays[genres[i]] += plays[i]; //장르별 재생 횟수
-        genres_idx_plays[genres[i]][i] = plays[i]; //장르, 노래 번호별 재생 횟수
+        genres_plays[genres[i]] += plays[i]; //장르별 재생 횟수 저장
+        genres_idx_plays[genres[i]][i] = plays[i]; //장르, 노래 번호별 재생 횟수 저장
     }
 
     while (genres_plays.size() > 0) {
-        string genre = ""; //최대 재생 횟수를 가진 장르
-        int max = 0; //장르별 최대 재생 횟수
+        string genre = ""; //최대 재생 횟수를 가지는 장르 저장
+        int plays = 0; //장르별 최대 재생 횟수 저장
 
         for (pair<string, int> pi : genres_plays) {
-            if (max < pi.second) {
-                max = pi.second;
-                genre = pi.first;
+            if (plays < pi.second) {
+                plays = pi.second;
+                genre = pi.first; //장르
             }
         }
 
-        for (int i = 0; i < 2; i++) {
-            int play_cnt = 0; //노래 번호별 재생 횟수의 최댓값
-            int idx = -1; //노래 번호
+        for (int i = 0; i < 2; i++) { //장르별로 2곡 씩 선정
+            int play_cnt = 0; //동일 장르 내 노래 번호별 최대 재생 횟수 저장
+            int idx = -1; //최대 재생 횟수를 가지는 노래 번호 저장
 
-            for (pair<int, int> pi: genres_idx_plays[genre]) {
+            for (pair<int, int> pi : genres_idx_plays[genre]) {
                 if (play_cnt < pi.second) {
                     play_cnt = pi.second;
-                    idx = pi.first;
+                    idx = pi.first; //노래 번호
                 }
             }
 
@@ -44,11 +44,11 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
                 break;
             }
 
-            answer.push_back(idx);
-            genres_idx_plays[genre].erase(idx); //연주된 노래 번호 제외
+            answer.push_back(idx); //노래 번호 저장
+            genres_idx_plays[genre].erase(idx); //저장된 노래 번호는 genres_idx_plays map에서 삭제
         }
 
-        genres_plays.erase(genre); //두 곡이 연주된 장르 제외
+        genres_plays.erase(genre); //저장된 장르는 genres_plays map에서 삭제
     }
 
     return answer;

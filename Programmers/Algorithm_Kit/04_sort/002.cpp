@@ -20,14 +20,14 @@ string solution(vector<int> numbers) {
         str_num.push_back(to_string(i));
     }
 
-    sort(str_num.begin(), str_num.end(), cmp); //붙인 결과가 내림차순이 되도록 정렬
+    sort(str_num.begin(), str_num.end(), cmp); //붙임 결과가 내림차순이 되도록 정렬
 
     if (str_num[0] == "0") { //가장 앞의 원소가 0이라면
         answer = "0";
     }
     else {
         for (string s : str_num) {
-            answer += s;
+            answer += s; //숫자 문자열 붙이기
         }
     }
 
