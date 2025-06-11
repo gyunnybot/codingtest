@@ -15,7 +15,7 @@ int solution(vector<int> nums) {
         ust.insert(num);
     }
 
-    int temp = ust.size();
+    int temp = ust.size(); //size_t -> int로 형 변환
 
     answer = min(answer, temp);
 

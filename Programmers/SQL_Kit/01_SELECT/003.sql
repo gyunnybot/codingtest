@@ -19,7 +19,7 @@ ORDER BY SCORE DESC, I.FAVORITES DESC;
 /*
 외부 조인: LEFT OUTER JOIN, RIGHT OUTER JOIN
 조건 컬럼이 중복되어 출력
-아래 쿼리의 경우 orders의 레코드(행)는 무조건 출력되며, 조인 조건에 맞지 않는 customer의 데이터는 null로 채워진다
+아래 쿼리의 경우 orders의 레코드(행)는 무조건 출력되며, 조인 조건에 맞지 않는 customer의 필드값은 null로 채워진다
 
 SELECT *
 FROM orders LEFT OUTER JOIN customer

@@ -5,5 +5,5 @@ AND GENDER = 'W' -- VARCHAR
 AND TLNO IS NOT NULL -- Nullable = TRUE
 ORDER BY MEMBER_ID;
 
--- DATE_FORMAT(DATE 타입의 속성, '날짜 형식')
--- MONTH(DATE 타입의 속성) : 월(month) 추출
+-- DATE_FORMAT(DATE 타입 속성, '형식')
+-- MONTH(DATE 타입 속성) : 월(month) 추출

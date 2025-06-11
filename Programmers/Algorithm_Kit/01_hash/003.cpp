@@ -18,7 +18,7 @@ bool solution(vector<string> phone_book) {
     bool flag = false;
 
     for (int i = 0; i < phone_book.size(); i++) {
-        for (int j = 1; j < phone_book[i].size(); j++) { //같은 전화번호가 중복해서 들어있지 않습니다
+        for (int j = 1; j < phone_book[i].size(); j++) { //목록 내 같은 전화번호는 없으므로 size - 1까지 조사
             string temp = phone_book[i].substr(0, j);
 
             if (ump[temp]) {
