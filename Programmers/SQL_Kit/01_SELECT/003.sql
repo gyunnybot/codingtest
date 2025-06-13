@@ -3,7 +3,7 @@ FROM REST_INFO AS I LEFT OUTER JOIN REST_REVIEW AS R
 ON I.REST_ID = R.REST_ID
 WHERE I.ADDRESS LIKE '서울%'
 AND R.REVIEW_SCORE IS NOT NULL -- Nullable = TRUE
-GROUP BY I.REST_ID, I.REST_NAME, I.FOOD_TYPE, I.FAVORITES, I.ADDRESS -- SELECT는 GROUP BY에서 사용한 속성 또는 집계함수만 사용 가능하다
+GROUP BY I.REST_ID, I.REST_NAME, I.FOOD_TYPE, I.FAVORITES, I.ADDRESS -- SELECT절에서는 GROUP BY에서 사용된 속성 또는 집계함수만 사용 가능하다
 ORDER BY SCORE DESC, I.FAVORITES DESC;
 
 /*
@@ -42,7 +42,7 @@ WHERE orders.custid = customer.custid;
 자연 조인: NATURAL JOIN
 겹치는 컬럼이 중복되지 않고 한 번만 출력된다
 
-조인 조건(겹치는) 컬럼이 반드시 하나여야 한다!
+조인 조건(겹치는) 컬럼이 반드시 하나여야 한다
 
 SELECT *
 FROM orders NATURAL JOIN customer;
