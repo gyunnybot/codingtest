@@ -2,4 +2,4 @@ SELECT ROUND(AVG(DAILY_FEE), 0) AS AVERAGE_FEE
 FROM CAR_RENTAL_COMPANY_CAR
 WHERE CAR_TYPE = 'SUV'; -- VARCHAR
 
--- ROUND(숫자, N) : 소수 N번째 자리수까지 반올림하여 출력
+-- ROUND(숫자, N) : 소수 N 번째 자리수까지 반올림
