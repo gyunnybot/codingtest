@@ -5,8 +5,9 @@ AND I.ADDRESS LIKE '서울%'
 GROUP BY I.REST_ID
 ORDER BY SCORE DESC, I.FAVORITES DESC;
 
+-- ROUND(숫자, N) : 반올림하여 소수 N 번째 자리까지 출력
+
 /*
 일반적으로 SELECT 절은 GROUP BY에서 사용된 속성 또는 집계함수만 사용 가능하다
-
-그러나, REST_INFO 테이블은 REST_ID에 따라 나머지 속성이 반드시 결정되므로 GROUP BY에 없는 속성도 사용 가능하다
+그러나, REST_INFO 테이블은 REST_ID에 따른 나머지 속성 값이 고유하므로 GROUP BY에 없는 속성도 SELECT에서 사용 가능하다
 */

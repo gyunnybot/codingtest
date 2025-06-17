@@ -1,0 +1,15 @@
+SELECT USER_ID, PRODUCT_ID
+FROM ONLINE_SALE
+GROUP BY USER_ID, PRODUCT_ID
+HAVING COUNT(*) >= 2
+ORDER BY USER_ID ASC, PRODUCT_ID DESC;
+
+-- GROUP BY로 묶여진 테이블에서는 HAVING으로 조건문을 실행할 수 있다
+
+/*
+SELECT t1, t2
+FROM table
+WHERE cond1 -- 일반적인 테이블에서의 조건절 WHERE
+GROUP BY t1 -- GROUP BY로 테이블 그룹화
+HAVING cond2 -- 그룹화된 테이블에서의 조건절 HAVING
+*/
