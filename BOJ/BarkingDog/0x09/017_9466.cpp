@@ -7,7 +7,7 @@ const int IN_CYCLE = 2;
 const int NOT_IN_CYCLE = 3;
 int t, n, a[100001], state[100001];
 
-void run(int here) {
+void set_state(int here) {
     int cur = here;
 
     while (true) {
@@ -75,7 +75,7 @@ int main() {
 
         for (int i = 1; i <= n; i++) {
             if (state[i] == NOT_VISITED) {
-                run(i);
+                set_state(i);
             }
         }
 

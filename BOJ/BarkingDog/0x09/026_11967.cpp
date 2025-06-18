@@ -36,7 +36,7 @@ void bfs() {
 
         for (pair<int, int> next : adj[cur.first][cur.second]) {
             if (!light[next.first][next.second]) {
-                //상하좌우로 인접하지 않더라도 입력으로 주어진 next인 경우 불을 켤 수 있다
+                //입력으로 주어진 next인 경우, 상하좌우로 인접하지 않더라도 불을 켤 수 있다
                 light[next.first][next.second] = true;
 
                 if (connected(next)) { //next 기준 상하좌우 중 방문한 곳이 있는지 확인

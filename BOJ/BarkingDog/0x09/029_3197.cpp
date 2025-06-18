@@ -111,7 +111,7 @@ int main() {
             }
 
             if (a[i][j] == 'L') {
-                swan.push_back({ i, j }); //백조가 위치한 곳을 따로 저장
+                swan.push_back({ i, j }); //백조가 위치한 곳은 따로 저장
             }
         }
     }

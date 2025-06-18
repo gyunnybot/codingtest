@@ -31,7 +31,7 @@ int bfs() {
             int nb = cur.broken;
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
-
+            
             //벽을 부수지 않고 진행
             if (a[ny][nx] == '0' && !visited[ny][nx][nb]) {
                 visited[ny][nx][nb] = visited[cur.y][cur.x][cur.broken] + 1;

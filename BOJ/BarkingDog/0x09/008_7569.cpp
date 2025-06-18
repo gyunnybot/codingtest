@@ -97,10 +97,10 @@ int main() {
                 ret = max(ret, visited[i][j][height] - 1);
             }
 
-            if(flag) break;
+            if (flag) break;
         }
 
-        if(flag) break;
+        if (flag) break;
     }
 
     if (flag) {

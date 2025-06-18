@@ -43,9 +43,10 @@ int bfs() {
             int nx = cur.x + dx1[i];
             int nused = cur.used + 1; //말처럼 움직인 횟수 추가
 
-            if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
             if (nused > k) break;
 
+            if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
+            
             if (a[ny][nx] == 0 && !visited[ny][nx][nused]) {
                 visited[ny][nx][nused] = visited[cur.y][cur.x][cur.used] + 1;
                 q.push({ ny,nx,nused });

@@ -36,11 +36,13 @@ int main() {
 
 	cin >> n;
 
-	for (int i = 0; i < n; i++)
-		for (int j = 0; j < n; j++)
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
 			cin >> a[i][j];
+		}
+	}
 
-	int ret = 1; //아무 지역도 잠기지 않는다면 안전 영역의 수는 1이다
+	int ret = 1; //아무 지역도 잠기지 않을 때 안전 영역의 수는 1이다
 
 	for (int k = 1; k <= 100; k++) {
 		fill(&visited[0][0], &visited[0][0] + 101 * 101, false);
