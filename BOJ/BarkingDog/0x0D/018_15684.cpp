@@ -41,11 +41,11 @@ void ladder(int here, int cnt) {
         for (int j = 1; j < n; j++) {
             if (visited[i][j] || (j + 1 < n && visited[i][j + 1]) || (j - 1 >= 1 && visited[i][j - 1])) continue;
 
-            visited[i][j] = 1;
+            visited[i][j] = true;
 
             ladder(i, cnt + 1);
 
-            visited[i][j] = 0;
+            visited[i][j] = false;
         }
     }
 

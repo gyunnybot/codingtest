@@ -8,7 +8,7 @@ int n, l, r, a[51][51], ret;
 bool visited[51][51];
 vector<pair<int, int>> v;
 
-void move_population(vector<pair<int,int>>& v) {
+void move_population(vector<pair<int, int>>& v) {
     int cnt = 0;
 
     for (pair<int, int> pi : v) {
@@ -24,6 +24,7 @@ void move_population(vector<pair<int,int>>& v) {
 
 void dfs(int y, int x) {
     visited[y][x] = true;
+    v.push_back({ y,x });
 
     for (int i = 0; i < 4; i++) {
         int ny = y + dy[i];
@@ -32,8 +33,6 @@ void dfs(int y, int x) {
         if (ny < 0 || ny >= n || nx < 0 || nx >= n) continue;
 
         if (!visited[ny][nx] && l <= abs(a[ny][nx] - a[y][x]) && abs(a[ny][nx] - a[y][x]) <= r) {
-            v.push_back({ ny,nx });
-
             dfs(ny, nx);
         }
     }
@@ -50,14 +49,11 @@ void check_move() {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (!visited[i][j]) {
-                    v.push_back({ i,j });
-
                     dfs(i, j);
 
                     if (v.size() > 1) {
-                        flag = true;
-
                         move_population(v);
+                        flag = true;
                     }
 
                     v.clear();
