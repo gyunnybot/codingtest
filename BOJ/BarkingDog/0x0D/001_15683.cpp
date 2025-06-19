@@ -150,7 +150,7 @@ int get_area() {
     return cnt;
 }
 
-void recur(int cctv_idx) {
+void search(int cctv_idx) {
     if (cctv_idx == cctv.size()) {
         ret = min(ret, get_area());
         return;
@@ -159,7 +159,7 @@ void recur(int cctv_idx) {
     for (int dir = 0; dir < 4; dir++) {
         vector<pair<int, int>> temp_area = cctv_area(cctv_idx, dir);
 
-        recur(cctv_idx + 1);
+        search(cctv_idx + 1);
 
         for (pair<int, int> pi : temp_area) {
             a[pi.first][pi.second] = 0;
@@ -183,7 +183,7 @@ int main() {
         }
     }
 
-    recur(0);
+    search(0);
 
     cout << ret;
 

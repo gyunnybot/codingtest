@@ -6,7 +6,7 @@ using namespace std;
 int n, m, a[51][51];
 int ret = INT_MAX;
 vector<pair<int, int>> house, chicken; //집 위치, 치킨집 위치 저장
-vector<int> chicken_list; //선택된 치킨집의 인덱스 저장
+vector<int> chicken_list; //선택된 치킨집 인덱스 저장
 vector<bool> visited(14, false);
 
 int cal_city_dist(vector<pair<int, int>>& house, vector<int>& chicken_list) {

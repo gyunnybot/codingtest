@@ -32,10 +32,10 @@ int main() {
 				ret++;
 			}
 		}
-
-		weight += a[i];
-		q.push(a[i]);
 		
+		weight += a[i];
+
+		q.push(a[i]);
 		ret++;
 	}
 

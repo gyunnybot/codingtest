@@ -74,7 +74,7 @@ void puyo() {
 
 					if (same_blocks_pos.size() >= 4) {
 						chain_reaction(same_blocks_pos);
-
+						
 						flag = true;
 					}
 				}

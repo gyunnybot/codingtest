@@ -36,10 +36,10 @@ void bfs() {
 
         for (pair<int, int> next : adj[cur.first][cur.second]) {
             if (!light[next.first][next.second]) {
-                //입력으로 주어진 next인 경우, 상하좌우로 인접하지 않더라도 불을 켤 수 있다
+                //입력으로 주어진 next인 경우, 상하좌우로 인접하지 않아도 불을 켤 수 있다. 단, queue에는 입력되지 않는다
                 light[next.first][next.second] = true;
 
-                if (connected(next)) { //next 기준 상하좌우 중 방문한 곳이 있는지 확인
+                if (connected(next)) { //next 기준 상하좌우 중 이미 방문한 곳이 있다면 베시가 이동할 수 있다
                     visited[next.first][next.second] = true;
                     q.push({ next });
                 }
@@ -52,7 +52,7 @@ void bfs() {
 
             if (nx < 1 || nx > n || ny < 1 || ny > n) continue;
 
-            //상하좌우로 인접한 방 중 방문하지 않았지만 불이 켜져있다면
+            //상하좌우로 인접한 방 중 방문하지 않았지만 불이 켜져있다면 베시가 이동할 수 있다
             if (!visited[nx][ny] && light[nx][ny]) {
                 visited[nx][ny] = true;
                 q.push({ nx,ny });

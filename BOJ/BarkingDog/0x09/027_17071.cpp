@@ -20,7 +20,7 @@ void bfs(int n) {
             break;
         }
 
-        if (visited[mov % 2][k]) { //이미 k를 홀수 또는 짝수 시각에 맞춰 방문한 경험이 있다면
+        if (visited[mov % 2][k]) { //이전에 k를 홀수 또는 짝수 시각에 맞춰 방문한 경험이 있다면
             ret = mov;
             break;
         }

@@ -32,10 +32,9 @@ void dice(int dir) {
             a[ny][nx] = 0; //좌표 내 값은 0으로 수정
         }
 
-        //y, x 좌표 바꾸기
         y = ny;
         x = nx;
-
+        
         //현재 윗면 출력
         cout << n1 << '\n';
     }

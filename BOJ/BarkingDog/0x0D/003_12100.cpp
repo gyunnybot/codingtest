@@ -78,18 +78,18 @@ struct Board {
 };
 Board c;
 
-void recur(int idx, Board c) {
+void move(int idx, Board c) {
 	if (idx == 5) {
 		c.get_max();
 		return;
 	}
 
 	for (int dir = 0; dir < 4; dir++) {
-		Board d = c;
+		Board d = c; //deep copy. O(N)
 
 		d.push_blocks();
 
-		recur(idx + 1, d);
+		move(idx + 1, d);
 
 		c.rotate();
 	}
@@ -107,7 +107,7 @@ int main() {
 		}
 	}
 
-	recur(0, c);
+	move(0, c);
 
 	cout << ret;
 

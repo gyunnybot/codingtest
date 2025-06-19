@@ -37,15 +37,15 @@ void bfs() {
             ret++;
         }
 
-        //키 발견
+        //열쇠 발견
         if ('a' <= a[cur.first][cur.second] && a[cur.first][cur.second] <= 'z') {
-            if (keys.find(a[cur.first][cur.second]) == keys.end()) { //키를 소유하고 있지 않다면.. set - st.end(), string - string::npos
-                keys.insert(a[cur.first][cur.second]); //새로 얻은 키를 열쇠꾸러미에 추가
+            if (keys.find(a[cur.first][cur.second]) == keys.end()) { //열쇠를 소유하고 있지 않다면.. set = st.end(), string = string::npos
+                keys.insert(a[cur.first][cur.second]); //새로 얻은 열쇠를 열쇠꾸러미에 추가
 
-                int key_idx = a[cur.first][cur.second] - 'a'; //새로 얻은 키의 인덱스(알파벳 순서) 찾기
+                int key_idx = a[cur.first][cur.second] - 'a'; //새로 얻은 열쇠의 인덱스(알파벳 순서) 찾기
 
                 while (!door[key_idx].empty()) {
-                    q.push(door[key_idx].front()); //새로 얻은 키에 대응되는 문의 좌표를 전부 큐에 저장
+                    q.push(door[key_idx].front()); //새로 얻은 열쇠에 대응되는 모든 문의 좌표를 큐에 저장
                     door[key_idx].pop();
                 }
             }
@@ -57,7 +57,7 @@ void bfs() {
         if ('A' <= a[cur.first][cur.second] && a[cur.first][cur.second] <= 'Z') {
             if (keys.find((a[cur.first][cur.second]) + ('a' - 'A')) == keys.end()) { //열쇠가 없다면
                 door[a[cur.first][cur.second] - 'A'].push(cur); //아직 열쇠가 없으므로 문의 위치에 추가
-                continue; //열쇠가 없으므로 cur에서의 확장 종료. while(!q.empty()) 반복문 재실행 후 //키 발견 부분에서 queue flush
+                continue; //열쇠가 없으므로 cur에서의 bfs 종료 후 while(!q.empty()) 반복문 재실행
             }
             else { //열쇠가 있다면
                 a[cur.first][cur.second] = '.'; //즉석에서 빈 공간으로 변경
@@ -83,9 +83,10 @@ void bfs() {
 }
 
 void init() {
-    ret = 0;
     keys.clear();
-        
+
+    ret = 0;
+
     fill(&visited[0][0], &visited[0][0] + 101 * 101, false);
 
     for (int i = 0; i < 26; i++) {

@@ -27,7 +27,7 @@ bool check() {
     return true;
 }
 
-void dfs(int here, int cnt) {
+void ladder(int here, int cnt) {
     if (cnt > 3) {
         return;
     }
@@ -43,7 +43,7 @@ void dfs(int here, int cnt) {
 
             visited[i][j] = 1;
 
-            dfs(i, cnt + 1);
+            ladder(i, cnt + 1);
 
             visited[i][j] = 0;
         }
@@ -60,10 +60,10 @@ int main() {
 
     for (int i = 0; i < m; i++) {
         cin >> a >> b;
-        visited[a][b] = 1; //b번 세로선과 b + 1번 세로선을 a번째 가로선 위치에서 연결합니다
+        visited[a][b] = 1; //b번 세로선과 b + 1번 세로선을 a번 점선 위치에서 연결했다는 의미이다
     }
 
-    dfs(1, 0); //첫 번째 가로선부터 시작
+    ladder(1, 0); //첫 번째 가로선부터 시작
 
     result = (ret == INT_MAX ? -1 : ret);
 

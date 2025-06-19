@@ -8,7 +8,7 @@ const int dx[] = { 0,1,0,-1 };
 int n, k, y, x, L, t, dir, ret;
 bool a[101][101], visited[101][101];
 char c;
-deque<pair<int, int>> t_dir_list;
+deque<pair<int, int>> dir_list;
 
 void snake() {
 	visited[0][0] = true; //게임이 시작될 때 뱀은 맨 위 맨 좌측에 위치한다
@@ -40,9 +40,9 @@ void snake() {
 			dq.pop_back();
 		}
 
-		if (!t_dir_list.empty() && (ret == t_dir_list.front().first)) { //입력한 시간이 되면 방향을 바꾼다
-			dir = (dir + t_dir_list.front().second) % 4;
-			t_dir_list.pop_front();
+		if (!dir_list.empty() && (ret == dir_list.front().first)) { //입력한 시간이 되면 방향을 바꾼다
+			dir = (dir + dir_list.front().second) % 4;
+			dir_list.pop_front();
 		}
 	}
 
@@ -66,10 +66,10 @@ int main() {
 		cin >> t >> c;
 
 		if (c == 'D') {
-			t_dir_list.push_back({ t,1 });
+			dir_list.push_back({ t,1 });
 		}
 		else {
-			t_dir_list.push_back({ t,3 });
+			dir_list.push_back({ t,3 });
 		}
 	}
 

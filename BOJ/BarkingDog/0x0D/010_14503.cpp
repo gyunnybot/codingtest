@@ -22,18 +22,18 @@ void drive(int y, int x, int dir) {
 
         if (ny >= 0 && ny < n && nx >= 0 && nx < m && a[ny][nx] == 0 && !visited[ny][nx]) {
             drive(ny, nx, dir);
-            return; //진행 방향이 정해졌다면 즉시 종료
+            return; //y, x에서의 진행 즉시 종료
         }
     }
 
     //2번 과정
-    int back_dir = (dir + 2) % 4;
+    int back_dir = (dir + 2) % 4; //후진 방향 설정
 
     int ny = y + dy[back_dir];
     int nx = x + dx[back_dir];
 
     if (ny >= 0 && ny < n && nx >= 0 && nx < m && a[ny][nx] == 0) {
-        drive(ny, nx, dir); //바라보는 방향을 유지한 채로 한 칸 후진 후 다시 시도
+        drive(ny, nx, dir); //한 칸 후진 후 dir 방향으로 drive 다시 시도
     }
     else {
         return; //더 이상 후진할 수 없다면 종료
