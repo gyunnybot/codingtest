@@ -19,7 +19,7 @@ int main() {
 
 	for (int i = 3; i <= n; i++) {
 		dp[i] = max(dp[i - 2], dp[i - 3] + a[i - 1]) + a[i]; //i번째 포도주를 선택하는 경우
-		dp[i] = max(dp[i], dp[i - 1]); //i번째 포도주를 선택 안하는 경우와 비교해 최종 dp값 결정
+		dp[i] = max(dp[i], dp[i - 1]); //i번째 포도주를 선택 안하는 경우와 비교해 최종 dp 값 결정
 	}
 
 	cout << *max_element(dp + 1, dp + n + 1);

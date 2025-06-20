@@ -5,7 +5,7 @@ using namespace std;
 int n;
 string s[51];
 
-int chk(string s) {
+int check(string s) {
 	int ret = 0;
 
 	for (char c : s) {
@@ -19,11 +19,11 @@ int chk(string s) {
 
 bool cmp(string a, string b) {
 	if (a.size() == b.size()) {
-		if (chk(a) == chk(b)) {
+		if (check(a) == check(b)) {
 			return a < b;
 		}
 		else {
-			return chk(a) < chk(b);
+			return check(a) < check(b);
 		}
 	}
 	else {

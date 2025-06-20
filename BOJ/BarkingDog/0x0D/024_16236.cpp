@@ -17,26 +17,26 @@ void baby_shark() {
 	bool flag = true;
 
 	while (true) {
-		if (!flag) break; //먹을 수 있는 물고기가 없다면 break
+		if (!flag) break; //더 이상 먹을 수 있는 물고기가 없다면 break
 
-		flag = false; //조사를 시작할 때는 false로 가정
-
-		fill(&visited[0][0], &visited[0][0] + 21 * 21, 0); //방문처리 초기화
+		fill(&visited[0][0], &visited[0][0] + 21 * 21, 0);
+		flag = false;
 
 		a[shark.y][shark.x] = 0;
 
-		visited[shark.y][shark.x] = true; //시작점 방문처리
+		visited[shark.y][shark.x] = true;
 
-		queue<Shark> q; //가장 적합한 물고기를 찾기 위한 bfs 시작
+		queue<Shark> q;
 		q.push(shark);
 
-		Shark candi; //candidate
+		//candidate
+		Shark candi;
 		candi.time = -1; candi.y = INT_MAX;
 
 		while (!q.empty()) {
 			Shark cur = q.front(); q.pop();
 
-			//입력된 cur의 시간이 최초 갱신된 candi의 시간보다 길다면 break
+			//한 번 갱신된 candi의 시간보다 cur의 시간이 길다면 더 이상 후보자를 탐색하지 않는다
 			if (candi.time != -1 && candi.time < cur.time) break;
 
 			//먹을 수 있는 물고기가 있다면
@@ -66,7 +66,7 @@ void baby_shark() {
 		}
 
 		if (flag) {
-			shark = candi; //deep copy(STL, struct, vector의 '=' 연산)
+			shark = candi; //deep copy(기본형, STL, struct, vector의 '=' 연산)
 			shark_eat++;
 
 			if (shark_eat == shark_size) {

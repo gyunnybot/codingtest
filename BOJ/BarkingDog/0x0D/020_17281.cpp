@@ -2,14 +2,14 @@
 using namespace std;
 
 int n, a[51][9], order[9], ret;
-bool visited[9];
+bool visited[9], bases[4];
 
 void run() {
     int score = 0;
     int idx = 0;
 
     for (int inning = 0; inning < n; inning++) {
-        bool bases[4] = { 0,0,0,0 };
+        fill(&bases[0], &bases[0] + 4, false);
         int out = 0;
 
         while (out < 3) {
@@ -40,7 +40,7 @@ void run() {
             }
         }
     }
-
+    
     ret = max(ret, score);
 
     return;

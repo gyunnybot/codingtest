@@ -1,67 +1,148 @@
 #include<iostream>
-#include<map>
 using namespace std;
 
-int node[74], t, n, d, e;
-int a[6][20] = {
-    {0, 2, 8, 6, 1, 5, 7, 3, 51, 31, 41, 21, 50, 30, 40, 20, 52, 32, 42, 22},
-    {10, 12, 18, 16, 11, 15, 17, 13, 56, 26, 46, 36, 57, 27, 47, 37, 58, 28, 48, 38},
-    {20, 22, 28, 26, 21, 25, 27, 23, 0, 40, 18, 58, 3, 43, 15, 55, 6, 46, 12, 52},
-    {30, 32, 38, 36, 31, 35, 37, 33, 8, 50, 10, 48, 5, 53, 13, 45, 2, 56, 16, 42},
-    {40, 42, 48, 46, 41, 45, 47, 43, 6, 30, 16, 28, 7, 33, 17, 25, 8, 36, 18, 22},
-    {50, 52, 58, 56, 51, 55, 57, 53, 2, 20, 12, 38, 1, 23, 11, 35, 0, 26, 10, 32}
-};
-char dir[6] = { 'U', 'D', 'L', 'R', 'F', 'B' };
-char color[6] = { 'w', 'y', 'g', 'b', 'r', 'o' }, direct, wise;
-map<char, int> mp;
+const int UP = 0;
+const int DOWN = 1;
+const int FRONT = 2;
+const int BACK = 3;
+const int LEFT = 4;
+const int RIGHT = 5;
+int t, n;
+char cube[6][3][3];
+char color[] = { 'w', 'y', 'r', 'o', 'g', 'b' };
+string s;
+
+void rotate(int side, bool isClockwise) {
+	int rot = 1; //시계 방향이면 1번 회전
+
+	if (!isClockwise) { //반시계 방향이면 3번 회전(역으로 1번 회전)
+		rot = 3;
+	}
+
+	while (rot--) {
+		char tmp[3][3];
+
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				tmp[j][3 - i - 1] = cube[side][i][j]; //해당 side 시계 방향으로 회전
+			}
+				
+		}
+			
+		swap(cube[side], tmp); //swap. call by reference
+	}
+
+	return;
+}
+
+void rotate_side(int side, bool isClockwise) {
+	rotate(side, isClockwise); //해당 side rotate
+
+	//side rotate로 인한 다른 면들 수정하기
+	int rot = 1;
+
+	if (!isClockwise) {
+		rot = 3;
+	}
+
+	char tmp;
+
+	while (rot--) {
+		if (side == FRONT) {
+			for (int i = 0; i < 3; i++) {
+				tmp = cube[UP][2][i];
+				cube[UP][2][i] = cube[LEFT][2 - i][2];
+				cube[LEFT][2 - i][2] = cube[DOWN][0][2 - i];
+				cube[DOWN][0][2 - i] = cube[RIGHT][i][0];
+				cube[RIGHT][i][0] = tmp;
+			}
+		}
+		else if (side == BACK) {
+			for (int i = 0; i < 3; i++) {
+				tmp = cube[UP][0][i];
+				cube[UP][0][i] = cube[RIGHT][i][2];
+				cube[RIGHT][i][2] = cube[DOWN][2][2 - i];
+				cube[DOWN][2][2 - i] = cube[LEFT][2 - i][0];
+				cube[LEFT][2 - i][0] = tmp;
+			}
+		}
+		else if (side == LEFT) {
+			for (int i = 0; i < 3; i++) {
+				tmp = cube[UP][i][0];
+				cube[UP][i][0] = cube[BACK][i][0];
+				cube[BACK][i][0] = cube[DOWN][i][0];
+				cube[DOWN][i][0] = cube[FRONT][i][0];
+				cube[FRONT][i][0] = tmp;
+			}
+		}
+		else if (side == RIGHT) {
+			for (int i = 0; i < 3; i++) {
+				tmp = cube[UP][i][2];
+				cube[UP][i][2] = cube[FRONT][i][2];
+				cube[FRONT][i][2] = cube[DOWN][i][2];
+				cube[DOWN][i][2] = cube[BACK][i][2];
+				cube[BACK][i][2] = tmp;
+			}
+		}
+		else if (side == UP) {
+			for (int i = 0; i < 3; ++i) {
+				tmp = cube[FRONT][0][i];
+				cube[FRONT][0][i] = cube[RIGHT][0][i];
+				cube[RIGHT][0][i] = cube[BACK][2][2 - i];
+				cube[BACK][2][2 - i] = cube[LEFT][0][i];
+				cube[LEFT][0][i] = tmp;
+			}
+		}
+		else { //DOWN
+			for (int i = 0; i < 3; ++i) {
+				tmp = cube[FRONT][2][i];
+				cube[FRONT][2][i] = cube[LEFT][2][i];
+				cube[LEFT][2][i] = cube[BACK][0][2 - i];
+				cube[BACK][0][2 - i] = cube[RIGHT][2][i];
+				cube[RIGHT][2][i] = tmp;
+			}
+		}
+	}
+
+	return;
+}
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
 
-    for (int i = 0; i < 6; i++) {
-        mp[dir[i]] = i;
-    }
+	cin >> t;
 
-    cin >> t;
+	while (t--) {
+		for (int s = 0; s < 6; s++) {
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 3; j++) {
+					cube[s][i][j] = color[s];
+				}
+			}
+		}
+		
+		cin >> n;
 
-    while (t--) {
-        cin >> n;
+		while (n--) {
+			cin >> s;
 
-        for (int i = 0; i < 60; i++) {
-            node[i] = i / 10;
-        }
+			if (s[0] == 'F') rotate_side(FRONT, s[1] == '+');
+			else if (s[0]=='B') rotate_side(BACK, s[1] == '+');
+			else if (s[0] == 'U') rotate_side(UP, s[1] == '+');
+			else if (s[0] == 'D') rotate_side(DOWN, s[1] == '+');
+			else if (s[0] == 'L') rotate_side(LEFT, s[1] == '+');
+			else rotate_side(RIGHT, s[1] == '+');
+		}
 
-        for (int i = 0; i < n; i++) {
-            cin >> direct >> wise;
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				cout << cube[UP][i][j]; //윗 면 출력
+			}
 
-            int c = mp[direct];
+			cout << '\n';
+		}
+	}
 
-            if (wise == '+') {
-                d = 3; e = 1;
-            }
-            else {
-                d = 1; e = 3;
-            }
-
-            for (int j = 0; j < 20; j += 4) {
-                int temp = node[a[c][j]];
-
-                node[a[c][j]] = node[a[c][j + d]];
-                node[a[c][j + d]] = node[a[c][j + 2]];
-                node[a[c][j + 2]] = node[a[c][j + e]];
-                node[a[c][j + e]] = temp;
-            }
-        }
-
-        for (int i = 0; i < 9; i++) {
-            cout << color[node[i]];
-
-            if (i == 2 || i == 5 || i == 8) {
-                cout << "\n";
-            }
-        }
-    }
-
-    return 0;
+	return 0;
 }

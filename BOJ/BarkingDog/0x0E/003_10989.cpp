@@ -13,7 +13,8 @@ int main() {
 		cin >> temp;
 		cnt[temp]++;
 	}
-
+	
+	//counting sort
 	for (int i = 1; i <= 10000; i++) {
 		while (cnt[i]--) {
 			cout << i << '\n';
