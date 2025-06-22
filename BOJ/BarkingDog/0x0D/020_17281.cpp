@@ -10,6 +10,7 @@ void run() {
 
     for (int inning = 0; inning < n; inning++) {
         fill(&bases[0], &bases[0] + 4, false);
+        
         int out = 0;
 
         while (out < 3) {

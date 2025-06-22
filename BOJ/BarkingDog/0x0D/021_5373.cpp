@@ -38,7 +38,7 @@ void rotate(int side, bool isClockwise) {
 void rotate_side(int side, bool isClockwise) {
 	rotate(side, isClockwise); //해당 side rotate
 
-	//side rotate로 인한 다른 면들 수정하기
+	//side rotate로 인해 수정된 옆 면들 계산
 	int rot = 1;
 
 	if (!isClockwise) {
