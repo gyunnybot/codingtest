@@ -8,7 +8,7 @@
 
 2. 코딩 센세 선생님의 [2주만에 통과하는 알고리즘 코딩테스트](https://inf.run/RQLZ) ✔️
 
-3. 프로그래머스 [알고리즘 고득점 Kit](https://school.programmers.co.kr/learn/challenges?tab=algorithm_practice_kit) 🔥
+3. 프로그래머스 [알고리즘 고득점 Kit](https://school.programmers.co.kr/learn/challenges?tab=algorithm_practice_kit) lv.3 이하 🔥
 
 4. 프로그래머스 [모든 문제](https://school.programmers.co.kr/learn/challenges) lv.3 이하 🔥
 
