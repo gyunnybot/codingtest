@@ -43,7 +43,7 @@ void bfs(int land_num) {
             //처음 방문한 곳이 바다도 아니고 같은 번호도 아니라면? 다른 섬에 도착한 것이다!
             if (a[ny][nx] != 0 && a[ny][nx] != land_num && !visited[ny][nx]) {
                 ret = min(ret, cur.dist); //다리의 최소거리 구하기
-                return; //다리를 놓았으므로 return
+                return; //가장 짧은 다리를 놓았으므로 즉시 return
             }
 
             //바다라면
@@ -106,9 +106,8 @@ int main() {
     }
 
     for (int i = 2; i < cnt; i++) {
-        //다음 섬의 bfs를 위해 visited 초기화
-        fill(&visited[0][0], &visited[0][0] + 101 * 101, false);
-
+        fill(&visited[0][0], &visited[0][0] + 101 * 101, false); //visited 초기화
+        
         bfs(i);
     }
 

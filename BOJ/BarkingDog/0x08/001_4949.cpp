@@ -9,7 +9,7 @@ int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	while (getline(cin, s)) {
+	while (getline(cin, s)) { //공백을 포함한 입력 받기
 		if (s == ".") break;
 
 		stack<char> stk;

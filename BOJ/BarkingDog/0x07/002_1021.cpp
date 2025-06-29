@@ -21,6 +21,7 @@ int main(void) {
 		for (int j = 0; j < dq.size(); j++) {
 			if (dq[j] == val) {
 				pos = j;
+				break;
 			}
 		}
 
@@ -34,7 +35,7 @@ int main(void) {
 
 			dq.pop_front();
 		}
-		else if (pos > dq.size() / 2) {
+		else {
 			while (val != dq.front()) {
 				dq.push_front(dq.back());
 				dq.pop_back();
