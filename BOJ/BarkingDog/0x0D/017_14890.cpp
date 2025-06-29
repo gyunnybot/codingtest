@@ -1,6 +1,5 @@
 #include<iostream>
 #include<vector>
-#include<climits> //INT_MAX
 using namespace std;
 
 int n, l, a[101][101], b[101][101], ret;
@@ -8,7 +7,7 @@ int n, l, a[101][101], b[101][101], ret;
 void slope(int a[101][101]) {
     for (int i = 0; i < n; i++) {
         int cnt = 1; //현재 본인과 같은 높이의 블록의 수
-        int j; //12100번 2048 (Easy) 문제와 유사한 변수 선언 방식
+        int j;
 
         for (j = 0; j < n - 1; j++) {
             if (a[i][j] == a[i][j + 1]) cnt++; //본인과 같은 높이의 블록의 수 증가
@@ -38,7 +37,7 @@ int main() {
         for (int j = 0; j < n; j++) {
             cin >> a[i][j];
 
-            b[j][i] = a[i][j]; //정방행렬에만 가능한 연산. transpos
+            b[j][i] = a[i][j]; //정방행렬일 때만 가능한 연산. transpos
         }
     }
 

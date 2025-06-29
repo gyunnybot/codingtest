@@ -20,6 +20,7 @@ void drive(int y, int x, int dir) {
         int ny = y + dy[dir];
         int nx = x + dx[dir];
 
+        //빈 칸이 있는 경우
         if (ny >= 0 && ny < n && nx >= 0 && nx < m && a[ny][nx] == 0 && !visited[ny][nx]) {
             drive(ny, nx, dir);
             return; //y, x에서의 진행 즉시 종료
@@ -36,7 +37,7 @@ void drive(int y, int x, int dir) {
         drive(ny, nx, dir); //한 칸 후진 후 dir 방향으로 drive 다시 시도
     }
     else {
-        return; //더 이상 후진할 수 없다면 종료
+        return; //더 이상 후진할 수 없다면 drive 최종 종료
     }
 }
 

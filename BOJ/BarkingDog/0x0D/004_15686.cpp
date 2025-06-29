@@ -31,6 +31,7 @@ int cal_city_dist(vector<pair<int, int>>& house, vector<int>& chicken_list) {
 void combi(int start, vector<int>& chicken_list, vector<bool>& visited) {
 	if (chicken_list.size() == m) {
 		ret = min(ret, cal_city_dist(house, chicken_list));
+		return;
 	}
 
 	for (int i = start + 1; i < chicken.size(); i++) {
