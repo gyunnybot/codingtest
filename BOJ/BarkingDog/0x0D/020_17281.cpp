@@ -53,7 +53,7 @@ void recur(int k) {
         return;
     }
 
-    if (k == 3) {
+    if (k == 3) { //아인타는 자신이 가장 좋아하는 선수인 1번 선수를 4번 타자로 미리 결정했다
         recur(k + 1);
         return;
     }

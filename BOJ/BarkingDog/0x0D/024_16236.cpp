@@ -11,16 +11,15 @@ Shark shark;
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 int n, a[21][21], shark_size, shark_eat;
-bool visited[21][21];
+bool visited[21][21], no_fish;
 
 void baby_shark() {
-	bool flag = true;
-
 	while (true) {
-		if (!flag) break; //더 이상 먹을 수 있는 물고기가 없다면 break
+		if (no_fish) break; //더 이상 먹을 수 있는 물고기가 없다면 break
 
 		fill(&visited[0][0], &visited[0][0] + 21 * 21, 0);
-		flag = false;
+
+		no_fish = true; //먹을 수 있는 물고기가 있다면 false로 변경
 
 		a[shark.y][shark.x] = 0;
 
@@ -41,7 +40,7 @@ void baby_shark() {
 
 			//먹을 수 있는 물고기가 있다면
 			if (a[cur.y][cur.x] != 0 && a[cur.y][cur.x] < shark_size) {
-				flag = true;
+				no_fish = false;
 
 				//먹을 수 있는 물고기들 중 가장 적합한 물고기를 candi에 저장
 				if (cur.y < candi.y || (cur.y == candi.y && cur.x < candi.x)) {
@@ -65,7 +64,7 @@ void baby_shark() {
 			}
 		}
 
-		if (flag) {
+		if (!no_fish) {
 			shark = candi; //deep copy(기본형, STL, struct, vector의 '=' 연산)
 			shark_eat++;
 
