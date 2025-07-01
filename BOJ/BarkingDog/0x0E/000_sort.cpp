@@ -100,7 +100,7 @@ int main() {
 	}
 
 	//bubble sort. O(N^2)
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n - 1; i++) {
 		for (int j = 0; j < n - i - 1; j++) {
 			if (arr[j] > arr[j + 1]) {
 				swap(arr[j], arr[j + 1]); //swap : call by reference
@@ -123,7 +123,7 @@ int main() {
 		cnt[arr[i]]++;
 	}
 
-	for (int i = 1; i <= 10; i++) { //10 이하의 자연수 5개로 이루어진 배열이라고 가정
+	for (int i = 1; i <= 10; i++) { //10 이하의 자연수 5개로 이루어진 배열 arr
 		while (cnt[i]--) {
 			cout << i << ' ';
 		}
