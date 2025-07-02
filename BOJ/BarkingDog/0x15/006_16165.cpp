@@ -1,11 +1,11 @@
 #include<iostream>
-#include<map>
+#include<unordered_map>
 #include<vector>
 using namespace std;
 
 int n, m, team_number, quiz_type;
 string team, member, temp;
-map<string, string> mp;
+unordered_map<string, string> ump;
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -18,7 +18,7 @@ int main() {
 
 		for (int j = 0; j < team_number; j++) {
 			cin >> member;
-			mp[member] = team;
+			ump[member] = team;
 		}
 	}
 
@@ -26,14 +26,14 @@ int main() {
 		cin >> temp >> quiz_type;
 
 		if (quiz_type == 0) { //temp가 팀 이름일 때
-			for (pair<string, string> pi : mp) {
+			for (pair<string, string> pi : ump) {
 				if (pi.second == temp) {
-					cout << pi.first << '\n'; //팀원들 전부 출력
+					cout << pi.first << '\n'; //전체 팀원 출력
 				}
 			}
 		}
 		else { //temp가 멤버 이름일 때
-			cout << mp[temp] << '\n'; //멤버가 속한 팀 이름 출력
+			cout << ump[temp] << '\n'; //멤버가 속한 팀 이름 출력
 		}
 	}
 

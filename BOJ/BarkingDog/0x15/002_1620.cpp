@@ -1,11 +1,11 @@
 #include<iostream>
-#include<map>
+#include<unordered_map>
 using namespace std;
 
 int n, m;
 string s;
-map<string, int> mp;
-map<int, string> mp2;
+unordered_map<string, int> ump;
+unordered_map<int, string> ump2;
 
 int main() {
     ios_base::sync_with_stdio(false);
@@ -16,18 +16,18 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> s;
 
-        mp[s] = i + 1;
-        mp2[i + 1] = s;
+        ump[s] = i + 1;
+        ump2[i + 1] = s;
     }
 
     for (int i = 0; i < m; i++) {
         cin >> s;
 
         if (atoi(s.c_str()) == 0) { //s가 문자열이라면
-            cout << mp[s] << '\n';
+            cout << ump[s] << '\n';
         }
         else { //숫자라면
-            cout << mp2[atoi(s.c_str())] << '\n';
+            cout << ump2[atoi(s.c_str())] << '\n';
         }
     }
 

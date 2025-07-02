@@ -1,10 +1,10 @@
 #include<iostream>
-#include<map>
+#include<unordered_map>
 using namespace std;
 
 int n, m;
 string a, b;
-map<string, string> mp;
+unordered_map<string, string> ump;
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -14,13 +14,13 @@ int main() {
 
 	for (int i = 0; i < n; i++) {
 		cin >> a >> b;
-		mp[a] = b;
+		ump[a] = b;
 	}
 
 	for (int i = 0; i < m; i++) {
 		cin >> a;
-		cout << mp[a] << '\n';
+		cout << ump[a] << '\n';
 	}
-	
+
 	return 0;
 }

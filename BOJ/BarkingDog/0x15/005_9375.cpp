@@ -1,5 +1,5 @@
 #include<iostream>
-#include<map>
+#include<unordered_map>
 using namespace std;
 
 int t, n;
@@ -14,16 +14,16 @@ int main() {
     while (t--) {
         cin >> n;
 
-        map<string, int> mp;        
+        unordered_map<string, int> ump;
 
         for (int i = 0; i < n; i++) {
             cin >> a >> b;
-            mp[b]++;
+            ump[b]++;
         }
 
         int ret = 1; //곱셈 계산 결과를 위해 1로 초기화
 
-        for (pair<string, int> pi : mp) {
+        for (pair<string, int> pi : ump) {
             ret *= (pi.second + 1);
         }
 

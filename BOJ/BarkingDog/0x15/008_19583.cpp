@@ -1,8 +1,8 @@
 #include<iostream>
-#include<map>
+#include<unordered_map>
 using namespace std;
 
-map<string, int> mp;
+unordered_map<string, int> ump;
 string s, e, q, t, name;
 int ret;
 
@@ -14,11 +14,11 @@ int main() {
 
     while (cin >> t >> name) {
         if (t <= s) {
-            mp[name] = 1;
+            ump[name] = 1;
         }
         else if (e <= t && t <= q) {
-            if (mp[name] == 1) {                
-                mp[name] = 2; //시간 내 중복 채팅 방지
+            if (ump[name] == 1) {
+                ump[name] = 2; //시간 내 중복 채팅 방지
                 ret++;
             }
         }
