@@ -7,68 +7,74 @@ bool visited[501], isTree;
 vector<int> adj[501];
 
 void dfs(int here, int prev) {
-	visited[here] = true;
+    visited[here] = true;
 
-	for (int there : adj[here]) {
-		if (there == prev) {
-			continue; //there이 here의 부모일 경우 dfs 종료. here가 리프 노드가 된다
-		}
+    for (int there : adj[here]) {
+        if (there == prev) { //원소가 부모 노드일 경우
+            continue;
+        }
 
-		if (visited[there]) {
-			isTree = false;
-			break; //prev가 아닌데 이미 방문한 곳이라면 트리가 아니다
-		}
+        if (visited[there]) { //부모가 아닌데 재방문한 경우 cycle. 트리가 아니다
+            isTree = false;
+            break;
+        }
 
-		dfs(there, here);
-	}
+        dfs(there, here);
+    }
 
-	return;
+    return;
+}
+
+void init() {
+    fill(&visited[0], &visited[0] + 501, false);
+
+    for (int i = 0; i < 501; i++) {
+        adj[i].clear();
+    }
+
+    ret = 0;
+
+    return;
 }
 
 int main() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL); cout.tie(NULL);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
 
-	while (cin >> n >> m) {
-		if (n == 0 && m == 0) break;
+    while (cin >> n >> m) {
+        if (n == 0 && m == 0) break;
 
-		fill(&visited[0], &visited[0] + 501, false);
+        init();
 
-		for (int i = 1; i <= n; i++) {
-			adj[i].clear();
-		}
+        for (int i = 0; i < m; i++) {
+            cin >> a >> b;
 
-		ret = 0;
+            adj[a].push_back(b);
+            adj[b].push_back(a);
+        }
 
-		for (int i = 0; i < m; i++) {
-			cin >> a >> b;
+        for (int i = 1; i <= n; i++) {
+            if (visited[i]) continue;
 
-			adj[a].push_back(b);
-			adj[b].push_back(a);
-		}
+            isTree = true;
 
-		for (int i = 1; i <= n; i++) {
-			if (visited[i]) continue;
+            dfs(i, -1);
 
-			isTree = true; //init
+            ret += isTree;
+        }
 
-			dfs(i, -1);
+        cout << "Case " << ++tc << ": ";
 
-			ret += isTree;
-		}
+        if (ret == 0) {
+            cout << "No trees." << '\n';
+        }
+        else if (ret == 1) {
+            cout << "There is one tree." << '\n';
+        }
+        else {
+            cout << "A forest of " << ret << " trees." << '\n';
+        }
+    }
 
-		cout << "Case " << ++tc << ": ";
-
-		if (ret == 0) {
-			cout << "No trees." << '\n';
-		}
-		else if (ret == 1) {
-			cout << "There is one tree." << '\n';
-		}
-		else {
-			cout << "A forest of " << ret << " trees." << '\n';
-		}
-	}
-
-	return 0;
+    return 0;
 }

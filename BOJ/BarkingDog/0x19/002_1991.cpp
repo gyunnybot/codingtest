@@ -2,55 +2,49 @@
 using namespace std;
 
 int n;
-char parent, L, R;
-pair<char, char> adj[28];
+char node, L, R;
+pair<char, char> adj[26];
 
-void preorder(char here) {
-	if (here == '.') return;
+void pre_order(char here) {
+    if (here == '.') return;
 
-	cout << here;
-	preorder(adj[here - 'A'].first);
-	preorder(adj[here - 'A'].second);
-
-	return;
+    cout << here;
+    pre_order(adj[here - 'A'].first);
+    pre_order(adj[here - 'A'].second);
 }
 
-void inorder(char here) {
-	if (here == '.') return;
+void in_order(char here) {
+    if (here == '.') return;
 
-	inorder(adj[here - 'A'].first);
-	cout << here;
-	inorder(adj[here - 'A'].second);
-
-	return;
+    in_order(adj[here - 'A'].first);
+    cout << here;
+    in_order(adj[here - 'A'].second);
 }
 
-void postorder(char here) {
-	if (here == '.') return;
+void post_order(char here) {
+    if (here == '.') return;
 
-	postorder(adj[here - 'A'].first);
-	postorder(adj[here - 'A'].second);
-	cout << here;
-
-	return;
+    post_order(adj[here - 'A'].first);
+    post_order(adj[here - 'A'].second);
+    cout << here;
 }
 
 int main() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL); cout.tie(NULL);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
 
-	cin >> n;
+    cin >> n;
 
-	for (int i = 0; i < n; i++) {
-		cin >> parent >> L >> R;
+    for (int i = 0; i < n; i++) {
+        cin >> node >> L >> R;
 
-		adj[parent - 'A'].first = L;
-		adj[parent - 'A'].second = R;
-	}
+        adj[node-'A'].first = L;
+        adj[node - 'A'].second = R;
+    }
 
-	preorder('A'); cout << '\n';
-	inorder('A'); cout << '\n';
-	postorder('A');
-
-	return 0;
+    pre_order('A'); cout << '\n';
+    in_order('A'); cout << '\n';
+    post_order('A');
+    
+    return 0;
 }

@@ -1,45 +1,45 @@
 #include<iostream>
 using namespace std;
 
-int n, parent, L, R, ret, last_node;
+int n, node, L, R, ret, end_node;
 bool flag, visited[100001];
 pair<int, int> adj[100001];
 
-void recur(int here) {
+void semi_in_order(int here) {
 	int left = adj[here].first;
 	int right = adj[here].second;
 
 	if (left != -1) {
 		ret++;
-		recur(left); //left가 루트 노드인 서브 트리 탐색
+		semi_in_order(left); //left가 루트 노드인 서브 트리 탐색
 
-		if (!flag) { //탐색 후 올라오기
+		if (!flag) { //루트 노드이지만 end_node가 아니라면 올라오기
 			ret++;
 		}
 	}
 
 	if (right != -1) {
 		ret++;
-		recur(right); //right가 루트 노드인 서브 트리 탐색
+		semi_in_order(right); //right가 루트 노드인 서브 트리 탐색
 
-		if (!flag) { //탐색 후 올라오기
+		if (!flag) { //루트 노드이지만 end_node가 아니라면 올라오기
 			ret++;
 		}
 	}
 
-	if (here == last_node) {
+	if (here == end_node) {
 		flag = true;
 	}
 
 	return;
 }
 
-void inorder(int here) {
+void in_order(int here) {
 	if (here == -1) return;
 
-	inorder(adj[here].first);
-	last_node = here;
-	inorder(adj[here].second);
+	in_order(adj[here].first);
+	end_node = here;
+	in_order(adj[here].second);
 }
 
 int main() {
@@ -49,14 +49,14 @@ int main() {
 	cin >> n;
 
 	for (int i = 0; i < n; i++) {
-		cin >> parent >> L >> R;
-		
-		adj[parent].first = L;
-		adj[parent].second = R;
+		cin >> node >> L >> R;
+
+		adj[node].first = L;
+		adj[node].second = R;
 	}
 
-	inorder(1); //중위 순회로 유사 중위 순회의 끝 찾기
-	recur(1); //유사 중위 순회 시작
+	in_order(1); //중위 순회로 유사 중위 순회의 끝 end_node 찾기
+	semi_in_order(1); //유사 중위 순회 시작. 루트 노드는 항상 1번 노드이다
 
 	cout << ret;
 

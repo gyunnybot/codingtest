@@ -11,7 +11,9 @@ int dfs(int here) {
 	ret[here] = 1;
 
 	for (int there : adj[here]) {
-		if (visited[there]) continue;
+		if (visited[there]) {
+			continue;
+		}
 		
 		ret[here] += dfs(there);
 	}
