@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int n, ret, dp[1001][10]; //자릿수의 길이, 끝자리 수
+int n, ret, dp[1001][10]; //수의 길이, 끝 자리 숫자
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -15,7 +15,7 @@ int main() {
 
 	for (int i = 2; i <= n; i++) {
 		for (int j = 0; j <= 9; j++) {
-			if (j == 0) { //끝자리가 0이라면 하나의 오르막 수만 가진다
+			if (j == 0) { //끝 자리 0은 오직 하나의 오르막 수만 가진다. 000...
 				dp[i][j] = 1;
 			}
 			else {
