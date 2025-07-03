@@ -14,7 +14,7 @@ int main() {
 
 	cin >> v >> e;
 
-	fill(d, d + v + 1, INT_MAX); //d[1] ~ d[v]
+	fill(d + 1, d + v + 1, INT_MAX); //d[1] ~ d[v]
 
 	for (int i = 0; i < e; i++) {
 		int u, v, w;
@@ -25,16 +25,16 @@ int main() {
 
 	cin >> st >> ed;
 
-	//pq greater = 최소 힙. {st에서 현재 노드 cur까지의 최소 거리 d[cur], 현재 위치한 노드 cur}
+	//pq greater = 최소 힙
 	priority_queue < pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 
 	d[st] = 0;
-	pq.push({ d[st],st });
+	pq.push({ d[st],st }); //{st에서 노드까지의 최소 거리, 현재 노드}
 
 	while (!pq.empty()) {
 		pair<int, int> cur = pq.top(); pq.pop();
 
-		if (cur.first != d[cur.second]) continue; //한 번 갱신된 cur까지의 최단거리가 d[cur]가 아니라면
+		if (cur.first != d[cur.second]) continue; //cur.first가 이미 정해진 최소 거리 d[cur.second]가 아니라면
 
 		for (pair<int, int> next : adj[cur.second]) { //연결된 노드로 나아가기
 			if (d[next.second] <= d[cur.second] + next.first) continue;
@@ -61,9 +61,9 @@ int main() {
 		idx = pre[idx];
 	}
 
-	reverse(ret_vector.begin(), ret_vector.end());
-
 	cout << ret_vector.size() << '\n';
+	
+	reverse(ret_vector.begin(), ret_vector.end());
 
 	for (int i : ret_vector) {
 		cout << i << ' ';

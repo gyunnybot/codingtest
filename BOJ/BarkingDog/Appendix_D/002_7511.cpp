@@ -41,7 +41,7 @@ int main() {
 	for (int tc = 1; tc <= t; tc++) {
 		cin >> n >> k;
 
-		fill(parent.begin(), parent.begin() + n, -1); //init
+		fill(parent.begin(), parent.begin() + n, -1);
 		
 		while (k--) {
 			cin >> a >> b;
