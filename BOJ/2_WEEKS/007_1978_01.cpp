@@ -6,6 +6,8 @@ int n, num, ret;
 bool check(int num) {
 	if (num <= 1) return false;
 
+	//제곱근 이하의 수는 항상 제곱근 이상의 수와 곱해져 num이 된다
+	//따라서, 제곱근까지만 조사해도 전체 경우의 수를 탐색하게 된다
 	for (int i = 2; i * i <= num; i++) {
 		if (num % i == 0) return false;
 	}

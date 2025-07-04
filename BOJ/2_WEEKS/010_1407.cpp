@@ -11,7 +11,7 @@ ll solve(ll n) {
 		ret += (n / i) * (i / 2); //n!에서 2가 몇 번 곱해져 있는가? x 가중치 i / 2
 	}
 
-	return ret;
+	return ret; //n!을 이루는 각 자연수의 모든 약수 중 2의 거듭제곱 꼴이면서 가장 큰 약수들의 총 합
 }
 
 int main() {
@@ -25,7 +25,7 @@ int main() {
 	return 0;
 }
 
-/*
+/* n!에서 10이 곱해진 횟수 구하기
 int solve(int n) {
 	int ret2 = 0, ret5 = 0;
 

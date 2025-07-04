@@ -35,9 +35,9 @@ int main() {
 				}
 			}
 
-			//1개의 수로 공약수열이 완성되지 않는 경우
+			//j가 끝에 도달했지만 공약수열이 완성되지 않는 경우
 			if (j == a[i + 1] - 1) {
-				cnt += 2;
+				cnt += 2; //https://en.wikipedia.org/wiki/B%C3%A9zout%27s_identity
 				break;
 			}
 		}

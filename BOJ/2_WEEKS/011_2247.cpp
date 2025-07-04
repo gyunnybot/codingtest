@@ -10,7 +10,7 @@ int main() {
 	cin >> n;
 
 	for (int i = 2; i <= n; i++) { //1 제외
-		int cnt = n / i; //n!에서 i로 나눠지는 수는 몇 개인가?
+		int cnt = n / i; //n!을 이루는 각 자연수 중 i로 나눠지는 수는 몇 개인가?
 
 		ret += (cnt - 1) * i; //i 본인을 제외한 개수 x 가중치 i
 		ret %= 1000000; //mod 연산
