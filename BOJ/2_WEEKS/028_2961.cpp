@@ -31,7 +31,7 @@ int main() {
 		ingre.push_back({ s,b });
 	}
 
-	recur(0, 1, 0, 0); //신 맛은 곱 연산이므로 1로 초기화
+	recur(0, 1, 0, 0);
 
 	cout << ret;
 

@@ -1,9 +1,9 @@
 #include<iostream>
-#include<unordered_map>
+#include<map>
 using namespace std;
 
 int n, m, temp;
-unordered_map<int, int> ump;
+map<int, int> mp;
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -13,16 +13,16 @@ int main() {
 
 	for (int i = 0; i < n; i++) {
 		cin >> temp;
-		ump[temp]++;
+		mp[temp]++;
 	}
 
 	cin >> m;
 
-    //해시 테이블 자료구조 unordered_map. O(1)
+    //레드-블랙 트리 자료구조 map. O(logN)
 	for (int i = 0; i < m; i++) {
 		cin >> temp;
 
-		if (ump[temp]) {
+		if (mp[temp]) {
             cout << 1 << ' ';
         }
 		else {

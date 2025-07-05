@@ -22,10 +22,10 @@ int main() {
             cnt[s[st]]--; //왼쪽 문자 지우기
 
             if (cnt[s[st]] == 0) {
-                cnt.erase(s[st]); //value가 0이라면 원소 삭제. size 줄이기
+                cnt.erase(s[st]); //value가 0이라면 map 원소 삭제
             }
 
-            st++;
+            st++; //st 오른쪽으로 이동
         }
 
         ret = max(ret, ed - st + 1);

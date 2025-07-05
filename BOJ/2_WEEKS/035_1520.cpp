@@ -27,7 +27,7 @@ int recur(int y, int x) {
         }
     }
 
-    dp[y][x] = cnt; //해당 좌표에 도달하는 최소 경로의 갯수
+    dp[y][x] = cnt;
 
     return dp[y][x];
 }
