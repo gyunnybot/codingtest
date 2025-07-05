@@ -43,12 +43,12 @@ int main() {
 		}
 	}
 
-	for (int i = 1; i <= 1000000; i++) {
+	for (int i = 1; i <= 1000001; i++) {
 		s_x[i] = s_x[i - 1] + a_x[i - 1];
 		s_y[i] = s_y[i - 1] + a_y[i - 1];
 	}
 
-	for (int i = 1; i <= 1000000; i++) {
+	for (int i = 1; i <= 1000001; i++) {
 		ret = max(ret, max(s_x[i], s_y[i]));
 	}
 
