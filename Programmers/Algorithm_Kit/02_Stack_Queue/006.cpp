@@ -1,36 +1,33 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <queue>
+#include <stack>
 using namespace std;
 
-queue<int> q;
+stack<int> stk;
 
 vector<int> solution(vector<int> prices) {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
 
-    vector<int> answer;
+    int n = prices.size();
 
-    for (int i = 0; i < prices.size(); i++) {
-        q.push(prices[i]);
+    vector<int> answer(n, 0);
+    
+    for (int i = 0; i < n; i++) {
+        while (!stk.empty() && prices[stk.top()] > prices[i]) {
+            int top = stk.top(); stk.pop();
+
+            answer[top] = i - top;
+        }
+
+        stk.push(i);
     }
 
-    while (!q.empty()) {
-        for (int i = 0; i < prices.size(); i++) {
-            int cur = q.front(); q.pop();
-            int cnt = 0;
+    while (!stk.empty()) {
+        int top = stk.top(); stk.pop();
 
-            if (i + 1 < prices.size()) {
-                for (int j = i + 1; j < prices.size(); j++) {
-                    cnt++;
-
-                    if (cur > prices[j]) break;
-                }
-            }
-
-            answer.push_back(cnt);
-        }
+        answer[top] = n - 1 - top;
     }
 
     return answer;
