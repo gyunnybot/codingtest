@@ -17,28 +17,28 @@ int solution(vector<int> priorities, int location) {
     }
 
     while (!q.empty()) {
-        int current_priority = q.front().first;
-        int current_index = q.front().second;
+        int cur_priority = q.front().first;
+        int cur_index = q.front().second;
         
         q.pop();
         
         bool has_higher = false; //현재 작업보다 우선순위가 높은 작업이 큐 안에 있는지 확인
         
         for (int item : priorities) {
-            if (item > current_priority) {
+            if (item > cur_priority) {
                 has_higher = true;
                 break;
             }
         }
 
         if (has_higher) {
-            q.push({current_priority, current_index});
+            q.push({cur_priority, cur_index});
         }
         else {
             answer++;
-            priorities[current_index] = -1;
+            priorities[cur_index] = -1;
 
-            if (current_index == location) {
+            if (cur_index == location) {
                 break;
             }
         }

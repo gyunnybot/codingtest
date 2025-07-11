@@ -13,21 +13,19 @@ vector<int> solution(vector<int> prices) {
     int n = prices.size();
 
     vector<int> answer(n, 0);
-    
+
     for (int i = 0; i < n; i++) {
         while (!stk.empty() && prices[stk.top()] > prices[i]) {
-            int top = stk.top(); stk.pop();
-
-            answer[top] = i - top;
+            answer[stk.top()] = i - stk.top();
+            stk.pop();
         }
 
         stk.push(i);
     }
 
     while (!stk.empty()) {
-        int top = stk.top(); stk.pop();
-
-        answer[top] = n - 1 - top;
+        answer[stk.top()] = n - 1 - stk.top();
+        stk.pop();
     }
 
     return answer;
