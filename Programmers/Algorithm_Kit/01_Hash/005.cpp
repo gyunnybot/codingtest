@@ -11,7 +11,7 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
     vector<int> answer;
 
     map<string, int> genres_plays; //장르(key) - 재생 횟수(value)
-    map<string, map<int, int>> genres_idx_plays; //장르(key1) - 노래 번호(key2) - 재생 횟수(value)
+    map<string, map<int, int>> genres_idx_plays; //장르(key) - {노래 번호(key') - 재생 횟수(value')}(value)
 
     for (int i = 0; i < genres.size(); i++) {
         genres_plays[genres[i]] += plays[i]; //장르별 재생 횟수 저장
@@ -20,32 +20,36 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
 
     while (genres_plays.size() > 0) {
         string genre = ""; //최대 재생 횟수를 가지는 장르
-        int plays = 0; //해당 장르의 재생 횟수
+        int play = 0; //재생 횟수
 
+        //plays를 통해 장르 찾기
         for (pair<string, int> pi : genres_plays) {
-            if (plays < pi.second) {
-                plays = pi.second;
+            if (play < pi.second) {
+                play = pi.second;
                 genre = pi.first;
             }
         }
 
-        for (int i = 0; i < 2; i++) { //장르별로 2곡씩 선정
-            int play_cnt = 0; //동일 장르 내 노래 번호별 최대 재생 횟수
-            int idx = -1; //해당 재생 횟수를 가지는 노래 번호
+        //결정된 장르 내 2곡씩 선정
+        for (int i = 0; i < 2; i++) {
+            int max_play = 0; //동일 장르 노래들 중 최대 재생 횟수
+            int max_idx = -1; //해당 재생 횟수를 가지는 노래 번호
 
+            //max_play를 통해 노래 번호 찾기
             for (pair<int, int> pi : genres_idx_plays[genre]) {
-                if (play_cnt < pi.second) {
-                    play_cnt = pi.second;
-                    idx = pi.first;
+                if (max_play < pi.second) {
+                    max_play = pi.second;
+                    max_idx = pi.first;
                 }
             }
 
-            if (idx == -1) {
-                break;  
+            //장르 내 노래가 없다면 break
+            if (max_idx == -1) {
+                break;
             }
 
-            answer.push_back(idx); //노래 번호 저장
-            genres_idx_plays[genre].erase(idx); //저장된 노래 번호는 genres_idx_plays에서 삭제
+            answer.push_back(max_idx); //노래 번호 저장
+            genres_idx_plays[genre].erase(max_idx); //저장된 노래 번호는 genres_idx_plays에서 삭제
         }
 
         genres_plays.erase(genre); //저장된 장르는 genres_plays에서 삭제
