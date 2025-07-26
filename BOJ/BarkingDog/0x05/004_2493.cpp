@@ -15,7 +15,7 @@ int main() {
 		cin >> height[i];
 	}
 
-	stk.push({ 100000000,0 });
+	stk.push({ 100000000,0 }); //두 가지 정보가 필요한 유형
 
 	for (int i = 1; i <= n; i++) {
 		while (!stk.empty() && stk.top().first < height[i]) {

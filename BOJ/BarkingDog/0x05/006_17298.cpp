@@ -22,7 +22,7 @@ int main() {
 			stk.pop();
 		}
 		
-		stk.push(i);
+		stk.push(i); //인덱스 정보가 중요한 유형
 	}
 
 	for (int i = 0; i < n; i++) {

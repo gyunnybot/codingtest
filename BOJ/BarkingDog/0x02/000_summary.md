@@ -3,7 +3,7 @@
 ## Call-by-Value
 
 ### 설명
-- **기본형, 구조체, STL 타입의 변수**를 단순하게 함수의 인자로 넘길 때는 **변수 내 데이터 값이 복사**되어 함수에 전달됩니다.
+- **기본형, 구조체, STL(예: vector) 타입의 변수**를 단순하게 함수의 인자로 넘길 때는 **변수 내 데이터 값이 복사**되어 함수에 전달됩니다.
 - 이 복사는 원본 데이터를 기반으로 **새로운 복사본**을 생성하기 때문에, 함수 내부에서 복사본이 변경되더라도 **원본 데이터는 영향을 받지 않습니다.**
 
 ### 특징
@@ -52,17 +52,18 @@ Call by Value와 Call by Reference는 함수에서의 인자 전달 방식을 �
 - 얕은 복사(Shallow Copy)는 Call by Reference(참조 전달)와 유사합니다. 복사 시 같은 주소를 공유하게 됩니다.
 - 깊은 복사(Deep Copy)는 Call by Value(값 전달)와 유사합니다. 복사 시 데이터의 값만 복사하며 주소는 공유되지 않습니다.
 
-기본 자료형이나 구조체, STL 타입 변수의 `=` 연산이나 memcpy(), copy()의 경우 `Deep Copy`가 발생합니다. O(N)이므로 유의!
+기본 자료형이나 구조체, STL 타입 변수의 `=` 연산이나 memcpy(), copy()의 경우 `Deep Copy`가 발생합니다. 그러나 O(N)이므로 연산 시 유의!
 
 ```cpp
-int v[3] = {1, 2, 3}; //복사되는 대상 배열
-int ret[3]; //복사를 진행하는 배열
+int v[3] = {1, 2, 3}; //복사되는 대상
+int ret[3]; //복사를 진행할 대상
 
-memcpy(ret, v, sizeof(v)); //array 복사. vector에서는 깊은 복사가 되지 않는다
+memcpy(ret, v, sizeof(v)); //Deep Copy
 ```
-```cpp
-vector<int> v {1, 2, 3}; //복사되는 대상 배열
-vector<int> ret(3); //복사를 진행하는 배열
 
-copy(v.begin(), v.end(), ret.begin()); //벡터 복사
+```cpp
+vector<int> v {1, 2, 3}; //복사되는 대상
+vector<int> ret(3); //복사를 진행할 대상
+
+copy(v.begin(), v.end(), ret.begin()); //Deep Copy. 벡터는 memcpy가 적용되지 않습니다
 ```

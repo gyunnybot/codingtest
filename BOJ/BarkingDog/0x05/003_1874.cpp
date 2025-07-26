@@ -32,7 +32,7 @@ int main() {
 		}
 	}
 
-	if (flag) {
+	if (flag) { //순차적으로 쌓이지 않았을 경우
 		cout << "NO";
 	}
 	else {

@@ -70,6 +70,7 @@ void erase_test() {
 int main(void) {
     fill(pre, pre + MX, -1);
     fill(nxt, nxt + MX, -1);
+
     insert_test();
     erase_test();
 }
@@ -78,16 +79,16 @@ int main(void) {
 자료구조별 insert 사용법
 
 list :
-1. 이터레이터 활용
-iterator insert(iterator position, const value_type& val); //list.insert(이터레이터, 값);
+1. 이터레이터 활용(다음 이터레이터 반환)
+iterator insert(iterator position, const value_type& val); //list.insert(이터레이터, value);
 
 string :
 1. 인덱스 활용(문자열 반환)
 basic_string& insert(size_type index, size_type count, CharT ch);
-basic_string& insert(size_type index, const CharT* s); //string.insert(인덱스 번호, "문자열");
+basic_string& insert(size_type index, const CharT* s); //string.insert(인덱스 번호, "string");
 basic_string& insert(size_type index, const basic_string& str);
 
-2. 이터레이터 활용(이터레이터 반환)
-iterator insert(const_iterator pos, CharT ch); //string.insert(이터레이터, '문자');
+2. 이터레이터 활용(다음 이터레이터 반환)
+iterator insert(const_iterator pos, CharT ch); //string.insert(이터레이터, 'char');
 iterator insert(const_iterator pos, size_type count, CharT ch);
 */
