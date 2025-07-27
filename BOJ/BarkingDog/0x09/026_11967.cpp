@@ -9,10 +9,10 @@ int n, m, x, y, a, b, ret;
 bool visited[101][101], light[101][101];
 vector<pair<int, int>> adj[101][101];
 
-bool connected(pair<int, int> next) {
+bool connected(pair<int, int> cur) {
     for (int i = 0; i < 4; i++) {
-        int nx = next.first + dx[i];
-        int ny = next.second + dy[i];
+        int nx = cur.first + dx[i];
+        int ny = cur.second + dy[i];
 
         if (nx < 1 || nx > n || ny < 1 || ny > n) continue;
 
@@ -36,7 +36,7 @@ void bfs() {
 
         for (pair<int, int> next : adj[cur.first][cur.second]) {
             if (!light[next.first][next.second]) {
-                //입력으로 주어진 next인 경우, 상하좌우로 인접하지 않아도 불을 켤 수 있다. 단, queue에는 입력되지 않는다
+                //입력으로 주어진 next인 경우, 상하좌우로 인접하지 않아도 불을 켤 수 있다. 그러나 queue에는 입력되지 않는다
                 light[next.first][next.second] = true;
 
                 if (connected(next)) { //next 기준 상하좌우 중 이미 방문한 곳이 있다면 베시가 이동할 수 있다
@@ -52,7 +52,7 @@ void bfs() {
 
             if (nx < 1 || nx > n || ny < 1 || ny > n) continue;
 
-            //상하좌우로 인접한 방 중 방문하지 않았지만 불이 켜져있다면 베시가 이동할 수 있다
+            //상하좌우로 인접한 방 중 방문하진 않았지만 이미 불이 켜져있다면 베시가 이동할 수 있다
             if (!visited[nx][ny] && light[nx][ny]) {
                 visited[nx][ny] = true;
                 q.push({ nx,ny });

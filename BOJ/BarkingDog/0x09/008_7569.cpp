@@ -7,9 +7,9 @@ struct Tomato {
 };
 vector<Tomato> tomato;
 
-const int dy[] = { -1,0,1,0 };
-const int dx[] = { 0,1,0,-1 };
-const int dh[] = { 1,-1 };
+const int dy[] = { -1,0,1,0,0,0 };
+const int dx[] = { 0,1,0,-1,0,0 };
+const int dh[] = { 0,0,0,0,1,-1 };
 int n, m, h, ret, a[101][101][101], visited[101][101][101];
 bool flag;
 
@@ -26,35 +26,16 @@ void bfs() {
     while (!q.empty()) {
         Tomato cur = q.front(); q.pop();
 
-        //같은 층
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 6; i++) {
             int ny = cur.y + dy[i];
             int nx = cur.x + dx[i];
-            int nh = cur.h; //height 고정
-
-            if (ny < 0 || ny >= n || nx < 0 || nx >= m || nh < 0 || nh >= h) continue;
-            if (a[ny][nx][nh] == -1) continue; //토마토가 들어있지 않은 경우
-            if (visited[ny][nx][nh] >= 1) continue; //초기 토마토 또는 이미 익은 토마토           
-
-            //익지 않은 토마토에 대해 bfs
-            if (a[ny][nx][nh] == 0 && !visited[ny][nx][nh]) {
-                visited[ny][nx][nh] = visited[cur.y][cur.x][cur.h] + 1;
-                q.push({ ny,nx,nh });
-            }
-        }
-
-        //위, 아래 층
-        for (int i = 0; i < 2; i++) {
-            int ny = cur.y; //y 고정
-            int nx = cur.x; //x 고정
             int nh = cur.h + dh[i];
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m || nh < 0 || nh >= h) continue;
             if (a[ny][nx][nh] == -1) continue; //토마토가 들어있지 않은 경우
-            if (visited[ny][nx][nh] >= 1) continue; //초기 토마토 또는 이미 익은 토마토
+            if (visited[ny][nx][nh] >= 1) continue; //초기 토마토 또는 이미 익은 토마토라면
 
-            //익지 않은 토마토에 대해 bfs
-            if (a[ny][nx][nh] == 0 && !visited[ny][nx][nh]) {
+            if (a[ny][nx][nh] == 0 && !visited[ny][nx][nh]) { //익지 않은 토마토라면
                 visited[ny][nx][nh] = visited[cur.y][cur.x][cur.h] + 1;
                 q.push({ ny,nx,nh });
             }
@@ -70,13 +51,13 @@ int main() {
 
     cin >> m >> n >> h;
 
-    for (int height = 0; height < h; height++) {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                cin >> a[i][j][height];
+    for (int k = 0; k < h; k++) { //높이
+        for (int i = 0; i < n; i++) { //행
+            for (int j = 0; j < m; j++) { //열
+                cin >> a[i][j][k];
 
-                if (a[i][j][height] == 1) {
-                    tomato.push_back({ i,j,height });
+                if (a[i][j][k] == 1) {
+                    tomato.push_back({ i,j,k });
                 }
             }
         }
@@ -84,17 +65,17 @@ int main() {
 
     bfs();
 
-    for (int height = 0; height < h; height++) {
+    for (int k = 0; k < h; k++) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (a[i][j][height] == -1) continue; //토마토가 들어있지 않은 경우
+                if (a[i][j][k] == -1) continue; //토마토가 들어있지 않은 경우
 
-                if (a[i][j][height] == 0 && !visited[i][j][height]) { //익지 않은 토마토가 있다면
+                if (a[i][j][k] == 0 && !visited[i][j][k]) { //익지 않은 토마토가 남아있다면
                     flag = true;
                     break;
                 }
-                
-                ret = max(ret, visited[i][j][height] - 1);
+
+                ret = max(ret, visited[i][j][k] - 1);
             }
 
             if (flag) break;

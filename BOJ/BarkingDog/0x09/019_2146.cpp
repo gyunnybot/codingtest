@@ -25,7 +25,7 @@ void bfs(int land_num) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (a[i][j] == land_num) {
-                q.push({ i,j,0 }); //같은 섬이므로 거리는 0으로 push
+                q.push({ i,j,0 }); //같은 섬은 dist = 0
             }
         }
     }
@@ -43,7 +43,7 @@ void bfs(int land_num) {
             //처음 방문한 곳이 바다도 아니고 같은 번호도 아니라면? 다른 섬에 도착한 것이다!
             if (a[ny][nx] != 0 && a[ny][nx] != land_num && !visited[ny][nx]) {
                 ret = min(ret, cur.dist); //다리의 최소거리 구하기
-                return; //가장 짧은 다리를 놓았으므로 즉시 return
+                return; //가장 짧은 다리를 놓았으므로 bfs 즉시 return
             }
 
             //바다라면

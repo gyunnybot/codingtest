@@ -20,7 +20,7 @@ void bfs(int n) {
             break;
         }
 
-        if (visited[mov % 2][k]) { //이전에 k를 홀수 또는 짝수 시각에 맞춰 방문한 경험이 있다면
+        if (visited[mov % 2][k]) { //과거에 k를 홀수 또는 짝수 시각에 맞춰 방문한 경험이 있다면
             ret = mov;
             break;
         }
@@ -33,7 +33,7 @@ void bfs(int n) {
             int cur = q.front(); q.pop();
 
             for (int ncur : {cur - 1, cur + 1, cur * 2}) {
-                if (ncur == k) { //다음에 방문할 곳이 k라면
+                if (ncur == k) { //다음 도착 지점이 k라면
                     ret = mov;
 
                     flag = true;

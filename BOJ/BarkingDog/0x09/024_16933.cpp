@@ -25,17 +25,18 @@ int bfs() {
             return visited[cur.y][cur.x][cur.broken][cur.isNoon];
         }
 
-        //이동 없이 머무른 후 진행
+        //이동 없이 머무른 후 진행. 이동 없이 벽을 부수는 경우는 존재하지 않으므로 따로 체크
         if (!visited[cur.y][cur.x][cur.broken][!cur.isNoon]) {
             visited[cur.y][cur.x][cur.broken][!cur.isNoon] = visited[cur.y][cur.x][cur.broken][cur.isNoon] + 1;
-            q.push({ cur.y, cur.x, cur.broken, !cur.isNoon });
+            q.push({ cur.y, cur.x, cur.broken, !cur.isNoon});
         }
 
+        //이동 후 진행
         for (int i = 0; i < 4; i++) {
             int ny = cur.y + dy[i];
             int nx = cur.x + dx[i];
             int nb = cur.broken;
-            int nn = cur.isNoon ^ 1;
+            int nn = !cur.isNoon;
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 

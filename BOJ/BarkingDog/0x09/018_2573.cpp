@@ -58,7 +58,7 @@ void melt() {
         }
     }
 
-    swap(a, temp); //swap : call by reference
+    swap(a, temp); //swap : call by reference. O(1)
 
     return;
 }
@@ -89,12 +89,12 @@ int main() {
             }
         }
 
-        if (ret > 1) { //빙하가 두 덩어리가 된다면 시간 출력
+        if (ret > 1) { //빙하가 두 덩어리가 된다면 결과 t 출력
             cout << t;
             break;
         }
         
-        if (ret == 0) { //빙하가 쪼개지지 않고 모두 녹았다면
+        if (ret == 0) { //빙하가 쪼개지지 않고 모두 녹았다면 0 출력
             cout << 0;
             break;
         }

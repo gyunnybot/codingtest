@@ -16,7 +16,6 @@ string s;
 void melt() {
     while (!water.empty()) {
         pair<int, int> cur = water.front(); water.pop();
-
         water_visited[cur.first][cur.second] = true;
 
         for (int i = 0; i < 4; i++) {
@@ -28,9 +27,15 @@ void melt() {
             if (!water_visited[ny][nx]) {
                 water_visited[ny][nx] = true;
 
+                /*
+                . . .
+                . X .
+                . . .
+                */
+
                 if (a[ny][nx] == 'X') {
-                    a[ny][nx] = '.'; //얼음 녹이기
-                    next_water.push({ ny,nx }); //다음 melt에서 활용될 물의 좌표 저장
+                    a[ny][nx] = '.'; //얼음을 녹여 물로 변경
+                    next_water.push({ ny,nx }); //다음 melt()에서 활용될 물의 좌표 저장
                 }
             }
         }
@@ -42,6 +47,7 @@ void melt() {
 bool meet() {
     while (!swan_q.empty()) {
         pair<int, int> cur = swan_q.front(); swan_q.pop();
+        visited[cur.first][cur.second] = true;
 
         for (int i = 0; i < 4; i++) {
             int ny = cur.first + dy[i];
@@ -56,10 +62,10 @@ bool meet() {
                     return true;
                 }
                 else if (a[ny][nx] == '.') {
-                    swan_q.push({ ny,nx }); //백조가 다닐 수 있는 경로 저장
+                    swan_q.push({ ny,nx }); //백조가 현재 다니는 경로 queue에 저장 후 반복문 실행
                 }
                 else if (a[ny][nx] == 'X') {
-                    next_swan_q.push({ ny,nx }); //melt 이후 백조가 다닐 수 있는 경로 저장
+                    next_swan_q.push({ ny,nx }); //melt() 이후 백조가 다닐 수 있는 경로 저장
                 }
             }
         }
@@ -69,8 +75,7 @@ bool meet() {
 }
 
 void bfs() {
-    visited[swan[0].first][swan[0].second] = true;
-    swan_q.push(swan[0]);
+    swan_q.push(swan[0]); //백조가 현재 다니는 경로 queue
 
     while (true) {
         if (meet()) {
@@ -79,14 +84,13 @@ void bfs() {
 
         melt();
 
-        /* STL의 = 연산은 deep copy. O(N)이므로 해당 문제에서는 시간초과 발생
-        swan_q = next_swan_q;
-        water = next_water;
-        */
-       
         //swap = call by reference. O(1)
         swap(swan_q, next_swan_q);
         swap(water, next_water);
+
+        //STL의 = 연산은 deep copy. O(N)이므로 해당 문제에서는 시간초과 발생
+        //swan_q = next_swan_q;
+        //water = next_water;
 
         ret++;
     }
@@ -107,11 +111,18 @@ int main() {
             a[i][j] = s[j];
 
             if (a[i][j] != 'X') {
-                water.push({ i,j }); //백조가 다닐 수 있는 경로 저장(물 또는 백조)
+                water.push({ i,j });
+
+                /*
+                LXXXX
+                XXXXX
+                XXXXX
+                XXXXL
+                */
             }
 
             if (a[i][j] == 'L') {
-                swan.push_back({ i, j }); //백조가 위치한 곳은 따로 저장
+                swan.push_back({ i, j });
             }
         }
     }

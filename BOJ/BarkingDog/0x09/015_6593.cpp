@@ -7,9 +7,9 @@ struct Pos {
 };
 Pos sPos, ePos;
 
-const int dy[] = { -1,0,1,0 };
-const int dx[] = { 0,1,0,-1 };
-const int dh[] = { 1,-1 };
+const int dy[] = { -1,0,1,0,0,0 };
+const int dx[] = { 0,1,0,-1,0,0 };
+const int dh[] = { 0,0,0,0,1,-1 };
 int l, r, c, answer, visited[31][31][31];
 char a[31][31][31];
 string s;
@@ -25,12 +25,12 @@ void bfs() {
 
         if (cur.y == ePos.y && cur.x == ePos.x && cur.h == ePos.h) break;
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 6; i++) {
             int ny = cur.y + dy[i];
             int nx = cur.x + dx[i];
-            int nh = cur.h;
+            int nh = cur.h + dh[i];
 
-            if (ny < 0 || ny >= r || nx < 0 || nx >= c) continue;
+            if (ny < 0 || ny >= r || nx < 0 || nx >= c || nh < 0 || nh >= l) continue;
             if (a[ny][nx][nh] == '#') continue;
 
             if (!visited[ny][nx][nh]) {
@@ -38,22 +38,8 @@ void bfs() {
                 q.push({ ny,nx,nh });
             }
         }
-
-        for (int i = 0; i < 2; i++) {
-            int ny = cur.y;
-            int nx = cur.x;
-            int nh = cur.h + dh[i];
-
-            if (nh < 0 || nh >= l) continue;
-            if (a[ny][nx][nh] == '#') continue;
-
-            if (!visited[ny][nx][nh]) {
-                visited[ny][nx][nh] = visited[cur.y][cur.x][cur.h] + 1;
-                q.push({ ny,nx, nh });
-            }
-        }
     }
-
+    
     return;
 }
 

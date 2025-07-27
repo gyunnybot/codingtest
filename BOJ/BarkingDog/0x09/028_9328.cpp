@@ -12,7 +12,7 @@ char a[101][101];
 bool visited[101][101];
 set<char> keys;
 string key_str, s;
-queue<pair<int, int>> door[28]; //A ~ Z 문의 좌표 저장
+queue<pair<int, int>> door[28]; //열쇠로 풀지 못한 문의 좌표를 알파벳별로 저장
 
 void bfs() {
     queue<pair<int, int>> q;
@@ -22,7 +22,7 @@ void bfs() {
             if (i == 0 || i == h - 1 || j == 0 || j == w - 1) {
                 if (a[i][j] != '*') {
                     visited[i][j] = true;
-                    q.push({ i, j }); //시작점 push
+                    q.push({ i,j }); //시작점 push
                 }
             }
         }
@@ -31,7 +31,7 @@ void bfs() {
     while (!q.empty()) {
         pair<int, int> cur = q.front(); q.pop();
 
-        //보물 발견
+        //문서 발견
         if (a[cur.first][cur.second] == '$') {
             a[cur.first][cur.second] = '.';
             ret++;
@@ -42,25 +42,25 @@ void bfs() {
             if (keys.find(a[cur.first][cur.second]) == keys.end()) { //열쇠를 소유하고 있지 않다면.. set = st.end(), string = string::npos
                 keys.insert(a[cur.first][cur.second]); //새로 얻은 열쇠를 열쇠꾸러미에 추가
 
-                int key_idx = a[cur.first][cur.second] - 'a'; //새로 얻은 열쇠의 인덱스(알파벳 순서) 찾기
+                int key_idx = a[cur.first][cur.second] - 'a'; //새로 얻은 열쇠의 알파벳 순서 번호 찾기
 
                 while (!door[key_idx].empty()) {
-                    q.push(door[key_idx].front()); //새로 얻은 열쇠에 대응되는 모든 문의 좌표를 큐에 저장
+                    q.push(door[key_idx].front()); //새로 얻은 열쇠에 대응되는 알파벳 문의 모든 좌표를 큐에 저장
                     door[key_idx].pop();
                 }
             }
 
-            a[cur.first][cur.second] = '.'; //문을 열쇠로 열고 빈 공간으로 변경
+            a[cur.first][cur.second] = '.'; //빈 공간으로 변경
         }
 
         //문 발견
         if ('A' <= a[cur.first][cur.second] && a[cur.first][cur.second] <= 'Z') {
-            if (keys.find((a[cur.first][cur.second]) + ('a' - 'A')) == keys.end()) { //열쇠가 없다면
-                door[a[cur.first][cur.second] - 'A'].push(cur); //아직 열쇠가 없으므로 문의 위치에 추가
-                continue; //열쇠가 없으므로 cur에서의 bfs 종료 후 while(!q.empty()) 반복문 재실행
+            if (keys.find((a[cur.first][cur.second]) + ('a' - 'A')) == keys.end()) { //알파벳 문에 대응되는 열쇠가 없다면
+                door[a[cur.first][cur.second] - 'A'].push(cur); //아직 열쇠가 없으므로 대응되는 알파벳 문 queue에 좌표 추가
+                continue; //열쇠가 없으므로 cur에서의 로직 종료 후 while(!q.empty()) 반복문 재실행
             }
-            else { //열쇠가 있다면
-                a[cur.first][cur.second] = '.'; //즉석에서 빈 공간으로 변경
+            else { //알파벳 문에 대응되는 열쇠가 있다면
+                a[cur.first][cur.second] = '.'; //빈 공간으로 변경
             }
         }
 
@@ -75,7 +75,7 @@ void bfs() {
             if (!visited[ny][nx]) {
                 visited[ny][nx] = true;
                 q.push({ ny,nx });
-            }            
+            }
         }
     }
 
