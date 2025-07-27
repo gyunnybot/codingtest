@@ -52,9 +52,9 @@ int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	for (int i = 0; i < 5; i++) {
-		for (int j = 0; j < 5; j++) {
-			for (int k = 0; k < 5; k++) {
+	for (int i = 0; i < 5; i++) { //층
+		for (int j = 0; j < 5; j++) { //행
+			for (int k = 0; k < 5; k++) { //열
 				cin >> a[0][i][j][k];
 			}
 		}

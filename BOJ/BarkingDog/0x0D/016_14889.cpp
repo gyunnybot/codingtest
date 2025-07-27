@@ -5,7 +5,7 @@ using namespace std;
 
 int n, a[21][21];
 int ret = INT_MAX;
-bool visited[21];
+vector<bool> visited(21, false);
 vector<int> v;
 
 int soccer(vector<int>& start, vector<int>& link) {
@@ -23,7 +23,7 @@ int soccer(vector<int>& start, vector<int>& link) {
     return abs(ret.first - ret.second);
 }
 
-void combi(int start, vector<int>& v) {
+void combi(int start, vector<int>& v, vector<bool>& visited) {
     if (v.size() == n / 2) {
         vector<int> start, link;
 
@@ -45,7 +45,7 @@ void combi(int start, vector<int>& v) {
         visited[i] = 1;
         v.push_back(i);
 
-        combi(i, v);
+        combi(i, v, visited);
 
         visited[i] = 0;
         v.pop_back();
@@ -64,7 +64,7 @@ int main() {
         }
     }
 
-    combi(-1, v); //팀 나누기
+    combi(-1, v, visited); //팀 나누기
 
     cout << ret;
 

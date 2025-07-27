@@ -24,7 +24,7 @@ void rotate() {
 		}
 	}
 
-	swap(r, c); //swap. call by reference
+	swap(r, c); //swap = call by reference. O(1)
 
 	return;
 }
