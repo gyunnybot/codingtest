@@ -8,7 +8,7 @@
 
 2. 코딩 센세 선생님의 [2주만에 통과하는 알고리즘 코딩테스트 강의](https://inf.run/RQLZ) ✔️
 
-3. zagabi 선생님의 [코딩테스트 대비 블로그](https://blog.naver.com/jhc9639/223915028657) 1 ~ 7주차 🔥
+3. zagabi 선생님의 [코딩테스트 대비 블로그](https://blog.naver.com/jhc9639/223915028657)와 [강의](https://www.inflearn.com/course/10%EC%A3%BC%EC%99%84%EC%84%B1-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8-%ED%81%B0%EB%8F%8C) 1 ~ 7주차 🔥
 
 4. 프로그래머스 [알고리즘 고득점 Kit](https://school.programmers.co.kr/learn/challenges?tab=algorithm_practice_kit) 🔥
 
