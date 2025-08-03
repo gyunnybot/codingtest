@@ -4,23 +4,17 @@ using namespace std;
 
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
-int n, m, visited[101][101], ret;
-bool a[101][101];
-string s;
+int t, n, m, k, x, y;
+bool a[51][51], visited[51][51];
 
 void bfs(int y, int x) {
-    visited[y][x] = 1;
+    visited[y][x] = true;
 
     queue<pair<int, int>> q;
     q.push({ y,x });
 
     while (!q.empty()) {
         pair<int, int> cur = q.front(); q.pop();
-
-        if (cur.first == n - 1 && cur.second == m - 1) {
-            ret = visited[cur.first][cur.second];
-            break;
-        }
 
         for (int i = 0; i < 4; i++) {
             int ny = cur.first + dy[i];
@@ -29,7 +23,7 @@ void bfs(int y, int x) {
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
             if (a[ny][nx] == 1 && !visited[ny][nx]) {
-                visited[ny][nx] = visited[cur.first][cur.second] + 1;
+                visited[ny][nx] = true;
                 q.push({ ny,nx });
             }
         }
@@ -42,19 +36,32 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
 
-    cin >> n >> m;
+    cin >> t;
 
-    for (int i = 0; i < n; i++) {
-        cin >> s;
+    while (t--) {
+        fill(&a[0][0], &a[0][0] + 51 * 51, 0);
+        fill(&visited[0][0], &visited[0][0] + 51 * 51, false);
 
-        for (int j = 0; j < m; j++) {
-            a[i][j] = s[j] - '0';
+        int ret = 0;
+
+        cin >> m >> n >> k;
+
+        while (k--) {
+            cin >> x >> y;
+            a[y][x] = 1;
         }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (a[i][j] == 1 && !visited[i][j]) {
+                    bfs(i, j);
+                    ret++;
+                }
+            }
+        }
+
+        cout << ret << '\n';
     }
-
-    bfs(0, 0);
-
-    cout << ret;
 
     return 0;
 }
