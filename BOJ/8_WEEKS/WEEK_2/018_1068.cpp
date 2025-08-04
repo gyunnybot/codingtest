@@ -13,10 +13,13 @@ int dfs(int here) {
 	int child = 0;
 
 	for (int there : adj[here]) {
-		if (there == node) continue;
+		if (there == node) {
+			continue;
+		}
 
 		if (!visited[there]) {
 			leaf += dfs(there);
+
 			child++;
 		}
 	}

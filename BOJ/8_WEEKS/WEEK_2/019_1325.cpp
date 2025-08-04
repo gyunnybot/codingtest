@@ -28,6 +28,7 @@ int main() {
 
 	for (int i = 0; i < m; i++) {
 		cin >> a >> b;
+		
 		adj[b].push_back(a);
 	}
 
@@ -35,6 +36,7 @@ int main() {
 		fill(&visited[0], &visited[0] + 10001, false);
 
 		v[i] = dfs(i);
+		
 		ret = max(ret, v[i]);
 	}
 
