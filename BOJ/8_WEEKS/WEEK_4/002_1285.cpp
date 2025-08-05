@@ -14,7 +14,7 @@ void recur(int here) {
 			int cnt = 0;
 
 			for (int j = 0; j < n; j++) {
-				if (a[j] & i) {
+				if (a[j] & i) { //a[j]가 'T'라면
 					cnt++;
 				}
 			}
@@ -23,14 +23,15 @@ void recur(int here) {
 		}
 
 		ret = min(ret, sum);
+
 		return;
 	}
 
-	recur(here + 1);
+	recur(here + 1); //뒤집지 않고 재귀 탐색
 
-	a[here] = ~a[here];
+	a[here] = ~a[here]; //뒤집기
 
-	recur(here + 1);
+	recur(here + 1); //뒤집은 후 재귀 탐색
 }
 
 int main() {
