@@ -9,5 +9,5 @@ ORDER BY SCORE DESC, I.FAVORITES DESC;
 
 /*
 일반적으로 SELECT 절은 GROUP BY에서 사용된 속성 또는 집계함수만 사용 가능하다
-그러나, REST_INFO 테이블은 REST_ID에 따라 나머지 속성 값이 유일하게 결정되므로, GROUP BY에 없는 속성도 SELECT에서 사용 가능하다
+그러나, GROUP BY에서 사용된 속성에 따라 유일하게 결정되는 속성이라면 GROUP BY에 없는 속성도 SELECT에서 사용 가능하다
 */

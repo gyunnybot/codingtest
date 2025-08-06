@@ -6,4 +6,4 @@ AND TLNO IS NOT NULL
 ORDER BY MEMBER_ID ASC;
 
 -- MONTH(DATE)) : 월 성분 추출
--- 속성 IS NOT NULL : 속성 값이 NULL인 레코드는 제외
+-- 속성 IS NOT NULL : 속성 값이 NULL인 레코드 제외 후 결과 출력
