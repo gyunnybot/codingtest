@@ -25,16 +25,16 @@ void melt() {
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
             if (!water_visited[ny][nx]) {
-                water_visited[ny][nx] = true;
-
-                /*
-                . . .
-                . X .
-                . . .
-                */
-
                 if (a[ny][nx] == 'X') {
                     a[ny][nx] = '.'; //얼음을 녹여 물로 변경
+
+                    /*
+                    . . .
+                    . X .
+                    . . .
+                    */
+
+                    water_visited[ny][nx] = true; //기존 water로 접근할 수 있는 X에도 방문처리
                     next_water.push({ ny,nx }); //다음 melt()에서 활용될 물의 좌표 저장
                 }
             }
