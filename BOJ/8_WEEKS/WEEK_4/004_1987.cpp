@@ -5,13 +5,10 @@ using namespace std;
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 int n, m, ret;
-bool visited[27];
 char a[21][21];
 string s;
 
-void dfs(int y, int x, int cnt) {
-    visited[a[y][x] - 'A'] = true;
-
+void dfs(int y, int x, int num, int cnt) {
     ret = max(ret, cnt);
 
     for (int i = 0; i < 4; i++) {
@@ -20,10 +17,10 @@ void dfs(int y, int x, int cnt) {
 
         if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
-        if (!visited[a[ny][nx] - 'A']) {
-            dfs(ny, nx, cnt + 1);
+        int next = 1 << (int)(a[ny][nx] - 'A');
 
-            visited[a[ny][nx] - 'A'] = false;
+        if (!(num & next)) {
+            dfs(ny, nx, (num | next), cnt + 1);
         }
     }
 
@@ -44,7 +41,7 @@ int main() {
         }
     }
 
-    dfs(0, 0, 1);
+    dfs(0, 0, 1 << (int)(a[0][0] - 'A'), 1);
 
     cout << ret;
 
