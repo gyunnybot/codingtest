@@ -9,7 +9,7 @@ vector<bool> visited(21, false);
 vector<int> v;
 
 int soccer(vector<int>& start, vector<int>& link) {
-    pair<int, int> ret = { 0,0 };
+    pair<int, int> ret = { 0,0 }; //곧바로 += 연산을 해야하므로 0으로 초기화
 
     for (int i = 0; i < n / 2; i++) {
         for (int j = 0; j < n / 2; j++) {

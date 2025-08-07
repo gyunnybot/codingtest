@@ -90,7 +90,7 @@ int main() {
 
 				for (int j = 0; j < 5; j++) {
 					for (int k = 0; k < 5; k++) {
-						maze[i][j][k] = a[dir][order[i]][j][k];
+						maze[i][j][k] = a[dir][order[i]][j][k]; //회전 방향, 층, 행, 열
 					}
 				}
 

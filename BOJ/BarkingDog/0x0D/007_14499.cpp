@@ -29,7 +29,7 @@ void dice(int dir) {
         }
         else {
             n6 = a[ny][nx]; //아랫면 -> 주사위 복사
-            a[ny][nx] = 0; //좌표 내 값은 0으로 수정
+            a[ny][nx] = 0; //칸에 쓰여 있는 수는 0이 된다
         }
 
         y = ny;
