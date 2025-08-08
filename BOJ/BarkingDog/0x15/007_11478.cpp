@@ -1,9 +1,9 @@
 #include<iostream>
-#include<set>
+#include<unordered_set>
 using namespace std;
 
 string s;
-set<string> st;
+unordered_set<string> ust;
 
 int main() {
     ios_base::sync_with_stdio(false);
@@ -16,11 +16,11 @@ int main() {
 
         for (int j = i; j < s.size(); j++) {
             ret += s[j];
-            st.insert(ret);
-        }        
+            ust.insert(ret);
+        }
     }
 
-    cout << st.size();
+    cout << ust.size();
 
     return 0;
 }
