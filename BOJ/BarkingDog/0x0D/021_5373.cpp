@@ -26,19 +26,18 @@ void rotate(int side, bool isClockwise) {
 			for (int j = 0; j < 3; j++) {
 				tmp[j][3 - i - 1] = cube[side][i][j]; //해당 side 시계 방향으로 회전
 			}
-				
 		}
-			
-		swap(cube[side], tmp); //swap. call by reference
+
+		swap(cube[side], tmp); //swap. call by reference, O(1)
 	}
 
 	return;
 }
 
 void rotate_side(int side, bool isClockwise) {
-	rotate(side, isClockwise); //해당 side rotate
+	rotate(side, isClockwise); //해당 side 회전
 
-	//side rotate로 인해 수정된 옆 면들 계산
+	//연결된 side 계산
 	int rot = 1;
 
 	if (!isClockwise) {

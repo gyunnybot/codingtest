@@ -10,7 +10,7 @@ void run() {
 
     for (int inning = 0; inning < n; inning++) {
         fill(&bases[0], &bases[0] + 4, false);
-        
+
         int out = 0;
 
         while (out < 3) {
@@ -22,11 +22,12 @@ void run() {
                 idx = 0;
             }
 
-            if (!move) {
+            if (!move) { //진루하지 못하면 아웃 카운트 증가
                 out++;
                 continue;
             }
 
+            //득점 계산
             for (int i = 3; i >= 0; i--) {
                 if (!bases[i]) continue;
 
@@ -36,20 +37,20 @@ void run() {
                 else {
                     bases[i + move] = true;
                 }
-                
+
                 bases[i] = false;
             }
         }
     }
-    
+
     ret = max(ret, score);
 
     return;
 }
 
 void recur(int k) {
-    if (k == 9) {
-        run();
+    if (k == 9) { //모든 타석에 타자를 배치했다면
+        run(); //점수 계산 시작
         return;
     }
 
@@ -58,14 +59,14 @@ void recur(int k) {
         return;
     }
 
-    for (int i = 1; i < 9; i++) {
+    for (int i = 1; i < 9; i++) { //i = 0인 선수는 1번 선수다. 4번 타자로 미리 결정
         if (visited[i]) continue;
 
-        order[k] = i;
+        order[k] = i; //k 번째 타석의 선수 번호를 i로 결정
         visited[i] = true;
 
         recur(k + 1);
-        
+
         visited[i] = false;
     }
 }
