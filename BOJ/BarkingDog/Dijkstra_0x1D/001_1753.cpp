@@ -13,7 +13,7 @@ int main() {
 
 	cin >> v >> e >> st;
 
-	fill(d + 1, d + v + 1, INT_MAX); //d[1] ~ d[v]
+	fill(d + 1, d + v + 1, INT_MAX); //모든 정점에는 1부터 V까지 번호가 매겨져 있다고 가정한다. d[1] ~ d[v]
 
 	for (int i = 0; i < e; i++) {
 		int u, v, w;
@@ -26,17 +26,17 @@ int main() {
 	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 
 	d[st] = 0;
-	pq.push({ d[st],st }); //{st에서 노드까지의 최소 거리, 현재 노드}
+	pq.push({ d[st],st }); //{st에서 현재 노드까지의 최단 경로, 현재 노드}
 
 	while (!pq.empty()) {
 		pair<int, int> cur = pq.top(); pq.pop();
 
-		if (cur.first != d[cur.second]) continue; //cur.first가 이미 정해진 최소 거리 d[cur.second]가 아니라면
+		if (cur.first != d[cur.second]) continue; //우선순위 큐. 이미 정해진 최단 경로가 아니라면 continue
 
 		for (pair<int, int> next : adj[cur.second]) { //연결된 노드로 나아가기
-			if (d[next.second] <= d[cur.second] + next.first) continue;
+			if (d[next.second] <= d[cur.second] + next.first) continue; //이미 정해진 최단 경로보다 멀다면 continue
 
-			d[next.second] = d[cur.second] + next.first; //최단 거리로 갱신
+			d[next.second] = d[cur.second] + next.first; //가까울 경우, 최단 경로로 갱신
 			pq.push({ d[next.second],next.second });
 		}
 	}
