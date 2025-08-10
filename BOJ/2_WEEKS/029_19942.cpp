@@ -23,13 +23,16 @@ void recur(int idx, int p, int f, int s, int v, int cost) {
 
 	if (idx == n) return;
 
-	//재료를 선택하는 경우. 같은 비용의 집합이 하나 이상이면 사전 순으로 가장 빠른 것을 출력한다
-	temp.push_back(idx + 1); //조합 선택
+	//재료를 선택하는 경우
+	temp.push_back(idx + 1);
 	recur(idx + 1, p + ingre[idx].p, f + ingre[idx].f, s + ingre[idx].s, v + ingre[idx].v, cost + ingre[idx].cost);
-	temp.pop_back(); //조합 원상 복구
+	temp.pop_back();
 
 	//재료를 선택하지 않는 경우
 	recur(idx + 1, p, f, s, v, cost);
+
+	//같은 비용의 집합이 하나 이상이면 사전 순으로 가장 빠른 것을 출력한다. 재료를 선택하는 편이 사전 순이다
+	//예를 들어, 재료 1 2 3 4 0 와 0 0 0 0 5가 최소 영양소 조건을 만족하면서 최소값이라면 1 2 3 4 0을 출력해야 한다
 }
 
 int main() {

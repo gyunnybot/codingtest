@@ -65,7 +65,7 @@ void baby_shark() {
 		}
 
 		if (!no_fish) {
-			shark = candi; //deep copy(기본형, STL, struct, vector의 '=' 연산)
+			shark = candi; //deep copy(기본형, STL, 구조체의 '=' 연산)
 			shark_eat++;
 
 			if (shark_eat == shark_size) {

@@ -18,7 +18,7 @@ int main() {
 
 	cin >> m;
 
-    //레드-블랙 트리 자료구조 map. O(logN)
+    //레드-블랙 트리 기반의 자료구조 map. O(logN)으로 고정
 	for (int i = 0; i < m; i++) {
 		cin >> temp;
 

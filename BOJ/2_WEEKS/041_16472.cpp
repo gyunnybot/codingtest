@@ -1,10 +1,10 @@
 #include<iostream>
-#include<map>
+#include<unordered_map>
 using namespace std;
 
 int n, ret;
 string s;
-map<char, int> cnt;
+unordered_map<char, int> cnt;
 
 int main() {
     ios_base::sync_with_stdio(false);
@@ -19,13 +19,13 @@ int main() {
         cnt[s[ed]]++; //오른쪽으로 이동하면서 문자 추가
 
         while (cnt.size() > n) {
-            cnt[s[st]]--; //왼쪽 문자 지우기
+            cnt[s[st]]--; //왼쪽 문자부터 지우기
 
-            if (cnt[s[st]] == 0) {
-                cnt.erase(s[st]); //value가 0이라면 map 원소 삭제
+            if (cnt[s[st]] == 0) { //value가 0이라면
+                cnt.erase(s[st]); //map 내 원소 삭제
             }
 
-            st++; //st 오른쪽으로 이동
+            st++; //오른쪽으로 이동
         }
 
         ret = max(ret, ed - st + 1);
