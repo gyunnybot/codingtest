@@ -26,14 +26,14 @@ void bfs(int y, int x) {
 			if (a[ny][nx] == 1) { //인접한 좌표가 치즈라면
 				visited[ny][nx]++; //치즈가 공기랑 맞닿은 변 증가
 
-				if (visited[ny][nx] >= 2) { //공기가 두 개의 변과 맞닿아있다면
-					cheese_list_pos.push_back({ ny,nx });
+				if (visited[ny][nx] >= 2) { //공기가 두 개의 변 이상으로 맞닿아있다면
+					cheese_list_pos.push_back({ ny,nx }); //녹아야 할 치즈 목록에 추가
 				}
 			}
 
-			if (!visited[ny][nx]) {
+			if (!visited[ny][nx]) { //치즈는 바로 위 조건문에 의해 방문처리되므로, 해당 ny, nx는 반드시 공기이다
 				visited[ny][nx] = 1;
-				q.push({ ny,nx });
+				q.push({ ny,nx }); //q에는 공기 좌표만 들어간다
 			}
 		}
 	}
@@ -60,7 +60,7 @@ int main() {
 
 		bfs(0, 0); //판의 가장자리에는 치즈가 놓여 있지 않다
 
-		int cnt = cheese_list_pos.size(); //두 변이 공기와 맞닿아 녹을 치즈가 놓여 있는 칸의 개수
+		int cnt = cheese_list_pos.size(); //두 변 이상이 공기와 맞닿아 녹을 치즈가 놓여 있는 칸의 개수
 
 		for (pair<int, int> c : cheese_list_pos) {
 			a[c.first][c.second] = 0; //치즈 녹이기

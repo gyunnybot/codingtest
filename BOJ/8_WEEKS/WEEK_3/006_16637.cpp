@@ -16,8 +16,7 @@ ll cal(char c, int a, int b) {
     if (c == '-') return a - b;
 }
 
-//단, 괄호 안에는 연산자가 하나만 들어 있어야 한다. O(2 ^ N)
-void recur(int idx, ll sum) {
+void recur(int idx, ll sum) { //O(2 ^ N)
     if (idx == oper.size()) {
         ret = max(ret, sum);
         return;

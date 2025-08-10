@@ -26,7 +26,7 @@ int main() {
 	for (int i = 0; i < h; i++) {
 		for (int j = 0; j < w; j++) {
 			if (a[i][j] == 'c') {
-				int cnt = 1; //c를 만나면 다시 1부터 시작
+				int cnt = 1; //다른 c를 만나면 1부터 다시 시작
 
 				while (j + 1 < w && a[i][j + 1] != 'c') {
 					ret[i][j + 1] = cnt;

@@ -15,7 +15,6 @@ int main() {
 		while (true) {
 			if (ret % n == 0) {
 				cout << cnt << '\n';
-
 				break;
 			}
 			else {

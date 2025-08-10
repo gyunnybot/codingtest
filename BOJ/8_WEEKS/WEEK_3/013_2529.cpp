@@ -5,7 +5,7 @@
 using namespace std;
 
 char oper[10];
-bool isOccupied[10];
+bool visited[10];
 int k;
 vector<string> ret;
 
@@ -23,14 +23,14 @@ void recur(int idx, string num) {
     }
 
     for (int i = 0; i <= 9; i++) { //부등호 기호 앞뒤에 넣을 수 있는 숫자는 0부터 9까지의 정수
-        if (isOccupied[i]) continue; //선택된 숫자는 모두 달라야 한다
+        if (visited[i]) continue; //선택된 숫자는 모두 달라야 한다
 
         if (idx == 0 || check(num[idx - 1], i + '0', oper[idx - 1])) {
-            isOccupied[i] = true;
+            visited[i] = true;
 
             recur(idx + 1, num + to_string(i));
 
-            isOccupied[i] = false;
+            visited[i] = false;
         }
     }
 

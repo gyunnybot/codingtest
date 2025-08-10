@@ -15,7 +15,7 @@ int recur(int idx, int weight) {
 		return 0;
 	}
 
-	if (dp[idx][weight] != -1) { //계산된 가치가 0일 수 있으므로 -1로 판별
+	if (dp[idx][weight] != -1) { //dp를 0으로 초기화하면 계산된 가치가 0인 경우와 구별이 되지 않는다. 따라서 -1로 판별
 		return dp[idx][weight];
 	}
 
