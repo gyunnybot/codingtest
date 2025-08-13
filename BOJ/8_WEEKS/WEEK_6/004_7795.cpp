@@ -33,7 +33,7 @@ int main() {
 
 		int cnt = 0;
 
-		//O(N ^ 2)
+		//O(N ^ 2)? 정렬 + break 조건으로 O(N + M)에 해결 가능하다
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
 				if (a[i] > b[j]) {

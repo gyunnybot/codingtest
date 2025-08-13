@@ -6,8 +6,8 @@ using namespace std;
 const int dy[] = { -1,0,1,0 };
 const int dx[] = { 0,1,0,-1 };
 int n, a[11][11];
-bool visited[11][11];
 int ret = INT_MAX;
+bool visited[11][11];
 string s;
 
 int bloomFlower(int y, int x) {
