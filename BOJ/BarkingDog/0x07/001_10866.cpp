@@ -2,7 +2,7 @@
 #include<deque>
 using namespace std;
 
-int n, temp;
+int n, val;
 string s;
 deque<int> dq;
 
@@ -16,12 +16,12 @@ int main(void) {
 		cin >> s;
 
 		if (s == "push_front") {
-			cin >> temp;
-			dq.push_front(temp);
+			cin >> val;
+			dq.push_front(val);
 		}
 		else if (s == "push_back") {
-			cin >> temp;
-			dq.push_back(temp);
+			cin >> val;
+			dq.push_back(val);
 		}
 		else if (s == "pop_front") {
 			if (!dq.empty()) {

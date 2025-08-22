@@ -21,6 +21,7 @@ int main() {
 		while (true) {
 			if (q.size() == w) {
 				weight -= q.front();
+				
 				q.pop();
 			}
 

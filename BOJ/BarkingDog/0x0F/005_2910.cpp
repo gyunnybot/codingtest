@@ -8,7 +8,7 @@ int n, c, temp;
 unordered_map<int, int> mp, mp2;
 vector<pair<int, int>> v;
 
-bool cmp(pair<int, int> a, pair<int, int>b) {
+bool cmp(pair<int, int> a, pair<int, int> b) {
 	if (a.second == b.second) {
 		return mp2[a.first] < mp2[b.first];
 	}

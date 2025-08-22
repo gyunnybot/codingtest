@@ -3,7 +3,7 @@
 #include<vector>
 using namespace std;
 
-int n, L, temp;
+int n, L, val;
 deque<pair<int, int>> dq;
 vector<int> ret;
 
@@ -14,13 +14,13 @@ int main() {
     cin >> n >> L;
 
     for (int i = 0; i < n; i++) {
-        cin >> temp;
+        cin >> val;
 
-        while (!dq.empty() && dq.back().second >= temp) {
+        while (!dq.empty() && dq.back().second >= val) {
             dq.pop_back(); //구간 내에서 최소값을 찾을 때까지 pop_back
         }
 
-        dq.push_back({ i,temp }); //두 가지 정보가 필요한 유형
+        dq.push_back({ i,val }); //두 가지 정보가 필요한 유형
 
         while (dq.front().first <= i - L) {
             dq.pop_front(); //구간 이동 시 pop_front

@@ -2,7 +2,7 @@
 #include<stack>
 using namespace std;
 
-int n, temp;
+int n, val;
 int cnt = 1;
 bool flag;
 string ret;
@@ -15,15 +15,15 @@ int main() {
 	cin >> n;
 
 	while (n--) {
-		cin >> temp;
+		cin >> val;
 
-		while (cnt <= temp) {
+		while (cnt <= val) {
 			ret += "+\n";
 			stk.push(cnt);
 			cnt++;
 		}
 
-		if (stk.top() != temp) {
+		if (stk.top() != val) {
 			flag = true; //도중에 수열이 성립하지 않아도 일단 입력받는다
 		}
 		else {
@@ -32,7 +32,7 @@ int main() {
 		}
 	}
 
-	if (flag) { //순차적으로 쌓이지 않았을 경우
+	if (flag) { //수열이 성립하지 않는 경우(순차적으로 쌓이지 않았을 경우)
 		cout << "NO";
 	}
 	else {

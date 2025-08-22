@@ -20,7 +20,7 @@ int main() {
 			stk.pop(); //본인을 내려다볼 수 없는 빌딩들 제거
 		}
 		
-		ret += stk.size(); //본인을 내려다볼 수 있는 빌딩의 수를 ret에 추가
+		ret += stk.size(); //본인을 내려다볼 수 있는 빌딩의 수를 ret에 추가. 스택의 size 활용
 		stk.push(height);
 	}
 

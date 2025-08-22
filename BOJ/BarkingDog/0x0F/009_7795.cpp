@@ -34,7 +34,7 @@ int main() {
 
 		int cnt = 0;
 
-		//O(N^2)까지 가능?
+		//O(N^2)까지 가능? 가장 많은 반복문을 도는 경우? a: 0~9999, b: 10000~19999. 1억
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
 				if (a[i] > b[j]) {
@@ -46,8 +46,16 @@ int main() {
 			}
 		}
 
+		//upper_bound를 쓰면 안정적으로 O(NlogN) 가능하다
+		/*
+			for (int i = 0; i < n; i++) {
+				cnt += upper_bound(b, b + m, a[i] - 1) - b;
+			}
+		*/
+
 		cout << cnt << '\n';
 	}
 
 	return 0;
 }
+	

@@ -9,10 +9,10 @@ int k, num, wise, ret, dir[4];
 
 void rotate_gear(int idx, int wise) {
 	if (wise == 1) {
-		rotate(gear[idx].rbegin(), gear[idx].rbegin() + 1, gear[idx].rend()); //시계 방향
+		rotate(gear[idx].rbegin(), gear[idx].rbegin() + 1, gear[idx].rend()); //시계 방향 회전
 	}
 	else {
-		rotate(gear[idx].begin(), gear[idx].begin() + 1, gear[idx].end()); //반시계 방향
+		rotate(gear[idx].begin(), gear[idx].begin() + 1, gear[idx].end()); //반시계 방향 회전
 	}
 
 	return;

@@ -111,14 +111,14 @@ int main() {
 	//merge sort. O(NlogN)
 	merge_sort(0, n);
 	
-	//quict sort. O(NlogN ~ N^2)
+	//quick sort. O(NlogN ~ N^2)
 	quick_sort(0, n);
 
 	print(n);
 
 	/*----------------------------------------------------*/
 
-	//counting sort. O(수의 범위 + 입력된 수의 갯수)
+	//counting sort. O(수의 범위 N + 입력된 수의 갯수 K)
 	for (int i = 0; i < n; i++) {
 		cnt[arr[i]]++;
 	}

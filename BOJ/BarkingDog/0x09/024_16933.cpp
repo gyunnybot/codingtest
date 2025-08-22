@@ -25,7 +25,7 @@ int bfs() {
             return visited[cur.y][cur.x][cur.broken][cur.isNoon];
         }
 
-        //이동 없이 머무른 후 진행. 이동 없이 벽을 부수는 경우는 존재하지 않으므로 따로 체크
+        //이동 없이 머무른 후 진행. 이동 없이 벽을 부수는 경우는 존재하지 않는다
         if (!visited[cur.y][cur.x][cur.broken][!cur.isNoon]) {
             visited[cur.y][cur.x][cur.broken][!cur.isNoon] = visited[cur.y][cur.x][cur.broken][cur.isNoon] + 1;
             q.push({ cur.y, cur.x, cur.broken, !cur.isNoon});

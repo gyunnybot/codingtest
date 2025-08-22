@@ -56,6 +56,7 @@ int main() {
 
     while (k--) {
         cin >> dir;
+        
         dice(dir - 1);
     }
 
