@@ -18,7 +18,7 @@ int main() {
 
 	cin >> m;
 
-    //해시 테이블 기반의 자료구조 unordered_map. 최선 O(1), 최악 O(N)
+    //해시 테이블 기반의 자료구조 unordered_map. 평균 O(1), 최악 O(N)
 	for (int i = 0; i < m; i++) {
 		cin >> temp;
 

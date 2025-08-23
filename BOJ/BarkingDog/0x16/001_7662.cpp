@@ -14,7 +14,7 @@ int main() {
 	while (t--) {
 		cin >> k;
 
-		multiset<int> ms; //같은 데이터를 중복해서 받아야 하며 정렬된 상태를 유지해 최대, 최솟값을 추출할 수 있어야 함
+		multiset<int> ms; //같은 데이터를 중복해서 받아야 하며 정렬된 상태를 유지해 최대, 최솟값을 추출할 수 있어야 한다
 
 		while (k--) {
 			cin >> oper >> num;
