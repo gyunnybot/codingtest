@@ -31,7 +31,7 @@ void bfs(int y, int x) {
 				}
 			}
 
-			if (!visited[ny][nx]) { //치즈는 바로 위 조건문에 의해 방문처리되므로, 해당 ny, nx는 반드시 공기이다
+			if (!visited[ny][nx]) { //해당 조건문에서의 a[ny][nx]는 공기일 수 밖에 없다
 				visited[ny][nx] = 1;
 				q.push({ ny,nx }); //q에는 공기 좌표만 들어간다
 			}

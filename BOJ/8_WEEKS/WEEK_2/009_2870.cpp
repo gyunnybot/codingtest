@@ -18,7 +18,7 @@ bool cmp(string a, string b) { //비내림차순
 void check(string ret) {
 	while (true) {
 		if (ret.size() && ret[0] == '0') {
-			ret.erase(0, 1); //erase(지울 위치의 인덱스, 지울 개수)
+			ret.erase(0, 1); //string.erase(지울 위치의 인덱스, 지울 개수)
 		}
 		else { //전부 0인 수를 모조리 지웠거나, 0이 아닌 숫자를 만났다면
 			break;

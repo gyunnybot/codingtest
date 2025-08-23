@@ -13,7 +13,7 @@ int main() {
         cin >> a[i];
     }
 
-    sort(a, a + 9); //next_permutation 사용은 정렬이 선행되어야 한다. 또한, 오름차순 출력이 요구 사항이다
+    sort(a, a + 9); //일곱 난쟁이의 키를 오름차순으로 출력한다. 또한 next_permutation은 정렬이 선행되어야 한다
 
     do {
         int sum = 0;

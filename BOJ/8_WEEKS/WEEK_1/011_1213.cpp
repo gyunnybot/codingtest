@@ -23,7 +23,7 @@ int main(void) {
 			flag++;
 		}
 
-		if (flag >= 2) break; //중앙에 와야하는 알파벳이 두 개 이상이라면
+		if (flag == 2) break; //중앙에 와야 하는 알파벳이 두 개 이상이라면
 
 		for (int j = 0; j < cnt[i - 'A']; j += 2) {			
 			ret = i + ret;

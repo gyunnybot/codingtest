@@ -10,8 +10,8 @@ int main() {
 
 	cin >> n >> pattern;
 
-	pre = pattern.substr(0, pattern.find("*")); //string.substr(시작 인덱스, 추출할 문자 개수)
-	post = pattern.substr(pattern.find("*") + 1); //string.substr(시작 인덱스) : 시작 인덱스부터 끝까지 반환
+	pre = pattern.substr(0, pattern.find("*")); //string.substr(시작 인덱스, 추출할 문자 개수. 생략 시 전체 반환)
+	post = pattern.substr(pattern.find("*") + 1); //string.find(string str) 시작 인덱스 반환. string::npos
 
 	while (n--) {
 		cin >> s;
