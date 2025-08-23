@@ -13,7 +13,7 @@ int main() {
 		cin >> a[i];
 	}
 
-	dp[0] = 1; //vip 좌석이 연속으로 붙어있을 때, 그 사이를 1로 생각해야 ret의 곱셉 연산이 가능하다
+	dp[0] = 1; //vip 좌석이 연속으로 붙어있을 때, 그 사이를 1로 생각해야 ret 곱셈 연산이 가능하다
 	dp[1] = 1; //1
 	dp[2] = 2; //1 2, 2 1
 
@@ -22,16 +22,16 @@ int main() {
 	}
 
 	int ret = 1; //곱셈 연산을 위해 1로 초기화
-	int start = 0;
+	int st = 0;
 
 	for (int i = 0; i < m; i++) {
 		int ed = a[i];
 
-		ret *= dp[ed - start - 1];
-		start = ed;
+		ret *= dp[ed - st - 1];
+		st = ed;
 	}
 
-	ret *= dp[n - start];
+	ret *= dp[n - st];
 
 	cout << ret;
 

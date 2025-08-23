@@ -21,9 +21,8 @@ void baby_shark() {
 
 		no_fish = true; //먹을 수 있는 물고기가 있다면 false로 변경
 
-		a[shark.y][shark.x] = 0;
-
-		visited[shark.y][shark.x] = true;
+		a[shark.y][shark.x] = 0; //상어가 위치한 곳을 빈 칸으로 변경
+		visited[shark.y][shark.x] = true; //방문 처리
 
 		queue<Shark> q;
 		q.push(shark);
@@ -35,19 +34,20 @@ void baby_shark() {
 		while (!q.empty()) {
 			Shark cur = q.front(); q.pop();
 
-			//한 번 갱신된 candi의 시간보다 cur의 시간이 길다면 더 이상 후보자를 탐색하지 않는다
+			//한 번 갱신된 candi의 시간보다 cur의 시간이 길다면, 거리가 가장 가까운 물고기가 아니다
 			if (candi.time != -1 && candi.time < cur.time) break;
 
 			//먹을 수 있는 물고기가 있다면
 			if (a[cur.y][cur.x] != 0 && a[cur.y][cur.x] < shark_size) {
 				no_fish = false;
 
-				//먹을 수 있는 물고기들 중 가장 적합한 물고기를 candi에 저장
+				//먹을 수 있는 물고기들 중 거리가 가장 가까운 물고기를 candi 좌표로 변경
 				if (cur.y < candi.y || (cur.y == candi.y && cur.x < candi.x)) {
 					candi = cur;
 				}
 			}
 
+			//상어 이동
 			for (int i = 0; i < 4; i++) {
 				Shark next;
 
@@ -65,7 +65,7 @@ void baby_shark() {
 		}
 
 		if (!no_fish) {
-			shark = candi; //deep copy(기본형, STL, 구조체의 '=' 연산)
+			shark = candi; //deep copy. O(1)
 			shark_eat++;
 
 			if (shark_eat == shark_size) {

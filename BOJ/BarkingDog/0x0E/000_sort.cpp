@@ -94,16 +94,16 @@ int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	//select sort. O(N^2)
+	//select sort. O(N ^ 2)
 	for (int i = n - 1; i > 0; i--) {
-		swap(*max_element(arr, arr + i + 1), arr[i]); //swap : call by reference
+		swap(*max_element(arr, arr + i + 1), arr[i]); //swap : call by reference. O(1)
 	}
 
-	//bubble sort. O(N^2)
+	//bubble sort. O(N ^ 2)
 	for (int i = 0; i < n - 1; i++) {
 		for (int j = 0; j < n - i - 1; j++) {
 			if (arr[j] > arr[j + 1]) {
-				swap(arr[j], arr[j + 1]); //swap : call by reference
+				swap(arr[j], arr[j + 1]); //swap : call by reference. O(1)
 			}
 		}
 	}
@@ -111,7 +111,7 @@ int main() {
 	//merge sort. O(NlogN)
 	merge_sort(0, n);
 	
-	//quick sort. O(NlogN ~ N^2)
+	//quick sort. O(NlogN ~ N ^ 2)
 	quick_sort(0, n);
 
 	print(n);

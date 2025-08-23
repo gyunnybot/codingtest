@@ -28,7 +28,7 @@ void melt() {
                 if (a[ny][nx] == 'X') {
                     a[ny][nx] = '.'; //얼음을 녹여 물로 변경
 
-                    /*
+                    /* 반례
                     . . .
                     . X .
                     . . .
@@ -88,9 +88,10 @@ void bfs() {
         swap(swan_q, next_swan_q);
         swap(water, next_water);
 
-        //STL의 = 연산은 deep copy. O(N)이므로 해당 문제에서는 시간초과 발생
-        //swan_q = next_swan_q;
-        //water = next_water;
+        /* STL의 = 연산은 deep copy. O(N)이므로 해당 문제에서는 시간초과 발생
+        swan_q = next_swan_q;
+        water = next_water;
+        */
 
         ret++;
     }
@@ -113,7 +114,7 @@ int main() {
             if (a[i][j] != 'X') {
                 water.push({ i,j });
 
-                /*
+                /* 반례
                 LXXXX
                 XXXXX
                 XXXXX

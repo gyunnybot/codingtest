@@ -14,7 +14,7 @@ int func1(int N) {
     return ret;
 }
 
-//O(N^2)
+//O(N ^ 2)
 int func2(int arr[], int N) {
     for (int i = 0; i < N; i++) {
         for (int j = i + 1; j < N; j++) {

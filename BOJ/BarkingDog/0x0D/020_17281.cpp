@@ -18,16 +18,16 @@ void run() {
 
             int move = a[inning][order[idx++]];
 
-            if (idx == 9) {
-                idx = 0;
+            if (idx == 9) { //타순이 한 바퀴 돌았다면
+                idx = 0; //다시 1번 타순(idx = 0)으로 돌아가기
             }
 
-            if (!move) { //진루하지 못하면 아웃 카운트 증가
-                out++;
+            if (!move) {
+                out++; //아웃 카운트 증가
                 continue;
             }
 
-            //득점 계산
+            //점수와 진루 계산
             for (int i = 3; i >= 0; i--) {
                 if (!bases[i]) continue;
 
@@ -49,7 +49,7 @@ void run() {
 }
 
 void recur(int k) {
-    if (k == 9) { //모든 타석에 타자를 배치했다면
+    if (k == 9) { //타순이 모두 정해졌다면
         run(); //점수 계산 시작
         return;
     }
@@ -59,10 +59,10 @@ void recur(int k) {
         return;
     }
 
-    for (int i = 1; i < 9; i++) { //i = 0인 선수는 1번 선수다. 4번 타자로 미리 결정
+    for (int i = 1; i < 9; i++) { //2번 ~ 9번 선수의 타순 정하기. 1번 선수(i = 0)는 4번 타순(k = 3)이다
         if (visited[i]) continue;
 
-        order[k] = i; //k 번째 타석의 선수 번호를 i로 결정
+        order[k] = i; //k + 1 번째 타순에 i + 1번 선수가 등판한다
         visited[i] = true;
 
         recur(k + 1);

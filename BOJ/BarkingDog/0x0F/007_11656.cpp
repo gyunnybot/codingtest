@@ -14,7 +14,7 @@ int main() {
 
 	while (s.size()) {
 		v.push_back(s);
-		s.erase(0, 1);
+		s.erase(0, 1); //string.erase(시작 인덱스, 지울 개수)
 	}
 
 	sort(v.begin(), v.end());

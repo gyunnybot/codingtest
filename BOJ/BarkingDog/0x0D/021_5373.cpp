@@ -37,7 +37,7 @@ void rotate(int side, bool isClockwise) {
 void rotate_side(int side, bool isClockwise) {
 	rotate(side, isClockwise); //해당 side 회전
 
-	//연결된 side 계산
+	//연결된 side 회전
 	int rot = 1;
 
 	if (!isClockwise) {
