@@ -5,30 +5,31 @@ using namespace std;
 typedef long long ll;
 
 int n;
-ll ret = INT_MIN; //정답은 2 ^ 31보다 작고, -(2 ^ 31)보다 크다
+int ret = INT_MIN;
 string s;
-vector<int> num; //0보다 크거나 같고, 9보다 작거나 같은 정수
+vector<int> num; //수식에 포함된 정수는 모두 0보다 크거나 같고, 9보다 작거나 같다
 vector<char> oper;
 
-ll cal(char c, int a, int b) {
+ll cal(int a, int b, char c) {
     if (c == '+') return a + b;
     if (c == '*') return a * b;
     if (c == '-') return a - b;
 }
 
-void recur(int idx, ll sum) { //O(2 ^ N)
+void recur(int idx, ll cur) { //O(2 ^ N)
     if (idx == oper.size()) {
-        ret = max(ret, sum);
+        ret = max(ret, (int)cur); //정답은 2 ^ 31보다 작고, -(2 ^ 31)보다 크다
         return;
     }
 
     if (idx < oper.size()) {
-        recur(idx + 1, cal(oper[idx], sum, num[idx + 1]));
+        recur(idx + 1, cal(cur, num[idx + 1], oper[idx]));
     }
 
     if (idx + 1 < oper.size()) {
-        ll temp = cal(oper[idx + 1], num[idx + 1], num[idx + 2]); //단, 괄호 안에는 연산자가 하나만 들어 있어야 한다
-        recur(idx + 2, cal(oper[idx], sum, temp));
+        ll temp = cal(num[idx + 1], num[idx + 2], oper[idx + 1]); //단, 괄호 안에는 연산자가 하나만 들어 있어야 한다
+
+        recur(idx + 2, cal(cur, temp, oper[idx]));
     }
 }
 

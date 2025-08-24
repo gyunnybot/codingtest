@@ -25,7 +25,7 @@ void bfs(int n) {
 
                     cnt[next] = cnt[cur];
                 }
-                else if (visited[next] == visited[cur] + 1) { //이미 방문한 적이 있다면
+                else if (visited[next] == visited[cur] + 1) { //다음 위치가 이미 방문된 적이 있다면
                     cnt[next] += cnt[cur];
                 }
             }
