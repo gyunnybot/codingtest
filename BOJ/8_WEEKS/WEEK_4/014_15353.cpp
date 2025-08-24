@@ -13,18 +13,18 @@ int main() {
     reverse(a.begin(), a.end());
     reverse(b.begin(), b.end());
 
-    int n = max(a.size(), b.size());
+    int n = max((int)a.size(), (int)b.size());
     int carry = 0;
 
     for (int i = 0; i < n; i++) {
-        int digit_a = (i < a.size() ? a[i] - '0' : 0);
-        int digit_b = (i < b.size() ? b[i] - '0' : 0);
+        int digit_a = (i < (int)a.size() ? a[i] - '0' : 0);
+        int digit_b = (i < (int)b.size() ? b[i] - '0' : 0);
 
         int sum = digit_a + digit_b + carry;
 
         ret.push_back(sum % 10 + '0');
 
-        carry = sum / 10;
+        carry = sum / 10 ? 1 : 0;
     }
 
     if (carry) {

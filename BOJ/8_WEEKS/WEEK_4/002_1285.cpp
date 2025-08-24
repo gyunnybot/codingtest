@@ -1,9 +1,8 @@
 #include<iostream>
-#include<climits> //INT_MAX
 using namespace std;
 
 int n, a[41];
-int ret = INT_MAX;
+int ret = 401; //20 x 20
 string s;
 
 void recur(int here) {

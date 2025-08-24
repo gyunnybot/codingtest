@@ -7,7 +7,7 @@ int n, k, ret;
 bool visited[26];
 string word, s[51];
 
-int countReadable() {
+int count() {
     int cnt = 0;
 
     for (int i = 0; i < n; i++) {
@@ -30,7 +30,8 @@ int countReadable() {
 
 void dfs(int idx, int cnt) {
     if (cnt == k) {
-        ret = max(ret, countReadable());
+        ret = max(ret, count());
+
         return;
     }
 
@@ -64,7 +65,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> word;
 
-        s[i] = word.substr(4, word.size() - 8); //anta 이후부터 tica 이전까지 자르기
+        s[i] = word.substr(4, word.size() - 8); //anta, tica 자르기
     }
 
     visited['a' - 'a'] = true;
