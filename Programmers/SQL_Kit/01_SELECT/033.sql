@@ -4,7 +4,7 @@ WITH RECURSIVE PARENT AS ( -- 테이블 추가
     FROM ECOLI_DATA
     WHERE PARENT_ID IS NULL
     
-    UNION -- 레코드 분기
+    UNION -- 중복 없는 합집합
     
     -- 기본 레코드를 기반으로 재귀적인 레코드 생성
     SELECT CHILD.ID, CHILD.PARENT_ID, PARENT.GENERATION + 1 AS GENERATION
