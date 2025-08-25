@@ -44,7 +44,7 @@ int main() {
 
 		int value = 1;
 
-		for (int j = 0; j < s.size(); j++) {
+		for (int j = 0; j < n; j++) {
 			if (s[j] == 'T') {
 				a[i] |= value;
 			}
