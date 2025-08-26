@@ -1,6 +1,6 @@
 # 코딩테스트 대비 문제풀이 저장소
 
-Studying algorithm topics including arrays, linked lists, bfs, sorting, dynamic programming, Dijkstra's algorithm, and union‑find using C++.
+Studying algorithm topics including arrays, linked lists, bfs, sorting, dynamic programming, Dijkstra's algorithm, and union‑find using C++
 
 Practicing SQL topics including JOIN, GROUP BY using MySQL
 
