@@ -1,8 +1,8 @@
-# 코딩테스트 대비 문제풀이 저장소 📖
+# 코딩테스트 대비 문제풀이 저장소
 
-코테의 신이 되고 싶습니다!!
+Studying algorithm topics including arrays, linked lists, bfs, sorting, dynamic programming, Dijkstra's algorithm, and union‑find using C++.
 
-꾸준히 풀고, 복습도 합니다.
+Practicing SQL topics including JOIN, GROUP BY using MySQL
 
 ## 알고리즘
   - BarkingDog : [블로그](https://blog.encrypted.gg/category/%EA%B0%95%EC%A2%8C/%EC%8B%A4%EC%A0%84%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98)와 [문제집](https://www.acmicpc.net/workbook/by/BaaaaaaaaaaarkingDog) 0x00 ~ 0x19, 부록 D(Union Find), 0x1D(Dijkstra) ✔️
