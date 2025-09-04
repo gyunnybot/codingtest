@@ -10,7 +10,7 @@ ll recur(int a, int b, int c) {
 	}
 
 	if (b % 2) { //홀수 승수인 경우 한 번 더 %c 연산 필요
-		return recur(a, b / 2, c) * recur(a, b / 2, c) % c * a % c;
+		return (recur(a, b / 2, c) * recur(a, b / 2, c) % c) * a % c;
 	}
 	else {
 		return recur(a, b / 2, c) * recur(a, b / 2, c) % c;

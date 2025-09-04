@@ -31,7 +31,7 @@ void set_state(int here) {
                 cur = a[cur];
             }
 
-            cur = here; //here에서 다시 시작
+            cur = here; //here로 다시 이동
 
             while (state[cur] != IN_CYCLE) { //IN_CYCLE인 cur를 만날 때까지
                 state[cur] = NOT_IN_CYCLE; //here부터 현재 state를 visited에서 NOT_IN_CYCLE으로 변경
@@ -43,7 +43,7 @@ void set_state(int here) {
 
         //cur가 이미 사이클인지 아닌지 판별났을 때
         if (state[cur] == IN_CYCLE || state[cur] == NOT_IN_CYCLE) {
-            cur = here; //here부터 다시 시작
+            cur = here; //here로 다시 이동
 
             //전부 NOT_IN_CYCLE으로 변경
             while (state[cur] == VISITED) {

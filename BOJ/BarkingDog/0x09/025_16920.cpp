@@ -26,7 +26,7 @@ void bfs() {
 
                 if (cur.dist == s[i]) { //최대 확장 거리에 도달하여 더 이상 확장될 수 없다면
                     next_q.push({ cur.y,cur.x,0 }); //dist를 0으로 변경
-                    continue;
+                    continue; //플레이어 큐의 다음 원소 검사
                 }
 
                 for (int dir = 0; dir < 4; dir++) {
@@ -81,7 +81,7 @@ int main() {
             else { //숫자라면(플레이어 시작점)
                 expandable[i][j] = false; //시작점은 재탈환 X. 확장 불가능
 
-                q[a[i][j] - '0'].push({ i,j,0 }); //n번째 플레이어의 {시작점 좌표, 거리}를 q[n]에 저장
+                q[a[i][j] - '0'].push({ i,j,0 }); //n번째 플레이어의 {시작점 좌표,거리}를 q[n]에 저장
                 area[a[i][j] - '0']++; //n번째 플레이어가 차지한 영역의 넓이. 시작점을 고려해 1부터 시작
             }
         }

@@ -13,7 +13,7 @@ deque<string> split(string input, string delimiter) {
 	int end = input.find(delimiter);
 
 	while (end != string::npos) {
-		result.push_back(input.substr(start, end - start)); //string.substr(시작 인덱스 번호, 범위)
+		result.push_back(input.substr(start, end - start)); //string.substr(시작 인덱스 번호, 개수)
 
 		start = end + delimiter.size();
 		end = input.find(delimiter, start); //string.find(찾을 문자열, 시작 인덱스 번호)

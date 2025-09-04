@@ -12,11 +12,11 @@ int n, m, k, visited[1001][1001][11]; //visited[y][x][벽을 부순 횟수]
 char a[1001][1001];
 string s;
 
-int bfs() {
-    visited[0][0][0] = 1;
+int bfs(int y, int x, int broken) { //broken : integer
+    visited[y][x][broken] = 1;
 
     queue<info> q;
-    q.push({ 0,0,0 });
+    q.push({ y,x,broken });
 
     while (!q.empty()) {
         info cur = q.front(); q.pop();
@@ -39,7 +39,7 @@ int bfs() {
             }
 
             //벽을 부수고 진행
-            if (cur.broken < k && a[ny][nx] == '1') {
+            if (nb < k && a[ny][nx] == '1') {
                 nb = cur.broken + 1; //벽을 부순 횟수 증가
 
                 if (!visited[ny][nx][nb]) {
@@ -67,7 +67,7 @@ int main() {
         }
     }
 
-    cout << bfs();
+    cout << bfs(0, 0, 0);
 
     return 0;
 }

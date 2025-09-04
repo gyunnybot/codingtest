@@ -12,11 +12,11 @@ int n, m, visited[1001][1001][2]; //visited[y][x][벽을 부셨는지 여부]
 char a[1001][1001];
 string s;
 
-int bfs() {
-    visited[0][0][0] = 1;
+int bfs(int y, int x, int broken) { //broken : 0 or 1
+    visited[y][x][broken] = 1;
 
     queue<info> q;
-    q.push({ 0,0,0 });
+    q.push({ y,x,broken });
 
     while (!q.empty()) {
         info cur = q.front(); q.pop();
@@ -31,7 +31,7 @@ int bfs() {
             int nb = cur.broken;
 
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
-            
+
             //벽을 부수지 않고 진행
             if (a[ny][nx] == '0' && !visited[ny][nx][nb]) {
                 visited[ny][nx][nb] = visited[cur.y][cur.x][cur.broken] + 1;
@@ -39,8 +39,8 @@ int bfs() {
             }
 
             //벽을 부수고 진행
-            if (!cur.broken && a[ny][nx] == '1') {
-                nb = 1; //벽을 부셨는지 여부를 true로 변경
+            if (!nb && a[ny][nx] == '1') {
+                nb = 1; //벽을 부셨는지 여부를 1(true)로 변경
 
                 if (!visited[ny][nx][nb]) {
                     visited[ny][nx][nb] = visited[cur.y][cur.x][cur.broken] + 1;
@@ -67,7 +67,7 @@ int main() {
         }
     }
 
-    cout << bfs();
+    cout << bfs(0, 0, 0);
 
     return 0;
 }

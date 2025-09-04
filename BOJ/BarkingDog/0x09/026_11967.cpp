@@ -16,8 +16,8 @@ bool connected(pair<int, int> cur) {
 
         if (nx < 1 || nx > n || ny < 1 || ny > n) continue;
 
-        if (visited[nx][ny] && light[nx][ny]) { //상하좌우 중 이미 방문한 곳이 있다면
-            return true;
+        if (visited[nx][ny] && light[nx][ny]) { //상하좌우 중 이미 불이 켜져 있고, 방문했던 곳이라면
+            return true; //connected = true
         }
     }
 
@@ -36,10 +36,10 @@ void bfs() {
 
         for (pair<int, int> next : adj[cur.first][cur.second]) {
             if (!light[next.first][next.second]) {
-                //입력으로 주어진 next인 경우 상하좌우로 인접하지 않아도 불을 켤 수 있다. 그러나 queue에는 입력되지 않는다
+                //입력으로 주어진 next인 경우 상하좌우로 인접하지 않아도 불을 켤 수 있다. 그러나 큐에는 들어갈 수 없다
                 light[next.first][next.second] = true;
 
-                if (connected(next)) { //next 기준 상하좌우 중 이미 방문한 곳이 있다면 베시가 이동할 수 있다
+                if (connected(next)) { //next 기준 connected인 곳이 있다면 베시가 이동할 수 있다
                     visited[next.first][next.second] = true;
                     q.push({ next });
                 }

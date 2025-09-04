@@ -12,11 +12,11 @@ int n, m, k, visited[1001][1001][11][2]; //visited[y][x][벽을 부순 횟수][�
 char a[1001][1001];
 string s;
 
-int bfs() {
-    visited[0][0][0][1] = 1;
+int bfs(int y, int x, int broken, int isNoon) { //broken : integer, isNoon : 1 or 0
+    visited[y][x][broken][isNoon] = 1;
 
     queue<info> q;
-    q.push({ 0,0,0,1 });
+    q.push({ y,x,broken,isNoon });
 
     while (!q.empty()) {
         info cur = q.front(); q.pop();
@@ -28,7 +28,7 @@ int bfs() {
         //이동 없이 머무른 후 진행. 이동 없이 벽을 부수는 경우는 존재하지 않는다
         if (!visited[cur.y][cur.x][cur.broken][!cur.isNoon]) {
             visited[cur.y][cur.x][cur.broken][!cur.isNoon] = visited[cur.y][cur.x][cur.broken][cur.isNoon] + 1;
-            q.push({ cur.y, cur.x, cur.broken, !cur.isNoon});
+            q.push({ cur.y, cur.x, cur.broken, !cur.isNoon });
         }
 
         //이동 후 진행
@@ -48,7 +48,7 @@ int bfs() {
 
             //벽을 부수고 진행
             if (cur.isNoon) { //벽은 낮에만 부술 수 있다
-                if (cur.broken < k && a[ny][nx] == '1') {
+                if (nb < k && a[ny][nx] == '1') {
                     nb = cur.broken + 1; //벽을 부순 횟수 증가
 
                     if (!visited[ny][nx][nb][nn]) {
@@ -77,7 +77,7 @@ int main() {
         }
     }
 
-    cout << bfs();
+    cout << bfs(0, 0, 0, 1);
 
     return 0;
 }

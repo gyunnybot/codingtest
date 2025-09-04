@@ -57,7 +57,7 @@ void bfs() {
         if ('A' <= a[cur.first][cur.second] && a[cur.first][cur.second] <= 'Z') {
             if (keys.find((a[cur.first][cur.second]) + ('a' - 'A')) == keys.end()) { //알파벳 문에 대응되는 열쇠가 없다면
                 door[a[cur.first][cur.second] - 'A'].push(cur); //아직 열쇠가 없으므로 대응되는 알파벳 문 queue에 좌표 추가
-                continue; //열쇠가 없으므로 cur에서의 로직 종료 후 while(!q.empty()) 반복문 재실행
+                continue; //열쇠가 없으므로 cur에서의 로직 종료 후 최상위 while(!q.empty()) 반복문 재실행
             }
             else { //알파벳 문에 대응되는 열쇠가 있다면
                 a[cur.first][cur.second] = '.'; //빈 공간으로 변경

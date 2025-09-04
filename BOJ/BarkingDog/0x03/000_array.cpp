@@ -3,20 +3,20 @@ using namespace std;
 
 void insert(int idx, int num, int arr[], int& len) { //삽입할 인덱스 번호, 삽입할 값, 대상 배열, 배열의 길이
     for (int i = len; i > idx; i--) {
-        arr[i] = arr[i - 1]; //마지막 원소부터 idx 번째까지의 원소를 오른쪽으로 한 칸씩 이동
+        arr[i] = arr[i - 1]; //오른쪽으로 한 칸씩 이동
     }
 
     arr[idx] = num; //idx 번째 요소에 num 삽입
-    len++; //전체 배열의 길이 증가
+    len++; //전체 배열 길이 증가
     
     return;
 }
 
 void erase(int idx, int arr[], int& len) { //삭제할 인덱스 번호, 대상 배열, 배열의 길이
-    len--; //전체 배열의 길이 감소
+    len--; //전체 배열 길이 감소
 
     for (int i = idx; i < len; i++) {
-        arr[i] = arr[i + 1]; //idx + 1부터 끝까지의 원소를 왼쪽으로 한 칸씩 덮어쓰며 이동
+        arr[i] = arr[i + 1]; //왼쪽으로 한 칸씩 덮어쓰면서 이동
     }
 
     return;
