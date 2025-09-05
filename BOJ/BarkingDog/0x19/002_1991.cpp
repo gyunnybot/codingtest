@@ -5,12 +5,12 @@ int n;
 char node, L, R;
 pair<char, char> adj[26];
 
-void pre_order(char here) {
+void post_order(char here) {
     if (here == '.') return;
 
+    post_order(adj[here - 'A'].first);
+    post_order(adj[here - 'A'].second);
     cout << here;
-    pre_order(adj[here - 'A'].first);
-    pre_order(adj[here - 'A'].second);
 }
 
 void in_order(char here) {
@@ -21,12 +21,26 @@ void in_order(char here) {
     in_order(adj[here - 'A'].second);
 }
 
-void post_order(char here) {
+void pre_order(char here) {
     if (here == '.') return;
 
-    post_order(adj[here - 'A'].first);
-    post_order(adj[here - 'A'].second);
     cout << here;
+    pre_order(adj[here - 'A'].first);
+    pre_order(adj[here - 'A'].second);
+}
+
+void call_order() {
+    pre_order('A');
+
+    cout << '\n';
+
+    in_order('A');
+
+    cout << '\n';
+
+    post_order('A');
+
+    return;
 }
 
 int main() {
@@ -42,9 +56,7 @@ int main() {
         adj[node - 'A'].second = R;
     }
 
-    pre_order('A'); cout << '\n';
-    in_order('A'); cout << '\n';
-    post_order('A');
+    call_order();
     
     return 0;
 }
