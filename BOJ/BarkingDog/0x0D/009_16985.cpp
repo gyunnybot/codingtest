@@ -1,17 +1,17 @@
 #include<iostream>
-#include<queue>
 #include<climits> //INT_MAX
-#include<algorithm> //next_permutation
+#include<algorithm> //next_permutataion
+#include<queue>
 using namespace std;
 
 struct Info {
-	int x, y, z;
+	int h, y, x;
 };
 
-const int dx[6] = { 1,0,0,0,0,-1 };
-const int dy[6] = { 0,1,-1,0,0,0 };
-const int dz[6] = { 0,0,0,1,-1,0 };
-int a[5][5][5][5], maze[5][5][5], dist[5][5][5];
+const int dh[6] = { 1,-1,0,0,0,0 };
+const int dy[6] = { 0,0,-1,0,1,0 };
+const int dx[6] = { 0,0,0,1,0,-1 };
+int a[4][5][5][5], maze[5][5][5], dist[5][5][5];
 
 int do_maze() {
 	fill(&dist[0][0][0], &dist[0][0][0] + 5 * 5 * 5, 0);
@@ -26,21 +26,21 @@ int do_maze() {
 	while (!q.empty()) {
 		Info cur = q.front(); q.pop();
 
-		for (int dir = 0; dir < 6; dir++) {
-			int nx = cur.x + dx[dir];
-			int ny = cur.y + dy[dir];
-			int nz = cur.z + dz[dir];
+		if (cur.h == 4 && cur.y == 4 && cur.x == 4) {
+			return dist[cur.h][cur.y][cur.x] - 1;
+		}
 
-			if (nx == 4 && ny == 4 && nz == 4) {
-				return dist[cur.x][cur.y][cur.z];
-			}
+		for (int i = 0; i < 6; i++) {
+			int nh = cur.h + dh[i];
+			int ny = cur.y + dy[i];
+			int nx = cur.x + dx[i];
 
-			if (nx < 0 || nx >= 5 || ny < 0 || ny >= 5 || nz < 0 || nz >= 5) continue;
-			if (maze[nx][ny][nz] == 0) continue;
+			if (nh < 0 || nh >= 5 || nx < 0 || nx >= 5 || ny < 0 || ny >= 5) continue;
+			if (maze[nh][ny][nx] == 0) continue;
 
-			if (!dist[nx][ny][nz]) {
-				dist[nx][ny][nz] = dist[cur.x][cur.y][cur.z] + 1;
-				q.push({ nx,ny,nz });
+			if (!dist[nh][ny][nx]) {
+				dist[nh][ny][nx] = dist[cur.h][cur.y][cur.x] + 1;
+				q.push({ nh,ny,nx });
 			}
 		}
 	}
@@ -52,28 +52,28 @@ int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	for (int i = 0; i < 5; i++) { //층
-		for (int j = 0; j < 5; j++) { //행
-			for (int k = 0; k < 5; k++) { //열
-				cin >> a[0][i][j][k];
+	for (int h = 0; h < 5; h++) { //층
+		for (int i = 0; i < 5; i++) { //행
+			for (int j = 0; j < 5; j++) { //열
+				cin >> a[0][h][i][j];
 			}
 		}
 
-		for (int j = 0; j < 5; j++) {
-			for (int k = 0; k < 5; k++) {
-				a[1][i][j][k] = a[0][i][5 - k - 1][j];
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++) {
+				a[1][h][i][j] = a[0][h][5 - j - 1][i];
 			}
 		}
 
-		for (int j = 0; j < 5; j++) {
-			for (int k = 0; k < 5; k++) {
-				a[2][i][j][k] = a[1][i][5 - k - 1][j];
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++) {
+				a[2][h][i][j] = a[1][h][5 - j - 1][i];
 			}
 		}
 
-		for (int j = 0; j < 5; j++) {
-			for (int k = 0; k < 5; k++) {
-				a[3][i][j][k] = a[2][i][5 - k - 1][j];
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++) {
+				a[3][h][i][j] = a[2][h][5 - j - 1][i];
 			}
 		}
 	}
@@ -85,12 +85,12 @@ int main() {
 		for (int temp = 0; temp < 1024; temp++) { //4 ^ 5 = 1024
 			int brute = temp;
 
-			for (int i = 0; i < 5; i++) {
+			for (int h = 0; h < 5; h++) {
 				int dir = brute % 4;
 
-				for (int j = 0; j < 5; j++) {
-					for (int k = 0; k < 5; k++) {
-						maze[i][j][k] = a[dir][order[i]][j][k]; //회전 방향, 층, 행, 열
+				for (int i = 0; i < 5; i++) {
+					for (int j = 0; j < 5; j++) {
+						maze[h][i][j] = a[dir][order[h]][i][j]; //회전 방향, 층, 행, 열
 					}
 				}
 

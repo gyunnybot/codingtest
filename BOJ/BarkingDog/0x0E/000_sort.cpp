@@ -108,11 +108,15 @@ int main() {
 		}
 	}
 	
+	//insert sort. O(N ^ 2)
+
 	//merge sort. O(NlogN)
 	merge_sort(0, n);
 	
 	//quick sort. O(NlogN ~ N ^ 2)
 	quick_sort(0, n);
+
+	//heap sort. O(NlogN)
 
 	print(n);
 
