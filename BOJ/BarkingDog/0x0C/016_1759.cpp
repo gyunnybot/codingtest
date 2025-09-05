@@ -41,7 +41,7 @@ bool check(vector<char>& v) {
 void combi(int start, vector<char>& v, vector<bool>& visited) {
     if (v.size() == L) { //back tracking
         if (check(v)) {
-            print(v);            
+            print(v);
         }
 
         return;
