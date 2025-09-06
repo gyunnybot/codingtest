@@ -25,17 +25,20 @@ void melt() {
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
 
             if (!water_visited[ny][nx]) {
-                water_visited[ny][nx] = true;
-
-                /*
-                . . .
-                . X .
-                . . .
-                */
-
                 if (a[ny][nx] == 'X') {
                     a[ny][nx] = '.'; //얼음을 녹여 물로 변경
+
+                    water_visited[ny][nx] = true; //기존 water로 접근할 수 있는 X에도 방문처리
                     next_water.push({ ny,nx }); //다음 melt()에서 활용될 물의 좌표 저장
+
+                    //왜 얼음인데 방문처리를 하냐?
+                    //반례에서 물에서만 방문처리를 한다면 같은 X에 대해 8번 visited가 중복된다
+
+                    /* 반례
+                    . . .
+                    . X .
+                    . . .
+                    */
                 }
             }
         }
@@ -88,9 +91,10 @@ void bfs() {
         swap(swan_q, next_swan_q);
         swap(water, next_water);
 
-        //STL의 = 연산은 deep copy. O(N)이므로 해당 문제에서는 시간초과 발생
-        //swan_q = next_swan_q;
-        //water = next_water;
+        /* STL의 = 연산은 deep copy. O(N)이므로 해당 문제에서는 시간초과 발생
+        swan_q = next_swan_q;
+        water = next_water;
+        */
 
         ret++;
     }
@@ -113,7 +117,9 @@ int main() {
             if (a[i][j] != 'X') {
                 water.push({ i,j });
 
-                /*
+                //백조도 물이라고 가정해야 얼음이 녹으면서 만날 수 있다
+                
+                /* 반례
                 LXXXX
                 XXXXX
                 XXXXX

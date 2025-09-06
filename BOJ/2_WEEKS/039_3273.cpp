@@ -22,12 +22,13 @@ int main() {
     int st = 0;
     int ed = n - 1;
 
-    while (st < ed) { //ai + aj = x (1 ≤ i < j ≤ n)
+    while (st < ed) {
         if (a[st] + a[ed] == x) {
             ret++;
 
-			st++; //n개의 서로 다른 양의 정수
-            ed--; //n개의 서로 다른 양의 정수
+            //ai + aj = x (1 ≤ i < j ≤ n). n개의 서로 다른 양의 정수
+		    st++;
+            ed--;
         }
         else if (a[st] + a[ed] > x) {
             ed--;

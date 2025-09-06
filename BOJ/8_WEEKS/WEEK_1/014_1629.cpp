@@ -13,7 +13,7 @@ ll recur(int a, int b, int c) {
 		return (recur(a, b / 2, c) * recur(a, b / 2, c) % c) * a % c;
 	}
 	else {
-		return (recur(a, b / 2, c) * recur(a, b / 2, c) % c);
+		return recur(a, b / 2, c) * recur(a, b / 2, c) % c;
 	}
 }
 

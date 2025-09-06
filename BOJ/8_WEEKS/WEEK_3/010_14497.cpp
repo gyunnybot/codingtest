@@ -30,9 +30,10 @@ void bfs() {
                 if (!visited[ny][nx]) {
                     visited[ny][nx] = true;
 
-                    if (a[ny][nx] != '0') { //'1' 또는 '#'이라면
-                        a[ny][nx] = '0'; //'0'으로 변경
+                    if (a[ny][nx] != '0') { //'1' 또는 '#'이라면                        
                         temp_q.push({ ny,nx });
+                        
+                        a[ny][nx] = '0'; //'0'으로 변경
                     }
                     else { //'0'이라면
                         q.push({ ny,nx });

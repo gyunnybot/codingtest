@@ -46,8 +46,10 @@ int main() {
         }        
     }
 
-    //temp 2개로 x / 2 이상 x 미만의 용기 생성
-    //temp 1개를 추가로 사용해 x가 되는 용기 완성
+    /*
+    1. temp 2개로 x / 2 이상 x 미만의 용기 생성
+    2. temp 1개를 추가로 사용해 x가 되는 용기 완성
+    */
     cout << ret + temp / 3;
 
     return 0;

@@ -14,7 +14,7 @@ int getGCD(int a, int b) {
 void solve(int gcd, int lcm) {
 	int div = lcm / gcd; //a * b * gcd = lcm을 만족하는 서로소 관계인 두 수 a, b의 곱 div
 
-	//반복문을 돌수록 a, b의 차이가 줄어든다
+	//두 자연수의 합이 최소가 되는 두 수를 출력한다 -> 반복문을 돌수록 a, b의 차이가 줄어든다
 	for (int i = 1; i * i <= div; i++) { //div를 a, b로 분할
 		if (div % i == 0) {
 			int a = i;

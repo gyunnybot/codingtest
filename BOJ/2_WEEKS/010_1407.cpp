@@ -25,7 +25,7 @@ int main() {
 	return 0;
 }
 
-/* n!에서 10이 곱해진 횟수 구하기
+/* n!에서 10이 곱해진 횟수 구하기 (feat. 3474)
 int solve(int n) {
 	int ret2 = 0, ret5 = 0;
 

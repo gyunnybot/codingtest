@@ -28,7 +28,7 @@ struct Board {
         return;
     }
 
-    void cctv_area(int cctv_idx, int dir) {
+    void operate_cctv(int cctv_idx, int dir) {
         pair<int, int> cur_pos = cctv[cctv_idx];
 
         if (a[cur_pos.first][cur_pos.second] == 1) {
@@ -159,7 +159,7 @@ void search(int cctv_idx, Board c) {
     for (int dir = 0; dir < 4; dir++) {
         Board d = c; //deep copy. O(N)
 
-        d.cctv_area(cctv_idx, dir);
+        d.operate_cctv(cctv_idx, dir);
 
         search(cctv_idx + 1, d);
     }
