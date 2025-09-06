@@ -40,7 +40,7 @@ void spread() {
 		int dust = a[cur.first][cur.second] / 5;
 
 		for (int i = 0; i < 4; i++) {
-			int ny = cur.first + dy1[i]; //인접한 네 방향 확산. dy2를 사용해도 관계없음
+			int ny = cur.first + dy1[i]; //인접한 네 방향 확산. dy2를 사용해도 무방하다
 			int nx = cur.second + dx1[i];
 
 			if (ny < 0 || ny >= r || nx < 0 || nx >= c || a[ny][nx] == -1) continue;
@@ -72,7 +72,7 @@ vector<pair<int, int>> circulate_list(int sy, int sx, int dy[], int dx[]) {
 		if (ny == sy && nx == sx) break;
 
 		if (ny < 0 || ny >= r || nx < 0 || nx >= c) {
-			dir++; //방향을 바꿔서 ny,nx 좌표 다시 설정
+			dir++; //방향을 바꿔서 ny, nx 좌표 다시 설정
 
 			ny = cur.first + dy[dir];
 			nx = cur.second + dx[dir];

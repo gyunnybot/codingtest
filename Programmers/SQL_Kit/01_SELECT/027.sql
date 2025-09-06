@@ -7,4 +7,4 @@ FROM ECOLI_DATA AS A LEFT OUTER JOIN ( -- 자식이 없다면 자식의 수는 0
 ) AS B
 ON A.ID = B.PARENT_ID;
 
--- 조건에 맞는 행이 없어도 전부 출력한다면 외부 조인을 선택해야 한다
+-- 조인 조건을 만족하지 않는 레코드도 출력해야 한다면 외부 조인을 사용해야 한다

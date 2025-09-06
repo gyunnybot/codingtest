@@ -65,14 +65,15 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> word;
 
-        s[i] = word.substr(4, word.size() - 8); //anta, tica 자르기
+        s[i] = word.substr(4, word.size() - 8); //anta, tica 자르기. string.substr(시작 인덱스, 추출할 개수)
     }
 
+    //a, c, i, n, t는 방문처리 고정
     visited['a' - 'a'] = true;
+    visited['c' - 'a'] = true;
+    visited['i' - 'a'] = true;
     visited['n' - 'a'] = true;
     visited['t' - 'a'] = true;
-    visited['i' - 'a'] = true;
-    visited['c' - 'a'] = true;
 
     dfs(0, 5);
 

@@ -2,7 +2,7 @@
 using namespace std;
 
 int x, ret;
-int sticks[] = { 64,32,16,8,4,2,1 };
+int sticks[7] = { 64,32,16,8,4,2,1 };
 
 int main() {
 	ios_base::sync_with_stdio(false);
