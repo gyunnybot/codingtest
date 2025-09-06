@@ -63,7 +63,7 @@ int main() {
 			cin >> a[i][j];
 
 			if (a[i][j] == 0) {
-				wallList.push_back({ i,j }); //벽이 될 가능성이 있는 좌표
+				wallList.push_back({ i,j }); //벽이 될 수 있는 좌표
 			}
 			else if (a[i][j] == 2) {
 				virusList.push_back({ i,j }); //바이러스가 있는 좌표

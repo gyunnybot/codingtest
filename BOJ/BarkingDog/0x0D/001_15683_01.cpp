@@ -9,7 +9,7 @@ int n, m, a[9][9];
 int ret = INT_MAX;
 vector<pair<int, int>> cctv;
 
-vector<pair<int, int>> cctv_area(int cctv_idx, int dir) {
+vector<pair<int, int>> operate_cctv(int cctv_idx, int dir) {
     vector<pair<int, int>> temp;
 
     pair<int, int> cur_pos = cctv[cctv_idx];
@@ -157,7 +157,7 @@ void search(int cctv_idx) {
     }
 
     for (int dir = 0; dir < 4; dir++) {
-        vector<pair<int, int>> temp_area = cctv_area(cctv_idx, dir);
+        vector<pair<int, int>> temp_area = operate_cctv(cctv_idx, dir);
 
         search(cctv_idx + 1);
 

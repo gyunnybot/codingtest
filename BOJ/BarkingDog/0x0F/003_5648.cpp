@@ -27,7 +27,7 @@ int main() {
 
 		reverse(temp.begin(), temp.end());
 
-		//0 지우기. 문제에서 입력되는 원소는 모두 양의 정수이므로 반드시 탈출
+		//0 지우기. 문제에서 입력되는 원소는 모두 양의 정수이므로, 반드시 탈출하는 반복문이다
 		while (true) {
 			if (temp[0] == '0') {
 				temp.erase(0, 1); //string.erase(시작 인덱스 번호, 지울 개수)

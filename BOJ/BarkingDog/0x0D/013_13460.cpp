@@ -37,7 +37,7 @@ void bead(info start) {
 
 		for (int dir = 0; dir < 4; dir++) {
 			//본인이 벽이거나 구멍인지 우선적으로 확인
-			//일반적인 ny = y + dy[i]의 경우 초기 y가 구멍인데도 반복문이 수행되는 문제가 발생한다
+			//일반적인 ny = y + dy[i]로 진행하면, 초기 y가 구멍인데도 반복문이 수행되는 문제가 발생할 수 있다
 			int nry = cur.ry;
 			int nrx = cur.rx;
 			int nby = cur.by;
@@ -100,7 +100,7 @@ void bead(info start) {
 		}
 	}
 
-	//큐가 비었는데도 갱신되지 않았다면
+	//큐가 비었는데도 갱신되지 않았다면 -1 반환
 	if (ret == INT_MAX) {
 		ret = -1;
 	}

@@ -9,7 +9,7 @@ vector<bool> visited(21, false);
 vector<int> v;
 
 int soccer(vector<int>& start, vector<int>& link) {
-    pair<int, int> ret = { 0,0 }; //값 할당 없이 곧바로 += 연산. 0으로 초기화 필수
+    pair<int, int> ret = { 0,0 }; //지역 변수 -> 값이 할당되었는지 확인 후 연산 진행하기!
 
     for (int i = 0; i < n / 2; i++) {
         for (int j = 0; j < n / 2; j++) {
