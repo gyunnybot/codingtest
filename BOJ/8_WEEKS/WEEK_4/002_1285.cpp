@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int n, a[41];
+int n, a[21];
 int ret = 401; //20 x 20
 string s;
 
