@@ -3,7 +3,7 @@ using namespace std;
 
 const int dy[] = { 0,-1,0,1 }; // 서 북 동 남
 const int dx[] = { -1,0,1,0 };
-int n, m, a[51][51], visited[51][51], compare_area[2501], cnt, max_area;
+int n, m, a[51][51], visited[51][51], compare_area[2501], cnt, max_area, max_room_size;
 
 int dfs(int y, int x, int cnt) {
     if (visited[y][x]) {
@@ -51,8 +51,6 @@ int main() {
             }
         }
     }
-
-    int max_room_size = -1;
 
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
