@@ -1,0 +1,6 @@
+# file : XXX.py, XXX.cpp ...
+# under directory : dist/ ...
+# wildcard : *.cpp, secrets.*  
+
+# vs code
+.vscode/
