@@ -1,4 +1,4 @@
-# file : XXX.py, XXX.cpp ...
+# file : XXX.cpp ...
 # under directory : dist/ ...
 # wildcard : *.cpp, secrets.*  
 
@@ -7,3 +7,6 @@
 
 # macOS
 .DS_Store
+
+# IntelliJ
+.idea/
