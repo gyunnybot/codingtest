@@ -10,3 +10,7 @@
 
 # IntelliJ
 .idea/
+
+# test code in mac
+a.cpp
+a
