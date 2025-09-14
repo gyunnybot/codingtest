@@ -14,6 +14,14 @@ int func1(int N) {
     return ret;
 }
 
+//O(1)
+int func1_1(int N) {
+    int ret = (3 * (N / 3) * ((N / 3) + 1) / 2) + (5 * (N / 5) * ((N / 5) + 1) / 2)
+    - (15 * (N / 15) * ((N / 15) + 1) / 2);
+
+    return ret;
+}
+
 //O(N ^ 2)
 int func2(int arr[], int N) {
     for (int i = 0; i < N; i++) {
@@ -25,6 +33,21 @@ int func2(int arr[], int N) {
     }
         
     return 0;
+}
+
+//O(N)
+int func2_1(int arr[], int N) {
+	int cnt[101] = {};
+
+	for (int i = 0; i < N; i++) {
+		cnt[arr[i]]++;
+
+		if (cnt[100 - arr[i]] && arr[i] != 50) {
+			return 1;
+		}
+	}
+
+	return 0;
 }
 
 //O(sqrt(N))
