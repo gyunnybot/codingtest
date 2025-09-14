@@ -7,7 +7,7 @@ int func1(int N) {
 
     for (int i = 1; i <= N; i++) {
         if (i % 3 == 0 || i % 5 == 0) {
-             ret += i;
+            ret += i;
         }
     }
 
@@ -17,7 +17,7 @@ int func1(int N) {
 //O(1)
 int func1_1(int N) {
     int ret = (3 * (N / 3) * ((N / 3) + 1) / 2) + (5 * (N / 5) * ((N / 5) + 1) / 2)
-    - (15 * (N / 15) * ((N / 15) + 1) / 2);
+        - (15 * (N / 15) * ((N / 15) + 1) / 2);
 
     return ret;
 }
@@ -29,25 +29,25 @@ int func2(int arr[], int N) {
             if (arr[i] + arr[j] == 100) {
                 return 1;
             }
-        }            
+        }
     }
-        
+
     return 0;
 }
 
 //O(N)
 int func2_1(int arr[], int N) {
-	int cnt[101] = {};
+    int cnt[101] = {};
 
-	for (int i = 0; i < N; i++) {
-		cnt[arr[i]]++;
+    for (int i = 0; i < N; i++) {
+        cnt[arr[i]]++;
 
-		if (cnt[100 - arr[i]] && arr[i] != 50) {
-			return 1;
-		}
-	}
+        if (cnt[100 - arr[i]] && arr[i] != 50) {
+            return 1;
+        }
+    }
 
-	return 0;
+    return 0;
 }
 
 //O(sqrt(N))
@@ -62,9 +62,32 @@ int func3(int N) {
 }
 
 //O(logN)
+int func3_1(int N) {
+    int left = 1;
+    int right = N;
+
+    while (left <= right) {
+        int mid = (left + right) / 2;
+        long long ret = 1LL * mid * mid; //casting
+        
+        if (ret == N) {
+            return 1;
+        }
+        else if (ret < N) {
+            left = mid + 1;
+        }
+        else {
+            right = mid - 1;
+        }
+    }
+
+    return 0;
+}
+
+//O(logN)
 int func4(int N) {
     int val = 1;
-    
+
     while (2 * val <= N) {
         val *= 2;
     }
@@ -78,6 +101,7 @@ void test1() {
     int ans[3] = { 60, 278812814, 178254968 };
     for (int i = 0; i < 3; i++) {
         int result = func1(n[i]);
+        //int result = func1_1(n[i]);
         cout << "TC #" << i << '\n';
         cout << "expected : " << ans[i] << " result : " << result;
         if (ans[i] == result) cout << " ... Correct!\n";
@@ -93,6 +117,7 @@ void test2() {
     int ans[3] = { 1, 0, 1 };
     for (int i = 0; i < 3; i++) {
         int result = func2(arr[i], n[i]);
+        //int result = func2_1(arr[i], n[i]);
         cout << "TC #" << i << '\n';
         cout << "expected : " << ans[i] << " result : " << result;
         if (ans[i] == result) cout << " ... Correct!\n";
@@ -106,7 +131,7 @@ void test3() {
     int n[3] = { 9, 693953651, 756580036 };
     int ans[3] = { 1, 0, 1 };
     for (int i = 0; i < 3; i++) {
-        int result = func3(n[i]);
+        int result = func3_1(n[i]);
         cout << "TC #" << i << '\n';
         cout << "expected : " << ans[i] << " result : " << result;
         if (ans[i] == result) cout << " ... Correct!\n";
