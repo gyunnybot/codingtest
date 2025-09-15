@@ -12,11 +12,11 @@ const int dy1[] = { -1,-2,-2,-1,1,2,2,1 };
 const int dx1[] = { -2,-1,1,2,2,1,-1,-2 };
 int k, n, m, a[201][201], visited[201][201][31];
 
-int bfs() {
-    visited[0][0][0] = 1;
+int bfs(int y, int x, int used) {
+    visited[y][x][used] = 1;
 
     queue<info> q;
-    q.push({ 0,0,0 });
+    q.push({ y,x,used });
 
     while (!q.empty()) {
         info cur = q.front(); q.pop();
@@ -69,7 +69,7 @@ int main() {
         }
     }
 
-    cout << bfs();
+    cout << bfs(0, 0, 0);
 
     return 0;
 }

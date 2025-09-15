@@ -16,14 +16,14 @@ int main() {
 
 		for (char a : s) {
 			if (a == '(' || a == ')' || a == '[' || a == ']') {
-				if (stk.empty()) {
+				if (stk.empty()) { //비어있다면 무조건 push
 					stk.push(a);
 				}
 				else {
-					if (stk.top() == '(' && a == ')') {
+					if (stk.top() == '(' && a == ')') { //괄호가 사라지는 경우 1
 						stk.pop();
 					}
-					else if (stk.top() == '[' && a == ']') {
+					else if (stk.top() == '[' && a == ']') { //괄호가 사라지는 경우 2
 						stk.pop();
 					}
 					else {

@@ -16,8 +16,7 @@ int main() {
         if (s[i] == '(') {
             stk.push(s[i]);
         }
-
-        if (s[i] == ')') {
+        else {
             stk.pop();
 
             if (s[i - 1] == '(') { //직전 문자와 짝을 이룰 때 레이저 생성

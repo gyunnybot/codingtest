@@ -58,7 +58,7 @@ void melt() {
         }
     }
 
-    swap(a, temp); //swap : call by reference. O(1)
+    swap(a, temp); //call by reference. O(1)
 
     return;
 }

@@ -17,7 +17,7 @@ struct Board {
 	}
 
 	void push_blocks() {
-		int temp[21][21]; //지역 변수 -> 값이 할당되었는지 확인 후 연산 진행하기!
+		int temp[21][21]; //지역 변수 -> 값이 제대로 할당되었는지 확인 후 연산 진행
 
 		for (int i = 0; i < n; i++) {
 			bool flag = false;

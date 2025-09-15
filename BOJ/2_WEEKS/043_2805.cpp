@@ -18,6 +18,7 @@ int main() {
 
 	sort(a, a + n);
 
+	//Parametric search
 	ll st = 0;
 	ll ed = *prev(a + n);
 

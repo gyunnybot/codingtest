@@ -17,16 +17,16 @@ int main() {
 		stack<char> stk;
 
 		for (char a : s) {
-			if (!stk.empty()) {
-				if (stk.top() == '(' && a == ')') {
+			if (stk.empty()) {
+				stk.push(a); //비어있다면 무조건 push
+			}
+			else {
+				if (stk.top() == '(' && a == ')') { //괄호가 사라지는 경우
 					stk.pop();
 				}
 				else {
 					stk.push(a);
 				}
-			}
-			else {
-				stk.push(a);
 			}
 		}
 

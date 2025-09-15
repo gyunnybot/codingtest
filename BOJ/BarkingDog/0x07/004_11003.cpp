@@ -20,7 +20,7 @@ int main() {
             dq.pop_back(); //구간 내에서 최소값을 찾을 때까지 pop_back
         }
 
-        dq.push_back({ i,val }); //두 가지 정보가 필요한 유형
+        dq.push_back({ i,val }); //문제 해결에 두 가지 정보 { idx,value } 필요
 
         while (dq.front().first <= i - L) {
             dq.pop_front(); //구간 이동 시 pop_front

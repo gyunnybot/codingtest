@@ -15,7 +15,7 @@ int main() {
 		cin >> height[i];
 	}
 
-	stk.push({ 100000000,0 }); //문제 해결에 두 가지 정보 {높이, idx} 필요
+	stk.push({ 100000000,0 }); //문제 해결에 두 가지 정보 { 높이,idx } 필요
 
 	for (int i = 1; i <= n; i++) {
 		while (!stk.empty() && stk.top().first < height[i]) {

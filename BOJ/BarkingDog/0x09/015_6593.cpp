@@ -14,7 +14,7 @@ int l, r, c, answer, visited[31][31][31];
 char a[31][31][31];
 string s;
 
-void bfs() {
+void bfs(Pos sPos) {
     visited[sPos.y][sPos.x][sPos.h] = 1;
 
     queue<Pos> q;
@@ -72,7 +72,7 @@ int main() {
             }
         }
 
-        bfs();
+        bfs(sPos);
 
         if (!visited[ePos.y][ePos.x][ePos.h]) {
             cout << "Trapped!" << '\n';

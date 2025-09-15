@@ -13,10 +13,6 @@ vector<pair<int, int>> fire_pos;
 string s;
 
 void fire_bfs() {
-    //fire_visited가 더 커야(나중에 방문) 지훈이가 이동할 수 있으므로 INT_MAX로 초기화
-    //fire_visited가 0으로 초기화된다면 지훈이는 어디로도 이동할 수 없게 됩니다
-    fill(&fire_visited[0][0], &fire_visited[0][0] + 1001 * 1001, INT_MAX);
-
     for (pair<int, int> i : fire_pos) {
         fire_visited[i.first][i.second] = 1;
     }
@@ -46,7 +42,7 @@ void fire_bfs() {
     return;
 }
 
-void j_bfs() {
+void j_bfs(pair<int, int> j_pos) {
     j_visited[j_pos.first][j_pos.second] = 1;
 
     queue<pair<int, int>> q;
@@ -100,8 +96,14 @@ int main() {
         }
     }
 
+    /**
+     * fire_visited가 더 커야(나중에 방문) 지훈이가 이동할 수 있으므로 INT_MAX로 초기화
+     * 0으로 초기화된다면 지훈이는 어디로도 이동할 수 없게 됩니다
+     */
+    fill(&fire_visited[0][0], &fire_visited[0][0] + 1001 * 1001, INT_MAX);
     fire_bfs();
-    j_bfs(); //j_bfs는 fire_visited가 필요하므로 fire_bfs보다 나중에 실행
+    
+    j_bfs(j_pos); //j_bfs는 fire_visited가 필요하므로 fire_bfs보다 나중에 실행
 
     if (!ret) {
         cout << "IMPOSSIBLE";

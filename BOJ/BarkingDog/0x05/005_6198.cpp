@@ -4,7 +4,7 @@ using namespace std;
 typedef long long ll;
 
 int n, height; //n <= 80,000
-stack<int> stk; //모든 빌딩은 일렬로 서 있고 오른쪽으로'만' 볼 수 있다. stack 활용!
+stack<int> stk; //모든 빌딩은 일렬로 서 있고 오른쪽으로'만' 볼 수 있다? stack 활용!
 ll ret; //ret <= n * (n + 1) / 2 -> 64억? long long
 
 int main() {
@@ -17,10 +17,10 @@ int main() {
 		cin >> height;
 
 		while (!stk.empty() && stk.top() <= height) {
-			stk.pop(); //본인을 내려다볼 수 없는 빌딩들 제거
+			stk.pop(); //본인을 내려다볼 수 없는 빌딩 pop
 		}
 		
-		ret += stk.size(); //본인을 내려다볼 수 있는 빌딩의 수를 ret에 추가. 스택의 size 활용
+		ret += stk.size(); //본인을 내려다볼 수 있는 빌딩의 수(skt.size())를 ret에 추가
 		stk.push(height);
 	}
 

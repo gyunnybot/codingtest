@@ -25,12 +25,12 @@ int bfs(int y, int x, int broken, int isNoon) { //broken : integer, isNoon : 1 o
             return visited[cur.y][cur.x][cur.broken][cur.isNoon];
         }
 
-        //이동 없이 머무른 후 진행. 이동 없이 벽을 부수는 경우는 존재하지 않는다
+        //이동 없이 머무른 후 진행. 이동 없이 벽을 부수는 경우는 존재하지 않으므로 따로 계산
         if (!visited[cur.y][cur.x][cur.broken][!cur.isNoon]) {
             visited[cur.y][cur.x][cur.broken][!cur.isNoon] = visited[cur.y][cur.x][cur.broken][cur.isNoon] + 1;
             q.push({ cur.y, cur.x, cur.broken, !cur.isNoon });
         }
-
+        
         //이동 후 진행
         for (int i = 0; i < 4; i++) {
             int ny = cur.y + dy[i];

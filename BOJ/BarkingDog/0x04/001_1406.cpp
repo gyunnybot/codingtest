@@ -17,7 +17,7 @@ int main(void) {
 		L.push_back(c);
 	}
 
-	list<char>::iterator cur = L.end();
+	list<char>::iterator cur = L.end(); //가리키는 이터레이터 앞에 커서가 깜빡거린다고 가정
 
 	while (n--) {
 		cin >> ch;

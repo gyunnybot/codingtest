@@ -1,8 +1,8 @@
 #include<iostream>
 using namespace std;
 
-string a[65][65], s;
 int n;
+string a[65][65], s;
 
 string quad(int y, int x, int size) {
 	if (size == 1) {

@@ -36,13 +36,15 @@ void bead(info start) {
 		}
 
 		for (int dir = 0; dir < 4; dir++) {
-			//본인이 벽이거나 구멍인지 우선적으로 확인
-			//일반적인 ny = y + dy[i]로 진행하면, 초기 y가 구멍인데도 반복문이 수행되는 문제가 발생할 수 있다
+			/**
+			 * 본인이 벽이거나 구멍인지 우선적으로 확인
+			 * 일반적인 ny = y + dy[i]로 진행하면, 초기 y가 구멍인데도 반복문이 수행되는 문제가 발생할 수 있다
+			 */
 			int nry = cur.ry;
 			int nrx = cur.rx;
 			int nby = cur.by;
 			int nbx = cur.bx;
-
+			
 			while (true) {
 				if (a[nry][nrx] != '#' && a[nry][nrx] != 'O') { //구멍이나 벽이 아니라면 dir 방향으로 이동
 					nry += dy[dir];

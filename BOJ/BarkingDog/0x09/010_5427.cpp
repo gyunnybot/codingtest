@@ -13,10 +13,6 @@ vector<pair<int, int>> fire_Pos;
 string s;
 
 void fire_bfs() {
-    //fire_visited가 더 커야(나중에 방문) 상근이가 이동할 수 있으므로 INT_MAX로 초기화
-    //fire_visited가 0으로 초기화된다면 상근이는 어디로도 이동할 수 없게 됩니다
-    fill(&fire_visited[0][0], &fire_visited[0][0] + 1001 * 1001, INT_MAX);
-
     for (pair<int, int> fire : fire_Pos) {
         fire_visited[fire.first][fire.second] = 1;
     }
@@ -46,9 +42,7 @@ void fire_bfs() {
     return;
 }
 
-void s_bfs() {
-    fill(&s_visited[0][0], &s_visited[0][0] + 1001 * 1001, 0);
-
+void s_bfs(pair<int, int> s_pos) {
     s_visited[s_pos.first][s_pos.second] = 1;
 
     queue<pair<int, int>> q;
@@ -108,8 +102,15 @@ int main() {
             }
         }
 
+        /**
+         * fire_visited가 더 커야(나중에 방문) 지훈이가 이동할 수 있으므로 INT_MAX로 초기화
+         * 0으로 초기화된다면 지훈이는 어디로도 이동할 수 없게 됩니다
+         * */
+        fill(&fire_visited[0][0], &fire_visited[0][0] + 1001 * 1001, INT_MAX);
         fire_bfs();
-        s_bfs(); //s_bfs는 fire_visited가 필요하므로 fire_bfs보다 나중에 실행
+        
+        fill(&s_visited[0][0], &s_visited[0][0] + 1001 * 1001, 0);
+        s_bfs(s_pos); //s_bfs는 fire_visited가 필요하므로 fire_bfs보다 나중에 실행
 
         if (!ret) {
             cout << "IMPOSSIBLE" << '\n';

@@ -62,7 +62,14 @@ memcpy(ret, v, sizeof(v)); //Deep Copy
 ```
 
 ```cpp
-vector<int> v {1, 2, 3}; //복사 대상
+vector<int> v{1, 2, 3}; //복사 대상
+
+/** 10 10 10
+ * vector<int> v(3, 10); //since C++98
+ * vector<int> v = {10, 10 ,10};
+ * vector<int> v{10, 10, 10}; //since C++11(uniform initialization). 현재 표준 방식
+ * */
+
 vector<int> ret(3); //복사 결과를 담을 대상
 
 copy(v.begin(), v.end(), ret.begin()); //Deep Copy. 벡터는 memcpy가 적용되지 않습니다
