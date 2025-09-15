@@ -10,8 +10,6 @@ char a[51][51];
 string s;
 
 void bfs(int y, int x) {
-	fill(&visited[0][0], &visited[0][0] + 51 * 51, 0);
-
 	visited[y][x] = 1;
 
 	queue<pair<int, int>> q;
@@ -56,6 +54,7 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
 			if (a[i][j] == 'L') {
+				fill(&visited[0][0], &visited[0][0] + 51 * 51, 0);
 				bfs(i, j);
 			}
 		}

@@ -1,9 +1,9 @@
 #include <iostream>
 using namespace std;
 
-const int dy[] = { 0,-1,0,1 }; // 서 북 동 남
+const int dy[] = { 0,-1,0,1 }; //서 북 동 남
 const int dx[] = { -1,0,1,0 };
-int n, m, a[51][51], visited[51][51], compare_area[2501], cnt, max_area, max_room_size;
+int n, m, a[51][51], visited[51][51], areas[2501], cnt, max_area, max_area_ifBreak;
 
 int dfs(int y, int x, int cnt) {
     if (visited[y][x]) {
@@ -43,11 +43,11 @@ int main() {
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
             if (!visited[i][j]) {
-                cnt++; // 방의 개수
+                cnt++;
 
-                compare_area[cnt] = dfs(i, j, cnt);
+                areas[cnt] = dfs(i, j, cnt);
 
-                max_area = max(max_area, compare_area[cnt]);
+                max_area = max(max_area, areas[cnt]);
             }
         }
     }
@@ -55,16 +55,16 @@ int main() {
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
             if (i + 1 < m && visited[i][j] != visited[i + 1][j]) {
-                max_room_size = max(max_room_size, compare_area[visited[i][j]] + compare_area[visited[i + 1][j]]);
+                max_area_ifBreak = max(max_area_ifBreak, areas[visited[i][j]] + areas[visited[i + 1][j]]);
             }
 
             if (j + 1 < n && visited[i][j] != visited[i][j + 1]) {
-                max_room_size = max(max_room_size, compare_area[visited[i][j]] + compare_area[visited[i][j + 1]]);
+                max_area_ifBreak = max(max_area_ifBreak, areas[visited[i][j]] + areas[visited[i][j + 1]]);
             }
         }
     }
 
-    cout << cnt << '\n' << max_area << '\n' << max_room_size;
+    cout << cnt << '\n' << max_area << '\n' << max_area_ifBreak;
 
     return 0;
 }

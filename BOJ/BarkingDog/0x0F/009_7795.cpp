@@ -45,9 +45,9 @@ int main() {
 				}
 			}
 		}
+		
+		/* upper_bound를 쓰면 O(NlogN)으로 안정적인 통과가 가능하다
 
-		//upper_bound를 쓰면 O(NlogN)으로 안정적인 통과가 가능하다
-		/*
 			for (int i = 0; i < n; i++) {
 				cnt += upper_bound(b, b + m, a[i] - 1) - b;
 			}
