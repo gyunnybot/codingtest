@@ -10,5 +10,6 @@ ORDER BY SCORE DESC, I.FAVORITES DESC;
 /*
 일반적으로 SELECT 절은 GROUP BY에서 사용된 속성 또는 집계함수만 사용 가능하다
 그러나, MySQL에서는 GROUP BY에 사용된 속성에 따라 유일하게 결정되는 속성이라면 SELECT에서 사용 가능하다
--> 함수적 종속성(functional dependency)
+
+이를 함수적 종속성(functional dependency)이라 한다
 */

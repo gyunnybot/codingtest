@@ -9,4 +9,4 @@ FROM (
 ) AS A
 ORDER BY A.ID;
 
--- PERCENT_RANK() OVER (ORDER BY 속성 ASC or DESC) : 속성의 값들을 정렬 후 해당 비율 반환
+-- PERCENT_RANK() OVER (ORDER BY 속성 ASC or DESC) : 필드 내 값을 정렬 후 비율로 환산
