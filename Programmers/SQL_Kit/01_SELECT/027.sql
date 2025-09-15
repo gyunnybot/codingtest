@@ -5,6 +5,7 @@ FROM ECOLI_DATA AS A LEFT OUTER JOIN ( -- 자식이 없다면 자식의 수는 0
     GROUP BY PARENT_ID
     HAVING PARENT_ID IS NOT NULL
 ) AS B
-ON A.ID = B.PARENT_ID;
+ON A.ID = B.PARENT_ID
+ORDER BY A.ID ASC;
 
 -- 조인 조건을 만족하지 않는 레코드도 출력해야 한다면 외부 조인을 사용해야 한다
