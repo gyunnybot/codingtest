@@ -2,11 +2,11 @@
 # under directory : dist/
 # wildcard : *.cpp, secrets.*
 
-# vs code
+### VS Code ###
 .vscode/
 
-# macOS
+### Mac OS ###
 .DS_Store
 
-# IntelliJ
+### IntelliJ ###
 .idea/
