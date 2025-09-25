@@ -1,7 +1,3 @@
-# file : XXX.cpp
-# under directory : dist/
-# wildcard : *.cpp, secrets.*
-
 ### VS Code ###
 .vscode/
 
@@ -10,3 +6,4 @@
 
 ### IntelliJ ###
 .idea/
+out/
