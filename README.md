@@ -3,3 +3,7 @@
 Studying algorithms in C++, including arrays, linked lists, BFS, sorting, dynamic programming, Dijkstra’s algorithm, and union-find.
 
 Also practicing SQL in MySQL, focusing on JOIN and GROUP BY.
+
+---
+### Update 2025.10.11
+- Changed: Language migrated from C++ to Java
