@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // 무조건 scanner 대신 사용
+    static StringTokenizer st; // 모든 입력을 문자열로 받은 후 parseXXX(st)로 변환
+    static StringBuilder sb = new StringBuilder(); // 결과 출력은 무조건 sb로 받아 처리
+
+    static int n, m;
+
+    public static void main(String[] args) throws IOException {
+        n = Integer.parseInt(br.readLine()); // 정수 하나 읽기
+
+        st = new StringTokenizer(br.readLine()); // 한 줄 읽기
+
+        int[] arr = new int[n]; // List<Integer>말고 기본 배열 사용 권장
+
+        // 향상된 for 문보다 일반 반복문 사용 권장
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+        }
+
+        Arrays.sort(arr); // Collections.sort (X), Arrays.sort (O)
+
+        for (int i = 0; i < n; i++) {
+            sb.append(arr[i]).append(' '); // 결과 출력은 sb 사용
+        }
+
+        System.out.println(sb);
+    }
+}
