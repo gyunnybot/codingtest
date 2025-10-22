@@ -1,33 +1,23 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class Main {
-    static class Info {
-        String number;
-        int strike;
-        int ball;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
 
-        public Info(String number, int strike, int ball) {
-            this.number = number;
-            this.strike = strike;
-            this.ball = ball;
-        }
-    }
+        int n = Integer.parseInt(br.readLine());
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        int n = scanner.nextInt();
-
-        List<Info> infoList = new ArrayList<>();
+        Info[] infos = new Info[n];
 
         for (int i = 0; i < n; i++) { // n <= 100
-            String number = scanner.next();
-            int strike = scanner.nextInt();
-            int ball = scanner.nextInt();
+            st = new StringTokenizer(br.readLine());
 
-            infoList.add(new Info(number, strike, ball));
+            String number = st.nextToken();
+            int strike = Integer.parseInt(st.nextToken());
+            int ball = Integer.parseInt(st.nextToken());
+
+            infos[i] = new Info(number, strike, ball);
         }
 
         int ret = 0;
@@ -46,23 +36,35 @@ public class Main {
                 int strikeCnt = 0;
                 int ballCnt = 0;
 
-                if (infoList.get(j).number.charAt(0) == temp.charAt(0)) strikeCnt++;
-                if (infoList.get(j).number.charAt(1) == temp.charAt(1)) strikeCnt++;
-                if (infoList.get(j).number.charAt(2) == temp.charAt(2)) strikeCnt++;
+                if (infos[j].number.charAt(0) == temp.charAt(0)) strikeCnt++;
+                if (infos[j].number.charAt(1) == temp.charAt(1)) strikeCnt++;
+                if (infos[j].number.charAt(2) == temp.charAt(2)) strikeCnt++;
 
-                if (infoList.get(j).number.charAt(0) == temp.charAt(1)
-                        || infoList.get(j).number.charAt(0) == temp.charAt(2)) ballCnt++;
-                if (infoList.get(j).number.charAt(1) == temp.charAt(0)
-                        || infoList.get(j).number.charAt(1) == temp.charAt(2)) ballCnt++;
-                if (infoList.get(j).number.charAt(2) == temp.charAt(0)
-                        || infoList.get(j).number.charAt(2) == temp.charAt(1)) ballCnt++;
+                if (infos[j].number.charAt(0) == temp.charAt(1)
+                        || infos[j].number.charAt(0) == temp.charAt(2)) ballCnt++;
+                if (infos[j].number.charAt(1) == temp.charAt(0)
+                        || infos[j].number.charAt(1) == temp.charAt(2)) ballCnt++;
+                if (infos[j].number.charAt(2) == temp.charAt(0)
+                        || infos[j].number.charAt(2) == temp.charAt(1)) ballCnt++;
 
-                if (infoList.get(j).strike == strikeCnt && infoList.get(j).ball == ballCnt) cnt++;
+                if (infos[j].strike == strikeCnt && infos[j].ball == ballCnt) cnt++;
             }
 
             if (cnt == n) ret++;
         }
 
         System.out.println(ret);
+    }
+
+    static class Info {
+        String number;
+        int strike;
+        int ball;
+
+        public Info(String number, int strike, int ball) {
+            this.number = number;
+            this.strike = strike;
+            this.ball = ball;
+        }
     }
 }

@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // 입력
         StringTokenizer st; // 입력
-        StringBuilder sb = new StringBuilder(); // 출력
+        StringBuilder sb; // 출력
 
         int n = Integer.parseInt(br.readLine());
 
@@ -24,12 +24,10 @@ public class Main {
             posList[i] = new Pos(x, y);
         }
 
-        // 결과 저장을 위한 배열 ret
-        int[] ret = new int[n];
+        int[] ret = new int[n]; // 결과 저장을 위한 배열 ret
         Arrays.fill(ret, -1); // 배열 원소 초기화
 
-        // 최소 거리 계산을 위한 배열 dist
-        int[] dist = new int[n];
+        int[] dist = new int[n]; // 최소 거리 계산을 위한 배열 dist
 
         for (int x : xPosList) {
             for (int y : yPosList) {
@@ -53,6 +51,8 @@ public class Main {
                 }
             }
         }
+
+        sb = new StringBuilder();
 
         for (int val : ret) {
             sb.append(val).append(' ');
