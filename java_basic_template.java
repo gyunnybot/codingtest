@@ -26,6 +26,6 @@ public class Main {
             sb.append(arr[i]).append(' '); // 결과 출력은 sb 사용
         }
 
-        System.out.println(sb);
+        System.out.println(sb); // BufferedWriter 는 좀 오반가?
     }
 }
