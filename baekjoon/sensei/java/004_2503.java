@@ -2,11 +2,13 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    static int n, ret;
+    static StringTokenizer st;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
-
-        int n = Integer.parseInt(br.readLine());
+        
+        n = Integer.parseInt(br.readLine());
 
         Info[] infos = new Info[n];
 
@@ -20,7 +22,7 @@ public class Main {
             infos[i] = new Info(number, strike, ball);
         }
 
-        int ret = 0;
+        ret = 0;
 
         for (int i = 100; i <= 999; i++) {
             String temp = String.valueOf(i);

@@ -2,12 +2,14 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // 입력
-        StringTokenizer st; // 입력
-        StringBuilder sb; // 출력
+    static int n;
+    static StringTokenizer st;
+    static StringBuilder sb;
 
-        int n = Integer.parseInt(br.readLine());
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        n = Integer.parseInt(br.readLine());
 
         Pos[] posList = new Pos[n];
         int[] xPosList = new int[n];
@@ -32,8 +34,7 @@ public class Main {
         for (int x : xPosList) {
             for (int y : yPosList) {
                 for (int i = 0; i < n; i++) {
-                    Pos p = posList[i];
-                    dist[i] = Math.abs(p.x - x) + Math.abs(p.y - y);
+                    dist[i] = Math.abs(posList[i].x - x) + Math.abs(posList[i].y - y);
                 }
 
                 Arrays.sort(dist); // 오름차순 정렬

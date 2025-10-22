@@ -4,6 +4,7 @@ import java.util.*;
 public class Main {
     static int n, ret;
     static boolean[] chae = new boolean[1001];
+    static StringTokenizer st;
 
     static void era(int num) {
         chae[0] = false;
@@ -29,7 +30,7 @@ public class Main {
 
         era(1000);
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
+        st = new StringTokenizer(br.readLine());
 
         for (int i = 0; i < n; i++) {
             if (chae[Integer.parseInt(st.nextToken())]) {
