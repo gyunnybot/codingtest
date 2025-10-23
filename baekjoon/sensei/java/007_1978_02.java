@@ -6,6 +6,7 @@ public class Main {
     static boolean[] chae = new boolean[1001];
     static StringTokenizer st;
 
+    // 에라토스테네스의 체
     static void era(int num) {
         chae[0] = false;
         chae[1] = false;
