@@ -3,28 +3,28 @@ import java.util.*;
 
 public class Main {
     static int a, b, c, d, e, f;
-    static StringTokenizer st;
-    static StringBuilder sb;
+    static StringTokenizer inputNumbers;
+    static StringBuilder ret;
     
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        st = new StringTokenizer(br.readLine());
+        inputNumbers = new StringTokenizer(br.readLine());
 
-        a = Integer.parseInt(st.nextToken());
-        b = Integer.parseInt(st.nextToken());
-        c = Integer.parseInt(st.nextToken());
-        d = Integer.parseInt(st.nextToken());
-        e = Integer.parseInt(st.nextToken());
-        f = Integer.parseInt(st.nextToken());
+        a = Integer.parseInt(inputNumbers.nextToken());
+        b = Integer.parseInt(inputNumbers.nextToken());
+        c = Integer.parseInt(inputNumbers.nextToken());
+        d = Integer.parseInt(inputNumbers.nextToken());
+        e = Integer.parseInt(inputNumbers.nextToken());
+        f = Integer.parseInt(inputNumbers.nextToken());
 
         for (int x = -999; x <= 999; x++) {
             for (int y = -999; y <= 999; y++) {
                 if (a * x + b * y == c && d * x + e * y == f) {
-                    sb = new StringBuilder();
+                    ret = new StringBuilder();
 
-                    sb.append(x).append(' ').append(y);
-                    System.out.println(sb);
+                    ret.append(x).append(' ').append(y);
+                    System.out.println(ret);
 
                     break;
                 }

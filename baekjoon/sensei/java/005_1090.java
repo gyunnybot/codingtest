@@ -3,8 +3,8 @@ import java.util.*;
 
 public class Main {
     static int n;
-    static StringTokenizer st;
-    static StringBuilder sb;
+    static StringTokenizer inputPositionXY;
+    static StringBuilder ret;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -16,18 +16,18 @@ public class Main {
         int[] yPosList = new int[n];
 
         for (int i = 0; i < n; i++) {
-            st = new StringTokenizer(br.readLine());
+            inputPositionXY = new StringTokenizer(br.readLine());
 
-            int x = Integer.parseInt(st.nextToken());
-            int y = Integer.parseInt(st.nextToken());
+            int x = Integer.parseInt(inputPositionXY.nextToken());
+            int y = Integer.parseInt(inputPositionXY.nextToken());
 
             xPosList[i] = x;
             yPosList[i] = y;
             posList[i] = new Pos(x, y);
         }
 
-        int[] ret = new int[n]; // 결과 저장을 위한 배열 ret
-        Arrays.fill(ret, -1); // 배열 원소 초기화
+        int[] retArr = new int[n]; // 결과 저장을 위한 배열 ret
+        Arrays.fill(retArr, -1); // 배열 원소 초기화
 
         int[] dist = new int[n]; // 최소 거리 계산을 위한 배열 dist
 
@@ -44,22 +44,22 @@ public class Main {
                 for (int i = 0; i < n; i++) {
                     temp += dist[i];
 
-                    if (ret[i] == -1) {
-                        ret[i] = temp;
+                    if (retArr[i] == -1) {
+                        retArr[i] = temp;
                     } else {
-                        ret[i] = Math.min(ret[i], temp);
+                        retArr[i] = Math.min(retArr[i], temp);
                     }
                 }
             }
         }
 
-        sb = new StringBuilder();
+        ret = new StringBuilder();
 
-        for (int val : ret) {
-            sb.append(val).append(' ');
+        for (int val : retArr) {
+            ret.append(val).append(' ');
         }
 
-        System.out.println(sb);
+        System.out.println(ret);
     }
 
     static class Pos {

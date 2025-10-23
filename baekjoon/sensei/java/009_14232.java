@@ -1,9 +1,8 @@
 import java.io.*;
-import java.util.*;
 
 public class Main {
-    static long n, ret;
-    static StringBuilder sb;
+    static long n, cnt;
+    static StringBuilder ret;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -11,22 +10,22 @@ public class Main {
         n = Long.parseLong(br.readLine());
 
         long temp = n;
-        sb = new StringBuilder();
+        ret = new StringBuilder();
 
         for (long i = 2; i * i <= n; i++) {
             while (temp % i == 0) {
-                sb.append(i).append(' ');
+                ret.append(i).append(' ');
                 temp /= i;
 
-                ret++;
+                cnt++;
             }
         }
 
         if (temp != 1) {
-            sb.append(temp);
-            ret++;
+            ret.append(temp);
+            cnt++;
         }
 
-        System.out.println(ret + "\n" + sb);
+        System.out.println(cnt + "\n" + ret);
     }
 }

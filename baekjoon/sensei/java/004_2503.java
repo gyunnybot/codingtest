@@ -3,26 +3,24 @@ import java.util.*;
 
 public class Main {
     static int n, ret;
-    static StringTokenizer st;
+    static StringTokenizer inputNumberStrikeBall;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        
+
         n = Integer.parseInt(br.readLine());
 
         Info[] infos = new Info[n];
 
         for (int i = 0; i < n; i++) { // n <= 100
-            st = new StringTokenizer(br.readLine());
+            inputNumberStrikeBall = new StringTokenizer(br.readLine());
 
-            String number = st.nextToken();
-            int strike = Integer.parseInt(st.nextToken());
-            int ball = Integer.parseInt(st.nextToken());
+            String number = inputNumberStrikeBall.nextToken();
+            int strike = Integer.parseInt(inputNumberStrikeBall.nextToken());
+            int ball = Integer.parseInt(inputNumberStrikeBall.nextToken());
 
             infos[i] = new Info(number, strike, ball);
         }
-
-        ret = 0;
 
         for (int i = 100; i <= 999; i++) {
             String temp = String.valueOf(i);
