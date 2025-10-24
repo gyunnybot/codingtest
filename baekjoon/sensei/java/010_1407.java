@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*; // StringTokenizer
 
 public class Main {
-    static long a, b, ret;
+    static long a, b, ret; // 1 ≤ A ≤ B ≤ 10^15
     static StringTokenizer inputAB;
 
     static long func(long num) {
