@@ -9,7 +9,7 @@ public class Main {
         long temp = num;
 
         for (long i = 2; i <= num; i *= 2) {
-            temp += (num / i) * (i / 2);
+        temp += (num / i) * (i / 2); // num!에서 i는 몇 번 곱해져 있는가? x 가중치 i / 2
         }
 
         return temp;

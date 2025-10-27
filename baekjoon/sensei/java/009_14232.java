@@ -10,6 +10,7 @@ public class Main {
         n = Long.parseLong(br.readLine());
 
         long temp = n;
+        
         ret = new StringBuilder();
 
         for (long i = 2; i * i <= n; i++) {
