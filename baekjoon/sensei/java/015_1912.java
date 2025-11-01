@@ -8,12 +8,10 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer inputN = new StringTokenizer(br.readLine());
 
-        n = Integer.parseInt(inputN.nextToken());
+        n = Integer.parseInt(br.readLine());
 
         StringTokenizer inputArrElements = new StringTokenizer(br.readLine());
-
         for (int i = 1; i <= n; i++) {
             arr[i] = Integer.parseInt(inputArrElements.nextToken());
             sum[i] = sum[i - 1] + arr[i];
