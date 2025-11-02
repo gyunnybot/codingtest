@@ -4,7 +4,6 @@ import java.util.*;
 public class Main {
     static int n, ret;
     static boolean[] chae = new boolean[1001];
-    static StringTokenizer inputNumbers;
 
     // 에라토스테네스의 체
     static void era(int num) {
@@ -31,7 +30,7 @@ public class Main {
 
         era(1000);
 
-        inputNumbers = new StringTokenizer(br.readLine());
+        StringTokenizer inputNumbers = new StringTokenizer(br.readLine());
 
         for (int i = 0; i < n; i++) {
             if (chae[Integer.parseInt(inputNumbers.nextToken())]) {

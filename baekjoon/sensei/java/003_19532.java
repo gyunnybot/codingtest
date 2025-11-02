@@ -3,13 +3,11 @@ import java.util.*;
 
 public class Main {
     static int a, b, c, d, e, f;
-    static StringTokenizer inputNumbers;
-    static StringBuilder ret;
     
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        inputNumbers = new StringTokenizer(br.readLine());
+        StringTokenizer inputNumbers = new StringTokenizer(br.readLine());
 
         a = Integer.parseInt(inputNumbers.nextToken());
         b = Integer.parseInt(inputNumbers.nextToken());
@@ -21,9 +19,10 @@ public class Main {
         for (int x = -999; x <= 999; x++) {
             for (int y = -999; y <= 999; y++) {
                 if (a * x + b * y == c && d * x + e * y == f) {
-                    ret = new StringBuilder();
+                    StringBuilder ret = new StringBuilder();
 
                     ret.append(x).append(' ').append(y);
+                    
                     System.out.println(ret);
 
                     break;

@@ -1,10 +1,11 @@
 import java.io.*;
 
 public class Main {
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static int n, ret; // 1 ≤ n ≤ 200,000,000
 
     public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
         n = Integer.parseInt(br.readLine());
 
         for (int i = 2; i <= n; i++) { // 1 제외

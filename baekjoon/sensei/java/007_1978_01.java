@@ -3,7 +3,6 @@ import java.util.*;
 
 public class Main {
     static int n, ret;
-    static StringTokenizer inputNumbers;
 
     static boolean check(int num) {
         if (num <= 1) return false;
@@ -23,8 +22,9 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+        // input
         n = Integer.parseInt(br.readLine());
-        inputNumbers = new StringTokenizer(br.readLine());
+        StringTokenizer inputNumbers = new StringTokenizer(br.readLine());
 
         for (int i = 0; i < n; i++) {
             if (check(Integer.parseInt(inputNumbers.nextToken()))) {

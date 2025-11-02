@@ -3,8 +3,7 @@ import java.util.*;
 
 public class Main {
     static int n, ret;
-    static StringTokenizer inputNumberStrikeBall;
-
+    
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -13,7 +12,7 @@ public class Main {
         Info[] infos = new Info[n];
 
         for (int i = 0; i < n; i++) { // n <= 100
-            inputNumberStrikeBall = new StringTokenizer(br.readLine());
+            StringTokenizer inputNumberStrikeBall = new StringTokenizer(br.readLine());
 
             String number = inputNumberStrikeBall.nextToken();
             int strike = Integer.parseInt(inputNumberStrikeBall.nextToken());

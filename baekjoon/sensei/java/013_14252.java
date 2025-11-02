@@ -4,7 +4,6 @@ import java.util.*;
 public class Main {
     static int n, ret;
     static int[] arr = new int[51];
-    static StringTokenizer inputNumbers;
 
     static int getGcd(int a, int b) {
         if (a == 0) return b;
@@ -15,9 +14,9 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+        // input
         n = Integer.parseInt(br.readLine());
-
-        inputNumbers = new StringTokenizer(br.readLine());
+        StringTokenizer inputNumbers = new StringTokenizer(br.readLine());
 
         for (int i = 0; i < n; i++) {
             arr[i] = Integer.parseInt(inputNumbers.nextToken());

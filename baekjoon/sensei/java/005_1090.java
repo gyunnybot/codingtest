@@ -3,8 +3,6 @@ import java.util.*;
 
 public class Main {
     static int n;
-    static StringTokenizer inputPositionXY;
-    static StringBuilder ret;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -16,10 +14,10 @@ public class Main {
         int[] yPosList = new int[n];
 
         for (int i = 0; i < n; i++) {
-            inputPositionXY = new StringTokenizer(br.readLine());
+            StringTokenizer inputXY = new StringTokenizer(br.readLine());
 
-            int x = Integer.parseInt(inputPositionXY.nextToken());
-            int y = Integer.parseInt(inputPositionXY.nextToken());
+            int x = Integer.parseInt inputXY.nextToken());
+            int y = Integer.parseInt inputXY.nextToken());
 
             xPosList[i] = x;
             yPosList[i] = y;
@@ -53,7 +51,7 @@ public class Main {
             }
         }
 
-        ret = new StringBuilder();
+        StringBuilder ret = new StringBuilder();
 
         for (int val : retArr) {
             ret.append(val).append(' ');

@@ -2,8 +2,7 @@ import java.io.*;
 
 public class Main {
     static long n, cnt;
-    static StringBuilder ret;
-
+    
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -11,7 +10,7 @@ public class Main {
 
         long temp = n;
         
-        ret = new StringBuilder();
+        StringBuilder ret = new StringBuilder();
 
         for (long i = 2; i * i <= n; i++) {
             while (temp % i == 0) {
