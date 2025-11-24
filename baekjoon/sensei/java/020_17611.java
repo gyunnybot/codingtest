@@ -23,7 +23,7 @@ public class Main {
             xPos += 500000;
             yPos += 500000;
 
-            posList.add(new AbstractMap.SimpleEntry<>(xPos, yPos)); // vector<pair<int,int>> v.push_back (C++)
+            posList.add(new AbstractMap.SimpleEntry<>(xPos, yPos)); // vector<pair<int,int>> v : v.push_back (C++)
         }
 
         for (int i = 0; i < n; i++) {
