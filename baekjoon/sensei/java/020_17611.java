@@ -2,35 +2,35 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static int n, xPos, yPos, ret;
+    static CustomScanner cs = new CustomScanner();
+
+    static int n, ret;
+
     static int[] a_x = new int[1000001];
     static int[] a_y = new int[1000001];
     static int[] s_x = new int[1000001];
     static int[] s_y = new int[1000001];
-    static List<Map.Entry<Integer, Integer>> posList = new ArrayList<>();
+    static Pos[] poses = new Pos[100001];
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        n = Integer.parseInt(br.readLine());
+        n = cs.nextInt();
 
         for (int i = 0; i < n; i++) {
-            StringTokenizer inputXY = new StringTokenizer(br.readLine());
+            int x = cs.nextInt();
+            int y = cs.nextInt();
 
-            xPos = Integer.parseInt(inputXY.nextToken());
-            yPos = Integer.parseInt(inputXY.nextToken());
+            x += 500000;
+            y += 500000;
 
-            xPos += 500000;
-            yPos += 500000;
-
-            posList.add(new AbstractMap.SimpleEntry<>(xPos, yPos)); // vector<pair<int,int>> v : v.push_back (C++)
+            poses[i] = new Pos(x, y);
         }
 
         for (int i = 0; i < n; i++) {
-            int x = posList.get(i).getKey();
-            int y = posList.get(i).getValue();
-            int nx = posList.get((i + 1) % n).getKey();
-            int ny = posList.get((i + 1) % n).getValue();
+            int x = poses[i].x;
+            int y = poses[i].y;
+            
+            int nx = poses[(i + 1) % n].x; // n-1 -> 0
+            int ny = poses[(i + 1) % n].y;
 
             if (x == nx) {
                 int max_y = Math.max(y, ny);
@@ -57,5 +57,45 @@ public class Main {
         }
 
         System.out.println(ret);
+    }
+
+    static class Pos {
+        int x, y;
+
+        public Pos(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    static class CustomScanner {
+        private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        private StringTokenizer st;
+
+        String next() throws IOException {
+            while (st == null || !st.hasMoreTokens()) {
+                String line = br.readLine();
+
+                if (line.isEmpty()) {
+                    continue;
+                }
+
+                st = new StringTokenizer(line);
+            }
+
+            return st.nextToken();
+        }
+
+        int nextInt() throws IOException {
+            String s = next();
+
+            return Integer.parseInt(s);
+        }
+
+        long nextLong() throws IOException {
+            String s = next();
+
+            return Long.parseLong(s);
+        }
     }
 }

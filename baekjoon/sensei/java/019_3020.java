@@ -1,20 +1,20 @@
 import java.io.*;
-import java.util.*; // StringTokenizer
+import java.util.*;
 
 public class Main {
+    static CustomScanner cs = new CustomScanner();
+
     static int n, h, ret;
+
     static int[] a = new int[500001];
     static int[] s = new int[500001];
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        StringTokenizer inputNH = new StringTokenizer(br.readLine());
-        n = Integer.parseInt(inputNH.nextToken());
-        h = Integer.parseInt(inputNH.nextToken());
+        n = cs.nextInt();
+        h = cs.nextInt();
 
         for (int i = 0; i < n; i++) {
-            int temp = Integer.parseInt(br.readLine());
+            int temp = cs.nextInt();
 
             if (i % 2 == 0) {
                 a[1]++;
@@ -41,5 +41,36 @@ public class Main {
         }
 
         System.out.println(minVal + " " + ret);
+    }
+
+    static class CustomScanner {
+        private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        private StringTokenizer st;
+
+        String next() throws IOException {
+            while (st == null || !st.hasMoreTokens()) {
+                String line = br.readLine();
+
+                if (line.isEmpty()) {
+                    continue;
+                }
+
+                st = new StringTokenizer(line);
+            }
+
+            return st.nextToken();
+        }
+
+        int nextInt() throws IOException {
+            String s = next();
+
+            return Integer.parseInt(s);
+        }
+
+        long nextLong() throws IOException {
+            String s = next();
+
+            return Long.parseLong(s);
+        }
     }
 }
