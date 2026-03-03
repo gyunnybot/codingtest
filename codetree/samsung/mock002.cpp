@@ -41,10 +41,10 @@ int bfs() {
       int nbx = cur.bx;
 
       while (true) {
-        if (a[nry][nrx] != '#' && a[nry][nrx] != 'O') { // R, B, .
+        if (a[nry][nrx] != '#' && a[nry][nrx] != 'O') { // 'R', 'B', '.'
           nry += dy[i];
           nrx += dx[i];
-        } else { // #, O
+        } else { // '#', 'O'
           if (a[nry][nrx] == '#') {
             nry -= dy[i];
             nrx -= dx[i];
@@ -81,6 +81,8 @@ int bfs() {
             nbx -= dx[i];
           }
         }
+        
+        // 겹치면서 출구인 경우, 더 이상 queue에 들어갈 필요가 없다
       }
 
       if (!visited[nry][nrx][nby][nbx]) {
