@@ -12,7 +12,7 @@
 
 do_maze 실행 시 dist 배열을 0으로 초기화했으므로, dist[0][0][0] = 1로 놓고 ret - 1 진행
 
-시간 복잡도 O(5*5*5*4^5)
+시간 복잡도 O(5*5*5 * 4^5)
 */
 
 #include <algorithm> // next_permutataion
