@@ -7,7 +7,7 @@ push 메서드에서 c 활용하는 발상. 보도블럭, 디버깅 문제에서
 시간복잡도 O(4^5 * 4 * N*N)
 */
 
-#include <algorithm>
+#include <algorithm> // max
 #include <iostream>
 using namespace std;
 
