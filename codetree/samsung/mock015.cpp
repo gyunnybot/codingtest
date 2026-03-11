@@ -1,8 +1,7 @@
 /*
 삼성 2018 상반기 오후 1번 문제 - 드래곤 커브
 
-for (int j = gen - 1; j >= 0; j--) 반복문 내부에서
-gen이 증가한다고 해서 초기식의 j가 바뀌지는 않는다
+for (int j = gen - 1; j >= 0; j--) 반복문 내 gen이 증가한다고 해서 초기식의 j가 바뀌지는 않는다
 */
 
 #include <iostream>
@@ -34,9 +33,6 @@ void dragon_curve(int y, int x, int d, int g) {
   for (int i = 0; i < gen; i++) {
     int ny = y + dy[curve[i]];
     int nx = x + dx[curve[i]];
-
-    if (ny < 0 || ny >= 101 || nx < 0 || nx >= 101)
-      continue;
 
     a[ny][nx] = true;
 
