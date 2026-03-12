@@ -15,7 +15,7 @@ do_maze 실행 시 dist 배열을 0으로 초기화했으므로, dist[0][0][0] =
 시간 복잡도 O(5*5*5 * 4^5)
 */
 
-#include <algorithm> // next_permutataion
+#include <algorithm> // min, next_permutataion
 #include <climits> // INT_MAX
 #include <iostream>
 #include <queue>
