@@ -1,37 +1,62 @@
+/**
+ * 시간복잡도 O(sqrt(N)(for) + logN(while))
+ */
+
+import java.util.*;
 import java.io.*;
 
 public class Main {
+    static CustomScanner cs = new CustomScanner();
+    static StringBuilder ret = new StringBuilder();
     static int n;
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        n = Integer.parseInt(br.readLine());
-
-        int temp = n;
-       
-        StringBuilder ret = new StringBuilder();
+        n = cs.nextInt();
 
         for (int i = 2; i * i <= n; i++) {
-            while (temp % i == 0) {
-                ret.append(i).append('\n');
-                temp /= i;
+            while (n % i == 0) {
+                ret.append(i).append("\n");
+
+                n /= i;
             }
         }
 
-        if (temp != 1) { // 유일하게 제곱근 n보다 큰 소인수가 존재한다면 출력
-            ret.append(temp);
+        // 제곱근보다 큰 소인수는 많아봐야 최대 한 개이다
+        if (n > 1) { // 유일하게 제곱근 n보다 큰 소인수가 존재한다면 출력
+            ret.append(n);
         }
 
-        /*
-        n = p * q를 만족하면서 p > sqrt(n) && q > sqrt(n)인 소수쌍 (p, q)는 존재하지 않는다
-        (p, q 모두 제곱근보다 큰 소인수라면 p * q > n 이 되므로 n = p * q에 모순)
-        
-        즉, 임의의 p > sqrt(n)라면 나머지 소인수 q는 반드시 q < sqrt(n)이어야 한다. 또는 p = q = sqrt(n)
-        
-        제곱근보다 큰 소인수는 많아봐야 최대 한 개이다
-        */
-       
         System.out.println(ret);
+    }
+
+    static class CustomScanner {
+        private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        private StringTokenizer st;
+
+        String next() throws IOException {
+            while (st == null || !st.hasMoreTokens()) {
+                String line = br.readLine();
+
+                if (line.isEmpty()) {
+                    continue;
+                }
+
+                st = new StringTokenizer(line);
+            }
+
+            return st.nextToken();
+        }
+
+        int nextInt() throws IOException {
+            String s = next();
+
+            return Integer.parseInt(s);
+        }
+
+        long nextLong() throws IOException {
+            String s = next();
+
+            return Long.parseLong(s);
+        }
     }
 }

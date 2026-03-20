@@ -1,28 +1,24 @@
-import java.io.*;
+/**
+ * 시간복잡도 O(sqrt(N)*logN)
+ */
+
 import java.util.*;
+import java.io.*;
 
 public class Main {
+    static CustomScanner cs = new CustomScanner();
     static int gcd, lcm, retA, retB;
 
-    static int getGcd(int a, int b) {
-        if (a == 0) return b;
-
-        return getGcd(b % a, a);
-    }
-
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        gcd = cs.nextInt();
+        lcm = cs.nextInt();
 
-        StringTokenizer inputGcdLcm = new StringTokenizer(br.readLine());
-        gcd = Integer.parseInt(inputGcdLcm.nextToken());
-        lcm = Integer.parseInt(inputGcdLcm.nextToken());
+        int product = lcm / gcd;
 
-        int productAB = lcm / gcd;
-
-        for (int i = 1; i * i <= productAB; i++) {
-            if (productAB % i == 0) { // a * b = productAB
+        for (int i = 1; i * i <= product; i++) {
+            if (product % i == 0) {
                 int a = i;
-                int b = productAB / i;
+                int b = product / i;
 
                 if (getGcd(a, b) == 1) {
                     retA = a * gcd;
@@ -30,7 +26,46 @@ public class Main {
                 }
             }
         }
-
+        
         System.out.println(retA + " " + retB);
+    }
+
+    static int getGcd(int a, int b) {
+        if (a == 0) {
+            return b;
+        }
+
+        return getGcd(b % a, a);
+    }
+
+    static class CustomScanner {
+        private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        private StringTokenizer st;
+
+        String next() throws IOException {
+            while (st == null || !st.hasMoreTokens()) {
+                String line = br.readLine();
+
+                if (line.isEmpty()) {
+                    continue;
+                }
+
+                st = new StringTokenizer(line);
+            }
+
+            return st.nextToken();
+        }
+
+        int nextInt() throws IOException {
+            String s = next();
+
+            return Integer.parseInt(s);
+        }
+
+        long nextLong() throws IOException {
+            String s = next();
+
+            return Long.parseLong(s);
+        }
     }
 }

@@ -1,11 +1,13 @@
+/**
+ * 시간복잡도 O(100000)
+ */
+
 import java.io.*;
 import java.util.*;
 
 public class Main {
     static CustomScanner cs = new CustomScanner();
-
     static int n, ret;
-
     static int[] a_x = new int[1000001];
     static int[] a_y = new int[1000001];
     static int[] s_x = new int[1000001];
@@ -28,7 +30,6 @@ public class Main {
         for (int i = 0; i < n; i++) {
             int x = poses[i].x;
             int y = poses[i].y;
-            
             int nx = poses[(i + 1) % n].x; // n-1 -> 0
             int ny = poses[(i + 1) % n].y;
 

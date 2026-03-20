@@ -1,11 +1,14 @@
+/**
+ * 시간복잡도 O(500000)
+ */
+
 import java.io.*;
 import java.util.*;
 
 public class Main {
     static CustomScanner cs = new CustomScanner();
-
     static int n, h, ret;
-
+    static int minVal = 200001;
     static int[] a = new int[500001];
     static int[] s = new int[500001];
 
@@ -27,8 +30,6 @@ public class Main {
         for (int i = 1; i <= h; i++) {
             s[i] = s[i - 1] + a[i];
         }
-
-        int minVal = 200001;
 
         for (int i = 1; i <= h; i++) {
             minVal = Math.min(minVal, s[i]);

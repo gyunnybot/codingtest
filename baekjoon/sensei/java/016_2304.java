@@ -1,31 +1,31 @@
+/**
+ * 시간복잡도 O(N)
+ */
 
-import java.io.*;
 import java.util.*;
+import java.io.*;
 
 public class Main {
-    static int l, h, maxVal, maxPos;
+    static CustomScanner cs = new CustomScanner();
+    static int n, l, h, maxVal, maxPos, ret;
     static int[] a = new int[1001];
-    static int[] s = new int[1001];
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        int n = Integer.parseInt(br.readLine());
+        n = cs.nextInt();
 
         for (int i = 0; i < n; i++) {
-            StringTokenizer inputLH = new StringTokenizer(br.readLine());
-
-            l = Integer.parseInt(inputLH.nextToken());
-            h = Integer.parseInt(inputLH.nextToken());
+            l = cs.nextInt();
+            h = cs.nextInt();
 
             a[l] = h;
 
-            if (h >= maxVal) {
+            if (maxVal <= h) {
                 maxVal = h;
                 maxPos = l;
             }
         }
 
+        // pos는 1부터 1000까지
         for (int i = 2; i < maxPos; i++) {
             if (a[i - 1] > a[i]) {
                 a[i] = a[i - 1];
@@ -39,9 +39,40 @@ public class Main {
         }
 
         for (int i = 1; i <= 1000; i++) {
-            s[i] = s[i - 1] + a[i];
+            ret += a[i];
         }
 
-        System.out.println(s[1000]);
+        System.out.println(ret);
+    }
+
+    static class CustomScanner {
+        private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        private StringTokenizer st;
+
+        String next() throws IOException {
+            while (st == null || !st.hasMoreTokens()) {
+                String line = br.readLine();
+
+                if (line.isEmpty()) {
+                    continue;
+                }
+
+                st = new StringTokenizer(line);
+            }
+
+            return st.nextToken();
+        }
+
+        Integer nextInt() throws IOException {
+            String s = next();
+
+            return Integer.parseInt(s);
+        }
+
+        Long nextLong() throws IOException {
+            String s = next();
+
+            return Long.parseLong(s);
+        }
     }
 }
