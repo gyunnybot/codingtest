@@ -18,7 +18,7 @@ public class Main {
 
         for (int i = 1; i <= n; i++) {
             a[i] = cs.nextInt();
-            s[i] = s[i - 1] + a[i];
+            s[i] = s[i - 1] + a[i]; // 무지성 누적합
         }
 
         for (int i = k; i <= n; i++) {

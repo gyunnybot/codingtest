@@ -19,7 +19,7 @@ public class Main {
             a[i] = cs.nextInt();
             s[i] = s[i - 1] + a[i];
 
-            s[i] = Math.max(s[i], a[i]); // 그 순간에 최대 누적합을 저장
+            s[i] = Math.max(s[i], a[i]); // 그 순간에서 최대 누적합을 다시 계산
         }
 
         for (int i = 1; i <= n; i++) {
