@@ -4,7 +4,7 @@ class Solution {
     public int solution(int[] nums) {
         int answer = nums.length / 2; // []로 선언된 모든 기본 배열은 length를 사용한다
         
-        HashSet<Integer> hs = new HashSet<>();
+        Set<Integer> hs = new HashSet<>();
         
         for(int i : nums) {
             hs.add(i);
@@ -20,4 +20,8 @@ class Solution {
  * 기본 배열 [] : .length
  * 문자열 String : .length()
  * 컬렉션 List, Set, Map : size()
+ * 
+ * 비어있는지 확인할 때
+ * 기본 배열 [] : .length == 0
+ * 문자열, 컬랙션 : .isEmpty()
  */
