@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.Set;
+import java.util.HashSet;
 
 class Solution {
     public int solution(int[] nums) {

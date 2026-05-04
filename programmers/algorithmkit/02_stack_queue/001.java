@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Solution {
     public List<Integer> solution(int []arr) {
