@@ -1,14 +1,11 @@
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Queue;
-import java.util.ArrayDeque;
+import java.util.*;
 
 class Solution {
-    private int maxDist;
-    private int[] visited = new int[20001];
-    private List<Integer>[] adj = new ArrayList[20001];
+    int maxDist;
+    int[] visited = new int[20001];
+    List<Integer>[] adj = new ArrayList[20001];
     
-    private void bfs(int here) {
+    void bfs(int here) {
         visited[here] = 1;
         maxDist = 1;
         

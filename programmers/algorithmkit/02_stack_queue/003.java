@@ -1,12 +1,11 @@
-import java.util.Deque;
-import java.util.ArrayDeque;
+import java.util.*;
 
 class Solution {
     boolean solution(String s) {
         Deque<Character> st = new ArrayDeque<>();
         
         for(int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
+            char c = s.charAt(i); // s[i] X , s.charAt(i) O
             
             if(c == '(') {
                 st.push(c);
@@ -15,7 +14,7 @@ class Solution {
                     return false;
                 }
                 
-                st.pop();
+                st.poll();
             }
         }
 

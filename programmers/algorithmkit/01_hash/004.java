@@ -1,5 +1,4 @@
-import java.util.Map;
-import java.util.HashMap;
+import java.util.*;
 
 class Solution {
     public int solution(String[][] clothes) {
@@ -27,13 +26,6 @@ class Solution {
     for (Map.Entry<String, Integer> entry : map.entrySet()) {
         System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
     }
-
-
-    람다식 :
-    
-    map.forEach((key, value) -> {
-        System.out.println("Key: " + key + ", Value: " + value);
-    });
 
 
     key만 필요하거나, key를 활용할 때 :

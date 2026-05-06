@@ -1,7 +1,7 @@
 class Solution {
-    private int answer = 0;
+    int answer = 0;
     
-    private void recur(int[] numbers, int target, int idx, int cnt) {
+    void recur(int[] numbers, int target, int idx, int cnt) {
         if(idx == numbers.length) {
             if(cnt == target) {
                 answer++;
