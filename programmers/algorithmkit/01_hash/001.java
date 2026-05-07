@@ -6,7 +6,7 @@ class Solution {
 
         Map<String, Integer> hm = new HashMap<>();
         
-        for(String p : participant) {
+        for(String p : participant) { // 참가자 중에는 동명이인이 있을 수 있습니다.
             hm.put(p, hm.getOrDefault(p, 0) + 1); // 처음 등록된 key의 value는 null이므로 반드시 getOrDefault 필수
         }
         
@@ -24,3 +24,7 @@ class Solution {
         return answer;
     }
 }
+
+/**
+ * hm.put(p, 1)이 아닌 hm.put(p, hm.getOrDefault(p, 0) + 1);인 이유? 동명이인 가능성
+ */
