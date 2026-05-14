@@ -1,5 +1,5 @@
 # 다이나믹 프로그래밍
-dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이전 상태의 값을 저장해서 중복되는 연산없이 O(1)로 이전 값을 가져오는 발상을 옮긴 것이다. 아래 순서대로 생각하는 것이 자연스럽다.
+dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이전 상태의 값을 저장해서 중복되는 연산없이 O(1)로 이전 값을 가져오는 발상을 옮긴 것이다. 따라서, 아래 순서대로 생각하는 것이 자연스럽다.
 1. 일단 recur로 작성
 2. 복잡도 통과 불가능? recur에서 dp[] 배열을 통해 값 저장해야겠다!
 3. 어려운 dp의 경우 2번 과정 사이에 탑다운 / 바텀업 방식을 선택 후 진행한다.
@@ -11,7 +11,8 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
 ### 어려운 dp
 탑다운 or 바텀업을 선택하는 과정이 필요하다. 문제를 읽고 기준을 정해야 구현이 쉬움
 
-- BOJ 14501 퇴사 : 2차원 DP임을 알 수 있다. 하지만 그 전에 앞날부터 계산하는 것이 생각 논리 상 맞는 흐름인지는 사람마다 다른 것 같다. 나는 뒷날부터 계산했는데, 그 이유는 뒷날에 Integer.MAX_VALUE가 나오면 얘는 무조건 먹어야 하지 않나? 근데 그 논리면, 첫날에 max가 뜨면? ㄱ-
+- BOJ 14501 퇴사 : 날짜가 인덱스를 결정한다. 탑다운 방식으로 접근한다면 0일부터 n일이 될 때까지의 최대 수익을 dp[0]이라고 정의하면, dp[0]은 dp[1~n-1]까지의 결과가 필요할 것이다. 바텀업 방식을 적용하면 dp[n-1]부터 시작해서 dp[n-1~0]이 계속 갱신되는 형태로 구현할 수 있다.<br><br>
+    
     
     순수 recursive
     ```java
@@ -27,19 +28,15 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
         public static void main(String[] args) throws IOException {
             CustomScanner sc = new CustomScanner();
 
-            // N 입력 받기
             n = sc.nextInt();
 
-            // T와 P 배열 입력 받기
             for (int i = 0; i < n; i++) {
                 t[i] = sc.nextInt();
                 p[i] = sc.nextInt();
             }
 
-            // 재귀 탐색 시작
             recur(0, 0);
 
-            // 결과 출력
             System.out.println(ret);
         }
 
@@ -53,14 +50,10 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
                 return;
             }
 
-            // 1. 해당 날짜의 상담을 수행한다
             recur(day + t[day], pay + p[day]);
-            
-            // 2. 해당 날짜를 건너뛴다
             recur(day + 1, pay);
         }
 
-        // 작성하신 커스텀 스캐너 클래스
         static class CustomScanner {
             private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             private StringTokenizer st;
@@ -68,9 +61,6 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
             String next() throws IOException {
                 while (st == null || !st.hasMoreTokens()) {
                     String line = br.readLine();
-                    
-                    // readLine()이 null을 반환할 경우(EOF) 처리
-                    if (line == null) return null;
 
                     if (line.isEmpty()) {
                         continue;
@@ -78,21 +68,26 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
 
                     st = new StringTokenizer(line);
                 }
+
                 return st.nextToken();
             }
 
-            int nextInt() throws IOException {
-                return Integer.parseInt(next());
+            Integer nextInt() throws IOException {
+                String s = next();
+
+                return Integer.parseInt(s);
             }
 
-            long nextLong() throws IOException {
-                return Long.parseLong(next());
+            Long nextLong() throws IOException {
+                String s = next();
+
+                return Long.parseLong(s);
             }
         }
     }
     ```
 
-    recur + dp 배열에 값 저장
+    recur + dp 배열에 값 저장 (탑다운 방식)
     ```java
     import java.util.*;
     import java.io.*;
@@ -113,7 +108,7 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
                 p[i] = sc.nextInt();
             }
 
-            // DP 배열을 -1로 초기화 (방문하지 않은 상태 표시)
+            // 상담이 무보수라면 방문해도 0이다. 구별을 위해 DP 배열을 -1로 초기화
             Arrays.fill(dp, -1);
 
             System.out.println(recur(0));
@@ -122,10 +117,9 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
         static int recur(int day) {
             // 퇴사일을 넘어가면 선택 불가능하므로 매우 작은 값 반환
             if (day > n) {
-                return Integer.MIN_VALUE / 2; // 오버플로우 방지를 위해 2로 나눔
+                return Integer.MIN_VALUE;
             }
 
-            // 퇴사일 당일에 딱 도착한 경우
             if (day == n) {
                 return 0;
             }
@@ -149,19 +143,33 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
             String next() throws IOException {
                 while (st == null || !st.hasMoreTokens()) {
                     String line = br.readLine();
-                    if (line == null) return null;
+
+                    if (line.isEmpty()) {
+                        continue;
+                    }
+
                     st = new StringTokenizer(line);
                 }
+
                 return st.nextToken();
             }
 
-            int nextInt() throws IOException {
-                return Integer.parseInt(next());
+            Integer nextInt() throws IOException {
+                String s = next();
+
+                return Integer.parseInt(s);
+            }
+
+            Long nextLong() throws IOException {
+                String s = next();
+
+                return Long.parseLong(s);
             }
         }
     }
     ```
-    순수 dp. 탑다운 방식 적용
+
+    순수 dp. 바텀업 방식 적용
     ```java
     import java.util.*;
     import java.io.*;
@@ -170,19 +178,18 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
         static int n;
         static int[] t = new int[16];
         static int[] p = new int[16];
-        static int[] dp = new int[17]; // idx + 1 또는 idx + t[idx] 접근을 위해 여유 있게 선언
+        static int[] dp = new int[16];
 
         public static void main(String[] args) throws IOException {
             CustomScanner sc = new CustomScanner();
 
-            // 1. 입력 받기
             n = sc.nextInt();
+            
             for (int i = 0; i < n; i++) {
                 t[i] = sc.nextInt();
                 p[i] = sc.nextInt();
             }
 
-            // 2. Bottom-Up DP 진행 (뒤에서부터 거꾸로)
             for (int idx = n - 1; idx >= 0; idx--) {
                 // 해당 날짜에 상담을 하지 않는 경우: 다음날(idx + 1)의 최댓값을 가져옴
                 dp[idx] = Math.max(dp[idx], dp[idx + 1]);
@@ -193,11 +200,9 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
                 }
             }
 
-            // 3. 0일부터 시작했을 때의 최대 수익 출력
             System.out.println(dp[0]);
         }
 
-        // 커스텀 스캐너 클래스
         static class CustomScanner {
             private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             private StringTokenizer st;
@@ -205,22 +210,35 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
             String next() throws IOException {
                 while (st == null || !st.hasMoreTokens()) {
                     String line = br.readLine();
-                    if (line == null) return null;
+
+                    if (line.isEmpty()) {
+                        continue;
+                    }
+
                     st = new StringTokenizer(line);
                 }
+
                 return st.nextToken();
             }
 
-            int nextInt() throws IOException {
-                return Integer.parseInt(next());
+            Integer nextInt() throws IOException {
+                String s = next();
+
+                return Integer.parseInt(s);
+            }
+
+            Long nextLong() throws IOException {
+                String s = next();
+
+                return Long.parseLong(s);
             }
         }
     }
     ```
 
-- BOJ 12865 평범한 배낭 : 변수가 3갠데, DP가 신경 쓸 변수는 2개인데, 걷어내야 하는 변수를 생각 잘해야 함. 탑다운, 바텀업 둘 다 이상하진 않음. 그래서 어렵다.
+- BOJ 12865 평범한 배낭 : 변수가 3갠데, DP가 신경 쓸 변수는 2개. 걷어내야 할 변수를 생각 잘해야 함. 탑다운, 바텀업 둘 다 이상하진 않음. 그래서 어렵다.<br><br>
 
-    recursive + dp[]. 순수 recursive는 시간복잡도 초과
+    recursive + dp 탑다운 방식. 순수 recursive는 시간복잡도 초과
     ```java
     import java.util.*;
     import java.io.*;
@@ -230,7 +248,7 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
         static int[] w = new int[101];
         static int[] v = new int[101];
         static int[][] dp = new int[101][100001];
-        static int ret = Integer.MIN_VALUE; // 단순 재귀용 전역 변수
+        static int ret = Integer.MIN_VALUE;
 
         public static void main(String[] args) throws IOException {
             CustomScanner sc = new CustomScanner();
@@ -243,30 +261,33 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
                 v[i] = sc.nextInt();
             }
 
-            // 1. 메모이제이션 적용 버전 (Top-Down DP)
-            for (int i = 0; i < 101; i++) Arrays.fill(dp[i], -1);
-            System.out.println("DP 결과: " + recurDP(0, 0));
+            for (int i = 0; i < 101; i++) {
+                Arrays.fill(dp[i], -1); // 가치가 0일 수 있음. 구별을 위해 -1로 초기화
+            }
 
-            // 2. 단순 재귀 버전 호출 (주석 해제하여 테스트 가능)
-            /*
-            recurSimple(0, 0, 0);
-            System.out.println("순수 재귀 결과: " + ret);
-            */
+            System.out.println(recur(0, 0));
         }
 
-        // [메모이제이션 적용 버전] - 효율적임
-        static int recurDP(int idx, int weight) {
-            if (weight > k) return Integer.MIN_VALUE / 2;
-            if (idx == n) return 0;
-            if (dp[idx][weight] != -1) return dp[idx][weight];
+        static int recur(int idx, int weight) {
+            if (weight > k) {
+                return Integer.MIN_VALUE;
+            }
 
-            dp[idx][weight] = Math.max(recurDP(idx + 1, weight + w[idx]) + v[idx], 
-                                    recurDP(idx + 1, weight));
+            if (idx == n) {
+                return 0;
+            }
+
+            if (dp[idx][weight] != -1) {
+                return dp[idx][weight];
+            }
+
+            dp[idx][weight] = Math.max(recur(idx + 1, weight + w[idx]) + v[idx], recur(idx + 1, weight));
+
             return dp[idx][weight];
         }
 
-        /* [시간 초과 발생 코드: 순수 재귀]
-        static void recurSimple(int idx, int weight, int value) {
+        /* 시간 초과 발생 코드: 순수 재귀
+        static void recur(int idx, int weight, int value) {
             if (weight > k) return;
 
             if (idx == n) {
@@ -274,10 +295,8 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
                 return;
             }
 
-            // 현재 물건을 넣는 경우
-            recurSimple(idx + 1, weight + w[idx], value + v[idx]);
-            // 현재 물건을 넣지 않는 경우
-            recurSimple(idx + 1, weight, value);
+            recur(idx + 1, weight + w[idx], value + v[idx]); // 현재 물건을 넣는 경우
+            recur(idx + 1, weight, value); // 현재 물건을 넣지 않는 경우
         }
         */
 
@@ -288,14 +307,27 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
             String next() throws IOException {
                 while (st == null || !st.hasMoreTokens()) {
                     String line = br.readLine();
-                    if (line == null) return null;
+
+                    if (line.isEmpty()) {
+                        continue;
+                    }
+
                     st = new StringTokenizer(line);
                 }
+
                 return st.nextToken();
             }
 
-            int nextInt() throws IOException {
-                return Integer.parseInt(next());
+            Integer nextInt() throws IOException {
+                String s = next();
+
+                return Integer.parseInt(s);
+            }
+
+            Long nextLong() throws IOException {
+                String s = next();
+
+                return Long.parseLong(s);
             }
         }
     }
@@ -310,13 +342,11 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
         static int n, k;
         static int[] w = new int[101];
         static int[] v = new int[101];
-        // idx+1 참조를 위해 102, weight 범위 대응을 위해 100001
-        static int[][] dp = new int[102][100001];
+        static int[][] dp = new int[101][100001];
 
         public static void main(String[] args) throws IOException {
             CustomScanner sc = new CustomScanner();
 
-            // 1. 입력 받기
             n = sc.nextInt();
             k = sc.nextInt();
 
@@ -325,24 +355,19 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
                 v[i] = sc.nextInt();
             }
 
-            // 2. Bottom-Up DP 진행 (뒤에서부터 거꾸로)
             for (int idx = n - 1; idx >= 0; idx--) {
                 for (int weight = k; weight >= 0; weight--) {
-                    // 현재 물건을 선택하지 않는 경우 (다음 인덱스의 같은 무게 값을 가져옴)
                     dp[idx][weight] = Math.max(dp[idx][weight], dp[idx + 1][weight]);
 
-                    // 현재 물건을 선택하는 경우 (무게가 허용 범위 내일 때)
                     if (weight + w[idx] <= k) {
                         dp[idx][weight] = Math.max(dp[idx][weight], dp[idx + 1][weight + w[idx]] + v[idx]);
                     }
                 }
             }
 
-            // 3. 0번 인덱스부터 무게 0인 상태에서의 최대 가치 출력
             System.out.println(dp[0][0]);
         }
 
-        // 커스텀 스캐너 클래스
         static class CustomScanner {
             private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             private StringTokenizer st;
@@ -350,17 +375,30 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
             String next() throws IOException {
                 while (st == null || !st.hasMoreTokens()) {
                     String line = br.readLine();
-                    if (line == null) return null;
+
+                    if (line.isEmpty()) {
+                        continue;
+                    }
+
                     st = new StringTokenizer(line);
                 }
+
                 return st.nextToken();
             }
 
-            int nextInt() throws IOException {
-                return Integer.parseInt(next());
+            Integer nextInt() throws IOException {
+                String s = next();
+
+                return Integer.parseInt(s);
+            }
+
+            Long nextLong() throws IOException {
+                String s = next();
+
+                return Long.parseLong(s);
             }
         }
     }
     ```
 
-- BOJ 2240 자두나무 : boolean까지 생각하는 DP라 가져옴. 논리는 무조건 바텀업이 자연스럽다. recursive하게 구현하면 되는 문제임을 알 수 있다.
+- BOJ 2240 자두나무 : boolean까지 생각하는 3차원 DP. 논리는 탑다운이 자연스럽다. recursive하게 구현하면 된다.

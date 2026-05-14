@@ -25,36 +25,36 @@ sign / exponent / fraction
 
 ### BOJ, 구름 환경에서 빠른 I/O를 위한 CustomScanner
 ```java
-		static class CustomScanner {
-        private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        private StringTokenizer st;
+static class CustomScanner {
+    private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private StringTokenizer st;
 
-        String next() throws IOException {
-            while (st == null || !st.hasMoreTokens()) {
-                String line = br.readLine();
+    String next() throws IOException {
+        while (st == null || !st.hasMoreTokens()) {
+            String line = br.readLine();
 
-                if (line.isEmpty()) {
-                    continue;
-                }
-
-                st = new StringTokenizer(line);
+            if (line.isEmpty()) {
+                continue;
             }
 
-            return st.nextToken();
+            st = new StringTokenizer(line);
         }
 
-        int nextInt() throws IOException {
-            String s = next();
-
-            return Integer.parseInt(s);
-        }
-
-        long nextLong() throws IOException {
-            String s = next();
-
-            return Long.parseLong(s);
-        }
+        return st.nextToken();
     }
+
+    int nextInt() throws IOException {
+        String s = next();
+
+        return Integer.parseInt(s);
+    }
+
+    long nextLong() throws IOException {
+        String s = next();
+
+        return Long.parseLong(s);
+    }
+}
 ```
 
 문자 하나씩 받을 때는 일단 next()로 문자열 형태로 받은 후 s.charAt(0)을 통해 char 타입으로 저장한다.

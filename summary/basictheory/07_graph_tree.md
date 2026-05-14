@@ -2,21 +2,28 @@
 ### 그래프에서 쓰이는 자료구조 정리
 ```
 우선순위 큐 : PriorityQueue<Integer> pq = new PriorityQueue<>();
+
 pq.offer(x); // 우선순위 큐에 x 삽입
 pq.poll(); // 맨 위 요소 반환 후 삭제
 pq.peek(); // 맨 위 요소 조회만
 
+
 큐 : Queue<Integer> q = new ArrayDeque<>();
+
 q.offer(x) // 큐에 x 삽입
 q.poll(); // 맨 앞 요소 반환 후 삭제
 q.peek(); // 맨 앞 요소 조회만
 
+
 스택 : Deque<Integer> st = new ArrayDeque<>();
+
 st.push(x); // 스택에 x 삽입
 st.poll(); // 맨 위 요소 반환 후 삭제
 st.peek(); // 맨 위 요소 조회만
 
-***배열 연결리스트 : List<Integer>[] adj = new ArrayList[n];
+
+배열 연결리스트 : List<Integer>[] adj = new ArrayList[n];
+
 adj[i].add(x); // i 번째 연결리스트(노드)에 x와의 연결 관계 추가
 adj[i].remove(adj[i].size() - 1); // 가장 마지막 원소 제거
 ```
@@ -137,7 +144,7 @@ public class Main {
             adj[b].add(a);
         }
 
-        // 정점이 여러 개인 경우에는 정점 번호가 작은 것을 먼저 방문
+        // 문제 조건 : 정점이 여러 개인 경우에는 정점 번호가 작은 것을 먼저 방문
         for (int i = 1; i <= n; i++) {
             Collections.sort(adj[i]);
         }

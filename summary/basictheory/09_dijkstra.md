@@ -31,11 +31,9 @@ import java.util.PriorityQueue;
 
 public class Main {
     static CustomScanner sc = new CustomScanner();
-    static int vertex;
-    static int edge;
-    static int start;
-    static List<Node>[] adj;
+    static int vertex, edge, start;
     static int[] d;
+    static List<Node>[] adj;
     static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
@@ -72,7 +70,9 @@ public class Main {
             Node cur = pq.poll();
 
             // 이미 더 짧은 경로로 d가 처리되었다면
-            if (d[cur.to] < cur.weight) continue;
+            if (d[cur.to] < cur.weight) {
+                continue;
+            }
 
             for (Node next : adj[cur.to]) {
                 // next 노드가 cur 노드를 거쳐서 다른 노드로 이동하는 거리가 더 짧은 경우
@@ -117,25 +117,30 @@ public class Main {
         String next() throws IOException {
             while (st == null || !st.hasMoreTokens()) {
                 String line = br.readLine();
-                if (line == null || line.isEmpty()) {
-                    return null;
+
+                if (line.isEmpty()) {
+                    continue;
                 }
+
                 st = new StringTokenizer(line);
             }
+
             return st.nextToken();
         }
 
-        int nextInt() throws IOException {
-            return Integer.parseInt(next());
+        Integer nextInt() throws IOException {
+            String s = next();
+
+            return Integer.parseInt(s);
         }
 
-        long nextLong() throws IOException {
-            return Long.parseLong(next());
+        Long nextLong() throws IOException {
+            String s = next();
+
+            return Long.parseLong(s);
         }
     }
 }
 ```
 
-pq는 기본적으로 최소 힙(작은 것이 가장 맨 위)
-
-Collections.reverseOrder()를 사용해 최대 힙으로 변경 가능하다.
+pq는 기본적으로 최소 힙(작은 것이 가장 맨 위)으로 정의된다. Collections.reverseOrder()를 사용해 최대 힙으로 변경 가능하다.
