@@ -5,12 +5,12 @@ class Solution {
     int[] visited = new int[20001];
     List<Integer>[] adj = new ArrayList[20001];
     
-    void bfs(int here) {
-        visited[here] = 1;
+    void bfs(int start) {
+        visited[start] = 1;
         maxDist = 1;
         
         Queue<Integer> q = new ArrayDeque<>();
-        q.offer(here);
+        q.offer(start);
         
         while(!q.isEmpty()) {
             int cur = q.poll();
