@@ -21,3 +21,12 @@ class Solution {
         return st.isEmpty();
     }
 }
+
+/**
+ * String 문자열은 for(char c : s)가 안된다.
+ * 
+ * for(int i = 0; i < s.length(); i++) {
+ *  char c = s.charAt(i); // s[i] X , s.charAt(i) O
+ * }
+ * 
+ */
