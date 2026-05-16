@@ -24,4 +24,5 @@ class Solution {
 
 /**
  * map에서 key가 있는지 확인 : map.containsKey(key);
+ * String.substring(st_idx, ed_idx); : st_idx부터 ed_idx - 1까지 문자열 부분 추출
  */
