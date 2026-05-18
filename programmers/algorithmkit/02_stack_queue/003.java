@@ -5,7 +5,7 @@ class Solution {
         Deque<Character> st = new ArrayDeque<>();
         
         for(int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i); // s[i] X , s.charAt(i) O
+            char c = s.charAt(i);
             
             if(c == '(') {
                 st.push(c);

@@ -20,13 +20,13 @@ class Solution {
         int cnt = 1;
         
         for(int i = 1; i < days.size(); i++) {
-            if(days.get(i) <= deploy_day) {
-                cnt++;
-            } else {
+            if(deploy_day < days.get(i)) {
                 answer.add(cnt);
                 
                 deploy_day = days.get(i);
                 cnt = 1;
+            } else {
+                cnt++;
             }
         }
         
@@ -37,8 +37,5 @@ class Solution {
 }
 
 /**
- * if 조건 작성 시, 숫자를 반환한다면 확실하게 비교 연산자(==, !=)를 사용해야 함
- * 컬랙션 배열 인덱스 접근은 list.get(idx)를 사용한다.
- * 
- * 스택을 활용해서도 풀 수 있을 듯?
+ * if 조건 작성 시 boolean이 아닌 숫자를 반환하는 경우, 확실하게 비교 연산자(==, !=)를 사용한다.
  */

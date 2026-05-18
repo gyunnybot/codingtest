@@ -4,25 +4,27 @@ class Solution {
     public boolean solution(String[] phone_book) {
         boolean answer = true;
         
-        Map<String, Integer> mp = new HashMap<>();
+        Set<String> st = new HashSet<>();
         
         for(String s : phone_book) {
-            mp.put(s, 1); // 같은 전화번호가 중복해서 들어있지 않습니다.
+            st.add(s);
         }
         
         for(String s : phone_book) {
             for(int i = 1; i < s.length(); i++) {
-                if(mp.containsKey(s.substring(0, i))) {
+                if(st.contains(s.substring(0, i))) {
                     return false;
                 }
             }
         }
         
-        return true;
+        return answer;
     }
 }
 
 /**
- * map에서 key가 있는지 확인 : map.containsKey(key);
+ * set : contains(value);
+ * + map에서 key가 있는지 확인 : map.containsKey(key);
+ * 
  * String.substring(st_idx, ed_idx); : st_idx부터 ed_idx - 1까지 문자열 부분 추출
  */

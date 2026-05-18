@@ -4,13 +4,13 @@ class Solution {
     public int solution(String[][] clothes) {
         int answer = 1;
         
-        Map<String, Integer> hm = new HashMap<>();
+        Map<String, Integer> mp = new HashMap<>();
         
         for(String[] c : clothes) {
-            hm.put(c[1], hm.getOrDefault(c[1], 0) + 1);
+            mp.put(c[1], mp.getOrDefault(c[1], 0) + 1);
         }
         
-        for(Integer val : hm.values()) {
+        for(Integer val : mp.values()) {
             answer *= (val + 1);
         }
         
@@ -21,21 +21,21 @@ class Solution {
 }
 
 /**
- *  key-value 모두 필요할 때 :
+ *  key-value 모두 필요할 때 : entrySet + getKey, getValue
 
     for (Map.Entry<String, Integer> entry : map.entrySet()) {
         System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
     }
 
 
-    key만 필요하거나, key를 활용할 때 :
+    key만 필요하거나, key를 활용할 때 : keySet
 
     for (String key : map.keySet()) {
-        System.out.println("Key: " + key + ", Value: " + map.get(key));
+        System.out.println("Key: " + key);
     }
 
 
-    value만 필요할 때 :
+    value만 필요할 때 : values
     
     for (Integer value : map.values()) {
         System.out.println("Value: " + value);
