@@ -1,4 +1,4 @@
-# 내가 생각하는 코테 이론 기본?
+# 내가 생각하는 코테 이론 기본
 
 ### 뭔가 면접에서 물어볼 것 같은 이론적인 내용
 logN에서 밑은 2다.
@@ -14,11 +14,11 @@ IEEE 754 :
 
 
 
-float bias = 2^(8-1)-1 =  127, double bias = 2^(11-1)-1 =1023
+<br>float bias = 2^(8-1)-1 =  127, double bias = 2^(11-1)-1 =1023
 
 예를 들어, -6.75 = -1.1011 * 2^2가 된다. 따라서,
 
-sign / exponent / fraction
+sign / exponent / fraction<br>
 1 / 127+2 / 1011…
 
 <br>
@@ -59,13 +59,23 @@ static class CustomScanner {
 
 문자 하나씩 받을 때는 일단 next()로 문자열 형태로 받은 후 s.charAt(0)을 통해 char 타입으로 저장한다.
 
+```java
+String s = new String("hello");
+
+System.out.println(s.indexOf('o')); // 4
+System.out.println(s.charAt(4)); // o
+```
+
 프로그래머스는 값을 입력받을 필요가 없으므로 사용할 필요 없다.
+
 <br>
 
 ### 자료구조 정리
-입력으로 주어지는 고정 격자 배열이나, 정해진 범위가 있는 배열 바구니는 일반 배열 [], 재귀나 백트래킹처럼 원소를 뒤에서 추가, 삭제하는 상황이 빈번한 경우 컬랙션 배열인 ArrayList를 사용한다.
+입력으로 주어지는 고정 격자 배열이나, 정해진 범위가 있는 배열 바구니는 일반 배열 []을 사용한다.
 
-그 외 자료구조는 컬랙션을 사용한다.
+재귀나 백트래킹처럼 원소를 뒤에서 추가, 삭제하는 상황이 빈번한 경우 컬랙션 배열 ArrayList를 사용한다.
+
+배열을 제외한 나머지 자료구조는 컬랙션을 사용한다.
 
 빈출되는 자료구조 : 우선순위 큐, 큐, 스택 정리
 ```java
@@ -90,14 +100,18 @@ Deque<Integer> st = new ArrayDeque<>();
 값 반환+삭제 : poll();
 ```
 
+<br>
+
 ### 정렬
 - 일반 [] 배열 정렬: `Arrays.sort(arr);`
 - 일반 [] 내림차순 정렬: `Arrays.sort(arr, Collections.reverseOrder());`
     
-    (단, arr가 기본형인 경우에는 적용 불가. 래퍼형 `Integer[]`로 변경해야 함)
+    (단, 기본형인 경우에는 적용 불가. 래퍼형 `Integer[]`로 변경해야 함)
     
 - 컬렉션(List 등) 정렬: `Collections.sort(list);`
 - 내림차순 정렬: `Collections.sort(list, Collections.reverseOrder());`
+
+<br>
 
 - 일반 [] 배열 범위 정렬 : Arrays.sort(arr, 0, n); => 0번 인덱스부터 n-1번 인덱스까지 정렬
 

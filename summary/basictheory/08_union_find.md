@@ -2,6 +2,8 @@
 
 뭔가, 컴포넌트끼리 합치려고 할 때 떠올리면 좋을 알고리즘이다.
 
+<br>
+
 ### BOJ 1717 : 집합의 표현
 ```
 // 입출력 예시
@@ -121,7 +123,9 @@ public class Main {
 
 ```
 
-### fill 정리
+<br>
+
+### Arrays.fill, Collections.fill 정리
 일반 배열 [], 컬랙션 모두 사용 가능하다.
 ```java
 // 1차원 배열의 경우
@@ -135,4 +139,15 @@ int[][] parent = new int[5][5];
 for (int[] row : parent) {
     Arrays.fill(row, -1);
 }
+```
+```java
+List<String> list = new ArrayList<>();
+list.add("A");
+list.add("B");
+list.add("C");
+
+// 모든 요소를 "X"로 채우기
+Collections.fill(list, "X");
+
+System.out.println(list); // 출력: [X, X, X]
 ```

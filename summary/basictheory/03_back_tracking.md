@@ -4,6 +4,8 @@
 
 일반적으로 중복 방지와 원상 복구를 위해 원본 배열에 추가로 visited 배열이 필요하다. 안쓰는 사람도 있던데, 나는 쓰는게 마음 편하다.
 
+<br>
+
 ### 값 조합
 n 이하의 자연수 중 중복 없이 m개의 숫자 뽑기. 호출은 combination(0)으로 고정
 
@@ -35,7 +37,11 @@ static void combination(int start) {
 }
 ```
 
-지금은 for 문에 의해 중복되는 경우는 포함되지 않아 visited가 필요없지만, 습관을 이렇게 들이는게 속 편함. **for 문에서의 i 시작점, combination(value)에서 value에 들어가는 값**에 따라 다양한 조합을 생성할 수 있는데, visited가 필요할 때가 분명 있음
+지금은 for 문에 의해 중복되는 경우는 포함되지 않아 visited가 필요없지만, 습관을 이렇게 들이는게 속 편함.
+
+**for 문에서의 i 시작점, combination(value)에서 value에 들어가는 값**에 따라 다양한 조합을 생성할 수 있는데, visited가 필요할 때가 분명 있음
+
+<br>
 
 ### 인덱스 조합
 n개의 숫자 중 중복 없이 m개의 숫자 뽑기. 호출은 combinationIdx(-1)으로 고정
@@ -68,7 +74,9 @@ static void combinationIdx(int start) {
 }
 ```
 
-정렬된 결과를 보여주고 싶다면 우선 arr을 정렬 후 combination을 진행하면 된다
+정렬된 결과를 보여주고 싶다면 우선 arr을 정렬 후 combination을 진행하면 된다.
+
+<br>
 
 ### 은근 많이 나오는 재귀 전체 탐색
 쭉 탐색하면서 이 값을 포함하냐? 안하냐? O(2^N)로 시간복잡도 높지만, 직관적이다.
@@ -87,6 +95,8 @@ void recur(int idx, int sum) {
     recur(idx + 1, sum);
 }
 ```
+
+<br>
 
 ### n-Queen 문제로 보는 백트래킹 예시
 
