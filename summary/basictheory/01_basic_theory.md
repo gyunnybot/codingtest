@@ -48,12 +48,6 @@ static class CustomScanner {
 
         return Integer.parseInt(s);
     }
-
-    long nextLong() throws IOException {
-        String s = next();
-
-        return Long.parseLong(s);
-    }
 }
 ```
 
