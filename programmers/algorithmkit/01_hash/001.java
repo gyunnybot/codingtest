@@ -6,17 +6,17 @@ class Solution {
         
         Map<String, Integer> mp = new HashMap<>();
         
-        for(String s : participant) { // mp.put(s, 1)은 안되나요? 참가자 중에는 동명이인이 있을 수 있습니다.
-            mp.put(s, mp.getOrDefault(s, 0) + 1);
+        for(String p : participant) {
+            mp.put(p, mp.getOrDefault(p, 0) + 1); // 동명이인을 고려하면 mp.put(p, 1) 불가
         }
         
-        for(String s : completion) {
-            mp.put(s, mp.get(s) - 1);
+        for(String c : completion) {
+            mp.put(c, mp.get(c) - 1);
         }
         
-        for(String s : participant) {
-            if(mp.get(s) != 0) {
-                answer = s;
+        for(String p : participant) {
+            if(mp.get(p) != 0) {
+                answer = p;
                 break;
             }
         }
@@ -25,6 +25,4 @@ class Solution {
     }
 }
 
-/**
- * Map : put, get(getOrDefault)
- */
+// map : put(key, value), get(key), getOrDefault(key, default value);
