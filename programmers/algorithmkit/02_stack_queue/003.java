@@ -23,10 +23,11 @@ class Solution {
 }
 
 /**
- * String 문자열은 for(char c : s)가 안된다.
+ * String 문자열은 향상된 반복문 for(char c : s) 불가능
  * 
  * for(int i = 0; i < s.length(); i++) {
- *  char c = s.charAt(i); // s[i] X , s.charAt(i) O
+ *  char c = s.charAt(i);
  * }
  * 
+ * s[i] X , s.charAt(i) O
  */
