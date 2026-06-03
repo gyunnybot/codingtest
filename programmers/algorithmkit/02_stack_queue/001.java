@@ -3,16 +3,16 @@ import java.util.*;
 public class Solution {
     public List<Integer> solution(int[] arr) {
         List<Integer> answer = new ArrayList<>();
-        
+
         int val = -1; // 배열 arr의 각 원소는 숫자 0부터 9까지로 이루어져 있습니다.
-        
-        for(int i : arr) {
-            if(i != val) {
+
+        for (int i : arr) {
+            if (i != val) {
                 answer.add(i);
                 val = i;
             }
         }
-        
+
         return answer;
     }
 }

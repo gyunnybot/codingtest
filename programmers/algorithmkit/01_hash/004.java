@@ -3,19 +3,19 @@ import java.util.*;
 class Solution {
     public int solution(String[][] clothes) {
         int answer = 1;
-        
+
         Map<String, Integer> mp = new HashMap<>();
-        
-        for(String[] c : clothes) {
+
+        for (String[] c : clothes) {
             mp.put(c[1], mp.getOrDefault(c[1], 0) + 1);
         }
-        
-        for(Integer val : mp.values()) {
+
+        for (Integer val : mp.values()) {
             answer *= (val + 1);
         }
-        
+
         answer -= 1;
-        
+
         return answer;
     }
 }

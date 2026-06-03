@@ -3,15 +3,15 @@ import java.util.*;
 class Solution {
     public int solution(int[] nums) {
         int answer = 0;
-        
+
         Set<Integer> st = new HashSet<>();
-        
-        for(int num : nums) {
+
+        for (int num : nums) {
             st.add(num);
         }
-        
+
         answer = Math.min(st.size(), nums.length / 2);
-        
+
         return answer;
     }
 }

@@ -3,21 +3,21 @@ import java.util.*;
 class Solution {
     public boolean solution(String[] phone_book) {
         boolean answer = true;
-        
+
         Set<String> st = new HashSet<>();
-        
-        for(String number : phone_book) {
+
+        for (String number : phone_book) {
             st.add(number);
         }
-        
-        for(String number : phone_book) {
-            for(int i = 1; i < number.length(); i++) {
-                if(st.contains(number.substring(0, i))) {
+
+        for (String number : phone_book) {
+            for (int i = 1; i < number.length(); i++) {
+                if (st.contains(number.substring(0, i))) {
                     return false;
                 }
             }
         }
-        
+
         return answer;
     }
 }
