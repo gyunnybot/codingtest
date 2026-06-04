@@ -133,6 +133,12 @@ public class Main {
 
             return Integer.parseInt(s);
         }
+
+        Long nextLong() throws IOException {
+            String s = next();
+
+            return Long.parseLong(s);
+        }
     }
 }
 ```
