@@ -1,7 +1,6 @@
-# 내가 생각하는 코테 이론 기본
+# 코테 이론 기본
 
-### 뭔가 면접에서 물어볼 것 같은 이론적인 내용
-logN에서 밑은 2다.
+### IEEE 754
 
 <br>
 IEEE 754 :
@@ -16,10 +15,10 @@ IEEE 754 :
 
 <br>float bias = 2^(8-1)-1 =  127, double bias = 2^(11-1)-1 =1023
 
-예를 들어, -6.75 = -1.1011 * 2^2가 된다. 따라서,
+예를 들어, -6.75를 이진수로 나타내면 -1.1011 * 2^2가 된다. 따라서,
 
 sign / exponent / fraction<br>
-1 / 127+2 / 1011…
+1 / 127+2 / 10110000....(나머지는 0으로 채워짐)
 
 <br>
 
@@ -56,11 +55,11 @@ static class CustomScanner {
 ```java
 String s = new String("hello");
 
-System.out.println(s.indexOf('o')); // 4
 System.out.println(s.charAt(4)); // o
+System.out.println(s.indexOf('o')); // 4
 ```
 
-프로그래머스는 값을 입력받을 필요가 없으므로 사용할 필요 없다.
+프로그래머스는 값을 입력받을 필요가 없으므로 CustomScanner 사용할 필요 없다.
 
 <br>
 
@@ -158,4 +157,51 @@ Deque<Integer> st = new ArrayDeque<>();
 
     Collections.sort(list, new StartComparator());
     ```
-    일반 [] 정렬은 원시 타입의 경우 comparator 사용 불가, 래퍼형의 경우에만 사용 가능하다.
+일반 [] 정렬은 원시 타입의 경우 comparator 사용 불가, 래퍼형의 경우에만 사용 가능하다.
+
+### 람다 표현식으로 Comparator 구현하는 것을 기본으로 삼기(가장 간편)
+```java
+class User {
+    Long id;
+    String name;
+
+    public User(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+}
+
+public static void main(String[] args) throws IOException {
+    List<User> users = new ArrayList<>();
+    users.add(new User(3L, "b"));
+    users.add(new User(1L, "c"));
+    users.add(new User(2L, "a"));
+
+    Collections.sort(users, (u1, u2) -> Long.compare(u1.id, u2.id));
+
+    for(User u : users) {
+        System.out.println(u.toString()); // 숫자 기준 정렬
+    }
+
+    Collections.sort(users, (u1, u2) -> u1.name.compareTo(u2.name));
+
+    for(User u : users) {
+        System.out.println(u.toString()); // 문자열 기준 정렬
+    }
+}
+
+User{id=1, name='c'}
+User{id=2, name='a'}
+User{id=3, name='b'}
+User{id=2, name='a'}
+User{id=3, name='b'}
+User{id=1, name='c'}
+```
