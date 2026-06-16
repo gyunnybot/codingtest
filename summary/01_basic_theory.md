@@ -159,7 +159,9 @@ Deque<Integer> st = new ArrayDeque<>();
     ```
 일반 [] 정렬은 원시 타입의 경우 comparator 사용 불가, 래퍼형의 경우에만 사용 가능하다.
 
-### 람다 표현식으로 Comparator 구현하는 것을 기본으로 삼기(가장 간편)
+<br>
+
+### 람다 표현식으로 Comparator 구현 (코테에서 일반적인 정렬 방법)
 ```java
 class User {
     Long id;

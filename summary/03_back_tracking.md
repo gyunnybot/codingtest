@@ -2,7 +2,7 @@
 
 현재 상태에서 가능한 모든 후보군 전체를 따라 들어가 실행하는 알고리즘
 
-일반적으로 중복 방지와 원상 복구를 위해 원본 배열에 추가로 visited 배열이 필요하다. 안쓰는 사람도 있던데, 나는 쓰는게 마음 편하다.
+중복 방지와 원상 복구를 위해 원본 배열에 추가로 visited 배열 사용
 
 <br>
 
@@ -22,11 +22,11 @@ static void combination(int start) {
     }
 
     for (int i = start + 1; i <= n; i++) { // 1 <= i <= n
-        if (visited[i]) { // visited는 값을 통제한다
+        if (visited[i]) { // 인덱스 visited
             continue;
         }
 
-        arrayList.add(i);
+        arrayList.add(i); // 인덱스 값 추가
         visited[i] = true;
 
         combination(i);
@@ -37,9 +37,7 @@ static void combination(int start) {
 }
 ```
 
-지금은 for 문에 의해 중복되는 경우는 포함되지 않아 visited가 필요없지만, 습관을 이렇게 들이는게 속 편함.
-
-**for 문에서의 i 시작점, combination(value)에서 value에 들어가는 값**에 따라 다양한 조합을 생성할 수 있는데, visited가 필요할 때가 분명 있음
+**for 문에서의 i 시작점, combination(value)에서 value에 들어가는 값**에 따라 다양한 조합을 생성할 수 있는데, visited가 필요할 때가 분명 있다.
 
 <br>
 
@@ -59,11 +57,11 @@ static void combinationIdx(int start) {
     }
 
     for (int i = start + 1; i < n; i++) { // 0 <= i < n
-        if (visited[i]) { // visited는 인덱스를 통제한다
+        if (visited[i]) { // 인덱스 visited
             continue;
         }
 
-        arrayList.add(arr[i]);
+        arrayList.add(arr[i]); // 인덱스가 아닌 저장된 원소값을 넣는다.
         visited[i] = true;
 
         combinationIdx(i);
