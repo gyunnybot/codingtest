@@ -106,12 +106,6 @@ public class Main {
 
             return Integer.parseInt(s);
         }
-
-        long nextLong() throws IOException {
-            String s = next();
-
-            return Long.parseLong(s);
-        }
     }
 }
 ```
@@ -222,12 +216,6 @@ public class Main {
 
             return Integer.parseInt(s);
         }
-
-        long nextLong() throws IOException {
-            String s = next();
-
-            return Long.parseLong(s);
-        }
     }
 }
 ```
@@ -302,12 +290,6 @@ public class Main {
             String s = next();
 
             return Integer.parseInt(s);
-        }
-
-        long nextLong() throws IOException {
-            String s = next();
-
-            return Long.parseLong(s);
         }
     }
 }
@@ -396,12 +378,6 @@ public class Main {
             String s = next();
 
             return Integer.parseInt(s);
-        }
-
-        Long nextLong() throws IOException {
-            String s = next();
-
-            return Long.parseLong(s);
         }
     }
 }
