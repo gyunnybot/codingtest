@@ -81,12 +81,6 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
 
                 return Integer.parseInt(s);
             }
-
-            Long nextLong() throws IOException {
-                String s = next();
-
-                return Long.parseLong(s);
-            }
         }
     }
     ```
@@ -163,12 +157,6 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
 
                 return Integer.parseInt(s);
             }
-
-            Long nextLong() throws IOException {
-                String s = next();
-
-                return Long.parseLong(s);
-            }
         }
     }
     ```
@@ -230,12 +218,6 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
                 String s = next();
 
                 return Integer.parseInt(s);
-            }
-
-            Long nextLong() throws IOException {
-                String s = next();
-
-                return Long.parseLong(s);
             }
         }
     }
@@ -328,12 +310,6 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
 
                 return Integer.parseInt(s);
             }
-
-            Long nextLong() throws IOException {
-                String s = next();
-
-                return Long.parseLong(s);
-            }
         }
     }
     ```
@@ -395,12 +371,6 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
                 String s = next();
 
                 return Integer.parseInt(s);
-            }
-
-            Long nextLong() throws IOException {
-                String s = next();
-
-                return Long.parseLong(s);
             }
         }
     }
