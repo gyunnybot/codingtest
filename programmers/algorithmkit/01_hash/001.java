@@ -15,7 +15,7 @@ class Solution {
         }
 
         for (String p : participant) {
-            if (mp.get(p) != 0) {
+            if (mp.get(p) != 0) { // java는 boolean, int 타입을 구별한다. 비교 연산자를 통해 boolean 변경
                 answer = p;
                 break;
             }
