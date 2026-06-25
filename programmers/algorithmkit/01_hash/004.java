@@ -21,21 +21,21 @@ class Solution {
 }
 
 /**
- *  key-value 모두 필요할 때 : entrySet + getKey, getValue
+ *  key-value 모두 필요할 때 : Map : entrySet / Entry : getKey, getValue
 
     for (Map.Entry<String, Integer> entry : map.entrySet()) {
         System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
     }
 
 
-    key만 필요하거나, key를 활용할 때 : keySet
+    key만 필요하거나, key를 활용할 때 : Map : keySet
 
     for (String key : map.keySet()) {
         System.out.println("Key: " + key);
     }
 
 
-    value만 필요할 때 : values
+    value만 필요할 때 : Map : values
     
     for (Integer value : map.values()) {
         System.out.println("Value: " + value);

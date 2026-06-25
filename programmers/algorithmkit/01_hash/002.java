@@ -18,15 +18,15 @@ class Solution {
 
 /**
  * Set : add
- * set의 경우 해시 기반이라 get이 없다. 대신 .contains(value) 사용
+ * set의 경우 해시 기반이라 get이 없다. 대신 .contains(value)로 포함 여부 확인
  * 
  * 크기 반환 :
  * 기본 배열 [] : .length
  * 문자열 String : .length()
  * 컬렉션 List, Set, Map : size()
  * 
- * 정석적인 컬랙션 공백 체크 :
- * if (collection != null && !collection.isEmpty()) {
- *   // 컬렉션이 null이 아니고 비어있지 않을 때 로직 수행
+ * 컬랙션 자료구조 내 공백 체크 :
+ * if (!Collection.isEmpty()) {
+ *   // 비어있지 않을 때 로직 수행
  * }
  */

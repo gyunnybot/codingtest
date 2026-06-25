@@ -11,8 +11,8 @@ class Solution {
         }
 
         for (String number : phone_book) {
-            for (int i = 1; i < number.length(); i++) {
-                if (st.contains(number.substring(0, i))) {
+            for (int i = 1; i < number.length(); i++) { // n - 1
+                if (st.contains(number.substring(0, i))) { // n - 2
                     return false;
                 }
             }
@@ -26,5 +26,5 @@ class Solution {
  * set : contains(value);
  * map : map.containsKey(key);
  * 
- * String.substring(st_idx, ed_idx); : st_idx부터 ed_idx - 1까지 문자열 부분 추출
+ * String.substring(st_idx, ed_idx); : st_idx부터 ed_idx - 1까지의 문자열 부분 추출
  */
