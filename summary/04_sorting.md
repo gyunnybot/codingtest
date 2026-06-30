@@ -43,7 +43,7 @@ public static void main(String[] args) throws IOException {
 java에서는 pair 없다. 클래스를 따로 정의해줘야 하고, 해당 원소들의 정렬이 필요하다면, 정렬 기준도 Comparable<T class> 형식으로 implements해서 구현해야 한다.
 
 ```java
-static class Info implements Comparable<Info> {
+class Info implements Comparable<Info> {
     int start;
     int end;
 

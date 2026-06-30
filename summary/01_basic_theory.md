@@ -25,7 +25,7 @@ sign / exponent / fraction<br>
 ### BOJ, 구름 환경에서 빠른 I/O를 위한 CustomScanner
 ```java
 static class CustomScanner {
-    private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private StringTokenizer st;
 
     String next() throws IOException {
@@ -128,7 +128,7 @@ Deque<Integer> st = new ArrayDeque<>();
 
     ```java
     // Comparable
-    static class Info implements Comparable<Info> {
+    class Info implements Comparable<Info> {
         int start;
         int end;
 

@@ -10,7 +10,7 @@
 n 이하의 자연수 중 중복 없이 m개의 숫자 뽑기. 호출은 combination(0)으로 고정
 
 ```java
-static void combination(int start) {
+void combination(int start) {
     if (arrayList.size() == m) {
         for (int num : arrayList) {
             sb.append(num).append(" ");
@@ -45,7 +45,7 @@ static void combination(int start) {
 n개의 숫자 중 중복 없이 m개의 숫자 뽑기. 호출은 combinationIdx(-1)으로 고정
 
 ```java
-static void combinationIdx(int start) {
+void combinationIdx(int start) {
     if (arrayList.size() == m) {
         for (int num : arrayList) {
             sb.append(num).append(" ");
