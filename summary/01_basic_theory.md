@@ -18,14 +18,14 @@ IEEE 754 :
 예를 들어, -6.75를 이진수로 나타내면 -1.1011 * 2^2가 된다. 따라서,
 
 sign / exponent / fraction<br>
-1 / 127+2 / 10110000....(나머지는 0으로 채워짐)
+1 / 10000001 / 10110000....(나머지는 0으로 채워짐)
 
 <br>
 
 ### BOJ, 구름 환경에서 빠른 I/O를 위한 CustomScanner
 ```java
 static class CustomScanner {
-    private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private StringTokenizer st;
 
     String next() throws IOException {
@@ -59,7 +59,7 @@ System.out.println(s.charAt(4)); // o
 System.out.println(s.indexOf('o')); // 4
 ```
 
-프로그래머스는 값을 입력받을 필요가 없으므로 CustomScanner 사용할 필요 없다.
+프로그래머스는 값을 입력받을 필요가 없으므로 CustomScanner 정의 불필요
 
 <br>
 
@@ -68,9 +68,11 @@ System.out.println(s.indexOf('o')); // 4
 
 재귀나 백트래킹처럼 원소를 뒤에서 추가, 삭제하는 상황이 빈번한 경우 컬랙션 배열 ArrayList를 사용한다.
 
-배열을 제외한 나머지 자료구조는 컬랙션을 사용한다.
+배열을 제외한 나머지 자료구조는 웬만하면 컬랙션을 사용한다.
 
-빈출되는 자료구조 : 우선순위 큐, 큐, 스택 정리
+<br>
+
+빈출되는 자료구조 : 우선순위 큐, 큐, 스택 정리 :
 ```java
 PriorityQueue<Integer> pq = new PriorityQueue<>();
 
@@ -145,7 +147,7 @@ Deque<Integer> st = new ArrayDeque<>();
         }
     }
 
-    Arrays.sort(infos);
+    Collections.sort(infos);
 
     // Comparator
     class StartComparator implements Comparator<Info> {
@@ -161,7 +163,7 @@ Deque<Integer> st = new ArrayDeque<>();
 
 <br>
 
-### 람다 표현식으로 Comparator 구현 (코테에서 일반적인 정렬 방법)
+### 람다 표현식으로 Comparator 직접 구현 (코테에서의 일반적인 정렬 방법)
 ```java
 class User {
     Long id;
