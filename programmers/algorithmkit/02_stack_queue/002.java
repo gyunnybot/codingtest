@@ -6,24 +6,26 @@ class Solution {
         List<Integer> days = new ArrayList<>();
 
         for (int i = 0; i < progresses.length; i++) {
-            int remain = 100 - progresses[i];
-            int day = remain / speeds[i];
+            int remaining_work = 100 - progresses[i];
+            int remaining_days = remaining_work / speeds[i];
 
-            if (remain % speeds[i] != 0) {
-                day++;
+            if (remaining_work % speeds[i] != 0) {
+                remaining_days++;
             }
 
-            days.add(day);
+            days.add(remaining_days);
         }
 
         int deploy_day = days.get(0);
         int cnt = 1;
 
         for (int i = 1; i < days.size(); i++) {
-            if (deploy_day < days.get(i)) {
+            int temp = days.get(i);
+
+            if (deploy_day < temp) {
                 answer.add(cnt);
 
-                deploy_day = days.get(i);
+                deploy_day = temp;
                 cnt = 1;
             } else {
                 cnt++;

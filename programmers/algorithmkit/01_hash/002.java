@@ -23,7 +23,7 @@ class Solution {
  * 크기 반환 :
  * 기본 배열 [] : .length
  * 문자열 String : .length()
- * 컬렉션 List, Set, Map : size()
+ * 컬렉션 List, Set, Map 등 : size()
  * 
  * 컬랙션 자료구조 내 공백 체크 :
  * if (!Collection.isEmpty()) {
