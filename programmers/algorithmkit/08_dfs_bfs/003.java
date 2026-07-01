@@ -18,23 +18,23 @@ class Solution {
 
         visited[0][0] = 1;
 
-        Queue<Node> q = new ArrayDeque<>();
-        q.offer(new Node(0, 0));
+        Queue<Pos> q = new ArrayDeque<>();
+        q.offer(new Pos(0, 0));
 
         while (!q.isEmpty()) {
-            Node cur = q.poll();
+            Pos cur = q.poll();
 
             for (int i = 0; i < 4; i++) {
-                int ny = cur.first + dy[i];
-                int nx = cur.second + dx[i];
+                int ny = cur.y + dy[i];
+                int nx = cur.x + dx[i];
 
                 if (ny < 0 || ny >= n || nx < 0 || nx >= m) {
                     continue;
                 }
 
                 if (maps[ny][nx] == 1 && visited[ny][nx] == 0) {
-                    visited[ny][nx] = visited[cur.first][cur.second] + 1;
-                    q.offer(new Node(ny, nx));
+                    visited[ny][nx] = visited[cur.y][cur.x] + 1;
+                    q.offer(new Pos(ny, nx));
                 }
             }
         }
@@ -46,13 +46,13 @@ class Solution {
         }
     }
 
-    class Node {
-        int first;
-        int second;
+    class Pos {
+        int y;
+        int x;
 
-        public Node(int first, int second) {
-            this.first = first;
-            this.second = second;
+        public Pos(int y, int x) {
+            this.y = y;
+            this.x = x;
         }
     }
 }

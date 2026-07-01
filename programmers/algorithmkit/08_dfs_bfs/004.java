@@ -2,7 +2,7 @@ import java.util.*;
 
 class Solution {
     boolean[] visited = new boolean[51];
-    int answer = 0;
+    int answer = 0; // 변환할 수 없는 경우에는 0를 return 합니다.
 
     public int solution(String begin, String target, String[] words) {
 
@@ -19,7 +19,7 @@ class Solution {
             return 0;
         }
 
-        bfs(new Node(begin, 0), target, words);
+        bfs(new Node(begin, 0), target, words); // 변환할 수 없는 경우에는 0를 return 합니다.
 
         return answer;
     }

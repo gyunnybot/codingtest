@@ -5,6 +5,7 @@ class Solution {
         int answer = 0;
 
         int[] temp = new int[n];
+
         Arrays.fill(temp, 1);
 
         for (int i : lost) {
@@ -32,6 +33,7 @@ class Solution {
                 answer++;
             }
         }
+        
         return answer;
     }
 }

@@ -48,5 +48,3 @@ class Solution {
         return true;
     }
 }
-
-// 시간복잡도 생각하기

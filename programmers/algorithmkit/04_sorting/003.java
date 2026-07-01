@@ -6,6 +6,7 @@ class Solution {
 
         Arrays.sort(citations);
 
+        // 배열 뒤집기
         for (int i = 0; i < citations.length / 2; i++) {
             int temp = citations[i];
             citations[i] = citations[citations.length - i - 1];

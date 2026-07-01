@@ -7,7 +7,7 @@ class Solution {
         List<String> string_numbers = new ArrayList<>();
 
         for (int i = 0; i < numbers.length; i++) {
-            string_numbers.add(Integer.toString(numbers[i])); // Collections.toString(value) : Collection value를 문자열로 변경
+            string_numbers.add(Integer.toString(numbers[i])); // Object.toString(value) : 객체를 문자열로 변경
         }
 
         // sort(list, comparator)에서, comparator 내 compare를 람다식으로 구현
