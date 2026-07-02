@@ -1,11 +1,11 @@
-SELECT A.ID, IFNULL(B.CHILD_COUNT, 0) AS CHILD_COUNT
-FROM ECOLI_DATA AS A LEFT OUTER JOIN ( -- 자식이 없다면 자식의 수는 0으로 출력해주세요
+SELECT A.ID, IFNULL(B.CHILD_COUNT, 0) AS CHILD_COUNT -- 2. A를 기준으로 OUTER JOIN할 때, null이 발생한다
+FROM ECOLI_DATA AS A LEFT OUTER JOIN ( -- 자식이 없다면 자식의 수는 0으로 출력해주세요 -> OUTER JOIN + IFNULL
     SELECT PARENT_ID, COUNT(*) AS CHILD_COUNT
     FROM ECOLI_DATA AS B
     GROUP BY PARENT_ID
     HAVING PARENT_ID IS NOT NULL
-) AS B
+) AS B -- 1. 생성되는 테이블 B에는 PARENT_ID가 NULL인 레코드는 없다
 ON A.ID = B.PARENT_ID
 ORDER BY A.ID ASC;
 
--- 조인 조건을 만족하지 않는 레코드도 출력해야 한다면 외부 조인을 사용해야 한다
+-- 조인 조건을 만족하지 않는 레코드도 출력해야 한다면 외부 조인을 사용을 고려한다

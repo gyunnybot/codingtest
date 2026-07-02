@@ -10,4 +10,5 @@ WHERE SALES_DATE LIKE '2022-03%'
 
 ORDER BY SALES_DATE ASC, PRODUCT_ID ASC, USER_ID ASC;
 
--- UNION: set, UNION ALL: multi_set in C++?
+-- UNION: set (중복 X), UNION ALL: multi_set (중복 O) in C++?
+-- SELECT 문에서 NULL 속성? -> 해당 속성 값을 NULL로 표기해라
