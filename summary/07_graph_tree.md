@@ -22,9 +22,10 @@ st.poll(); // 맨 위 요소 반환 후 삭제
 st.peek(); // 맨 위 요소 조회만
 
 
-배열 연결리스트 : List<Integer>[] adj = new ArrayList[n];
+다중 배열 연결리스트 : List<Integer>[] adj = new ArrayList[n];
 
-adj[i].add(x); // i 번째 연결리스트(노드)에 x와의 연결 관계 추가
+adj[i].add(x); // i 번째 연결리스트에 원소 x 추가
+adj[i].get(idx); // idx 번째 원소 조회
 adj[i].remove(adj[i].size() - 1); // 가장 마지막 원소 제거
 ```
 

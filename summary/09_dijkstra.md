@@ -62,6 +62,9 @@ public class Main {
 
         // 다익스트라 알고리즘 시작
         PriorityQueue<Node> pq = new PriorityQueue<>();
+        
+        // Node가 Comparable 구현 없이 람다식으로 직접 정렬도 가능
+        // PriorityQueue<Node> pq = new PriorityQueue<>((n1, n2) -> Integer.compare(n1.weight, n2.weight));
 
         d[start] = 0;
         pq.add(new Node(start, d[start]));
