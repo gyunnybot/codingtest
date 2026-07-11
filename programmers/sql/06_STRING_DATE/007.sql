@@ -16,3 +16,5 @@ AND P.DURATION_TYPE = CASE WHEN DATEDIFF(H.END_DATE, H.START_DATE) + 1 >= 90 THE
                            END
 WHERE C.CAR_TYPE = '트럭'
 ORDER BY FEE DESC, H.HISTORY_ID DESC;
+
+-- 할인 정책이 테이블 P에 없어도 레코드가 유지되어야 함. LEFT OUTER JOIN 사용
