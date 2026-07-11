@@ -3,4 +3,4 @@ FROM SUBWAY_DISTANCE
 GROUP BY ROUTE
 ORDER BY SUM(D_BETWEEN_DIST) DESC; -- CONCAT 문자열로는 정렬 불가
 
--- ROUND(attrib, n) : 반올림하여 소수 n 번째자리까지 출력
+-- ROUND(attrib, n) : 속성값을 반올림하여 소수 n 번째자리까지 출력

@@ -15,6 +15,6 @@ WHERE id = 1                  -- INT
 WHERE name = 'Alice'         -- VARCHAR
 WHERE created_at = '2026-07-02' -- DATE
 WHERE YEAR(created_at) = 2026   -- YEAR() -> INT
-WHERE MONTH(created_at) IN (1, 2, 3)
-WHERE DAYNAME(created_at) = 'Monday' -- 문자열 반환
+WHERE MONTH(created_at) IN (1, 2, 3) -- MONTH() -> INT
+WHERE DAYNAME(created_at) = 'Monday' -- DAYNAME() -> VARCHAR
 */
