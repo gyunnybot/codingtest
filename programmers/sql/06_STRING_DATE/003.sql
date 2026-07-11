@@ -1,9 +1,12 @@
-SELECT CONCAT('/home/grep/src/', BOARD_ID, '/', FILE_ID, FILE_NAME, FILE_EXT) AS FILE_PATH
-FROM USED_GOODS_FILE
-WHERE BOARD_ID = (
-                  SELECT BOARD_ID
-                  FROM USED_GOODS_BOARD 
-                  ORDER BY VIEWS DESC
-                  LIMIT 1
-                 )
-ORDER BY FILE_ID DESC;
+SELECT U.USER_ID, U.NICKNAME, CONCAT(U.CITY, ' ', U.STREET_ADDRESS1, ' ', STREET_ADDRESS2) AS 전체주소, 
+CONCAT(SUBSTR(TLNO, 1, 3), '-', SUBSTR(TLNO, 4, 4), '-', SUBSTR(TLNO, 8, 4)) AS 전화번호
+FROM USED_GOODS_USER AS U
+WHERE U.USER_ID IN (
+                    SELECT WRITER_ID
+                    FROM USED_GOODS_BOARD AS B
+                    GROUP BY WRITER_ID
+                    HAVING COUNT(*) >= 3
+                   )
+ORDER BY U.USER_ID DESC;
+
+-- SUBSTR(속성, 차례 번호, 추출 개수) : JAVA의 String.substring(st_idx, ed_idx)과 비슷하지만 파라미터가 다르다
