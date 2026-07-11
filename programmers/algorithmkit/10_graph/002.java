@@ -25,7 +25,7 @@ class Solution {
             int cnt = 0;
 
             for (int j = 1; j <= n; j++) {
-                if (adj[i][j] != 0) { // i가 j에 대해 결과가 정해지는 경우
+                if (adj[i][j] != 0) {
                     cnt++;
                 }
             }

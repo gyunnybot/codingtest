@@ -44,20 +44,21 @@ class Solution {
 
 /**
  * 중첩 클래스 : 그냥 Solution 클래스 내부에 생성한다.
- *
  * 생성자는 public class_name{}
  *
- * 정렬 방식 필요하면 : implements Comparable<Pair> 추가 후 compareTo 재정의
- *
  * 
- * 커스텀 정렬 Comparator 인자 추가 :
+ * 여러가지 정렬 방식 >
+ * 
+ * 1. implements Comparable<Pair> 추가 후 compareTo 재정의
+ *
+ * 2. Comparator 인자 추가 :
  * 
  * Collections.sort(list, new Comparator<Pair>() { 
  *  @Override
  *  public int compare(Pair p1, Pair p2) {
  *      return Integer.compare(p1.x, p2.x);
- *      }
- *  });
+ *  }
+ * });
  * 
- * 커스텀 정렬 람다식 : Collections.sort(list, (p1, p2) -> Integer.compare(p1.x, p2.x));
+ * 3. 람다식 : Collections.sort(list, (p1, p2) -> Integer.compare(p1.x, p2.x));
  */

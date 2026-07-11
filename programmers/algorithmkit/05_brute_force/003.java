@@ -48,3 +48,5 @@ class Solution {
         return true;
     }
 }
+
+// 보수적으로 O(7^7)의 시간복잡도?

@@ -28,3 +28,9 @@ class Solution {
         return answer;
     }
 }
+
+/**
+ * 기본형은 Collections.reverseOrder() 사용 불가능
+ * 
+ * 역순으로 정렬? 래퍼 타입으로 변경하거나 반복문 사용
+ */

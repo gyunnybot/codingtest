@@ -7,7 +7,7 @@ class Solution {
         Map<String, Integer> mp = new HashMap<>();
 
         for (String p : participant) {
-            mp.put(p, mp.getOrDefault(p, 0) + 1); // 동명이인을 고려하면 mp.put(p, 1) 불가
+            mp.put(p, mp.getOrDefault(p, 0) + 1); // 참가자 중에는 동명이인이 있을 수 있습니다.
         }
 
         for (String c : completion) {
@@ -15,7 +15,7 @@ class Solution {
         }
 
         for (String p : participant) {
-            if (mp.get(p) != 0) { // java는 boolean, int 타입을 구별한다. 명확하게 boolean 타입 반환
+            if (mp.get(p) != 0) { // java는 boolean, int 타입을 구별한다. if에 명확한 boolean 전달
                 answer = p;
                 break;
             }

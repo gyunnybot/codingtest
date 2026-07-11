@@ -2,7 +2,7 @@ import java.util.*;
 
 class Solution {
     boolean[] visited = new boolean[51];
-    int answer = 0; // 변환할 수 없는 경우에는 0를 return 합니다.
+    int answer = 0; // 변환할 수 없는 경우에는 0을 return 합니다.
 
     public int solution(String begin, String target, String[] words) {
 
@@ -19,11 +19,12 @@ class Solution {
             return 0;
         }
 
-        bfs(new Node(begin, 0), target, words); // 변환할 수 없는 경우에는 0를 return 합니다.
+        bfs(new Node(begin, 0), target, words); // 변환할 수 없는 경우에는 0을 return 합니다.
 
         return answer;
     }
 
+    // bfs는 재귀적인 호출이 없으므로 필요한 파라미터를 직접 가져와도 부담이 적다
     void bfs(Node node, String target, String[] words) {
         Queue<Node> q = new ArrayDeque<>();
         q.offer(node);

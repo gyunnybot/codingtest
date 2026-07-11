@@ -7,7 +7,7 @@ class Solution {
         Arrays.sort(times);
 
         long left = 0;
-        long right = (long) times[times.length - 1] * n; // 형 변환 신경쓰기
+        long right = (long) times[times.length - 1] * n; // 타입 변환 신경쓰기
 
         while (left <= right) {
             long mid = (left + right) / 2;
@@ -24,6 +24,7 @@ class Solution {
                 answer = mid;
             }
         }
+        
         return answer;
     }
 }

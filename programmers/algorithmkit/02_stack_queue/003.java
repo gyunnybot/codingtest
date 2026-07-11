@@ -25,8 +25,8 @@ class Solution {
 /**
  * String 타입은 향상된 반복문 for(char c : s) 불가능
  * 
- * 일반 for 문 + length()로 접근
- *
+ * 일반 for 문 + length()로 접근 >
+ * 
  * for(int i = 0; i < s.length(); i++) {
  *  char c = s.charAt(i);
  * }

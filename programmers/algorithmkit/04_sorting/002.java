@@ -7,11 +7,12 @@ class Solution {
         List<String> string_numbers = new ArrayList<>();
 
         for (int i = 0; i < numbers.length; i++) {
-            string_numbers.add(Integer.toString(numbers[i])); // Object.toString(value) : 객체를 문자열로 변경
+            string_numbers.add(Integer.toString(numbers[i])); // Object.toString(Object value) : 객체를 문자열로 변경
         }
 
         // sort(list, comparator)에서, comparator 내 compare를 람다식으로 구현
-        Collections.sort(string_numbers, (s1, s2) -> (s2 + s1).compareTo(s1 + s2)); // a.compareTo(b) : a, b는 문자열 또는 컬랙션 자료형
+        // String : s1.compareTo(s2), Wrapper : Wrapper1.compare(Wrapper2)
+        Collections.sort(string_numbers, (s1, s2) -> (s2 + s1).compareTo(s1 + s2));
 
         if (string_numbers.get(0).equals("0")) {
             answer = "0";
