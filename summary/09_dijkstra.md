@@ -30,16 +30,16 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 
 public class Main {
-    static CustomScanner sc = new CustomScanner();
+    static CustomScanner cs = new CustomScanner();
     static int vertex, edge, start;
     static int[] d;
     static List<Node>[] adj;
     static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
-        vertex = sc.nextInt(); // 정점의 개수
-        edge = sc.nextInt(); // 간선의 개수
-        start = sc.nextInt(); // 시작 노드 번호
+        vertex = cs.nextInt(); // 정점의 개수
+        edge = cs.nextInt(); // 간선의 개수
+        start = cs.nextInt(); // 시작 노드 번호
 
         // 인접 리스트 배열 초기화
         adj = new ArrayList[vertex + 1];
@@ -53,16 +53,16 @@ public class Main {
 
         // 간선 정보 입력
         for (int i = 0; i < edge; i++) {
-            int from = sc.nextInt();
-            int to = sc.nextInt();
-            int weight = sc.nextInt();
+            int from = cs.nextInt();
+            int to = cs.nextInt();
+            int weight = cs.nextInt();
 
             adj[from].add(new Node(to, weight));
         }
 
         // 다익스트라 알고리즘 시작
         PriorityQueue<Node> pq = new PriorityQueue<>();
-        
+
         // Node가 Comparable 구현 없이 람다식으로 직접 정렬도 가능
         // PriorityQueue<Node> pq = new PriorityQueue<>((n1, n2) -> Integer.compare(n1.weight, n2.weight));
 
