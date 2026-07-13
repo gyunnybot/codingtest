@@ -120,7 +120,7 @@ public class Main {
 <br>
 
 ### Arrays.fill, Collections.fill 정리
-일반 배열 [], 컬랙션 모두 사용 가능하다.
+일반 배열 [] (primitive type 포함), 컬랙션 모두 사용 가능하다.
 ```java
 // 1차원 배열의 경우
 int[] parent = new int[5];

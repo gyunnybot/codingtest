@@ -22,7 +22,7 @@ st.poll(); // 맨 위 요소 반환 후 삭제
 st.peek(); // 맨 위 요소 조회만
 
 
-다중 배열 연결리스트 : List<Integer>[] adj = new ArrayList[n];
+트리, 그래프에서 쓰이는 연결리스트 배열 : List<Integer>[] adj = new ArrayList[n];
 
 adj[i].add(x); // i 번째 연결리스트에 원소 x 추가
 adj[i].get(idx); // idx 번째 원소 조회

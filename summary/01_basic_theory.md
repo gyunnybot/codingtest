@@ -3,7 +3,7 @@
 ### IEEE 754
 
 <br>
-IEEE 754 :
+IEEE 754 : 부동소수점 국제 표준
 
     bit / exponent / fraction
 
@@ -11,9 +11,13 @@ IEEE 754 :
     
     double = 1 / 11 / 52
 
+<br>
 
+bias : exponent에 더해지는 보정 값
 
-<br>float bias = 2^(8-1)-1 =  127, double bias = 2^(11-1)-1 =1023
+    float = 2^(8-1)-1 =  127, double = 2^(11-1)-1 =1023
+
+<br>
 
 예를 들어, -6.75를 이진수로 나타내면 -1.1011 * 2^2가 된다. 따라서,
 
@@ -50,6 +54,8 @@ static class CustomScanner {
 }
 ```
 
+<br>
+
 문자 하나씩 받을 때는 일단 next()로 문자열 형태로 받은 후 s.charAt(0)을 통해 char 타입으로 저장한다.
 
 ```java
@@ -59,6 +65,7 @@ System.out.println(s.charAt(4)); // o
 System.out.println(s.indexOf('o')); // 4
 ```
 
+<br>
 프로그래머스는 값을 입력받을 필요가 없으므로 CustomScanner 정의 불필요
 
 <br>
@@ -159,7 +166,10 @@ Deque<Integer> st = new ArrayDeque<>();
 
     Collections.sort(list, new StartComparator());
     ```
-일반 [] 정렬은 원시 타입의 경우 comparator 사용 불가, 래퍼형의 경우에만 사용 가능하다.
+    
+    <br>
+    
+    일반 [] 정렬은 원시 타입의 경우 comparator 사용 불가, 래퍼형의 경우에만 사용 가능하다. 원시 타입은 정렬 조건을 줄 수 없다고 보면 된다.
 
 <br>
 

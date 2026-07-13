@@ -3,7 +3,7 @@
 
 일반 배열 []에서 new int[100001];처럼 미리 하드코딩된 배열에 값 입력 후 정렬 시, sort(arr, 0, n)으로 **범위 지정 필수!**
 
-양수만 받는 경우, 다 짜놓고 결과가 0 0 0 0 0... 이렇게 나온다. 범위 지정 필수
+양수만 받는 경우, 다 짜놓고 결과가 0 0 0 0 0... 이렇게 나온다. 반드시 범위 지정 필수
 
 <br>
 
@@ -40,7 +40,7 @@ public static void main(String[] args) throws IOException {
 <br>
 
 ### pair(객체) 정렬
-java에서는 pair 없다. 클래스를 따로 정의해줘야 하고, 해당 원소들의 정렬이 필요하다면, 정렬 기준도 Comparable<T class> 형식으로 implements해서 구현해야 한다.
+java에서는 pair 없다. 클래스를 따로 정의해줘야 하고, 기본 정렬 기준이 필요하다면 Comparable 인터페이스를 구현한다.
 
 ```java
 class Info implements Comparable<Info> {
@@ -62,6 +62,8 @@ class Info implements Comparable<Info> {
     }
 }
 ```
+
+<br>
 
 Comparable, Comparator 차이만 알아두자. 실전에서는 람다 표현식으로 Comparator를 구현해서 두 번째 파라미터를 완성하는 것을 기본으로 한다.
 
