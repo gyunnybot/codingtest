@@ -17,6 +17,4 @@ public class Solution {
     }
 }
 
-/**
- * Solution의 return type은 바꿔도 된다. auto-boxing 처리가 되는 듯? 출력만 잘 되면 가능
- */
+// Solution의 return type은 바꿔도 된다. auto-boxing 처리가 되는 듯? 출력만 잘 되면 가능
