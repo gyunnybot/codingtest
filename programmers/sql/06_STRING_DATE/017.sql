@@ -3,3 +3,5 @@ FROM AIR_POLLUTION
 WHERE LOCATION2 = '수원'
 GROUP BY YEAR
 ORDER BY YEAR ASC;
+
+-- 일반적으로 속성은 ''없이 생성하지만, PM2.5처럼 .이 들어가는 이름은 반드시 ''을 사용한다
