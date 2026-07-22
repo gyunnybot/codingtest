@@ -9,4 +9,4 @@ WHERE U.USER_ID IN (
                    )
 ORDER BY U.USER_ID DESC;
 
--- SUBSTR(속성, 차례 번호, 추출 개수) : JAVA의 String.substring(st_idx, ed_idx)과 비슷하지만 파라미터가 다르다
+-- SUBSTR(속성, 차례 번호(index 아님 주의), 추출 개수) : JAVA의 String.substring(st_idx, ed_idx)과 구분하기

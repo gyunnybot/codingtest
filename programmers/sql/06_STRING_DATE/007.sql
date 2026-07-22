@@ -17,5 +17,5 @@ AND P.DURATION_TYPE = CASE WHEN DATEDIFF(H.END_DATE, H.START_DATE) + 1 >= 90 THE
 WHERE C.CAR_TYPE = '트럭'
 ORDER BY FEE DESC, H.HISTORY_ID DESC;
 
--- 테이블 P에 할인 정책이 없는 H+C 테이블의 레코드(7일 미만)는 NULL로 유지되어야 함. LEFT OUTER JOIN 사용
+-- 테이블 P에 할인 정책이 없는 H+C 테이블의 레코드(7일 미만)도 NULL 반환 후 IFNULL로 계산해야 하므로 LEFT OUTER JOIN 사용
 -- H+C 레코드는 LEFT OUTER JOIN과의 가독성을 위해 INNER JOIN으로 작성
