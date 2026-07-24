@@ -16,7 +16,7 @@ class Solution {
             days.add(remaining_days);
         }
 
-        // 첫 원소부터 반복문을 넣어야 한다는 강박 버리기
+        // 첫 원소부터 반복문에 넣어야 한다는 강박 버리기
         int deploy_day = days.get(0);
         int cnt = 1;
 
