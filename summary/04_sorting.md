@@ -169,6 +169,8 @@ void merge(int st, int ed) {
 }
 ```
 
+<br>
+
 퀵 정렬 : O(NlogN~N^2)
 
 ```java
@@ -202,6 +204,8 @@ void quick_sort(int st, int ed) { // 4개의 원소 정렬? quick_sort(0, 4)
 	quick_sort(r + 1, ed); // r+1 ~ ed
 }
 ```
+
+<br>
 
 카운팅 정렬 : O(N + K) (N = 수의 개수, K = 수의 범위)
 

@@ -1,8 +1,9 @@
-# 코테 이론 기본
+# 알고리즘 외 기본 이론
 
 ### IEEE 754
 
 <br>
+
 IEEE 754 : 부동소수점 국제 표준
 
     bit / exponent / fraction
@@ -19,7 +20,7 @@ bias : exponent에 더해지는 보정 값
 
 <br>
 
-예를 들어, -6.75를 이진수로 나타내면 -1.1011 * 2^2가 된다. 따라서,
+예를 들어, -6.75를 이진수로 나타내면 -1.1011 * 2^2가 된다. 따라서 exponent는 127 + 2 = 129
 
 sign / exponent / fraction<br>
 1 / 10000001 / 10110000....(나머지는 0으로 채워짐)
@@ -46,7 +47,7 @@ static class CustomScanner {
         return st.nextToken();
     }
 
-    int nextInt() throws IOException {
+    Integer nextInt() throws IOException {
         String s = next();
 
         return Integer.parseInt(s);
@@ -66,6 +67,7 @@ System.out.println(s.indexOf('o')); // 4
 ```
 
 <br>
+
 프로그래머스는 값을 입력받을 필요가 없으므로 CustomScanner 정의 불필요
 
 <br>
@@ -95,7 +97,7 @@ Queue<Integer> q = new ArrayDeque<>();
 값 반환+삭제 : poll();
 
 
-Deque<Integer> st = new ArrayDeque<>();
+Deque<Integer> stk = new ArrayDeque<>();
 
 값 삽입 : push(value);
 값 조회 : peek();
@@ -127,6 +129,7 @@ Deque<Integer> st = new ArrayDeque<>();
 
         System.out.println(list); // 출력: [5, 2, 3, 4, 1]
     ```
+
 <br>
 
 - Comparable, Comparator
@@ -169,7 +172,8 @@ Deque<Integer> st = new ArrayDeque<>();
     
     <br>
     
-    일반 [] 정렬은 원시 타입의 경우 comparator 사용 불가, 래퍼형의 경우에만 사용 가능하다. 원시 타입은 정렬 조건을 줄 수 없다고 보면 된다.
+    일반 [] 정렬은 원시 타입의 경우 comparator 사용 불가, 래퍼형의 경우에만 사용 가능하다.
+    그냥 원시 타입은 커스텀 조건을 줄 수 없다고 보면 된다.
 
 <br>
 
