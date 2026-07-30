@@ -42,6 +42,8 @@ public static void main(String[] args) throws IOException {
 ### pair(객체) 정렬
 java에서는 pair 없다. 클래스를 따로 정의해줘야 하고, 기본 정렬 기준이 필요하다면 Comparable 인터페이스를 구현한다.
 
+보통 y, x 좌표나 시작과 끝 등을 저장할 때 만든다.
+
 ```java
 class Info implements Comparable<Info> {
     int start;
@@ -65,7 +67,11 @@ class Info implements Comparable<Info> {
 
 <br>
 
-Comparable, Comparator 차이만 알아두자. 실전에서는 람다 표현식으로 Comparator를 구현해서 두 번째 파라미터를 완성하는 것을 기본으로 한다.
+Comparable, Comparator 차이만 알아두자.
+
+Comparable은 클래스의 기본 정렬 설정이다. compareTo를 재정의한다. Comparator는 sort 메서드에 적용할 수 있는 인자다. compare 메서드를 재정의한다.
+
+실전에서는 람다 표현식으로 Comparator가 들어가는 두 번째 파라미터에서 직접 구현하는 것을 기본으로 한다.
 
 <br>
 
@@ -156,7 +162,7 @@ void merge(int st, int ed) {
 			temp[i] = a[l++];
 		} else if (l == mid) {
 			temp[i] = a[r++];
-		} else if (a[l]<=a[r]) {
+		} else if (a[l] <= a[r]) {
 			temp[i] = a[l++];
 		} else {
 			temp[i] = a[r++];

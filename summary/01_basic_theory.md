@@ -2,8 +2,6 @@
 
 ### IEEE 754
 
-<br>
-
 IEEE 754 : 부동소수점 국제 표준
 
     bit / exponent / fraction
@@ -73,36 +71,40 @@ System.out.println(s.indexOf('o')); // 4
 <br>
 
 ### 자료구조 정리
-입력으로 주어지는 고정 격자 배열이나, 정해진 범위가 있는 배열 바구니는 일반 배열 []을 사용한다.
 
-재귀나 백트래킹처럼 원소를 뒤에서 추가, 삭제하는 상황이 빈번한 경우 컬랙션 배열 ArrayList를 사용한다.
+- 배열
 
-배열을 제외한 나머지 자료구조는 웬만하면 컬랙션을 사용한다.
+    입력으로 주어지는 고정 격자 배열이나, 정해진 범위가 있는 배열 바구니는 일반 배열 []을 사용한다.
+    
+    재귀나 백트래킹처럼 원소를 뒤에서 추가, 삭제하는 상황이 빈번한 경우 컬랙션 배열 ArrayList를 사용한다.
+    
+    배열을 제외한 나머지 자료구조는 웬만하면 컬랙션을 사용한다.
 
 <br>
 
-빈출되는 자료구조 : 우선순위 큐, 큐, 스택 정리 :
-```java
-PriorityQueue<Integer> pq = new PriorityQueue<>();
+- 빈출되는 자료구조 - 우선순위 큐, 큐, 스택 :
 
-값 삽입 : offer(value);
-값 조회 : peek();
-값 반환+삭제 : poll();
+    ```java
+    PriorityQueue<Integer> pq = new PriorityQueue<>();
 
-
-Queue<Integer> q = new ArrayDeque<>();
-
-값 삽입 : offer(value);
-값 조회 : peek();
-값 반환+삭제 : poll();
+    값 삽입 : offer(value);
+    값 조회 : peek();
+    값 반환 + 삭제 : poll();
 
 
-Deque<Integer> stk = new ArrayDeque<>();
+    Queue<Integer> q = new ArrayDeque<>();
 
-값 삽입 : push(value);
-값 조회 : peek();
-값 반환+삭제 : poll();
-```
+    값 삽입 : offer(value);
+    값 조회 : peek();
+    값 반환 + 삭제 : poll();
+
+
+    Deque<Integer> stk = new ArrayDeque<>();
+
+    값 삽입 : push(value);
+    값 조회 : peek();
+    값 반환 + 삭제 : poll();
+    ```
 
 <br>
 
@@ -173,53 +175,55 @@ Deque<Integer> stk = new ArrayDeque<>();
     <br>
     
     일반 [] 정렬은 원시 타입의 경우 comparator 사용 불가, 래퍼형의 경우에만 사용 가능하다.
-    그냥 원시 타입은 커스텀 조건을 줄 수 없다고 보면 된다.
+    
+    원시 타입은 커스텀 조건을 줄 수 없다고 보면 편하다.
 
 <br>
 
-### 람다 표현식으로 Comparator 직접 구현 (코테에서의 일반적인 정렬 방법)
-```java
-class User {
-    Long id;
-    String name;
+- 람다 표현식으로 Comparator 직접 구현 (코테에서의 일반적인 정렬 방법)
 
-    public User(Long id, String name) {
-        this.id = id;
-        this.name = name;
+    ```java
+    class User {
+        Long id;
+        String name;
+
+        public User(Long id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "User{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
-}
+    public static void main(String[] args) throws IOException {
+        List<User> users = new ArrayList<>();
+        users.add(new User(3L, "b"));
+        users.add(new User(1L, "c"));
+        users.add(new User(2L, "a"));
 
-public static void main(String[] args) throws IOException {
-    List<User> users = new ArrayList<>();
-    users.add(new User(3L, "b"));
-    users.add(new User(1L, "c"));
-    users.add(new User(2L, "a"));
+        Collections.sort(users, (u1, u2) -> Long.compare(u1.id, u2.id));
 
-    Collections.sort(users, (u1, u2) -> Long.compare(u1.id, u2.id));
+        for(User u : users) {
+            System.out.println(u.toString()); // 숫자 기준 정렬
+        }
 
-    for(User u : users) {
-        System.out.println(u.toString()); // 숫자 기준 정렬
+        Collections.sort(users, (u1, u2) -> u1.name.compareTo(u2.name));
+
+        for(User u : users) {
+            System.out.println(u.toString()); // 문자열 기준 정렬
+        }
     }
 
-    Collections.sort(users, (u1, u2) -> u1.name.compareTo(u2.name));
-
-    for(User u : users) {
-        System.out.println(u.toString()); // 문자열 기준 정렬
-    }
-}
-
-User{id=1, name='c'}
-User{id=2, name='a'}
-User{id=3, name='b'}
-User{id=2, name='a'}
-User{id=3, name='b'}
-User{id=1, name='c'}
-```
+    User{id=1, name='c'}
+    User{id=2, name='a'}
+    User{id=3, name='b'}
+    User{id=2, name='a'}
+    User{id=3, name='b'}
+    User{id=1, name='c'}
+    ```
