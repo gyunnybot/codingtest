@@ -29,8 +29,8 @@ class Solution {
     }
 }
 
-/**
- * 기본형은 Collections.reverseOrder() 사용 불가능
- * 
- * 역순으로 정렬하려면 래퍼 타입으로 변경하거나, 반복문으로 구현
+/*
+기본형은 Collections.reverseOrder() 사용 불가능
+
+역순으로 정렬하려면 래퍼 타입으로 변경하거나, 반복문으로 구현
  */

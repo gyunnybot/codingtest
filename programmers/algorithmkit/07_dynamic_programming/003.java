@@ -5,6 +5,7 @@ class Solution {
     int[] dx = {0, 1};
     int[][] a = new int[101][101];
     int[][] dp = new int[101][101];
+    int mod = 1000000007;
 
     int recur(int n, int m, int y, int x) {
         if (y == n - 1 && x == m - 1) {
@@ -24,11 +25,12 @@ class Solution {
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) {
                 continue;
             }
+
             if (a[ny][nx] == -1) {
                 continue;
             }
 
-            cnt = (cnt + recur(n, m, ny, nx)) % 1000000007;
+            cnt = (cnt + recur(n, m, ny, nx)) % mod;
         }
 
         dp[y][x] = cnt;

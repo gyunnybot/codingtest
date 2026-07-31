@@ -20,19 +20,18 @@ class Solution {
     }
 }
 
-/**
- * key-value 모두 필요할 때 >
- * map : entrySet() -> Map.Entry 반환
- * entry : getKey(), getValue()
- * 
- * for (Map.Entry<String, Integer> entry : map.entrySet()) {
- *  System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
- * }
- * 
- * 
- * key만 필요할 때 >
- * map : keySet()
- * 
- * value만 필요할 때 >
- * map : values()
+/*
+key-value 모두 필요할 때 >
+map : entrySet() -> Map.Entry 반환
+entry : getKey(), getValue() -> key, value 반환
+
+for (Map.Entry<String, Integer> entry : map.entrySet()) {
+    System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+}
+
+key만 필요할 때 >
+map : keySet()
+
+value만 필요할 때 >
+map : values()
  */

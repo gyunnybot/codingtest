@@ -15,7 +15,7 @@ class Solution {
         }
 
         for (String p : participant) {
-            if (mp.get(p) != 0) { // java는 boolean, int 타입을 구별한다. if에 명확한 boolean 전달
+            if (mp.get(p) != 0) { // java는 boolean, int 타입을 구별한다. 조건절에 명확한 boolean 전달 필요
                 answer = p;
                 break;
             }

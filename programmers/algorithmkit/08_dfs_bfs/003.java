@@ -12,7 +12,7 @@ class Solution {
 
     int bfs(int[][] maps) {
         int n = maps.length;
-        int m = maps[0].length;
+        int m = maps[0].length; // bfs(n, m)으로 빼는 것이 정석이지만.. maps가 매개변수로 되어 있어서 그냥 가져왔다.
 
         int[][] visited = new int[n][m];
 

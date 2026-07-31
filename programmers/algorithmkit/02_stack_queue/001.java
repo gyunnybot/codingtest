@@ -17,4 +17,4 @@ public class Solution {
     }
 }
 
-// Solution의 return type은 바꿔도 된다. auto-boxing 처리가 되는 듯? 출력만 잘 되면 가능
+// Solution 클래스의 return type은 변경 가능하다. auto-boxing 처리가 되는 것 같다. 출력만 잘 되면 가능한 듯

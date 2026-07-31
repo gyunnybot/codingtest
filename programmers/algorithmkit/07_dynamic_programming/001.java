@@ -1,7 +1,7 @@
 import java.util.*;
 
 class Solution {
-    Set<Integer>[] dp = new HashSet[9];
+    Set<Integer>[] dp = new HashSet[9]; // dp[i] = N i개로 만들 수 있는 문자열 집합
 
     public int solution(int N, int number) {
         if (N == number) {

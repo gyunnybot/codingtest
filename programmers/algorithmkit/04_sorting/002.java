@@ -30,7 +30,7 @@ class Solution {
     }
 }
 
-/* Comparator를 직접 정의하는 방식
+/* Comparator를 직접 정의하는 풀이
 
 import java.util.*;
 
