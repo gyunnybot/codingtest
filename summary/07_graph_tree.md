@@ -1,6 +1,6 @@
 # 그래프, 트리
 ### 그래프에서 쓰이는 자료구조 정리
-```
+```java
 우선순위 큐 : PriorityQueue<Integer> pq = new PriorityQueue<>();
 
 pq.offer(x); // 우선순위 큐에 x 삽입

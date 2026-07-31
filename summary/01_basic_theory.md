@@ -14,11 +14,11 @@ IEEE 754 : 부동소수점 국제 표준
 
 bias : exponent에 더해지는 보정 값
 
-    float = 2^(8-1)-1 =  127, double = 2^(11-1)-1 =1023
+    float = 2^(8-1)-1 = 127, double = 2^(11-1)-1 = 1023
 
 <br>
 
-예를 들어, -6.75를 이진수로 나타내면 -1.1011 * 2^2가 된다. 따라서 exponent는 127 + 2 = 129
+예를 들어, float type 실수 -6.75를 이진수로 나타내면 -1.1011 * 2^2가 된다. 따라서 exponent는 127 + 2 = 129
 
 sign / exponent / fraction<br>
 1 / 10000001 / 10110000....(나머지는 0으로 채워짐)
@@ -55,7 +55,7 @@ static class CustomScanner {
 
 <br>
 
-문자 하나씩 받을 때는 일단 next()로 문자열 형태로 받은 후 s.charAt(0)을 통해 char 타입으로 저장한다.
+문자 하나씩 받을 때는 일단 next()를 통해 문자열 형태로 받은 후 최종적으로 s.charAt(0)을 사용해 char 타입으로 받는다.
 
 ```java
 String s = new String("hello");
@@ -176,11 +176,11 @@ System.out.println(s.indexOf('o')); // 4
     
     일반 [] 정렬은 원시 타입의 경우 comparator 사용 불가, 래퍼형의 경우에만 사용 가능하다.
     
-    원시 타입은 커스텀 조건을 줄 수 없다고 보면 편하다.
+    원시 타입은 comparator나 reverseOrder() 등의 커스텀 조건을 줄 수 없다고 보면 된다.
 
 <br>
 
-- 람다 표현식으로 Comparator 직접 구현 (코테에서의 일반적인 정렬 방법)
+- 람다 표현식으로 Comparator 파라미터 자리에서 직접 구현 (코테에서의 일반적인 정렬 방법)
 
     ```java
     class User {
