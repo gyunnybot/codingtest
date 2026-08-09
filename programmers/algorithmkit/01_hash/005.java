@@ -64,4 +64,4 @@ class Solution {
     }
 }
 
-// map.get(key), map.remove(key), map.contains(key) : idx가 아닌 key를 통해 value를 찾는다
+// map.get(key), map.remove(key), map.containsKey(key) : idx가 아닌 key를 통해 value를 찾는다

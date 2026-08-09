@@ -32,6 +32,12 @@ for (Map.Entry<String, Integer> entry : map.entrySet()) {
 key만 필요할 때 >
 map : keySet()
 
+for (String s : map.keySet()) {
+}
+
 value만 필요할 때 >
 map : values()
+
+for (Integer i : map.values()) {
+}
  */
