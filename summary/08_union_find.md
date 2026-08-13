@@ -107,7 +107,7 @@ public class Main {
             return st.nextToken();
         }
 
-        Integer nextInt() throws IOException {
+        int nextInt() throws IOException {
             String s = next();
 
             return Integer.parseInt(s);

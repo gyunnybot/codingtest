@@ -76,7 +76,7 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
                 return st.nextToken();
             }
 
-            Integer nextInt() throws IOException {
+            int nextInt() throws IOException {
                 String s = next();
 
                 return Integer.parseInt(s);
@@ -152,7 +152,7 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
                 return st.nextToken();
             }
 
-            Integer nextInt() throws IOException {
+            int nextInt() throws IOException {
                 String s = next();
 
                 return Integer.parseInt(s);
@@ -214,7 +214,7 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
                 return st.nextToken();
             }
 
-            Integer nextInt() throws IOException {
+            int nextInt() throws IOException {
                 String s = next();
 
                 return Integer.parseInt(s);
@@ -305,7 +305,7 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
                 return st.nextToken();
             }
 
-            Integer nextInt() throws IOException {
+            int nextInt() throws IOException {
                 String s = next();
 
                 return Integer.parseInt(s);
@@ -367,7 +367,7 @@ dp는 재귀 방식의 구현에서 시간복잡도가 걸릴 때, 배열에 이
                 return st.nextToken();
             }
 
-            Integer nextInt() throws IOException {
+            int nextInt() throws IOException {
                 String s = next();
 
                 return Integer.parseInt(s);

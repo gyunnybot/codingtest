@@ -1,4 +1,4 @@
-# 알고리즘 외 기본 이론
+# 코테 기본 이론
 
 ### IEEE 754
 
@@ -18,10 +18,10 @@ bias : exponent에 더해지는 보정 값
 
 <br>
 
-예를 들어, float type 실수 -6.75를 이진수로 나타내면 -1.1011 * 2^2가 된다. 따라서 exponent는 127 + 2 = 129
+실수 -6.75를 이진수로 나타내면 -1.1011 * 2^2가 된다. 이를 float에 담는다면 exponent는 127 + 2 = 129
 
-sign / exponent / fraction<br>
-1 / 10000001 / 10110000....(나머지는 0으로 채워짐)
+    sign / exponent / fraction<br>
+    1 / 10000001 / 10110000....(나머지는 0으로 채워짐)
 
 <br>
 
@@ -45,7 +45,7 @@ static class CustomScanner {
         return st.nextToken();
     }
 
-    Integer nextInt() throws IOException {
+    int nextInt() throws IOException {
         String s = next();
 
         return Integer.parseInt(s);
@@ -55,7 +55,7 @@ static class CustomScanner {
 
 <br>
 
-문자 하나씩 받을 때는 일단 next()를 통해 문자열 형태로 받은 후 최종적으로 s.charAt(0)을 사용해 char 타입으로 받는다.
+문자 하나씩 받을 때는 next()를 통해 일단 문자열 형태로 받은 후 s.charAt(0)을 사용해 char 타입으로 받는다.
 
 ```java
 String s = new String("hello");
@@ -70,7 +70,7 @@ System.out.println(s.indexOf('o')); // 4
 
 <br>
 
-### 자료구조 정리
+### 배열, 자료구조 정리
 
 - 배열
 
@@ -82,7 +82,7 @@ System.out.println(s.indexOf('o')); // 4
 
 <br>
 
-- 빈출되는 자료구조 - 우선순위 큐, 큐, 스택 :
+- 빈출되는 자료구조 : 우선순위 큐, 큐, 스택
 
     ```java
     PriorityQueue<Integer> pq = new PriorityQueue<>();
@@ -112,7 +112,7 @@ System.out.println(s.indexOf('o')); // 4
 - 일반 [] 배열 정렬: `Arrays.sort(arr);`
 - 일반 [] 내림차순 정렬: `Arrays.sort(arr, Collections.reverseOrder());`
     
-    (단, 기본형인 경우에는 적용 불가. 래퍼형 `Integer[]`로 변경해야 함)
+    (단, 기본형인 경우에는 적용 불가. int의 경우라면 래퍼형 `Integer[]`로 변경해야 함)
     
 - 컬렉션(List 등) 정렬: `Collections.sort(list);`
 - 내림차순 정렬: `Collections.sort(list, Collections.reverseOrder());`
@@ -126,7 +126,7 @@ System.out.println(s.indexOf('o')); // 4
     List<Integer> list = new ArrayList<>(Arrays.asList(5, 4, 3, 2, 1));
         
         // 인덱스 1부터 3까지(4는 제외)만 정렬하고 싶을 때
-        // [4, 3, 2] 부분만 오름차순 정렬됨
+        // [4, 3, 2] 부분만 오름차순 정렬
         Collections.sort(list.subList(1, 4)); // st, ed - 1
 
         System.out.println(list); // 출력: [5, 2, 3, 4, 1]
@@ -136,7 +136,7 @@ System.out.println(s.indexOf('o')); // 4
 
 - Comparable, Comparator
 
-    내가 만든 클래스가 정렬 가능하려면, Comparable 인터페이스를 구현해야 하는데, compareTo 메서드를 재정의하면 된다. 여기서의 정렬 기준이 클래스의 기본 정렬 방식이 된다. 근데, 특정 상황에서 다른 정렬 기준이 필요할 수 있다. 이럴때에는 Comparator 인터페이스를 구현한 클래스를 하나 만들고 sort의 두 번째 인자로 인스턴스를 넣어주면 된다.
+    내가 만든 클래스가 정렬 가능하려면, Comparable 인터페이스를 구현해야 하는데, compareTo 메서드를 재정의하면 된다. 여기서의 정렬 기준이 클래스의 기본 정렬 방식이 된다.
 
     ```java
     // Comparable
@@ -159,28 +159,32 @@ System.out.println(s.indexOf('o')); // 4
         }
     }
 
-    Collections.sort(infos);
+    Collections.sort(infos); // List<Info> infos = new ArrayList<>();
+    ```
 
+    특정 상황에서 다른 정렬 기준이 필요할 수 있다. 이럴 때에는 Comparator 인터페이스를 구현하는 클래스를 생성한 후 sort의 두 번째 인자로 클래스 인스턴스를 넣어주면 된다.
+
+    ```java
     // Comparator
     class StartComparator implements Comparator<Info> {
         @Override
         public int compare(Info i1, Info i2) {
-            return Integer.compare(i1.start, i2.start);
+            return Integer.compare(i1.start, i2.start); // 시작하는 시각이 빠르게
         }
     }
 
-    Collections.sort(list, new StartComparator());
+    Collections.sort(infos, new StartComparator()); // List<Info> infos = new ArrayList<>();
     ```
     
     <br>
     
-    일반 [] 정렬은 원시 타입의 경우 comparator 사용 불가, 래퍼형의 경우에만 사용 가능하다.
+    일반 [] 정렬은 원시 타입의 경우 comparator 사용 불가. 사용자 정의 클래스나 래퍼 타입만 사용 가능하다.
     
-    원시 타입은 comparator나 reverseOrder() 등의 커스텀 조건을 줄 수 없다고 보면 된다.
+    그냥 원시 타입은 comparator나 reverseOrder() 등의 커스텀 조건을 줄 수 없다고 보면 된다.
 
 <br>
 
-- 람다 표현식으로 Comparator 파라미터 자리에서 직접 구현 (코테에서의 일반적인 정렬 방법)
+- 람다 표현식으로 Comparator를 파라미터 위치에서 직접 구현 (코테에서의 일반적인 정렬 방법)
 
     ```java
     class User {

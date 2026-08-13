@@ -63,7 +63,7 @@ public class Main {
         // 다익스트라 알고리즘 시작
         PriorityQueue<Node> pq = new PriorityQueue<>();
 
-        // Node가 Comparable 구현 없이 람다식으로 직접 정렬도 가능
+        // Node에서 Comparable 구현 없이 람다식으로 직접 정렬도 가능
         // PriorityQueue<Node> pq = new PriorityQueue<>((n1, n2) -> Integer.compare(n1.weight, n2.weight));
 
         d[start] = 0;
@@ -131,7 +131,7 @@ public class Main {
             return st.nextToken();
         }
 
-        Integer nextInt() throws IOException {
+        int nextInt() throws IOException {
             String s = next();
 
             return Integer.parseInt(s);
@@ -140,4 +140,6 @@ public class Main {
 }
 ```
 
-pq는 기본적으로 최소 힙(작은 것이 가장 맨 위)으로 정의된다. Collections.reverseOrder()를 사용해 최대 힙으로 변경 가능하다.
+우선순위 큐는 정렬 기준(Comparator)을 받는 생성자가 정의되어 있다. 따라서 우선순위 원소가 나오는 기준을 바로 정의할 수 있다. 하지만 List는 Comparator를 받는 생성자가 없다. 반드시 sort를 사용해야 정렬할 수 있다.
+
+pq는 기본적으로(기본 생성자) 최소 힙(작은 것이 가장 맨 위)으로 정의(Natural Ordering)된다. Collections.reverseOrder()를 사용해 최대 힙으로 변경 가능하다.

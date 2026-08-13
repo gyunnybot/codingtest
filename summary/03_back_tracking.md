@@ -37,7 +37,7 @@ void combination(int start) {
 }
 ```
 
-**for 문에서의 i 시작점, combination(value)에서 value에 들어가는 값**에 따라 다양한 조합을 생성할 수 있는데, visited가 필요할 때가 분명 있다.
+**for 문에서의 i 시작점, combination(value)에서 value에 들어가는 값**에 따라 다양한 조합을 생성할 수 있는데, visited가 필요할 때가 분명 있다. 그냥 기본값으로 정의해두자.
 
 <br>
 

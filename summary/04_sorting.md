@@ -11,7 +11,7 @@
 
 일반 [] 배열 : Arrays.sort(arr, 0, n);
 
-컬랙션 배열 : **Collections.sort(arr.subList(0, n));**
+List 컬랙션 배열 : **Collections.sort(arr.subList(0, n));**
 
 <br>
 
@@ -67,9 +67,9 @@ class Info implements Comparable<Info> {
 
 <br>
 
-Comparable, Comparator 차이만 알아두자.
+Comparable, Comparator 차이 :
 
-Comparable은 클래스의 기본 정렬 설정이다. compareTo를 재정의한다. Comparator는 sort 메서드에 적용할 수 있는 인자다. compare 메서드를 재정의한다.
+	Comparable은 클래스의 기본 정렬 설정이다. compareTo를 재정의한다. Comparator는 sort 메서드에 인자로 들어가는 클래스다. compare 메서드를 재정의한다.
 
 실전에서는 람다 표현식으로 Comparator가 들어가는 두 번째 파라미터에서 직접 구현하는 것을 기본으로 한다.
 
@@ -140,7 +140,7 @@ for (int i = 0; i < n ; i++) {
 ```java
 int[] temp = new int[4]; // 전체 저장 임시 테이블 필요
 
-void merge_sort(int st, int ed) { //  4개의 원소 정렬? merge_sort(0, 4);
+void merge_sort(int st, int ed) { // 4개의 원소 정렬? merge_sort(0, 4);
 	if (st + 1 >= ed) {
 		return;
 	}
