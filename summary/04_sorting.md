@@ -45,17 +45,17 @@ java에서는 pair 없다. 클래스를 따로 정의해줘야 하고, 기본 �
 보통 y, x 좌표나 시작과 끝 등을 저장할 때 만든다.
 
 ```java
-class Info implements Comparable<Info> {
+class Pair implements Comparable<Pair> {
     int start;
     int end;
 
-    public Info(int start, int end) {
+    public Pair(int start, int end) {
         this.start = start;
         this.end = end;
     }
 
     @Override
-    public int compareTo(Info other) {
+    public int compareTo(Pair other) {
         if(this.end == other.end) { // 끝나는 시각이 같다면
             return Integer.compare(this.start, other.start); // 시작 시각이 빠른 순
         }

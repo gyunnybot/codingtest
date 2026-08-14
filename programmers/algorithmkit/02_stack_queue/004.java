@@ -44,12 +44,12 @@ class Solution {
 
 /*
 중첩 클래스 : 그냥 Solution 클래스 내부에 생성한다.
-생성자는 public class_name{}
+생성자는 public 클래스 이름
 
 여러가지 정렬 방식 >
-1. implements Comparable<Pair> 추가 후 compareTo 재정의
+1. implements Comparable<Pair> 추가 후 compareTo 재정의 후 sort
 
-2. Comparator 인자 추가 :
+2. Comparator를 sort의 두 번째 인자에 구현 (클래스 정의 후 인스턴스를 가져와도 가능)
 Collections.sort(list, new Comparator<Pair>() { 
     @Override
     public int compare(Pair p1, Pair p2) {
