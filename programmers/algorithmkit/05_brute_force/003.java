@@ -24,11 +24,6 @@ class Solution {
             st.add(Integer.parseInt(ret));
         }
 
-        // 탈출 조건
-        if (numbers.length() == 0) {
-            return;
-        }
-
         for (int i = 0; i < numbers.length(); i++) {
             recur(ret + numbers.charAt(i), numbers.substring(0, i) + numbers.substring(i + 1));
         }
