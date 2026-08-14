@@ -32,6 +32,7 @@ class Solution {
                     continue;
                 }
 
+                // maps가 전역변수였다면 bfs(n, m) 원래 하던 방식으로 정의했을 것
                 if (maps[ny][nx] == 1 && visited[ny][nx] == 0) {
                     visited[ny][nx] = visited[cur.y][cur.x] + 1;
                     q.offer(new Pos(ny, nx));
@@ -46,6 +47,7 @@ class Solution {
         }
     }
 
+    // Pos, Pair, Info ...
     class Pos {
         int y;
         int x;
