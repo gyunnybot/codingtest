@@ -1,7 +1,7 @@
 import java.util.*;
 
 class Solution {
-    Set<Integer>[] dp = new HashSet[9]; // dp[i] = N i개로 만들 수 있는 문자열 집합
+    Set<Integer>[] dp = new HashSet[9]; // dp[i] = N을 i번 사용해서 만들 수 있는 문자열 집합
 
     public int solution(int N, int number) {
         if (N == number) {
@@ -19,8 +19,9 @@ class Solution {
                 sb.append(N); // append : 타입 상관없이 닥치는대로 붙여서 StringBuilder 타입으로 변경
             }
 
-            dp[i].add(Integer.parseInt(sb.toString()));
+            dp[i].add(Integer.parseInt(sb.toString())); // 순수 이어붙여서 만들 수 있는 수 저장
 
+            // 사칙연산을 통해 만들 수 있는 수 저장
             for (int j = 1; j < i; j++) {
                 for (int a : dp[j]) {
                     for (int b : dp[i - j]) {
