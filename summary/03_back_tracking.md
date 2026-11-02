@@ -13,7 +13,7 @@ n 이하의 자연수 중 중복 없이 m개의 숫자 뽑기. 호출은 combina
 void combination(int start) {
     if (arrayList.size() == m) {
         for (int num : arrayList) {
-            sb.append(num).append(" ");
+            sb.append(num).append(" "); // static StringBuilder sb가 있다고 가정. 반드시 sb로 합친 후 sb.toString().sout()
         }
 
         sb.append("\n");
@@ -72,11 +72,11 @@ void combinationIdx(int start) {
 }
 ```
 
-정렬된 결과를 보여주고 싶다면 우선 arr을 정렬 후 combination을 진행하면 된다.
+정렬된 조합 결과를 보여주고 싶다면 arr을 먼저 정렬 후 combination 진행
 
 <br>
 
-### 은근 많이 나오는 재귀 전체 탐색
+### 정직한 재귀 전체 탐색
 쭉 탐색하면서 이 값을 포함하냐? 안하냐? O(2^N)로 시간복잡도 높지만, 직관적이다.
 
 ```java

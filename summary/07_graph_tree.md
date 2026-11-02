@@ -1,28 +1,8 @@
 # 그래프, 트리
-### 자료구조 정리
+
+### 트리, 그래프에서 많이 쓰이는 연결리스트 배열(2차원)
 ```java
-우선순위 큐 : PriorityQueue<Integer> pq = new PriorityQueue<>();
-
-pq.offer(x); // 우선순위 큐에 x 삽입
-pq.poll(); // 맨 위 요소 반환 후 삭제
-pq.peek(); // 맨 위 요소 조회만
-
-
-큐 : Queue<Integer> q = new ArrayDeque<>();
-
-q.offer(x) // 큐에 x 삽입
-q.poll(); // 맨 앞 요소 반환 후 삭제
-q.peek(); // 맨 앞 요소 조회만
-
-
-스택 : Deque<Integer> stk = new ArrayDeque<>();
-
-stk.push(x); // 스택에 x 삽입
-stk.poll(); // 맨 위 요소 반환 후 삭제
-stk.peek(); // 맨 위 요소 조회만
-
-
-트리, 그래프에서 많이 쓰이는 연결리스트 배열 : List<Integer>[] adj = new ArrayList[n];
+List<Integer>[] adj = new ArrayList[n];
 
 adj[i].add(x); // i 번째 연결리스트에 원소 x 추가
 adj[i].get(idx); // idx 번째 원소 조회

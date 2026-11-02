@@ -1,6 +1,6 @@
 # 유니온 파인드
 
-뭔가, 컴포넌트끼리 합치려고 할 때 떠올리면 좋을 알고리즘이다.
+컴포넌트끼리 합치려고 할 때 떠올리면 좋을 알고리즘이다.
 
 <br>
 
@@ -121,6 +121,9 @@ public class Main {
 
 ### Arrays.fill, Collections.fill 정리
 일반 배열 [] (primitive type 포함), 컬랙션 모두 사용 가능하다.
+
+원시 타입은 커스텀, 정렬 조작이 안되는 것이지, 값 채우기는 가능하다.
+
 ```java
 // 1차원 배열의 경우
 int[] parent = new int[5];
@@ -134,6 +137,9 @@ for (int[] row : parent) {
     Arrays.fill(row, -1);
 }
 ```
+
+<br>
+
 ```java
 List<String> list = new ArrayList<>();
 list.add("A");

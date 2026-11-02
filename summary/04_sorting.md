@@ -1,9 +1,10 @@
 # 정렬
-코테에서는 그냥 sort쓰면 된다.
 
-일반 배열 []에서 new int[100001];처럼 미리 하드코딩된 배열에 값 입력 후 정렬 시, sort(arr, 0, n)으로 **범위 지정 필수!**
+코테는 그냥 sort쓰면 된다.
 
-양수만 받는 경우, 다 짜놓고 결과가 0 0 0 0 0... 이렇게 나온다. 반드시 범위 지정 필수
+백준이나 구름에서, 일반 배열 []에서 new int[100001];처럼 미리 하드코딩된 배열에 값 입력 후 정렬 시 sort(arr, 0, n)으로 **범위 지정 필수!**
+
+일반 배열로 정의 후 양수만 받는 경우, 코드 다 짜놓고 결과가 0 0 0 0 0... 이렇게 나온다. 반드시 범위 지정 필수
 
 <br>
 
@@ -18,7 +19,7 @@ List 컬랙션 배열 : **Collections.sort(arr.subList(0, n));**
 ### reverseOrder()
 일반 [] 배열도 **래퍼(Integer 등) 타입으로 정의되었다면**,
 Collections.reverseOrder()를 두 번째 인자(범위 정렬이 있을 시 네 번째 인자)로 추가해서 역정렬을 진행할 수 있다.
-그러나 원시 타입은 사용할 수 없다.
+그러나 원시 타입은 사용할 수 없다. 원시 타입은 커스텀, 조작이 불가능하다.
 
 ```java
 public static void main(String[] args) throws IOException {
@@ -39,8 +40,8 @@ public static void main(String[] args) throws IOException {
 
 <br>
 
-### pair(객체) 정렬
-java에서는 pair 없다. 클래스를 따로 정의해줘야 하고, 기본 정렬 기준이 필요하다면 Comparable 인터페이스를 구현한다.
+### pos, pair 클래스를 굳이 정의해서 값을 넣어주면 점수를 더 받는다더라
+java에서는 C++에서의 pair가 없다. 클래스를 따로 정의해줘야 하고, 기본 정렬 기준이 필요하다면 Comparable 인터페이스를 구현한다.
 
 보통 y, x 좌표나 시작과 끝 등을 저장할 때 만든다.
 
@@ -71,7 +72,7 @@ Comparable, Comparator 차이 :
 
 	Comparable은 클래스의 기본 정렬 설정이다. compareTo를 재정의한다. Comparator는 sort 메서드에 인자로 들어가는 클래스다. compare 메서드를 재정의한다.
 
-실전에서는 람다 표현식으로 Comparator가 들어가는 두 번째 파라미터에서 직접 구현하는 것을 기본으로 한다.
+실전에서는 **람다 표현식으로 Comparator가 들어가는 두 번째 파라미터에서 직접 구현하는 것을 기본**으로 한다.
 
 <br>
 

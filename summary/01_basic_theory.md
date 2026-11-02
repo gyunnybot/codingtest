@@ -1,30 +1,5 @@
 # 코테 기본 이론
 
-### IEEE 754
-
-IEEE 754 : 부동소수점 국제 표준
-
-    bit / exponent / fraction
-
-    float = 1 / 8 / 23
-    
-    double = 1 / 11 / 52
-
-<br>
-
-bias : exponent에 더해지는 보정 값
-
-    float = 2^(8-1)-1 = 127, double = 2^(11-1)-1 = 1023
-
-<br>
-
-실수 -6.75를 이진수로 나타내면 -1.1011 * 2^2가 된다. 이를 float에 담는다면 exponent는 127 + 2 = 129
-
-    sign / exponent / fraction<br>
-    1 / 10000001 / 10110000....(나머지는 0으로 채워짐)
-
-<br>
-
 ### BOJ, 구름 환경에서 빠른 I/O를 위한 CustomScanner
 ```java
 static class CustomScanner {
@@ -55,13 +30,13 @@ static class CustomScanner {
 
 <br>
 
-문자 하나씩 받을 때는 next()를 통해 일단 문자열 형태로 받은 후 s.charAt(0)을 사용해 char 타입으로 받는다.
+문자를 하나씩 받아야 할 때에는 next()를 통해 일단 문자열 형태로 받은 후 s.charAt(0)을 사용해 char 타입으로 다시 입력
 
 ```java
 String s = new String("hello");
+Character c = s.charAt(4);
 
-System.out.println(s.charAt(4)); // o
-System.out.println(s.indexOf('o')); // 4
+System.out.println(c); // o
 ```
 
 <br>
@@ -71,38 +46,37 @@ System.out.println(s.indexOf('o')); // 4
 <br>
 
 ### 배열, 자료구조 정리
-
 - 배열
 
-    입력으로 주어지는 고정 격자 배열이나, 정해진 범위가 있는 배열 바구니는 일반 배열 []을 사용한다.
+    입력으로 주어지는 배열이 일반 배열 []이라면 따라가는게 편한 듯? [a][b] 따위로 쉽게 접근할 수 있다.
+
+    그러나, 재귀나 백트래킹처럼 원소를 뒤에서 추가, 삭제하는 상황이 빈번한 경우에는 컬랙션 배열 ArrayList로 변형한다.
     
-    재귀나 백트래킹처럼 원소를 뒤에서 추가, 삭제하는 상황이 빈번한 경우 컬랙션 배열 ArrayList를 사용한다.
-    
-    배열을 제외한 나머지 자료구조는 웬만하면 컬랙션을 사용한다.
+    배열은 위처럼 선택이고, 나머지 자료구조는 웬만하면 컬랙션을 사용한다.
 
 <br>
 
-- 빈출되는 자료구조 : 우선순위 큐, 큐, 스택
+- 주요 자료구조 : 우선순위 큐, 큐, 스택
 
     ```java
     PriorityQueue<Integer> pq = new PriorityQueue<>();
 
     값 삽입 : offer(value);
-    값 조회 : peek();
+    값 조회만 : peek();
     값 반환 + 삭제 : poll();
 
 
     Queue<Integer> q = new ArrayDeque<>();
 
     값 삽입 : offer(value);
-    값 조회 : peek();
+    값 조회만 : peek();
     값 반환 + 삭제 : poll();
 
 
     Deque<Integer> stk = new ArrayDeque<>();
 
     값 삽입 : push(value);
-    값 조회 : peek();
+    값 조회만 : peek();
     값 반환 + 삭제 : poll();
     ```
 

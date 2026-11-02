@@ -49,7 +49,7 @@ public class Main {
 
         // 거리 배열 초기화
         d = new int[vertex + 1];
-        Arrays.fill(d, 1, vertex + 1, Integer.MAX_VALUE);
+        Arrays.fill(d, 1, vertex + 1, Integer.MAX_VALUE); // st, ed-1
 
         // 간선 정보 입력
         for (int i = 0; i < edge; i++) {
@@ -61,18 +61,18 @@ public class Main {
         }
 
         // 다익스트라 알고리즘 시작
-        PriorityQueue<Node> pq = new PriorityQueue<>();
+        PriorityQueue<Node> pq = new PriorityQueue<>((n1, n2) -> Integer.compare(n1.weight, n2.weight));
 
-        // Node에서 Comparable 구현 없이 람다식으로 직접 정렬도 가능
-        // PriorityQueue<Node> pq = new PriorityQueue<>((n1, n2) -> Integer.compare(n1.weight, n2.weight));
-
+        // Node에서 Comparable 구현 후 정렬한다면
+        // PriorityQueue<Node> pq = new PriorityQueue<>();
+        
         d[start] = 0;
-        pq.add(new Node(start, d[start]));
+        pq.offer(new Node(start, d[start]));
 
         while (!pq.isEmpty()) {
             Node cur = pq.poll();
 
-            // 이미 더 짧은 경로로 d가 처리되었다면
+            // 이미 더 짧은 경로로 d가 정의되었다면
             if (d[cur.to] < cur.weight) {
                 continue;
             }
@@ -81,7 +81,7 @@ public class Main {
                 // next 노드가 cur 노드를 거쳐서 다른 노드로 이동하는 거리가 더 짧은 경우
                 if (d[next.to] > d[cur.to] + next.weight) {
                     d[next.to] = d[cur.to] + next.weight;
-                    pq.add(new Node(next.to, d[next.to]));
+                    pq.offer(new Node(next.to, d[next.to]));
                 }
             }
         }
@@ -98,20 +98,29 @@ public class Main {
         System.out.println(sb.toString());
     }
 
-    static class Node implements Comparable<Node> {
+    static class Node {
         int to, weight;
 
         public Node(int to, int weight) {
             this.to = to;
             this.weight = weight;
         }
-
-        // weight를 기준으로 오름차순
-        @Override
-        public int compareTo(Node other) {
-            return Integer.compare(this.weight, other.weight);
-        }
     }
+
+    // static class Node implements Comparable<Node> {
+    //     int to, weight;
+
+    //     public Node(int to, int weight) {
+    //         this.to = to;
+    //         this.weight = weight;
+    //     }
+
+    //     // weight를 기준으로 오름차순
+    //     @Override
+    //     public int compareTo(Node other) {
+    //         return Integer.compare(this.weight, other.weight);
+    //     }
+    // }
 
     static class CustomScanner {
         private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -140,6 +149,10 @@ public class Main {
 }
 ```
 
-우선순위 큐는 정렬 기준(Comparator)을 받는 생성자가 정의되어 있다. 따라서 우선순위 원소가 나오는 기준을 바로 정의할 수 있다. 하지만 List는 Comparator를 받는 생성자가 없다. 반드시 sort를 사용해야 정렬할 수 있다.
+우선순위 큐는 정렬 기준(Comparator)을 받는 생성자가 정의되어 있다. 따라서 우선순위 원소가 나오는 기준을 바로 정의할 수 있다.
 
-pq는 기본적으로(기본 생성자) 최소 힙(작은 것이 가장 맨 위)으로 정의(Natural Ordering)된다. Collections.reverseOrder()를 사용해 최대 힙으로 변경 가능하다.
+하지만 List는 Comparator를 받는 생성자가 없다. 반드시 sort를 사용해서 정렬해야 한다.
+
+문제에서는 쓰이지 않으나, pq는 기본적으로(기본 생성자) 최소 힙(작은 것이 가장 맨 위)으로 정의(Natural Ordering)된다.
+
+Collections.reverseOrder()를 사용해 최대 힙으로 변경 가능하다.
