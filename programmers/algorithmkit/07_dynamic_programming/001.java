@@ -8,7 +8,7 @@ class Solution {
             return 1;
         }
 
-        for (int i = 1; i <= 8; i++) { // 최솟값이 8보다 크면 -1을 return 합니다.
+        for (int i = 1; i <= 8; i++) { // 최솟값이 8보다 크면 -1을 return, i = 9 저장 불필요
             dp[i] = new HashSet<>();
         }
 

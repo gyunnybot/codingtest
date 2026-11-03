@@ -1,11 +1,10 @@
 import java.util.*;
 
 class Solution {
-    boolean[] visited = new boolean[51];
-    int answer = 0; // 변환할 수 없는 경우에는 0을 return 합니다.
+    boolean[] visited = new boolean[51]; // default = false
+    int answer; // 변환할 수 없는 경우에는 0을 return합니다. -> 클래스 변수는 0, false, null로 초기화
 
     public int solution(String begin, String target, String[] words) {
-
         boolean flag = false;
 
         for (String w : words) {
@@ -19,7 +18,7 @@ class Solution {
             return 0;
         }
 
-        bfs(new Node(begin, 0), target, words); // 변환할 수 없는 경우에는 0을 return 합니다.
+        bfs(new Node(begin, 0), target, words);
 
         return answer;
     }

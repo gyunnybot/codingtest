@@ -19,7 +19,7 @@ class Solution {
         return answer;
     }
 
-    void recur(String ret, String numbers) {
+    void recur(String ret, String numbers) { // O(n*n!), n = numbers.length()
         if (!ret.equals("")) {
             st.add(Integer.parseInt(ret));
         }
@@ -43,5 +43,3 @@ class Solution {
         return true;
     }
 }
-
-// 보수적으로 O(7^7)의 시간복잡도?

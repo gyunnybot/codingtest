@@ -12,9 +12,9 @@ class Solution {
 
     int bfs(int[][] maps) {
         int n = maps.length;
-        int m = maps[0].length; // bfs(n, m)으로 빼는 것이 정석이지만.. maps가 매개변수로 되어 있어서 그냥 가져왔다.
+        int m = maps[0].length; // bfs(n, m)으로 빼는 것이 정석? maps가 매개변수로 되어 있어서 그냥 가져왔다.
 
-        int[][] visited = new int[n][m];
+        int[][] visited = new int[n][m]; // 0으로 초기화
 
         visited[0][0] = 1;
 
@@ -32,8 +32,7 @@ class Solution {
                     continue;
                 }
 
-                // maps가 전역변수였다면 bfs(n, m) 원래 하던 방식으로 정의했을 것
-                if (maps[ny][nx] == 1 && visited[ny][nx] == 0) {
+                if (visited[ny][nx] == 0 && maps[ny][nx] == 1) {
                     visited[ny][nx] = visited[cur.y][cur.x] + 1;
                     q.offer(new Pos(ny, nx));
                 }
@@ -42,9 +41,9 @@ class Solution {
 
         if (visited[n - 1][m - 1] == 0) {
             return -1;
-        } else {
-            return visited[n - 1][m - 1];
         }
+
+        return visited[n - 1][m - 1];
     }
 
     // Pos, Pair, Info ...
