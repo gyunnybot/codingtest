@@ -7,12 +7,10 @@ class Solution {
         List<String> string_numbers = new ArrayList<>();
 
         for (int i = 0; i < numbers.length; i++) {
-            string_numbers.add(Integer.toString(numbers[i])); // Object.toString(Object value) : 객체를 문자열로 변경
+            string_numbers.add(String.valueOf(numbers[i])); // String.valueOf(Object value) : 객체를 문자열로 변경
         }
 
-        // sort(list, comparator)에서, comparator 내 compare를 람다식으로 구현
-        // String : s1.compareTo(s2), Wrapper : Wrapper1.compare(Wrapper2)
-        Collections.sort(string_numbers, (s1, s2) -> (s2 + s1).compareTo(s1 + s2));
+        Collections.sort(string_numbers, (s1, s2) -> (s2 + s1).compareTo(s1 + s2)); // 문자대로 붙인 결과가 크도록 정렬
 
         if (string_numbers.get(0).equals("0")) {
             answer = "0";
@@ -29,42 +27,3 @@ class Solution {
         return answer;
     }
 }
-
-/* Comparator를 직접 정의하는 풀이
-
-import java.util.*;
-
-class Solution {
-    public String solution(int[] numbers) {
-        String answer = "";
-        List<String> string_numbers = new ArrayList<>();
-        
-        for(int i = 0; i < numbers.length; i++) {
-            string_numbers.add(Integer.toString(numbers[i]));
-        }
-
-        Collections.sort(string_numbers, new CustomComparator());
-        
-        if(string_numbers.get(0).equals("0")) {
-            answer = "0";
-        } else {
-            StringBuilder sb = new StringBuilder();
-            
-            for(String s : string_numbers) {
-                sb.append(s);
-            }
-            
-            answer = sb.toString();
-        }
-        
-        return answer;
-    }
-    
-    class CustomComparator implements Comparator<String> {
-        @Override
-        public int compare(String s1, String s2) {
-            return (s2 + s1).compareTo(s1 + s2);
-        }
-    }
-}
-*/

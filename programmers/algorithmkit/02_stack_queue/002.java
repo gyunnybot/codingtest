@@ -9,7 +9,7 @@ class Solution {
             int remaining_work = 100 - progresses[i];
             int remaining_days = remaining_work / speeds[i];
 
-            if (remaining_work % speeds[i] != 0) {
+            if (remaining_work % speeds[i] != 0) { // boolean 처리 확실히
                 remaining_days++;
             }
 
@@ -33,7 +33,7 @@ class Solution {
             }
         }
 
-        answer.add(cnt);
+        answer.add(cnt); // 마지막 배포일의 배포 개수 추가
 
         return answer;
     }
