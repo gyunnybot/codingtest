@@ -1,6 +1,8 @@
 # 코테 기본 이론
 
 ### BOJ, 구름 환경에서 빠른 I/O를 위한 CustomScanner
+구름 환경에서 코테를 본다면 보고 들어가면 됨
+
 ```java
 static class CustomScanner {
     private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -30,13 +32,13 @@ static class CustomScanner {
 
 <br>
 
-문자를 하나씩 받아야 할 때에는 next()를 통해 일단 문자열 형태로 받은 후 s.charAt(0)을 사용해 char 타입으로 다시 입력
+문자를 하나씩 받아야 할 때에는 next()를 통해 일단 문자열 형태로 받은 후 s.charAt(0)을 사용해 Character 타입으로 다시 저장
 
 ```java
 String s = new String("hello");
-Character c = s.charAt(4);
+Character c = s.charAt(0);
 
-System.out.println(c); // o
+System.out.println(c); // h
 ```
 
 <br>
@@ -93,7 +95,7 @@ System.out.println(c); // o
 
 <br>
 
-- 일반 [] 배열 범위 정렬 : Arrays.sort(arr, 0, n); => 0번 인덱스부터 n-1번 인덱스까지 정렬
+- 일반 [] 배열 범위 정렬 : Arrays.sort(arr, 0, n); => 0번 인덱스부터 n - 1번 인덱스까지 정렬
 
 - 컬랙션 배열 범위 정렬 : subList 메서드로 범위 정렬 가능
     ```java
@@ -110,7 +112,9 @@ System.out.println(c); // o
 
 - Comparable, Comparator
 
-    내가 만든 클래스가 정렬 가능하려면, Comparable 인터페이스를 구현해야 하는데, compareTo 메서드를 재정의하면 된다. 여기서의 정렬 기준이 클래스의 기본 정렬 방식이 된다.
+    내가 만든 클래스가 정렬 가능하려면, Comparable 인터페이스를 구현해야 하는데, compareTo 메서드를 재정의하면 된다.
+    
+    여기서의 정렬 기준이 클래스의 기본 정렬 방식이 된다.
 
     ```java
     // Comparable
@@ -126,35 +130,39 @@ System.out.println(c); // o
         @Override
         public int compareTo(Info other) {
             if(this.end == other.end) {
-                return Integer.compare(this.start, other.start); // 시작하는 시각이 빠르게
+                return Integer.compare(this.start, other.start); // 시작 시각이 빠르게
             }
 
             return Integer.compare(this.end, other.end); // 오름차순 정렬
         }
     }
 
-    Collections.sort(infos); // List<Info> infos = new ArrayList<>();
+    Collections.sort(infos); // List<Info> infos = new ArrayList<>(); compareTo 기준으로 정렬
     ```
 
-    특정 상황에서 다른 정렬 기준이 필요할 수 있다. 이럴 때에는 Comparator 인터페이스를 구현하는 클래스를 생성한 후 sort의 두 번째 인자로 클래스 인스턴스를 넣어주면 된다.
+    정렬 시 일반적으로는 compareTo 기준을 따르지만, 특정 상황에서 다른 정렬 기준이 필요할 수 있다.
+    
+    이럴 때에는 Comparator 인터페이스를 구현하는 클래스를 생성한 후 sort의 두 번째 인자로 클래스 인스턴스를 넣어주면 된다.
+
+    Comparator 내 compare에서 정의된 정렬 방식이 Comparable의 compareTo 정렬 방식을 덮어쓴다.
 
     ```java
     // Comparator
     class StartComparator implements Comparator<Info> {
         @Override
         public int compare(Info i1, Info i2) {
-            return Integer.compare(i1.start, i2.start); // 시작하는 시각이 빠르게
+            return Integer.compare(i2.start, i1.start); // 시작 시각이 느리게
         }
     }
 
-    Collections.sort(infos, new StartComparator()); // List<Info> infos = new ArrayList<>();
+    Collections.sort(infos, new StartComparator()); // List<Info> infos = new ArrayList<>(); 시작 시각이 느리게 정렬
     ```
     
     <br>
     
-    일반 [] 정렬은 원시 타입의 경우 comparator 사용 불가. 사용자 정의 클래스나 래퍼 타입만 사용 가능하다.
+    일반 [] 정렬은 원시 타입의 경우 Comparator 사용 불가. 사용자 정의 클래스나 래퍼 타입만 사용 가능하다.
     
-    그냥 원시 타입은 comparator나 reverseOrder() 등의 커스텀 조건을 줄 수 없다고 보면 된다.
+    원시 타입은 Comparator나 reverseOrder() 등의 커스텀 구현, 정렬 조건을 줄 수 없다고 보면 된다.
 
 <br>
 

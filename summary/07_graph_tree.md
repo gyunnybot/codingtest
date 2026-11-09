@@ -4,6 +4,11 @@
 ```java
 List<Integer>[] adj = new ArrayList[n];
 
+// init 필수 (매우 중요)
+for (int i = 0; i < n; i++) {
+    adj[i] = new ArrayList<>();
+}
+
 adj[i].add(x); // i 번째 연결리스트에 원소 x 추가
 adj[i].get(idx); // idx 번째 원소 조회
 adj[i].remove(adj[i].size() - 1); // 가장 마지막 원소 제거

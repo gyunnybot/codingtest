@@ -153,6 +153,6 @@ public class Main {
 
 하지만 List는 Comparator를 받는 생성자가 없다. 반드시 sort를 사용해서 정렬해야 한다.
 
-문제에서는 쓰이지 않으나, pq는 기본적으로(기본 생성자) 최소 힙(작은 것이 가장 맨 위)으로 정의(Natural Ordering)된다.
+pq는 기본적으로(기본 생성자) 최소 힙(작은 것이 가장 맨 위)으로 정의(Natural Ordering)된다.
 
-Collections.reverseOrder()를 사용해 최대 힙으로 변경 가능하다.
+문제에서는 쓰이지 않으나, Collections.reverseOrder()를 사용해 최대 힙으로 변경 가능하다.

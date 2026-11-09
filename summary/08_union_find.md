@@ -122,7 +122,7 @@ public class Main {
 ### Arrays.fill, Collections.fill 정리
 일반 배열 [] (primitive type 포함), 컬랙션 모두 사용 가능하다.
 
-원시 타입은 커스텀, 정렬 조작이 안되는 것이지, 값 채우기는 가능하다.
+원시 타입은 커스텀 구현, 정렬 조건 적용이 안되는 것이지, 값 채우기는 가능하다.
 
 ```java
 // 1차원 배열의 경우

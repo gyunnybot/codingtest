@@ -72,7 +72,7 @@ void combinationIdx(int start) {
 }
 ```
 
-정렬된 조합 결과를 보여주고 싶다면 arr을 먼저 정렬 후 combination 진행
+정렬된 조합 결과 목록을 보여주고 싶다면 arr을 먼저 정렬 후 combination 진행
 
 <br>
 
