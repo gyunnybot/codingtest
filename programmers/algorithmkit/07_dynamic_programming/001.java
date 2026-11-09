@@ -16,7 +16,7 @@ class Solution {
             StringBuilder sb = new StringBuilder();
 
             for (int j = 0; j < i; j++) {
-                sb.append(N); // append : 타입 상관없이 닥치는대로 붙여서 StringBuilder 타입으로 변경
+                sb.append(N); // append : 타입 상관없이 닥치는대로 붙이고 StringBuilder 타입으로 변경
             }
 
             dp[i].add(Integer.parseInt(sb.toString())); // 순수 이어붙여서 만들 수 있는 수 저장

@@ -42,5 +42,5 @@ class Solution {
     }
 }
 
-// 중첩 클래스 : 그냥 Solution 클래스 내부에 작성한다.
+// 중첩 클래스? 그냥 Solution 클래스 내부에 작성한다.
 // 생성자는 public으로 작성

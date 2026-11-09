@@ -6,7 +6,7 @@ class Solution {
 
         String inner = s.substring(2, s.length() - 2);
 
-        String[] splitResult = inner.split("\\},\\{");
+        String[] splitResult = inner.split("\\},\\{"); // . | * + ? ( ) [ { ^ $ 이 11개가 나오면 \\를 붙인다. \는 \\\\로 표기
 
         // 원소 개수 기준으로 오름차순 정렬
         Arrays.sort(splitResult, (a, b) -> Integer.compare(a.split(",").length, b.split(",").length));

@@ -64,4 +64,4 @@ class Solution {
     }
 }
 
-// map.get(key), map.remove(key), map.containsKey(key) : idx가 아닌 key를 통해 연산 진행
+// map.get(key), map.remove(key), map.containsKey(key): map은 key가 필요해

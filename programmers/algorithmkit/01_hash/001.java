@@ -6,8 +6,17 @@ class Solution {
 
         Map<String, Integer> mp = new HashMap<>();
 
+        // for (String p : participant) {
+        //     mp.put(p, mp.getOrDefault(p, 0) + 1); // getOrDefault(key, default value) 알아두면 좋을 듯?
+        // }
+
+        // init
         for (String p : participant) {
-            mp.put(p, mp.getOrDefault(p, 0) + 1); // 참가자 중에는 동명이인이 있을 수 있습니다.
+            mp.put(p, 0);
+        }
+
+        for (String p : participant) {
+            mp.put(p, mp.get(p) + 1);
         }
 
         for (String c : completion) {
@@ -25,4 +34,4 @@ class Solution {
     }
 }
 
-// map : put(key, value), get(key), getOrDefault(key, default value);
+// map : put(key, value), get(key), getOrDefault(key, default value), containsKey(key), remove(key)

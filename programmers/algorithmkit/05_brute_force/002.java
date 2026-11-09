@@ -22,7 +22,7 @@ class Solution {
             max_val = Math.max(max_val, s);
         }
                
-        List<Integer> answer = new ArrayList<>(); // 조건에 따라 값이 추가되는 상황 = List, add
+        List<Integer> answer = new ArrayList<>(); // 조건에 따라 값이 추가되는 상황? ArrayList
                
         for(int i = 0; i < 3; i++) {
             if(max_val == score[i]) {

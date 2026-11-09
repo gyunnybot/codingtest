@@ -13,10 +13,10 @@ class Solution {
         for (int i = 0; i < cities.length; i++) {
             String city = cities[i].toLowerCase();
 
-            if (q.remove(city)) {
+            if (q.remove(city)) { // 큐에 도시가 있다면 +1
                 q.offer(city);
                 answer += 1;
-            } else {
+            } else { // 큐에 도시가 없다면 +5
                 if (q.size() == cacheSize) {
                     q.poll();
                     q.offer(city);

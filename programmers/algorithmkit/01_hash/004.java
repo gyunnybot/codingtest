@@ -21,22 +21,22 @@ class Solution {
 }
 
 /*
-key-value 모두 필요할 때 >
-map : entrySet() -> Map.Entry 반환
-entry : getKey(), getValue() -> key, value 반환
+key-value 모두 필요할 때:
+map -> entrySet(): Map.Entry 반환
+entry -> getKey(), getValue(): 각각 key, value 반환
 
 for (Map.Entry<String, Integer> entry : map.entrySet()) {
     System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
 }
 
-key만 필요할 때 >
-map : keySet()
+key만 필요할 때:
+map -> keySet()
 
 for (String s : map.keySet()) {
 }
 
-value만 필요할 때 >
-map : values()
+value만 필요할 때:
+map -> values()
 
 for (Integer i : map.values()) {
 }

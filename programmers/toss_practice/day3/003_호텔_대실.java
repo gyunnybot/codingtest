@@ -9,7 +9,7 @@ class Solution {
             times[i][1] = toMin(book_time[i][1]) + 10; // 청소 시간 추가
         }
 
-        Arrays.sort(times, (a, b) -> Integer.compare(a[0], b[0]));
+        Arrays.sort(times, (a, b) -> Integer.compare(a[0], b[0])); // 시작 시각 순으로 정렬
 
         PriorityQueue<Integer> pq = new PriorityQueue<>();
 
