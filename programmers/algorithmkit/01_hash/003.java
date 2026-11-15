@@ -20,9 +20,7 @@ class Solution {
     }
 }
 
-/*
-set : contains(value);
-map : containsKey(key);
+// set : contains(value);
+// map : containsKey(key);
 
-String.substring(st_idx, ed_idx); : st_idx부터 ed_idx - 1까지의 문자열 부분 추출
- */
+// String.substring(st_idx, ed_idx); : st_idx부터 ed_idx - 1까지의 문자열만 추출

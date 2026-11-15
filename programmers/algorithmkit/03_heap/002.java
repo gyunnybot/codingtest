@@ -4,19 +4,24 @@ class Solution {
     public int solution(int[][] jobs) {
         int answer = 0;
 
-        Arrays.sort(jobs, (j1, j2) -> Integer.compare(j1[0], j2[0])); // jobs에 저장된 애들이 요청받은 순서대로 주어지지 않을 수 있다
+        Arrays.sort(jobs, (a, b) -> Integer.compare(a[0], b[0])); // 요쳥 시각 순으로 정렬
 
-        int t = 0;
+        PriorityQueue<Pair> pq = new PriorityQueue<>((a, b) -> {
+            if (a.timeTakes == b.timeTakes) {
+                return Integer.compare(a.start, b.start);
+            }
+
+            return Integer.compare(a.timeTakes, b.timeTakes);
+        });
+
+        int cutline = 0; // s는 작업이 요청되는 시점이며 0 ≤ s ≤ 1,000입니다.
         int idx = 0;
 
-        PriorityQueue<Pair> pq = new PriorityQueue<>((a, b) ->
-                a.time == b.time ?
-                        Integer.compare(a.start, b.start) :
-                        Integer.compare(a.time, b.time)
-        );
-
-        while (idx < jobs.length || !pq.isEmpty()) { // jobs에서 안 빼낸 작업이 있거나, 아직 pq에 처리할 작업이 있다면 계속 돈다
-            while (idx < jobs.length && jobs[idx][0] <= t) { // idx 2번 검사? idx = jobs.length인 경우 예외 발생 방지
+        // 1. jobs에 있는 작업들 누락없이 pq로 받기
+        // 2. pq 비우기
+        while (idx < jobs.length || !pq.isEmpty()) {
+            // idx >= jobs.length에서 jobs[idx][0] 접근 시 NPE
+            while (idx < jobs.length && jobs[idx][0] <= cutline) {
                 pq.offer(new Pair(jobs[idx][0], jobs[idx][1]));
                 idx++;
             }
@@ -24,10 +29,10 @@ class Solution {
             if (!pq.isEmpty()) {
                 Pair cur = pq.poll();
 
-                t += cur.time;
-                answer += t - cur.start;
-            } else { // 작업 사이에 빈 구간이 생긴다면 해당 idx 번째 job의 시간으로 점프
-                t = jobs[idx][0];
+                cutline = cutline + cur.timeTakes;
+                answer = answer + (cutline - cur.start); // 갱신된 cutline에서부터 동작 시간 계산
+            } else {
+                cutline = jobs[idx][0];
             }
         }
 
@@ -36,11 +41,11 @@ class Solution {
 
     class Pair {
         int start;
-        int time;
+        int timeTakes;
 
-        public Pair(int start, int time) {
+        public Pair(int start, int timeTakes) {
             this.start = start;
-            this.time = time;
+            this.timeTakes = timeTakes;
         }
     }
 }

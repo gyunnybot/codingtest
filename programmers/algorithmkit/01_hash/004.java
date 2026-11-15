@@ -2,21 +2,24 @@ import java.util.*;
 
 class Solution {
     public int solution(String[][] clothes) {
-        int answer = 1;
+        int answer = 1; // 곱셈 연산을 위해 1로 초기화
 
         Map<String, Integer> mp = new HashMap<>();
 
+        // init
         for (String[] c : clothes) {
-            mp.put(c[1], mp.getOrDefault(c[1], 0) + 1);
+            mp.put(c[1], 0);
         }
 
-        for (Integer val : mp.values()) {
-            answer *= (val + 1);
+        for (String[] c : clothes) {
+            mp.put(c[1], mp.get(c[1]) + 1);
         }
 
-        answer -= 1;
+        for (Integer i : mp.values()) {
+            answer *= (i + 1);
+        }
 
-        return answer;
+        return answer - 1;
     }
 }
 

@@ -5,7 +5,7 @@ class Solution {
         int answer = 0;
 
         Queue<Pair> q = new ArrayDeque<>();
-        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder()); // 중요도가 높은 순으로 정렬
 
         for (int i = 0; i < priorities.length; i++) {
             q.offer(new Pair(priorities[i], i));
