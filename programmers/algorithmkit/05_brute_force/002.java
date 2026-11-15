@@ -19,10 +19,10 @@ class Solution {
         int max_val = -1;
 
         for(int s : score) {
-            max_val = Math.max(max_val, s);
+            max_val = max_val < s ? s : max_val;
         }
                
-        List<Integer> answer = new ArrayList<>(); // 조건에 따라 값이 추가되는 상황? ArrayList
+        List<Integer> answer = new ArrayList<>(); // 무지성 i: 0->n이 아니라, 조건에 따라 값이 추가되는 상황? ArrayList
                
         for(int i = 0; i < 3; i++) {
             if(max_val == score[i]) {
