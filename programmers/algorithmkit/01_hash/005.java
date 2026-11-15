@@ -5,58 +5,60 @@ class Solution {
         List<Integer> answer = new ArrayList<>();
 
         // 장르 - 장르별 재생 횟수 총 합
-        Map<String, Integer> genres_totalPlayCnt = new HashMap<>();
+        Map<String, Integer> genres_total = new HashMap<>();
 
         // 장르 - (인덱스 - 인덱스별 재생 횟수)
-        Map<String, Map<Integer, Integer>> genres_idx_playCnt = new HashMap<>();
+        Map<String, Map<Integer, Integer>> genres_idx_cnt = new HashMap<>();
 
         // init
         for (int i = 0; i < genres.length; i++) {
-            genres_totalPlayCnt.put(genres[i], 0);
+            genres_total.put(genres[i], 0);
         }
 
         for (int i = 0; i < genres.length; i++) {
-            genres_totalPlayCnt.put(genres[i], genres_totalPlayCnt.get(genres[i]) + plays[i]);
+            genres_total.put(genres[i], genres_total.get(genres[i]) + plays[i]);
 
-            if (genres_idx_playCnt.get(genres[i]) == null) {
-                Map<Integer, Integer> idx_playCnt = new TreeMap<>(); // 재생 횟수, 인덱스 낮은 순
-                genres_idx_playCnt.put(genres[i], idx_playCnt);
+            Map<Integer, Integer> temp = genres_idx_cnt.get(genres[i]);
+
+            if (temp == null) {
+                temp = new TreeMap<>(); // 재생 횟수, 인덱스 낮은 순
+                genres_idx_cnt.put(genres[i], temp);
             }
 
-            genres_idx_playCnt.get(genres[i]).put(i, plays[i]);
+            temp.put(i, plays[i]);
         }
 
-        while (!genres_totalPlayCnt.isEmpty()) {
+        while (!genres_total.isEmpty()) {
             String max_genre = "";
-            int max_play_count = -1;
+            int max_total = -1;
 
-            for (Map.Entry<String, Integer> entry : genres_totalPlayCnt.entrySet()) {
-                if (max_play_count < entry.getValue()) {
+            for (Map.Entry<String, Integer> entry : genres_total.entrySet()) {
+                if (max_total < entry.getValue()) {
                     max_genre = entry.getKey();
-                    max_play_count = entry.getValue();
+                    max_total = entry.getValue();
                 }
             }
 
             for (int i = 0; i < 2; i++) {
                 int max_idx = -1;
-                int max_play = -1;
+                int max_cnt = -1;
 
-                // 고유 번호가 낮은 노래를 먼저 수록합니다. -> TreeSet이므로 key(index) 기준 오름차순 정렬 집합 받기
-                for (Map.Entry<Integer, Integer> entry : genres_idx_playCnt.get(max_genre).entrySet()) {
-                    if (max_play < entry.getValue()) { // <=로 작성할 시 고유 번호가 높은 노래를 먼저 수록하게 됨
+                // 고유 번호가 낮은 노래를 먼저 수록합니다. -> TreeMap: key(index) 기준 오름차순 정렬된 k-v 쌍 보장
+                for (Map.Entry<Integer, Integer> entry : genres_idx_cnt.get(max_genre).entrySet()) {
+                    if (max_cnt < entry.getValue()) { // <=로 작성하면 고유 번호가 높은 노래가 반환되어 오류
                         max_idx = entry.getKey();
-                        max_play = entry.getValue();
+                        max_cnt = entry.getValue();
                     }
                 }
 
-                if (max_idx == -1) break;
+                if (max_idx == -1) break; // 노래가 없으면 두 곡이 아니어도 바로 탈출
 
                 answer.add(max_idx);
 
-                genres_idx_playCnt.get(max_genre).remove(max_idx);
+                genres_idx_cnt.get(max_genre).remove(max_idx);
             }
 
-            genres_totalPlayCnt.remove(max_genre);
+            genres_total.remove(max_genre);
         }
 
         return answer;

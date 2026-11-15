@@ -14,7 +14,10 @@ class Solution {
                 minPq.offer(number);
                 maxPq.offer(number);
             } else {
-                if (minPq.isEmpty()) continue;
+                // 빈 큐에 데이터를 삭제하라는 연산이 주어질 경우, 해당 연산은 무시합니다.
+                if (minPq.isEmpty()) {
+                    continue;
+                }
 
                 if (number == 1) {
                     minPq.remove(maxPq.poll()); // 반대쪽 큐에서도 제거
@@ -32,5 +35,5 @@ class Solution {
     }
 }
 
-// pq.remove(value): 직접 값을 명시해서 제거하는 것도 가능. 대부분의 자료구조에 도입되어 있다.
-// ArrayList의 경우는 주의가 필요함. 기본은 remove(idx) / remove(Integer.valueOf(value)) 구분하기
+// pq.remove(value): 직접 값을 명시해서 바로 제거하는 것도 가능. 대부분의 자료구조에 구현된 메서드
+// 다만 ArrayList의 경우는 주의가 필요함. 기본은 remove(idx)이고, remove(Integer.valueOf(value))와 구분하기
