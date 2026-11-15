@@ -2,8 +2,6 @@ import java.util.*;
 
 class Solution {
     public boolean solution(String[] phone_book) {
-        boolean answer = true;
-
         Set<String> st = new HashSet<>();
 
         for (String number : phone_book) {
@@ -11,14 +9,14 @@ class Solution {
         }
 
         for (String number : phone_book) {
-            for (int i = 1; i < number.length(); i++) { // n - 1
-                if (st.contains(number.substring(0, i))) { // n - 2
+            for (int i = 1; i < number.length(); i++) {
+                if (st.contains(number.substring(0, i))) {
                     return false;
                 }
             }
         }
-
-        return answer;
+        
+        return true;
     }
 }
 

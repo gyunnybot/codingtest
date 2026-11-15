@@ -2,7 +2,7 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] nums) {
-        int answer = 0;
+        int answer = nums.length / 2;
 
         Set<Integer> st = new HashSet<>();
 
@@ -10,7 +10,7 @@ class Solution {
             st.add(num);
         }
 
-        answer = Math.min(st.size(), nums.length / 2);
+        answer = answer > st.size() ? st.size() : answer;
 
         return answer;
     }
