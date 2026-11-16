@@ -45,6 +45,7 @@ class Solution {
             a[p[1] - 1][p[0] - 1] = -1;
         }
 
+        // init
         for (int[] row : dp) {
             Arrays.fill(row, -1);
         }
